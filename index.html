@@ -3,86 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MimiKids - Aprende Jugando</title>
+    <title>MimiKids 2.0 - Aprende, Juega y Gana Premios</title>
     <style>
         :root {
             --primary: #FF6B6B;
             --secondary: #4ECDC4;
             --accent: #FFE66D;
-            --dark: #292F36;
-            --light: #F7FFF7;
-            --purple: #A29BFE;
-            --green: #55EFC4;
+            --dark: #2D3436;
+            --light: #F9FBF7;
+            --purple: #6C5CE7;
+            --green: #00B894;
+            --orange: #FD9644;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             user-select: none;
         }
 
         body {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             color: var(--dark);
         }
 
         .app-container {
             background: white;
             width: 100%;
-            max-width: 900px;
-            min-height: 600px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            max-width: 1020px;
+            min-height: 680px;
+            border-radius: 32px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 6px solid white;
+            border: 8px solid white;
+            position: relative;
         }
 
-        /* HEADER / BARRA SUPERIOR */
+        /* BARRA SUPERIOR */
         header {
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--orange));
             color: white;
-            padding: 15px 30px;
+            padding: 15px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
-            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
         .user-bar {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .user-pill {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(5px);
+            padding: 6px 16px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: bold;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 15px;
         }
 
-        .btn-logout {
+        .btn-top {
             background: var(--dark);
             color: white;
             border: none;
@@ -90,61 +96,62 @@
             border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
-            transition: transform 0.2s;
+            transition: transform 0.2s, background 0.2s;
         }
 
-        .btn-logout:hover {
+        .btn-top:hover {
             transform: scale(1.05);
-            background: #ff4757;
+            background: #e84118;
         }
 
-        /* PANTALLA DE LOGIN / REGISTRO */
+        /* PANTALLA DE AUTENTICACIÓN */
         #auth-screen {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 30px;
             text-align: center;
         }
 
         .auth-card {
             background: var(--light);
-            padding: 35px;
-            border-radius: 25px;
+            padding: 30px;
+            border-radius: 28px;
             width: 100%;
             max-width: 420px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
             border: 3px solid var(--secondary);
         }
 
         .auth-card h2 {
             color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 26px;
+            margin-bottom: 18px;
+            font-size: 25px;
         }
 
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             text-align: left;
         }
 
         .input-group label {
             display: block;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 5px;
-            font-size: 14px;
+            font-size: 13px;
+            color: #555;
         }
 
         .input-group input {
             width: 100%;
             padding: 12px 15px;
-            border-radius: 15px;
-            border: 2px solid #ddd;
+            border-radius: 14px;
+            border: 2px solid #dfe6e9;
             font-size: 16px;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.2s;
         }
 
         .input-group input:focus {
@@ -154,12 +161,13 @@
         .avatar-selector {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin: 15px 0;
+            gap: 10px;
+            margin: 12px 0;
+            flex-wrap: wrap;
         }
 
         .avatar-option {
-            font-size: 32px;
+            font-size: 28px;
             padding: 8px;
             border-radius: 50%;
             cursor: pointer;
@@ -170,7 +178,7 @@
 
         .avatar-option.selected {
             border-color: var(--primary);
-            transform: scale(1.15);
+            transform: scale(1.18);
             background: var(--accent);
         }
 
@@ -180,44 +188,41 @@
             color: white;
             border: none;
             padding: 14px;
-            border-radius: 15px;
-            font-size: 18px;
-            font-weight: bold;
+            border-radius: 16px;
+            font-size: 17px;
+            font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 5px 0 #3bb3ab;
+            box-shadow: 0 5px 0 #38ada9;
             transition: all 0.1s;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .btn-main:active {
             transform: translateY(4px);
-            box-shadow: 0 1px 0 #3bb3ab;
+            box-shadow: 0 1px 0 #38ada9;
         }
 
         .switch-auth {
-            margin-top: 15px;
+            margin-top: 14px;
             font-size: 14px;
-            color: #666;
+            color: var(--purple);
+            font-weight: 700;
             cursor: pointer;
             text-decoration: underline;
         }
 
         .saved-accounts {
-            margin-top: 25px;
+            margin-top: 22px;
             width: 100%;
-            max-width: 420px;
-        }
-
-        .saved-accounts h4 {
-            margin-bottom: 10px;
-            color: var(--dark);
+            max-width: 480px;
         }
 
         .account-chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
+            margin-top: 8px;
         }
 
         .account-chip {
@@ -231,6 +236,7 @@
             align-items: center;
             gap: 6px;
             transition: 0.2s;
+            font-size: 14px;
         }
 
         .account-chip:hover {
@@ -238,71 +244,105 @@
             color: white;
         }
 
-        /* PANTALLA PRINCIPAL (DASHBOARD) */
+        /* DASHBOARD */
         #dashboard-screen {
             display: none;
             flex: 1;
-            padding: 30px;
+            padding: 25px;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
+        /* NAVEGACIÓN DE PESTAÑAS */
+        .nav-tabs {
+            display: flex;
+            gap: 12px;
+            border-bottom: 2px solid #f1f2f6;
+            padding-bottom: 12px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: #f1f2f6;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 800;
+            color: #57606f;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--purple);
+            color: white;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        }
+
+        /* TARJETAS DE ESTADÍSTICAS */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
         }
 
         .stat-card {
             background: var(--light);
             border-radius: 20px;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            border-bottom: 5px solid #ddd;
+            gap: 12px;
+            border-bottom: 4px solid #dfe6e9;
         }
 
         .stat-icon {
-            font-size: 40px;
+            font-size: 32px;
             background: white;
-            width: 65px;
-            height: 65px;
+            width: 56px;
+            height: 56px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 18px;
+            border-radius: 16px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .stat-info h3 {
-            font-size: 24px;
+            font-size: 20px;
             color: var(--dark);
         }
 
         .stat-info p {
-            font-size: 14px;
-            color: #666;
+            font-size: 12px;
+            color: #636e72;
+            font-weight: 600;
         }
 
-        /* BARRA DE PROGRESO GENERAL */
+        /* BARRA DE PROGRESO */
         .progress-section {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 16px 20px;
             border-radius: 20px;
+            border: 2px solid #eee;
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 800;
+            font-size: 14px;
         }
 
         .progress-bar-bg {
             width: 100%;
-            height: 22px;
-            background: #e9ecef;
+            height: 20px;
+            background: #dfe6e9;
             border-radius: 50px;
             overflow: hidden;
         }
@@ -314,22 +354,787 @@
             transition: width 0.5s ease;
         }
 
-        /* MÓDULOS DE JUEGO */
+        /* CONTENIDO DE PESTAÑAS */
+        .tab-view {
+            display: none;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .tab-view.active {
+            display: flex;
+        }
+
+        /* GRID DE JUEGOS */
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
         }
 
         .game-card {
             background: white;
-            border-radius: 25px;
-            padding: 25px;
+            border-radius: 22px;
+            padding: 20px;
             text-align: center;
-            border: 3px solid #eee;
-            transition: transform 0.2s, border-color 0.2s;
+            border: 3px solid #f1f2f6;
+            transition: all 0.2s;
             cursor: pointer;
             position: relative;
         }
 
-        .game-card:
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+        }
+
+        .game-icon {
+            font-size: 46px;
+            margin-bottom: 8px;
+        }
+
+        .game-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--accent);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        /* SALA DE TROFEOS Y PREMIOS */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 15px;
+        }
+
+        .award-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 18px;
+            text-align: center;
+            border: 3px dashed #ced6e0;
+            opacity: 0.6;
+            filter: grayscale(100%);
+            transition: 0.3s;
+        }
+
+        .award-card.unlocked {
+            background: #fff9db;
+            border: 3px solid #fcc419;
+            opacity: 1;
+            filter: grayscale(0%);
+            box-shadow: 0 6px 15px rgba(252, 196, 25, 0.2);
+        }
+
+        .award-icon {
+            font-size: 44px;
+            margin-bottom: 8px;
+        }
+
+        /* TIENDA DE MASCOTAS */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .shop-card {
+            background: white;
+            border: 3px solid #f1f2f6;
+            border-radius: 22px;
+            padding: 18px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-buy {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-buy.owned {
+            background: var(--green);
+        }
+
+        /* MODAL DE JUEGO */
+        #game-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 28px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            border: 5px solid var(--secondary);
+        }
+
+        .round-indicator {
+            display: inline-block;
+            background: #f1f2f6;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 13px;
+            color: var(--purple);
+            margin-top: 6px;
+        }
+
+        .question-box {
+            font-size: 28px;
+            font-weight: 900;
+            margin: 22px 0;
+            color: var(--dark);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: var(--light);
+            border: 3px solid #dfe6e9;
+            padding: 14px;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.15s;
+            color: var(--dark);
+        }
+
+        .option-btn:hover {
+            border-color: var(--secondary);
+            background: #e3fafc;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 22px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #999;
+        }
+
+        /* NOTIFICACIÓN TOAST DE PREMIO */
+        #toast-box {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: var(--dark);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 18px;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- BARRA SUPERIOR -->
+    <header>
+        <div class="logo">🌟 MimiKids 2.0</div>
+        <div class="user-bar" id="header-user-bar" style="display: none;">
+            <div class="user-pill">
+                <span id="header-avatar">🦁</span>
+                <span id="header-username">Niño</span>
+                <span id="header-pet" title="Tu Mascota Acompañante"></span>
+            </div>
+            <button class="btn-top" onclick="logout()">Salir</button>
+        </div>
+    </header>
+
+    <!-- PANTALLA 1: LOGIN Y REGISTRO -->
+    <div id="auth-screen">
+        <div class="auth-card">
+            <h2 id="auth-title">¡Hola! Inicia Sesión</h2>
+            <div id="auth-error" style="color:#ff4757; font-weight:bold; font-size:14px; margin-bottom:10px;"></div>
+
+            <div class="input-group">
+                <label>Nombre del Niño/a (Usuario)</label>
+                <input type="text" id="username-input" placeholder="Ej: Carlitos">
+            </div>
+
+            <div class="input-group">
+                <label>PIN Secreto (4 números)</label>
+                <input type="password" id="pin-input" maxlength="4" placeholder="****">
+            </div>
+
+            <div id="avatar-section" style="display: none;">
+                <label style="font-weight:bold; font-size:13px;">Elige tu personaje:</label>
+                <div class="avatar-selector">
+                    <span class="avatar-option selected" onclick="selectAvatar(this, '🦁')">🦁</span>
+                    <span class="avatar-option" onclick="selectAvatar(this, '🦄')">🦄</span>
+                    <span class="avatar-option" onclick="selectAvatar(this, '🐼')">🐼</span>
+                    <span class="avatar-option" onclick="selectAvatar(this, '🐸')">🐸</span>
+                    <span class="avatar-option" onclick="selectAvatar(this, '🦖')">🦖</span>
+                    <span class="avatar-option" onclick="selectAvatar(this, '🚀')">🚀</span>
+                </div>
+            </div>
+
+            <button class="btn-main" id="auth-btn" onclick="handleAuth()">¡Entrar a Jugar!</button>
+            <p class="switch-auth" id="switch-auth-text" onclick="toggleAuthMode()">
+                ¿No tienes cuenta? Crea una nueva aquí
+            </p>
+        </div>
+
+        <div class="saved-accounts" id="saved-accounts-box">
+            <h4 style="color:#555;">Cuentas guardadas en este dispositivo:</h4>
+            <div class="account-chips" id="account-chips-list"></div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 2: PANEL PRINCIPAL -->
+    <div id="dashboard-screen">
+        <!-- Estadísticas -->
+        <div class="stats-grid">
+            <div class="stat-card" style="border-color: var(--accent);">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-info">
+                    <h3 id="stat-stars">0</h3>
+                    <p>Estrellas Disponibles</p>
+                </div>
+            </div>
+            <div class="stat-card" style="border-color: var(--secondary);">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-info">
+                    <h3 id="stat-level">Nivel 1</h3>
+                    <p id="stat-rank">Explorador</p>
+                </div>
+            </div>
+            <div class="stat-card" style="border-color: var(--orange);">
+                <div class="stat-icon">🏅</div>
+                <div class="stat-info">
+                    <h3 id="stat-medals">0 / 6</h3>
+                    <p>Trofeos Ganados</p>
+                </div>
+            </div>
+            <div class="stat-card" style="border-color: var(--primary);">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <h3 id="stat-completed">0</h3>
+                    <p>Misiones Superadas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Nivel -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <span>Experiencia para subir de Nivel</span>
+                <span id="progress-text">0 / 100 XP</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Pestañas -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('games', this)">🎮 Juegos de Enseñanza (6)</button>
+            <button class="tab-btn" onclick="switchTab('awards', this)">🏆 Mis Trofeos y Premios</button>
+            <button class="tab-btn" onclick="switchTab('shop', this)">🐾 Tienda de Mascotas</button>
+        </div>
+
+        <!-- PESTAÑA 1: JUEGOS EDUCATIVOS -->
+        <div id="tab-games" class="tab-view active">
+            <div class="games-grid">
+                <div class="game-card" onclick="startGame('math')">
+                    <span class="game-badge" id="badge-math">Nv. 1</span>
+                    <div class="game-icon">🔢</div>
+                    <h3>Matemáticas</h3>
+                    <p style="font-size: 13px; color:#666; margin-top:4px;">Sumas, restas y conteo</p>
+                </div>
+
+                <div class="game-card" onclick="startGame('vowels')">
+                    <span class="game-badge" id="badge-vowels">Nv. 1</span>
+                    <div class="game-icon">🔤</div>
+                    <h3>Lectura y Vocales</h3>
+                    <p style="font-size: 13px; color:#666; margin-top:4px;">Completa las palabras</p>
+                </div>
+
+                <div class="game-card" onclick="startGame('colors')">
+                    <span class="game-badge" id="badge-colors">Nv. 1</span>
+                    <div class="game-icon">🎨</div>
+                    <h3>Inglés Divertido</h3>
+                    <p style="font-size: 13px; color:#666; margin-top:4px;">Colores, números y más</p>
+                </div>
+
+                <div class="game-card" onclick="startGame('animals')">
+                    <span class="game-badge" id="badge-animals">Nv. 1</span>
+                    <div class="game-icon">🐾</div>
+                    <h3>Mundo Animal</h3>
+                    <p style="font-size: 13px; color:#666; margin-top:4px;">Sonidos, hábitats y crías</p>
+                </div>
+
+                <div class="game-card" onclick="startGame('shapes')">
+                    <span class="game-badge" id="badge-shapes">Nv. 1</span>
+                    <div class="game-icon">📐</div>
+                    <h3>Formas y Lógica</h3>
+                    <p style="font-size: 13px; color:#666; margin-top:4px;">Secuencias y figuras</p>
+                </div>
+
+                <div class="game-card" onclick="startGame('planet')">
+                    <span class="game-badge" id="badge-planet">Nv. 1</span>
+                    <div class="game-icon">🌎</div>
+                    <h3>Planeta yHábitos</h3>
+                    <p style="font-size: 13px; color:#666; margin-top:4px;">Reciclaje, salud y cuerpo</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 2: SALA DE PREMIOS Y TROFEOS -->
+        <div id="tab-awards" class="tab-view">
+            <p style="font-size: 14px; color:#555;">¡Juega misiones para desbloquear automáticamente estas medallas especiales!</p>
+            <div class="awards-grid" id="awards-container"></div>
+        </div>
+
+        <!-- PESTAÑA 3: TIENDA DE MASCOTAS CON ESTRELLAS -->
+        <div id="tab-shop" class="tab-view">
+            <p style="font-size: 14px; color:#555;">Canjea tus estrellas ⭐ por compañeros virtuales que aparecerán junto a tu nombre.</p>
+            <div class="shop-grid" id="shop-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE ACTIVIDAD (RONDA DE 3 PREGUNTAS) -->
+<div id="game-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeGame()">✖</button>
+        <h3 id="modal-title">Misión</h3>
+        <div class="round-indicator" id="round-text">Pregunta 1 de 3</div>
+        <div class="question-box" id="question-text">¿Pregunta?</div>
+        <div class="options-grid" id="options-container"></div>
+    </div>
+</div>
+
+<!-- CONTENEDOR DE NOTIFICACIONES -->
+<div id="toast-box"></div>
+
+<script>
+    // SONIDOS SINTETIZADOS (No requiere archivos externos)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playSound(type) {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === 'correct') {
+            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+            osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.35);
+        } else if (type === 'wrong') {
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+            osc.frequency.setValueAtTime(160, audioCtx.currentTime + 0.15);
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+        } else if (type === 'win') {
+            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+            osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.12);
+            osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.24);
+            osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.36);
+            gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.65);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.65);
+        }
+    }
+
+    // DEFINICIÓN DE TROFEOS Y PREMIOS
+    const TROPHIES = [
+        { id: 'first_win', icon: '🥉', title: 'Primer Paso', desc: 'Completa tu primera misión', check: u => u.completedGames >= 1 },
+        { id: 'stars_50', icon: '🌟', title: 'Coleccionista', desc: 'Acumula o gana 50 estrellas en total', check: u => u.totalStarsEarned >= 50 },
+        { id: 'math_wiz', icon: '🧮', title: 'Genio Matemático', desc: 'Alcanza el Nivel 3 en Matemáticas', check: u => u.modules.math >= 3 },
+        { id: 'polyglot', icon: '🇬🇧', title: 'Bilingüe', desc: 'Alcanza el Nivel 3 en Inglés', check: u => u.modules.colors >= 3 },
+        { id: 'explorer', icon: '🧭', title: 'Súper Explorador', desc: 'Llega al Nivel General 3', check: u => u.level >= 3 },
+        { id: 'pet_owner', icon: '🐶', title: 'Amigo Fiel', desc: 'Adopta tu primera mascota en la tienda', check: u => u.ownedPets.length > 0 }
+    ];
+
+    // DEFINICIÓN DE TIENDA DE MASCOTAS
+    const PET_SHOP = [
+        { id: 'pet_dog', icon: '🐶', name: 'Perrito Leal', cost: 25 },
+        { id: 'pet_cat', icon: '🐱', name: 'Gatito Mágico', cost: 25 },
+        { id: 'pet_dragon', icon: '🐉', name: 'Bebé Dragón', cost: 50 },
+        { id: 'pet_alien', icon: '👾', name: 'Amigo Galáctico', cost: 75 },
+        { id: 'pet_crown', icon: '👑', name: 'Corona Real', cost: 100 }
+    ];
+
+    // BANCO AMPLIADO DE PREGUNTAS (6 MÓDULOS)
+    const questionsDB = {
+        math: [
+            { q: "¿Cuánto es 3 + 4?", options: ["6", "7", "8", "5"], a: "7" },
+            { q: "¿Cuánto es 6 + 5?", options: ["10", "11", "12", "9"], a: "11" },
+            { q: "¿Cuánto es 9 - 4?", options: ["5", "4", "6", "3"], a: "5" },
+            { q: "🍎🍎 + 🍎🍎🍎 = ?", options: ["4", "5", "6", "3"], a: "5" },
+            { q: "¿Qué número sigue? 2, 4, 6, ...", options: ["7", "8", "9", "10"], a: "8" }
+        ],
+        vowels: [
+            { q: "🐝 _ B E J A", options: ["A", "E", "I", "O"], a: "A" },
+            { q: "🐘 _ L E F A N T E", options: ["O", "U", "E", "A"], a: "E" },
+            { q: "🏝️ _ S L A", options: ["I", "E", "A", "U"], a: "I" },
+            { q: "🐻 _ S O", options: ["A", "O", "U", "E"], a: "O" },
+            { q: "🍇 _ V A", options: ["I", "U", "A", "O"], a: "U" }
+        ],
+        colors: [
+            { q: "🍎 Rojo en inglés se dice...", options: ["Blue", "Red", "Green", "Yellow"], a: "Red" },
+            { q: "☀️ Amarillo en inglés es...", options: ["Yellow", "Pink", "Black", "White"], a: "Yellow" },
+            { q: "🌊 Azul en inglés es...", options: ["Green", "Orange", "Blue", "Purple"], a: "Blue" },
+            { q: "🐸 Verde en inglés es...", options: ["Green", "Red", "Brown", "Blue"], a: "Green" },
+            { q: "🐶 Perro en inglés se dice...", options: ["Cat", "Bird", "Dog", "Fish"], a: "Dog" }
+        ],
+        animals: [
+            { q: "¿Qué animal nos da la leche? 🥛", options: ["🐎 Caballo", "🐄 Vaca", "🐖 Cerdo", "🐔 Gallina"], a: "🐄 Vaca" },
+            { q: "¿Dónde vive la ballena? 🐋", options: ["En el bosque", "En el océano", "En el desierto", "En el río"], a: "En el océano" },
+            { q: "¿Cuál de estos animales vuela?", options: ["🦅 Águila", "🐧 Pingüino", "🐢 Tortuga", "🐘 Elefante"], a: "🦅 Águila" },
+            { q: "¿Qué animal hace 'Miau'?", options: ["🐶 Perro", "🐱 Gato", "🦆 Pato", "🐑 Oveja"], a: "🐱 Gato" },
+            { q: "¿Cuál tiene el cuello muy largo?", options: ["🦒 Jirafa", "🦓 Cebra", "🦁 León", "🐒 Mono"], a: "🦒 Jirafa" }
+        ],
+        shapes: [
+            { q: "¿Cuántos lados tiene un Triángulo? 🔺", options: ["2", "3", "4", "5"], a: "3" },
+            { q: "Sigue la serie: 🔴 🔵 🔴 🔵 ...", options: ["🟢", "🔴", "🟡", "🟣"], a: "🔴" },
+            { q: "¿Qué forma tiene una pelota? ⚽", options: ["Cuadrado", "Triángulo", "Círculo / Esfera", "Estrella"], a: "Círculo / Esfera" },
+            { q: "Sigue la serie: ⭐ ⭐ 🌙 ⭐ ⭐ ...", options: ["⭐", "☀️", "🌙", "☁️"], a: "🌙" },
+            { q: "¿Cuántos lados iguales tiene un Cuadrado? 🟦", options: ["3", "4", "5", "6"], a: "4" }
+        ],
+        planet: [
+            { q: "¿Qué debemos hacer después de comer?", options: ["Cepillar los dientes 🪥", "Dormir", "Ver TV", "Correr"], a: "Cepillar los dientes 🪥" },
+            { q: "¿Dónde debemos tirar la basura? 🗑️", options: ["En el suelo", "En el río", "En el zafacón / papelera", "En la calle"], a: "En el zafacón / papelera" },
+            { q: "Para ahorrar agua debemos...", options: ["Dejar la pluma abierta", "Cerrar la llave al enjabonarnos", "Bañarnos 2 horas", "Jugar con manguera"], a: "Cerrar la llave al enjabonarnos" },
+            { q: "¿Cuál de estos alimentos es más saludable?", options: ["🍎 Manzana", "🍬 Caramelos", "🍟 Papas fritas", "🥤 Refresco"], a: "🍎 Manzana" },
+            { q: "¿Qué necesitan las plantas para crecer? 🌱", options: ["Agua y Sol ☀️", "Dulces", "Juguetes", "Refresco"], a: "Agua y Sol ☀️" }
+        ]
+    };
+
+    // VARIABLES DE ESTADO
+    let isRegisterMode = false;
+    let selectedAvatar = '🦁';
+    let currentUser = null;
+    let currentCategory = null;
+    let roundQueue = [];
+    let currentRoundIndex = 0;
+
+    // CARGA INICIAL
+    window.onload = () => {
+        loadSavedAccountsChips();
+        const activeSession = localStorage.getItem('mimikids_active_user');
+        if (activeSession) {
+            const users = getUsersDB();
+            if (users[activeSession]) {
+                loginUser(users[activeSession]);
+            }
+        }
+    };
+
+    function getUsersDB() {
+        const data = localStorage.getItem('mimikids_users_db');
+        return data ? JSON.parse(data) : {};
+    }
+
+    function saveUsersDB(db) {
+        localStorage.setItem('mimikids_users_db', JSON.stringify(db));
+    }
+
+    // MIGRACIÓN AUTOMÁTICA PARA CUENTAS DE LA VERSIÓN 1.0
+    function ensureUserSchema(user) {
+        if (!user.modules) user.modules = {};
+        const defaultModules = ['math', 'vowels', 'colors', 'animals', 'shapes', 'planet'];
+        defaultModules.forEach(m => {
+            if (!user.modules[m]) user.modules[m] = 1;
+        });
+        if (typeof user.totalStarsEarned !== 'number') user.totalStarsEarned = user.stars || 0;
+        if (!Array.isArray(user.unlockedTrophies)) user.unlockedTrophies = [];
+        if (!Array.isArray(user.ownedPets)) user.ownedPets = [];
+        if (!user.equippedPet) user.equippedPet = '';
+        return user;
+    }
+
+    function toggleAuthMode() {
+        isRegisterMode = !isRegisterMode;
+        document.getElementById('auth-error').innerText = '';
+        document.getElementById('auth-title').innerText = isRegisterMode ? 'Crear Cuenta Nueva' : '¡Hola! Inicia Sesión';
+        document.getElementById('avatar-section').style.display = isRegisterMode ? 'block' : 'none';
+        document.getElementById('auth-btn').innerText = isRegisterMode ? 'Registrarme y Jugar' : '¡Entrar a Jugar!';
+        document.getElementById('switch-auth-text').innerText = isRegisterMode 
+            ? '¿Ya tienes cuenta? Inicia sesión aquí' 
+            : '¿No tienes cuenta? Crea una nueva aquí';
+    }
+
+    function selectAvatar(element, emoji) {
+        document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
+        element.classList.add('selected');
+        selectedAvatar = emoji;
+    }
+
+    function handleAuth() {
+        const username = document.getElementById('username-input').value.trim();
+        const pin = document.getElementById('pin-input').value.trim();
+        const errorBox = document.getElementById('auth-error');
+
+        if (!username || !pin) {
+            errorBox.innerText = 'Por favor escribe tu nombre y tu PIN.';
+            return;
+        }
+
+        const db = getUsersDB();
+        const userKey = username.toLowerCase();
+
+        if (isRegisterMode) {
+            if (db[userKey]) {
+                errorBox.innerText = 'Ese nombre ya existe. Elige otro o inicia sesión.';
+                return;
+            }
+            const newUser = ensureUserSchema({
+                username: username,
+                pin: pin,
+                avatar: selectedAvatar,
+                stars: 0,
+                totalStarsEarned: 0,
+                xp: 0,
+                level: 1,
+                completedGames: 0,
+                modules: {},
+                unlockedTrophies: [],
+                ownedPets: [],
+                equippedPet: ''
+            });
+            db[userKey] = newUser;
+            saveUsersDB(db);
+            loginUser(newUser);
+        } else {
+            if (!db[userKey] || db[userKey].pin !== pin) {
+                errorBox.innerText = 'Usuario o PIN incorrecto.';
+                return;
+            }
+            loginUser(db[userKey]);
+        }
+    }
+
+    function loginUser(userObj) {
+        currentUser = ensureUserSchema(userObj);
+        saveCurrentUser();
+        localStorage.setItem('mimikids_active_user', currentUser.username.toLowerCase());
+
+        document.getElementById('auth-screen').style.display = 'none';
+        document.getElementById('dashboard-screen').style.display = 'flex';
+        document.getElementById('header-user-bar').style.display = 'flex';
+
+        checkAndUnlockTrophies(false);
+        updateDashboardUI();
+    }
+
+    function saveCurrentUser() {
+        const db = getUsersDB();
+        db[currentUser.username.toLowerCase()] = currentUser;
+        saveUsersDB(db);
+    }
+
+    function switchTab(tabName, btnElement) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btnElement.classList.add('active');
+
+        document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
+        document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    function updateDashboardUI() {
+        document.getElementById('header-avatar').innerText = currentUser.avatar;
+        document.getElementById('header-username').innerText = currentUser.username;
+        document.getElementById('header-pet').innerText = currentUser.equippedPet ? ` ${currentUser.equippedPet}` : '';
+
+        document.getElementById('stat-stars').innerText = currentUser.stars;
+        document.getElementById('stat-level').innerText = 'Nivel ' + currentUser.level;
+        document.getElementById('stat-completed').innerText = currentUser.completedGames;
+        document.getElementById('stat-medals').innerText = `${currentUser.unlockedTrophies.length} / ${TROPHIES.length}`;
+
+        const ranks = ['Explorador', 'Aventurero', 'Súper Lector', 'Maestro Estelar', 'Leyenda MimiKids'];
+        document.getElementById('stat-rank').innerText = ranks[Math.min(currentUser.level - 1, ranks.length - 1)];
+
+        const currentLevelXP = currentUser.xp % 100;
+        document.getElementById('progress-text').innerText = `${currentLevelXP} / 100 XP`;
+        document.getElementById('progress-bar').style.width = `${currentLevelXP}%`;
+
+        // Actualizar medallas de los 6 módulos
+        Object.keys(currentUser.modules).forEach(mod => {
+            const badge = document.getElementById('badge-' + mod);
+            if (badge) badge.innerText = 'Nv. ' + currentUser.modules[mod];
+        });
+
+        renderAwards();
+        renderShop();
+    }
+
+    function renderAwards() {
+        const container = document.getElementById('awards-container');
+        container.innerHTML = '';
+        TROPHIES.forEach(t => {
+            const isUnlocked = currentUser.unlockedTrophies.includes(t.id);
+            const card = document.createElement('div');
+            card.className = 'award-card ' + (isUnlocked ? 'unlocked' : '');
+            card.innerHTML = `
+                <div class="award-icon">${t.icon}</div>
+                <h4>${t.title}</h4>
+                <p style="font-size:12px; color:#555; margin-top:4px;">${t.desc}</p>
+                <span style="display:inline-block; margin-top:8px; font-size:11px; font-weight:800; color:${isUnlocked ? '#e67e22' : '#999'}">
+                    ${isUnlocked ? '¡DESBLOQUEADO!' : '🔒 Bloqueado'}
+                </span>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function renderShop() {
+        const container = document.getElementById('shop-container');
+        container.innerHTML = '';
+        PET_SHOP.forEach(pet => {
+            const isOwned = currentUser.ownedPets.includes(pet.id);
+            const isEquipped = currentUser.equippedPet === pet.icon;
+            const card = document.createElement('div');
+            card.className = 'shop-card';
+            card.innerHTML = `
+                <div style="font-size:46px;">${pet.icon}</div>
+                <h4>${pet.name}</h4>
+                <p style="font-size:13px; font-weight:bold; color:#f39c12;">⭐ ${pet.cost} Estrellas</p>
+                <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handlePetAction('${pet.id}', '${pet.icon}', ${pet.cost})">
+                    ${isEquipped ? '✅ Equipada' : isOwned ? 'Equipar' : 'Canjear'}
+                </button>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function handlePetAction(petId, petIcon, cost) {
+        if (currentUser.ownedPets.includes(petId)) {
+            currentUser.equippedPet = petIcon;
+            saveCurrentUser();
+            updateDashboardUI();
+            showToast(`${petIcon} ¡Mascota equipada junto a tu nombre!`);
+            return;
+        }
+
+        if (currentUser.stars < cost) {
+            playSound('wrong');
+            showToast(`Necesitas ${cost} ⭐ para este premio. ¡Sigue jugando!`);
+            return;
+        }
+
+        currentUser.stars -= cost;
+        currentUser.ownedPets.push(petId);
+        currentUser.equippedPet = petIcon;
+        playSound('win');
+        checkAndUnlockTrophies(true);
+        saveCurrentUser();
+        updateDashboardUI();
+        showToast(`🎉 ¡Felicidades! Desbloqueaste a ${petIcon}`);
+    }
+
+    function checkAndUnlockTrophies(notify = true) {
+        TROPHIES.forEach(t => {
+            if (!currentUser.unlockedTrophies.includes(t.id) && t.check(currentUser)) {
+                currentUser.unlockedTrophies.push(t.id);
+                if (notify) {
+                    showToast(`🏆 ¡Nuevo Trofeo Desbloqueado: ${t.title}!`);
+                }
+            }
+        });
+    }
+
+    function showToast(msg) {
+        const box = document.getElementById('toast-box');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerText = msg;
+        box.appendChild(toast);
+        setTimeout(() => toast.remove(), 3500);
+    }
+
+    // SISTEMA DE JUEGOS POR RONDAS (3 PREGUNTAS POR MISIÓN)
+    function startGame(category) {
+        currentCategory = category;
+        const pool = [...questionsDB[category]];
+        // Mezclar y tomar 3 preguntas
+        roundQueue = pool.sort(() => Math.random() - 0.5).slice(0, 3);
+        currentRoundIndex = 0;
+
+        const titles = {
+            math: '🔢 Misión de Matemáticas',
+            vowels: '🔤 Misión de Lectura y Vocales',
+            colors: '🎨 Misión de Inglés',
+            animals: '🐾 Misión de Mundo Animal',
+            shapes: '📐 Misión de Formas y Lógica',
+            planet: '🌎 Misión del Planeta y Salud'
+        };
+
+        document.getElementById('modal-title').innerText = titles[category];
+        document.getElementById('game-modal').style.display = 'flex';
+        showCurrentQuestion();
+    }
+
+    function showCurrentQuestion() {
+        const currentQ = roundQueue[currentRoundIndex];
+        document.getElementById('round-text').innerText = `Pregunta ${currentRoundIndex + 1} de ${roundQueue.length}`;
+        document.getElementById('question-text').innerText = currentQ.q;
+
+        const optionsBox = document.getElementById('options-container');
+        optionsBox.innerHTML = '';
+
+        currentQ
