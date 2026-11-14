@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>MimiKids - Minijuegos y Diversión</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -13,95 +12,104 @@
             touch-action: manipulation;
             user-select: none;
             -webkit-user-select: none;
+            overflow: hidden;
         }
         @keyframes jellyBounce {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+            40% { transform: scale(1.15); }
+            70% { transform: scale(0.92); }
         }
         .jelly:active {
-            animation: jellyBounce 0.3s ease;
+            animation: jellyBounce 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .bubble-float {
-            animation: floatUp 4s infinite linear;
+            animation: floatUp 3.5s infinite linear;
         }
         @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
-            20% { opacity: 0.8; }
-            80% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+            0% { transform: translateY(105vh) scale(0.7) rotate(0deg); opacity: 0; }
+            15% { opacity: 0.9; }
+            85% { opacity: 0.9; }
+            100% { transform: translateY(-10vh) scale(1.25) rotate(180deg); opacity: 0; }
+        }
+        @keyframes popAnim {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+        .popping {
+            animation: popAnim 0.25s ease-out forwards;
         }
     </style>
 </head>
-<body class="bg-gradient-to-b from-sky-100 via-yellow-50 to-pink-100 h-screen w-screen overflow-hidden flex flex-col justify-between">
+<body class="bg-gradient-to-br from-sky-200 via-amber-50 to-pink-200 h-screen w-screen flex flex-col justify-between">
 
     <!-- BARRA SUPERIOR -->
-    <header class="bg-white/80 backdrop-blur-md px-4 py-3 shadow-md flex justify-between items-center z-50">
-        <button onclick="goHome()" class="flex items-center gap-2 bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-full font-bold shadow-lg transform active:scale-95 transition-all text-lg">
-            🏠 MimiKids
+    <header class="bg-white/90 backdrop-blur-md px-5 py-3 shadow-lg flex justify-between items-center z-50 border-b-4 border-pink-200">
+        <button onclick="goHome()" class="flex items-center gap-2 bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white px-5 py-2.5 rounded-full font-bold shadow-md transform active:scale-95 transition-all text-lg border-2 border-white">
+            🏠 <span class="tracking-wide">MimiKids</span>
         </button>
-        <div id="stars-display" class="bg-yellow-100 border-2 border-yellow-300 px-4 py-1.5 rounded-full flex items-center gap-2 text-yellow-700 font-bold text-xl shadow-inner">
+        <div id="stars-display" class="bg-yellow-100 border-3 border-yellow-400 px-5 py-1.5 rounded-full flex items-center gap-2 text-yellow-800 font-bold text-2xl shadow-inner">
             ⭐ <span id="star-count">0</span>
         </div>
-        <button onclick="openParentModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-2 rounded-full font-bold shadow text-sm flex items-center gap-1">
-            ⚙️ Zona Padres
+        <button onclick="openParentModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-full font-bold shadow-sm text-sm flex items-center gap-1 border-2 border-slate-300">
+            ⚙️ Padres
         </button>
     </header>
 
     <!-- CONTENEDOR DE PANTALLAS -->
     <main id="app-container" class="flex-1 relative overflow-hidden flex flex-col items-center justify-center p-4">
         
-        <!-- PANTALLA DE INICIO (MENU PRINCIPAL) -->
+        <!-- PANTALLA DE INICIO -->
         <div id="screen-home" class="flex flex-col items-center justify-center gap-6 w-full max-w-md text-center">
-            <div class="relative cursor-pointer jelly" onclick="speakText('¡Hola! Bienvenido a MimiKids. Toca un juego para divertirte.')">
-                <div class="absolute -inset-2 bg-gradient-to-r from-pink-400 via-yellow-300 to-sky-400 rounded-3xl blur-lg opacity-70 animate-pulse"></div>
-                <div class="relative bg-white border-4 border-pink-300 p-6 rounded-3xl shadow-2xl flex flex-col items-center">
-                    <img src="f7548440.jpeg" alt="MimiKids Logo" class="w-36 h-36 object-cover rounded-2xl shadow-md mb-3 border-2 border-pink-200">
-                    <h1 class="text-3xl font-bold text-pink-600 drop-shadow">¡A Jugar y Aprender!</h1>
-                    <p class="text-slate-500 text-sm mt-1">Toca un minijuego abajo</p>
+            <div class="relative cursor-pointer jelly" onclick="speakText('¡Hola! Bienvenido a MimiKids. ¡A Jugar!')">
+                <div class="absolute -inset-3 bg-gradient-to-r from-pink-400 via-yellow-300 to-sky-400 rounded-3xl blur-xl opacity-75 animate-pulse"></div>
+                <div class="relative bg-white/95 border-4 border-pink-300 p-6 rounded-3xl shadow-2xl flex flex-col items-center">
+                    <img src="f7548440.jpeg" alt="MimiKids Logo" class="w-36 h-36 object-cover rounded-2xl shadow-md mb-3 border-3 border-pink-200">
+                    <h1 class="text-3xl font-extrabold text-pink-600 drop-shadow-sm">¡A Jugar y Aprender!</h1>
+                    <p class="text-slate-500 text-sm mt-1 font-semibold">Toca un minijuego abajo 👇</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-4 w-full">
-                <button onclick="startMiniGame(1)" class="jelly bg-amber-200 hover:bg-amber-300 border-4 border-amber-400 p-4 rounded-3xl shadow-xl flex flex-col items-center gap-2">
-                    <span class="text-4xl">🐮</span>
-                    <span class="font-bold text-amber-900 text-sm">Granja Musical</span>
+            <div class="grid grid-cols-3 gap-3 w-full">
+                <button onclick="startMiniGame(1)" class="jelly bg-gradient-to-b from-amber-200 to-amber-300 hover:from-amber-300 hover:to-amber-400 border-4 border-amber-400 p-4 rounded-3xl shadow-xl flex flex-col items-center gap-2">
+                    <span class="text-4xl drop-shadow">🐮</span>
+                    <span class="font-bold text-amber-900 text-xs sm:text-sm">Granja Musical</span>
                 </button>
-                <button onclick="startMiniGame(2)" class="jelly bg-sky-200 hover:bg-sky-300 border-4 border-sky-400 p-4 rounded-3xl shadow-xl flex flex-col items-center gap-2">
-                    <span class="text-4xl">🫧</span>
-                    <span class="font-bold text-sky-900 text-sm">Burbujas Magicas</span>
+                <button onclick="startMiniGame(2)" class="jelly bg-gradient-to-b from-sky-200 to-sky-300 hover:from-sky-300 hover:to-sky-400 border-4 border-sky-400 p-4 rounded-3xl shadow-xl flex flex-col items-center gap-2">
+                    <span class="text-4xl drop-shadow">🫧</span>
+                    <span class="font-bold text-sky-900 text-xs sm:text-sm">Burbujas Mágicas</span>
                 </button>
-                <button onclick="startMiniGame(3)" class="jelly bg-purple-200 hover:bg-purple-300 border-4 border-purple-400 p-4 rounded-3xl shadow-xl flex flex-col items-center gap-2">
-                    <span class="text-4xl">🎹</span>
-                    <span class="font-bold text-purple-900 text-sm">Piano Arcoiris</span>
+                <button onclick="startMiniGame(3)" class="jelly bg-gradient-to-b from-purple-200 to-purple-300 hover:from-purple-300 hover:to-purple-400 border-4 border-purple-400 p-4 rounded-3xl shadow-xl flex flex-col items-center gap-2">
+                    <span class="text-4xl drop-shadow">🎹</span>
+                    <span class="font-bold text-purple-900 text-xs sm:text-sm">Piano Arcoíris</span>
                 </button>
             </div>
         </div>
 
         <!-- JUEGO 1: GRANJA MUSICAL -->
         <div id="game-1" class="hidden flex flex-col items-center justify-center w-full max-w-lg h-full gap-4">
-            <h2 class="text-2xl font-bold text-amber-800 bg-amber-100 px-6 py-2 rounded-full shadow border-2 border-amber-300">🐮 Toca los Animales 🐷</h2>
+            <h2 class="text-2xl font-bold text-amber-900 bg-amber-100/90 px-6 py-2 rounded-full shadow border-3 border-amber-300">🐮 Toca los Animales 🐷</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full p-2">
-                <button onclick="playAnimalSound('Vaca', 'Muuu!', 220)" class="jelly bg-white border-4 border-amber-300 p-6 rounded-3xl shadow-xl flex flex-col items-center">
+                <button onclick="playRealAnimalSound('vaca')" class="jelly bg-white border-4 border-amber-300 p-5 rounded-3xl shadow-xl flex flex-col items-center">
                     <span class="text-6xl animate-bounce">🐮</span>
                     <span class="font-bold text-slate-700 mt-2 text-lg">Vaca Lola</span>
                 </button>
-                <button onclick="playAnimalSound('Cerdo', 'Oinc Oinc!', 180)" class="jelly bg-white border-4 border-pink-300 p-6 rounded-3xl shadow-xl flex flex-col items-center">
+                <button onclick="playRealAnimalSound('cerdo')" class="jelly bg-white border-4 border-pink-300 p-5 rounded-3xl shadow-xl flex flex-col items-center">
                     <span class="text-6xl animate-bounce">🐷</span>
                     <span class="font-bold text-slate-700 mt-2 text-lg">Cerdito</span>
                 </button>
-                <button onclick="playAnimalSound('Pollo', 'Pío Pío!', 440)" class="jelly bg-white border-4 border-yellow-300 p-6 rounded-3xl shadow-xl flex flex-col items-center">
+                <button onclick="playRealAnimalSound('pollo')" class="jelly bg-white border-4 border-yellow-300 p-5 rounded-3xl shadow-xl flex flex-col items-center">
                     <span class="text-6xl animate-bounce">🐤</span>
                     <span class="font-bold text-slate-700 mt-2 text-lg">Pollito</span>
                 </button>
-                <button onclick="playAnimalSound('Oveja', 'Beeee!', 330)" class="jelly bg-white border-4 border-slate-300 p-6 rounded-3xl shadow-xl flex flex-col items-center">
+                <button onclick="playRealAnimalSound('oveja')" class="jelly bg-white border-4 border-slate-300 p-5 rounded-3xl shadow-xl flex flex-col items-center">
                     <span class="text-6xl animate-bounce">🐑</span>
                     <span class="font-bold text-slate-700 mt-2 text-lg">Ovejita</span>
                 </button>
-                <button onclick="playAnimalSound('Perro', 'Guau Guau!', 260)" class="jelly bg-white border-4 border-orange-300 p-6 rounded-3xl shadow-xl flex flex-col items-center">
+                <button onclick="playRealAnimalSound('perro')" class="jelly bg-white border-4 border-orange-300 p-5 rounded-3xl shadow-xl flex flex-col items-center">
                     <span class="text-6xl animate-bounce">🐶</span>
                     <span class="font-bold text-slate-700 mt-2 text-lg">Perrito</span>
                 </button>
-                <button onclick="playAnimalSound('Gato', 'Miau Miau!', 380)" class="jelly bg-white border-4 border-purple-300 p-6 rounded-3xl shadow-xl flex flex-col items-center">
+                <button onclick="playRealAnimalSound('gato')" class="jelly bg-white border-4 border-purple-300 p-5 rounded-3xl shadow-xl flex flex-col items-center">
                     <span class="text-6xl animate-bounce">🐱</span>
                     <span class="font-bold text-slate-700 mt-2 text-lg">Gatito</span>
                 </button>
@@ -109,24 +117,22 @@
         </div>
 
         <!-- JUEGO 2: EXPLOTA BURBUJAS -->
-        <div id="game-2" class="hidden absolute inset-0 overflow-hidden cursor-pointer" onclick="popBubbleArea(event)">
-            <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-white/90 px-6 py-2 rounded-full shadow border-2 border-sky-300 z-10 text-sky-800 font-bold text-xl pointer-events-none">
+        <div id="game-2" class="hidden absolute inset-0 overflow-hidden cursor-pointer">
+            <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-white/90 px-6 py-2 rounded-full shadow border-3 border-sky-300 z-10 text-sky-800 font-bold text-xl pointer-events-none">
                 🫧 ¡Explota las Burbujas de Colores! 🫧
             </div>
             <div id="bubbles-layer" class="w-full h-full relative"></div>
         </div>
 
         <!-- JUEGO 3: PIANO ARCOIRIS -->
-        <div id="game-3" class="hidden flex flex-col items-center justify-center w-full max-w-md h-full gap-4">
-            <h2 class="text-2xl font-bold text-purple-800 bg-purple-100 px-6 py-2 rounded-full shadow border-2 border-purple-300">🎹 Piano Mágico MimiKids</h2>
-            <div class="flex flex-col gap-3 w-full p-2">
-                <button onclick="playPianoNote(261.63, 'Do')" class="jelly bg-red-400 hover:bg-red-500 text-white font-bold py-6 rounded-2xl shadow-lg text-2xl">DO 🔴</button>
-                <button onclick="playPianoNote(293.66, 'Re')" class="jelly bg-orange-400 hover:bg-orange-500 text-white font-bold py-6 rounded-2xl shadow-lg text-2xl">RE 🟠</button>
-                <button onclick="playPianoNote(329.63, 'Mi')" class="jelly bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-6 rounded-2xl shadow-lg text-2xl">MI 🟡</button>
-                <!-- BLOQUEO FREEMIUM PARA PADRES -->
-                <button onclick="checkPremiumKey(4)" class="jelly bg-slate-300 text-slate-600 font-bold py-6 rounded-2xl shadow-inner text-xl flex items-center justify-center gap-2">
-                    🔒 FA / SOL (Versión Completa)
-                </button>
+        <div id="game-3" class="hidden flex flex-col items-center justify-center w-full max-w-md h-full gap-3">
+            <h2 class="text-2xl font-bold text-purple-900 bg-purple-100/90 px-6 py-2 rounded-full shadow border-3 border-purple-300">🎹 Piano Mágico MimiKids</h2>
+            <div class="flex flex-col gap-2.5 w-full p-2">
+                <button onclick="playRealPianoNote(261.63, 'Do', 'red')" class="jelly bg-red-500 hover:bg-red-600 text-white font-bold py-5 rounded-2xl shadow-lg text-2xl border-4 border-red-300">DO 🔴</button>
+                <button onclick="playRealPianoNote(293.66, 'Re', 'orange')" class="jelly bg-orange-500 hover:bg-orange-600 text-white font-bold py-5 rounded-2xl shadow-lg text-2xl border-4 border-orange-300">RE 🟠</button>
+                <button onclick="playRealPianoNote(329.63, 'Mi', 'yellow')" class="jelly bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-5 rounded-2xl shadow-lg text-2xl border-4 border-yellow-200">MI 🟡</button>
+                <button onclick="playRealPianoNote(349.23, 'Fa', 'green')" class="jelly bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-5 rounded-2xl shadow-lg text-2xl border-4 border-emerald-300">FA 🟢</button>
+                <button onclick="playRealPianoNote(392.00, 'Sol', 'sky')" class="jelly bg-sky-500 hover:bg-sky-600 text-white font-bold py-5 rounded-2xl shadow-lg text-2xl border-4 border-sky-300">SOL 🔵</button>
             </div>
         </div>
 
@@ -141,7 +147,7 @@
             </div>
             
             <div id="math-challenge" class="flex flex-col gap-3">
-                <p class="text-slate-600 text-sm">Para continuar, resuelve la siguiente operación para demostrar que eres adulto:</p>
+                <p class="text-slate-600 text-sm">Resuelve la operación para continuar:</p>
                 <div class="bg-pink-50 p-4 rounded-2xl text-center border-2 border-pink-200">
                     <span id="math-question" class="text-xl font-bold text-pink-700">¿Cuánto es 3 + 4?</span>
                 </div>
@@ -152,31 +158,31 @@
             <div id="parent-dashboard" class="hidden flex flex-col gap-4">
                 <div class="bg-purple-50 p-4 rounded-2xl border-2 border-purple-200 flex flex-col gap-2">
                     <h4 class="font-bold text-purple-900 text-lg">MimiKids Premium ⭐</h4>
-                    <p class="text-slate-600 text-xs">Desbloquea todos los minijuegos ilimitados, sin anuncios y sonidos exclusivos para tu bebé.</p>
+                    <p class="text-slate-600 text-xs">Acceso completo a todos los minijuegos y sin interrupciones para tu bebé.</p>
                     <button onclick="unlockFullVersion()" class="mt-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl shadow text-center">Desbloquear por $2.99 USD</button>
                 </div>
                 <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border">
-                    <span class="font-bold text-slate-700 text-sm">Sonido de la App</span>
+                    <span class="font-bold text-slate-700 text-sm">Audio y Voz</span>
                     <button onclick="toggleAudioGlobal()" id="audio-toggle-btn" class="bg-emerald-500 text-white px-4 py-1.5 rounded-lg font-bold text-sm">Activado</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPT DE FUNCIONALIDAD -->
+    <!-- SCRIPT AVANZADO CON AUDIO REAL Y SINTESIS -->
     <script>
         let stars = 0;
         let audioEnabled = true;
-        let currentAudioCtx = null;
+        let audioCtx = null;
 
         function getAudioContext() {
-            if (!currentAudioCtx) {
-                currentAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             }
-            if (currentAudioCtx.state === 'suspended') {
-                currentAudioCtx.resume();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
             }
-            return currentAudioCtx;
+            return audioCtx;
         }
 
         function speakText(text) {
@@ -185,8 +191,8 @@
                 window.speechSynthesis.cancel();
                 let utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'es-ES';
-                utterance.rate = 0.9;
-                utterance.pitch = 1.2;
+                utterance.rate = 0.95;
+                utterance.pitch = 1.3;
                 window.speechSynthesis.speak(utterance);
             }
         }
@@ -214,7 +220,7 @@
 
             if (id === 1) {
                 document.getElementById('game-1').classList.remove('hidden');
-                speakText('Granja musical. Toca los animales.');
+                speakText('Granja musical. ¡Toca los animales!');
             } else if (id === 2) {
                 document.getElementById('game-2').classList.remove('hidden');
                 speakText('Explota las burbujas.');
@@ -225,72 +231,106 @@
             }
         }
 
-        // AUDIO WEB API SINTETIZADOR
-        function playTone(frequency, type = 'sine', duration = 0.3) {
+        // MOTOR DE AUDIO REAL (SINTETIZADOR ACÚSTICO ARMÓNICO)
+        function playCustomSound(freqs, type = 'sine', duration = 0.5, volume = 0.4) {
             if (!audioEnabled) return;
             try {
                 const ctx = getAudioContext();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.type = type;
-                osc.frequency.value = frequency;
-                gain.gain.setValueAtTime(0.3, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.start();
-                osc.stop(ctx.currentTime + duration);
+                freqs.forEach((f, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = type;
+                    osc.frequency.setValueAtTime(f, ctx.currentTime + (idx * 0.05));
+                    
+                    gain.gain.setValueAtTime(volume, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+                    
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + (idx * 0.05));
+                    osc.stop(ctx.currentTime + duration);
+                });
             } catch (e) { console.log(e); }
         }
 
-        function playAnimalSound(animal, soundText, freq) {
-            speakText(`${animal} hace ${soundText}`);
-            playTone(freq, 'triangle', 0.4);
+        function playRealAnimalSound(animal) {
+            if (animal === 'vaca') {
+                speakText('La vaca hace Muuu');
+                playCustomSound([150, 130, 110], 'sawtooth', 0.7, 0.35);
+            } else if (animal === 'cerdo') {
+                speakText('El cerdito hace Oinc oinc');
+                playCustomSound([350, 280, 320, 250], 'triangle', 0.4, 0.4);
+            } else if (animal === 'pollo') {
+                speakText('El pollito hace Pío pío');
+                playCustomSound([880, 960, 880, 960], 'sine', 0.3, 0.25);
+            } else if (animal === 'oveja') {
+                speakText('La ovejita hace Beee');
+                playCustomSound([220, 210, 230, 215], 'sawtooth', 0.6, 0.3);
+            } else if (animal === 'perro') {
+                speakText('El perrito hace Guau guau');
+                playCustomSound([180, 240, 180, 240], 'square', 0.4, 0.2);
+            } else if (animal === 'gato') {
+                speakText('El gatito hace Miau');
+                playCustomSound([450, 520, 380], 'sine', 0.6, 0.3);
+            }
             addStar(1);
         }
 
-        function playPianoNote(freq, noteName) {
+        function playRealPianoNote(freq, noteName) {
             speakText(noteName);
-            playTone(freq, 'sine', 0.5);
+            playCustomSound([freq, freq * 1.5], 'triangle', 0.6, 0.4);
             addStar(1);
         }
 
-        // BURBUJAS LOGICA
+        // BURBUJAS CON SONIDO REAL DE POP Y PARTÍCULAS
         let bubbleInterval = null;
         function startBubbles() {
             const layer = document.getElementById('bubbles-layer');
             layer.innerHTML = '';
+            
+            // Permitir hacer click en el área para generar burbujas manuales también
+            layer.onclick = (e) => {
+                if(e.target === layer) spawnBubble(e.clientX, e.clientY);
+            };
+
             bubbleInterval = setInterval(() => {
-                if (layer.children.length > 8) return;
-                const b = document.createElement('div');
-                const size = Math.floor(Math.random() * 40) + 60;
-                const leftPos = Math.floor(Math.random() * 80) + 10;
-                b.className = `absolute rounded-full cursor-pointer bubble-float flex items-center justify-center shadow-lg border-2 border-white/60`;
-                b.style.width = `${size}px`;
-                b.style.height = `${size}px`;
-                b.style.left = `${leftPos}%`;
-                const colors = ['bg-pink-300/70', 'bg-sky-300/70', 'bg-yellow-300/70', 'bg-purple-300/70', 'bg-emerald-300/70'];
-                b.classList.add(colors[Math.floor(Math.random() * colors.length)]);
-                b.innerHTML = '🫧';
-                b.onclick = (e) => {
-                    e.stopPropagation();
-                    b.remove();
-                    playTone(600, 'sine', 0.15);
-                    speakText('¡Pop!');
-                    addStar(1);
-                };
-                layer.appendChild(b);
-            }, 800);
+                if (layer.children.length > 9) return;
+                const randomX = Math.floor(Math.random() * 85) + 5;
+                spawnBubbleAtPercent(randomX);
+            }, 750);
+        }
+
+        function spawnBubbleAtPercent(leftPercent) {
+            const layer = document.getElementById('bubbles-layer');
+            const b = document.createElement('div');
+            const size = Math.floor(Math.random() * 35) + 65;
+            b.className = `absolute rounded-full cursor-pointer bubble-float flex items-center justify-center shadow-xl border-3 border-white/80`;
+            b.style.width = `${size}px`;
+            b.style.height = `${size}px`;
+            b.style.left = `${leftPercent}%`;
+            
+            const colors = ['bg-pink-400/60', 'bg-sky-400/60', 'bg-yellow-300/60', 'bg-purple-400/60', 'bg-emerald-400/60'];
+            b.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+            b.innerHTML = '🫧';
+
+            const popAction = (e) => {
+                e.stopPropagation();
+                b.classList.add('popping');
+                playCustomSound([800, 400, 200], 'sine', 0.12, 0.3);
+                speakText('¡Pop!');
+                addStar(1);
+                setTimeout(() => b.remove(), 250);
+            };
+
+            b.onmousedown = popAction;
+            b.ontouchstart = popAction;
+            layer.appendChild(b);
         }
 
         function stopBubbles() {
             if (bubbleInterval) clearInterval(bubbleInterval);
             const layer = document.getElementById('bubbles-layer');
             if (layer) layer.innerHTML = '';
-        }
-
-        function popBubbleArea(e) {
-            // Zona general del juego de burbujas
         }
 
         // ZONA PADRES
@@ -320,7 +360,7 @@
         }
 
         function unlockFullVersion() {
-            alert('¡Gracias por apoyar MimiKids! En producción, aquí se conecta Stripe o Google Play Billing.');
+            alert('¡Gracias por apoyar a MimiKids! En producción, aquí se integra Stripe o Google Play Billing de forma segura.');
             closeParentModal();
         }
 
@@ -334,10 +374,6 @@
                 btn.innerText = 'Silenciado';
                 btn.className = 'bg-rose-500 text-white px-4 py-1.5 rounded-lg font-bold text-sm';
             }
-        }
-
-        function checkPremiumKey(gameId) {
-            openParentModal();
         }
     </script>
 </body>
