@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MimiKids - Aprendizaje Temprano</title>
+    <title>MimiKids - Mega Academia Infantil</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -38,15 +38,23 @@
         .popping {
             animation: popAnim 0.2s ease-out forwards;
         }
+        .card-flip {
+            perspective: 1000px;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-sky-200 via-amber-50 to-pink-200 h-screen w-screen flex flex-col justify-between">
+<body id="body-theme" class="bg-gradient-to-br from-sky-200 via-amber-50 to-pink-200 h-screen w-screen flex flex-col justify-between transition-colors duration-500">
 
     <!-- BARRA SUPERIOR RESPONSIVE -->
     <header class="bg-white/95 backdrop-blur-md px-4 py-2.5 shadow-md flex justify-between items-center z-50 border-b-4 border-pink-200">
-        <button onclick="goHome()" class="flex items-center gap-1.5 bg-gradient-to-r from-pink-400 to-rose-400 text-white px-4 py-2 rounded-full font-bold shadow-md transform active:scale-95 transition-all text-base border-2 border-white">
-            🏠 <span>MimiKids</span>
-        </button>
+        <div class="flex items-center gap-2">
+            <button onclick="goHome()" class="flex items-center gap-1.5 bg-gradient-to-r from-pink-400 to-rose-400 text-white px-4 py-2 rounded-full font-bold shadow-md transform active:scale-95 transition-all text-base border-2 border-white">
+                🏠 <span>MimiKids</span>
+            </button>
+            <button onclick="toggleTheme()" id="theme-btn" class="bg-amber-100 hover:bg-amber-200 text-amber-800 px-3 py-2 rounded-full font-bold shadow-sm text-xs border-2 border-amber-300">
+                ☀️ Día
+            </button>
+        </div>
         <div id="stars-display" class="bg-yellow-100 border-3 border-yellow-400 px-4 py-1 rounded-full flex items-center gap-1.5 text-yellow-800 font-bold text-xl shadow-inner">
             ⭐ <span id="star-count">0</span>
         </div>
@@ -58,120 +66,159 @@
     <!-- CONTENEDOR PRINCIPAL -->
     <main id="app-container" class="flex-1 relative overflow-hidden flex flex-col items-center justify-center p-3">
         
-        <!-- MENU INICIO -->
-        <div id="screen-home" class="flex flex-col items-center justify-center gap-4 w-full max-w-sm text-center">
-            <div class="relative jelly" onclick="triggerVisualFlash()">
+        <!-- MENU INICIO (MEGA GRID) -->
+        <div id="screen-home" class="flex flex-col items-center justify-center gap-3 w-full max-w-md text-center overflow-y-auto max-h-[85vh] p-2">
+            <div class="relative jelly cursor-pointer" onclick="feedMascot()">
                 <div class="absolute -inset-2 bg-gradient-to-r from-pink-400 via-yellow-300 to-sky-400 rounded-3xl blur-lg opacity-70 animate-pulse"></div>
-                <div class="relative bg-white/95 border-4 border-pink-300 p-5 rounded-3xl shadow-xl flex flex-col items-center">
-                    <!-- Icono o Mascota en emoji grande para carga inmediata sin depender de archivos externos -->
-                    <div class="w-24 h-24 bg-pink-100 rounded-2xl flex items-center justify-center text-5xl mb-2 shadow-inner border-2 border-pink-200">
+                <div class="relative bg-white/95 border-4 border-pink-300 p-4 rounded-3xl shadow-xl flex items-center gap-4">
+                    <div id="mascot-avatar" class="w-20 h-20 bg-pink-100 rounded-2xl flex items-center justify-center text-4xl shadow-inner border-2 border-pink-200">
                         🧸
                     </div>
-                    <h1 class="text-2xl font-extrabold text-pink-600 drop-shadow-sm">¡Aprende y Juega!</h1>
-                    <p class="text-slate-500 text-xs mt-1 font-semibold">Toca una actividad abajo 👇</p>
+                    <div class="text-left">
+                        <h1 class="text-xl font-extrabold text-pink-600 drop-shadow-sm">¡Hola, amiguito!</h1>
+                        <p id="mascot-speech" class="text-slate-500 text-xs mt-0.5 font-semibold">Toca una actividad para jugar hoy 👇</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-3 w-full">
-                <button onclick="startMiniGame(1)" class="jelly bg-gradient-to-b from-amber-200 to-amber-300 border-4 border-amber-400 p-3.5 rounded-2xl shadow-lg flex flex-col items-center gap-1">
+            <div class="grid grid-cols-3 gap-2.5 w-full">
+                <button onclick="startMiniGame(1)" class="jelly bg-gradient-to-b from-amber-200 to-amber-300 border-3 border-amber-400 p-3 rounded-2xl shadow-md flex flex-col items-center gap-1">
                     <span class="text-3xl">🐮</span>
-                    <span class="font-bold text-amber-900 text-xs">Granja Visual</span>
+                    <span class="font-bold text-amber-900 text-[11px]">Granja</span>
                 </button>
-                <button onclick="startMiniGame(2)" class="jelly bg-gradient-to-b from-sky-200 to-sky-300 border-4 border-sky-400 p-3.5 rounded-2xl shadow-lg flex flex-col items-center gap-1">
+                <button onclick="startMiniGame(2)" class="jelly bg-gradient-to-b from-sky-200 to-sky-300 border-3 border-sky-400 p-3 rounded-2xl shadow-md flex flex-col items-center gap-1">
                     <span class="text-3xl">🫧</span>
-                    <span class="font-bold text-sky-900 text-xs">Burbujas Magicas</span>
+                    <span class="font-bold text-sky-900 text-[11px]">Burbujas</span>
                 </button>
-                <button onclick="startMiniGame(3)" class="jelly bg-gradient-to-b from-purple-200 to-purple-300 border-4 border-purple-400 p-3.5 rounded-2xl shadow-lg flex flex-col items-center gap-1">
+                <button onclick="startMiniGame(3)" class="jelly bg-gradient-to-b from-purple-200 to-purple-300 border-3 border-purple-400 p-3 rounded-2xl shadow-md flex flex-col items-center gap-1">
                     <span class="text-3xl">🎨</span>
-                    <span class="font-bold text-purple-900 text-xs">Colores & Formas</span>
+                    <span class="font-bold text-purple-900 text-[11px]">Colores</span>
                 </button>
-                <button onclick="startMiniGame(4)" class="jelly bg-gradient-to-b from-emerald-200 to-emerald-300 border-4 border-emerald-400 p-3.5 rounded-2xl shadow-lg flex flex-col items-center gap-1">
+                <button onclick="startMiniGame(4)" class="jelly bg-gradient-to-b from-emerald-200 to-emerald-300 border-3 border-emerald-400 p-3 rounded-2xl shadow-md flex flex-col items-center gap-1">
                     <span class="text-3xl">🧩</span>
-                    <span class="font-bold text-emerald-900 text-xs">Primeras Vocales</span>
+                    <span class="font-bold text-emerald-900 text-[11px]">Vocales</span>
+                </button>
+                <button onclick="startMiniGame(5)" class="jelly bg-gradient-to-b from-rose-200 to-rose-300 border-3 border-rose-400 p-3 rounded-2xl shadow-md flex flex-col items-center gap-1">
+                    <span class="text-3xl">🧠</span>
+                    <span class="font-bold text-rose-900 text-[11px]">Memoria</span>
+                </button>
+                <button onclick="startMiniGame(6)" class="jelly bg-gradient-to-b from-indigo-200 to-indigo-300 border-3 border-indigo-400 p-3 rounded-2xl shadow-md flex flex-col items-center gap-1">
+                    <span class="text-3xl">🥕</span>
+                    <span class="font-bold text-indigo-900 text-[11px]">Alimentos</span>
                 </button>
             </div>
         </div>
 
         <!-- JUEGO 1: GRANJA VISUAL -->
         <div id="game-1" class="hidden flex flex-col items-center justify-center w-full max-w-md h-full gap-3">
-            <h2 id="farm-banner" class="text-xl font-bold text-amber-900 bg-amber-100 px-5 py-1.5 rounded-full shadow border-2 border-amber-300 transition-all">🐮 Toca un Animal 🐷</h2>
+            <h2 id="farm-banner" class="text-lg font-bold text-amber-900 bg-amber-100 px-5 py-1.5 rounded-full shadow border-2 border-amber-300">🐮 Toca un Animal 🐷</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full p-1">
-                <button onclick="visualFeedback('Vaca Lola 🐮', 'bg-amber-100')" class="jelly bg-white border-4 border-amber-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-5xl">🐮</span>
-                    <span class="font-bold text-slate-700 mt-1 text-sm">Vaca</span>
+                <button onclick="visualFeedback('Vaca Lola 🐮 - Da rica leche', 'bg-amber-100')" class="jelly bg-white border-4 border-amber-300 p-3 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-4xl">🐮</span>
+                    <span class="font-bold text-slate-700 mt-1 text-xs">Vaca</span>
                 </button>
-                <button onclick="visualFeedback('Cerdito 🐷', 'bg-pink-100')" class="jelly bg-white border-4 border-pink-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-5xl">🐷</span>
-                    <span class="font-bold text-slate-700 mt-1 text-sm">Cerdo</span>
+                <button onclick="visualFeedback('Cerdito 🐷 - Le encanta el lodo', 'bg-pink-100')" class="jelly bg-white border-4 border-pink-300 p-3 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-4xl">🐷</span>
+                    <span class="font-bold text-slate-700 mt-1 text-xs">Cerdo</span>
                 </button>
-                <button onclick="visualFeedback('Pollito 🐤', 'bg-yellow-100')" class="jelly bg-white border-4 border-yellow-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-5xl">🐤</span>
-                    <span class="font-bold text-slate-700 mt-1 text-sm">Pollo</span>
+                <button onclick="visualFeedback('Pollito 🐤 - Dice pío pío', 'bg-yellow-100')" class="jelly bg-white border-4 border-yellow-300 p-3 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-4xl">🐤</span>
+                    <span class="font-bold text-slate-700 mt-1 text-xs">Pollo</span>
                 </button>
-                <button onclick="visualFeedback('Ovejita 🐑', 'bg-slate-100')" class="jelly bg-white border-4 border-slate-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-5xl">🐑</span>
-                    <span class="font-bold text-slate-700 mt-1 text-sm">Oveja</span>
+                <button onclick="visualFeedback('Ovejita 🐑 - Muy suave y lanuda', 'bg-slate-100')" class="jelly bg-white border-4 border-slate-300 p-3 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-4xl">🐑</span>
+                    <span class="font-bold text-slate-700 mt-1 text-xs">Oveja</span>
                 </button>
-                <button onclick="visualFeedback('Perrito 🐶', 'bg-orange-100')" class="jelly bg-white border-4 border-orange-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-5xl">🐶</span>
-                    <span class="font-bold text-slate-700 mt-1 text-sm">Perro</span>
+                <button onclick="visualFeedback('Perrito 🐶 - El mejor amigo', 'bg-orange-100')" class="jelly bg-white border-4 border-orange-300 p-3 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-4xl">🐶</span>
+                    <span class="font-bold text-slate-700 mt-1 text-xs">Perro</span>
                 </button>
-                <button onclick="visualFeedback('Gatito 🐱', 'bg-purple-100')" class="jelly bg-white border-4 border-purple-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-5xl">🐱</span>
-                    <span class="font-bold text-slate-700 mt-1 text-sm">Gato</span>
+                <button onclick="visualFeedback('Gatito 🐱 - Duerme mucho', 'bg-purple-100')" class="jelly bg-white border-4 border-purple-300 p-3 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-4xl">🐱</span>
+                    <span class="font-bold text-slate-700 mt-1 text-xs">Gato</span>
                 </button>
             </div>
         </div>
 
         <!-- JUEGO 2: BURBUJAS MÁGICAS -->
         <div id="game-2" class="hidden absolute inset-0 overflow-hidden cursor-pointer">
-            <div class="absolute top-3 left-1/2 -translate-x-1/2 bg-white/90 px-5 py-1.5 rounded-full shadow border-2 border-sky-300 z-10 text-sky-800 font-bold text-base pointer-events-none">
+            <div class="absolute top-3 left-1/2 -translate-x-1/2 bg-white/90 px-5 py-1.5 rounded-full shadow border-2 border-sky-300 z-10 text-sky-800 font-bold text-sm pointer-events-none">
                 🫧 ¡Explota las Burbujas! 🫧
             </div>
             <div id="bubbles-layer" class="w-full h-full relative"></div>
         </div>
 
-        <!-- JUEGO 3: COLORES Y FORMAS (NUEVO) -->
+        <!-- JUEGO 3: COLORES Y FORMAS -->
         <div id="game-3" class="hidden flex flex-col items-center justify-center w-full max-w-md h-full gap-3">
-            <h2 id="color-banner" class="text-xl font-bold text-purple-900 bg-purple-100 px-5 py-1.5 rounded-full shadow border-2 border-purple-300 transition-all">🎨 Toca los Colores</h2>
+            <h2 id="color-banner" class="text-lg font-bold text-purple-900 bg-purple-100 px-5 py-1.5 rounded-full shadow border-2 border-purple-300">🎨 Toca los Colores</h2>
             <div class="grid grid-cols-2 gap-3 w-full p-2">
-                <button onclick="visualFeedback('¡Rojo brillante! 🔴', 'bg-red-100')" class="jelly bg-red-500 text-white border-4 border-red-300 p-6 rounded-3xl shadow-lg flex flex-col items-center text-xl font-bold">
+                <button onclick="visualFeedback('¡Rojo brillante! 🔴', 'bg-red-100')" class="jelly bg-red-500 text-white border-4 border-red-300 p-5 rounded-3xl shadow-lg flex flex-col items-center text-lg font-bold">
                     <span>🔴</span> Rojo
                 </button>
-                <button onclick="visualFeedback('¡Azul cielo! 🔵', 'bg-sky-100')" class="jelly bg-sky-500 text-white border-4 border-sky-300 p-6 rounded-3xl shadow-lg flex flex-col items-center text-xl font-bold">
+                <button onclick="visualFeedback('¡Azul cielo! 🔵', 'bg-sky-100')" class="jelly bg-sky-500 text-white border-4 border-sky-300 p-5 rounded-3xl shadow-lg flex flex-col items-center text-lg font-bold">
                     <span>🔵</span> Azul
                 </button>
-                <button onclick="visualFeedback('¡Amarillo sol! 🟡', 'bg-yellow-100')" class="jelly bg-yellow-400 text-slate-900 border-4 border-yellow-200 p-6 rounded-3xl shadow-lg flex flex-col items-center text-xl font-bold">
+                <button onclick="visualFeedback('¡Amarillo sol! 🟡', 'bg-yellow-100')" class="jelly bg-yellow-400 text-slate-900 border-4 border-yellow-200 p-5 rounded-3xl shadow-lg flex flex-col items-center text-lg font-bold">
                     <span>🟡</span> Amarillo
                 </button>
-                <button onclick="visualFeedback('¡Verde pasto! 🟢', 'bg-emerald-100')" class="jelly bg-emerald-500 text-white border-4 border-emerald-300 p-6 rounded-3xl shadow-lg flex flex-col items-center text-xl font-bold">
+                <button onclick="visualFeedback('¡Verde pasto! 🟢', 'bg-emerald-100')" class="jelly bg-emerald-500 text-white border-4 border-emerald-300 p-5 rounded-3xl shadow-lg flex flex-col items-center text-lg font-bold">
                     <span>🟢</span> Verde
                 </button>
             </div>
         </div>
 
-        <!-- JUEGO 4: PRIMERAS VOCALES (NUEVO) -->
+        <!-- JUEGO 4: PRIMERAS VOCALES -->
         <div id="game-4" class="hidden flex flex-col items-center justify-center w-full max-w-md h-full gap-3">
-            <h2 id="vowel-banner" class="text-xl font-bold text-emerald-900 bg-emerald-100 px-5 py-1.5 rounded-full shadow border-2 border-emerald-300 transition-all">🧩 Aprendiendo las Vocales</h2>
-            <div class="grid grid-cols-3 gap-3 w-full p-2">
-                <button onclick="visualFeedback('¡Letra A de Avión! ✈️', 'bg-pink-100')" class="jelly bg-white border-4 border-pink-300 p-5 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-4xl font-extrabold text-pink-600">A</span>
-                    <span class="text-xs text-slate-500 mt-1">Avión</span>
+            <h2 id="vowel-banner" class="text-lg font-bold text-emerald-900 bg-emerald-100 px-5 py-1.5 rounded-full shadow border-2 border-emerald-300">🧩 Aprendiendo las Vocales</h2>
+            <div class="grid grid-cols-3 gap-2.5 w-full p-2">
+                <button onclick="visualFeedback('¡A de Avión! ✈️', 'bg-pink-100')" class="jelly bg-white border-4 border-pink-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-3xl font-extrabold text-pink-600">A</span>
+                    <span class="text-[10px] text-slate-500 mt-1">Avión</span>
                 </button>
-                <button onclick="visualFeedback('¡Letra E de Elefante! 🐘', 'bg-blue-100')" class="jelly bg-white border-4 border-blue-300 p-5 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-4xl font-extrabold text-blue-600">E</span>
-                    <span class="text-xs text-slate-500 mt-1">Elefante</span>
+                <button onclick="visualFeedback('¡E de Elefante! 🐘', 'bg-blue-100')" class="jelly bg-white border-4 border-blue-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-3xl font-extrabold text-blue-600">E</span>
+                    <span class="text-[10px] text-slate-500 mt-1">Elefante</span>
                 </button>
-                <button onclick="visualFeedback('¡Letra I de Isla! 🏝️', 'bg-yellow-100')" class="jelly bg-white border-4 border-yellow-300 p-5 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-4xl font-extrabold text-yellow-600">I</span>
-                    <span class="text-xs text-slate-500 mt-1">Isla</span>
+                <button onclick="visualFeedback('¡I de Isla! 🏝️', 'bg-yellow-100')" class="jelly bg-white border-4 border-yellow-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-3xl font-extrabold text-yellow-600">I</span>
+                    <span class="text-[10px] text-slate-500 mt-1">Isla</span>
                 </button>
-                <button onclick="visualFeedback('¡Letra O de Oso! 🐻', 'bg-amber-100')" class="jelly bg-white border-4 border-amber-300 p-5 rounded-2xl shadow-lg flex flex-col items-center">
-                    <span class="text-4xl font-extrabold text-amber-600">O</span>
-                    <span class="text-xs text-slate-500 mt-1">Oso</span>
+                <button onclick="visualFeedback('¡O de Oso! 🐻', 'bg-amber-100')" class="jelly bg-white border-4 border-amber-300 p-4 rounded-2xl shadow-lg flex flex-col items-center">
+                    <span class="text-3xl font-extrabold text-amber-600">O</span>
+                    <span class="text-[10px] text-slate-500 mt-1">Oso</span>
                 </button>
-                <button onclick="visualFeedback('¡Letra U de Uvas! 🍇', 'bg-purple-100')" class="jelly bg-white border-4 border-purple-300 p-5 rounded-2xl shadow-lg flex flex-col items-center col-span-2">
-                    <span class="text-4xl font-extrabold text-purple-600">U - Uvas 🍇</span>
+                <button onclick="visualFeedback('¡U de Uvas! 🍇', 'bg-purple-100')" class="jelly bg-white border-4 border-purple-300 p-4 rounded-2xl shadow-lg flex flex-col items-center col-span-2">
+                    <span class="text-3xl font-extrabold text-purple-600">U - Uvas 🍇</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- JUEGO 5: MEMORIA DE ANIMALES (NUEVO) -->
+        <div id="game-5" class="hidden flex flex-col items-center justify-center w-full max-w-md h-full gap-3">
+            <h2 id="memory-banner" class="text-lg font-bold text-rose-900 bg-rose-100 px-5 py-1.5 rounded-full shadow border-2 border-rose-300">🧠 ¡Encuentra la Pareja!</h2>
+            <div id="memory-grid" class="grid grid-cols-2 gap-3 w-full p-2">
+                <!-- Generado dinámicamente -->
+            </div>
+        </div>
+
+        <!-- JUEGO 6: ALIMENTOS SALUDABLES (NUEVO) -->
+        <div id="game-6" class="hidden flex flex-col items-center justify-center w-full max-w-md h-full gap-3">
+            <h2 id="food-banner" class="text-lg font-bold text-indigo-900 bg-indigo-100 px-5 py-1.5 rounded-full shadow border-2 border-indigo-300">🥕 ¿Quién come qué?</h2>
+            <div class="flex flex-col gap-3 w-full p-2">
+                <button onclick="visualFeedback('¡La Vaca come Pasto fresco! 🐮🌿', 'bg-emerald-100')" class="jelly bg-white border-4 border-emerald-300 p-4 rounded-2xl shadow-lg flex items-center justify-between px-6">
+                    <span class="text-3xl">🐮</span>
+                    <span class="text-xl font-bold text-slate-700">➔</span>
+                    <span class="text-3xl">🌿</span>
+                </button>
+                <button onclick="visualFeedback('¡El Mono come Banano dulce! 🐵🍌', 'bg-yellow-100')" class="jelly bg-white border-4 border-yellow-300 p-4 rounded-2xl shadow-lg flex items-center justify-between px-6">
+                    <span class="text-3xl">🐵</span>
+                    <span class="text-xl font-bold text-slate-700">➔</span>
+                    <span class="text-3xl">🍌</span>
+                </button>
+                <button onclick="visualFeedback('¡El Conejo come Zanahoria! 🐰🥕', 'bg-orange-100')" class="jelly bg-white border-4 border-orange-300 p-4 rounded-2xl shadow-lg flex items-center justify-between px-6">
+                    <span class="text-3xl">🐰</span>
+                    <span class="text-xl font-bold text-slate-700">➔</span>
+                    <span class="text-3xl">🥕</span>
                 </button>
             </div>
         </div>
@@ -189,7 +236,7 @@
             <div id="math-challenge" class="flex flex-col gap-3">
                 <p class="text-slate-600 text-xs">Resuelve para continuar:</p>
                 <div class="bg-pink-50 p-3 rounded-xl text-center border-2 border-pink-200">
-                    <span id="math-question" class="text-lg font-bold text-pink-700">¿Cuánto es 2 + 3?</span>
+                    <span id="math-question" class="text-lg font-bold text-pink-700">¿Cuánto es 3 + 2?</span>
                 </div>
                 <input type="number" id="math-answer" class="border-2 border-slate-300 rounded-xl px-3 py-2 text-center text-lg font-bold focus:outline-none focus:border-pink-500" placeholder="Resultado">
                 <button onclick="verifyMath()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2.5 rounded-xl shadow-md text-sm">Verificar</button>
@@ -202,84 +249,122 @@
                     <button onclick="unlockFullVersion()" class="mt-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg shadow text-xs">Activar Versión Completa</button>
                 </div>
                 <div class="text-center">
-                    <span class="text-xs text-slate-400">Modo 100% Visual y Seguro</span>
+                    <span class="text-xs text-slate-400">Progreso guardado en el dispositivo</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPT LIMPIO DE INTERACCIÓN VISUAL OPTIMIZADO PARA MÓVILES -->
+    <!-- SCRIPT DE CONTROL Y NUEVOS MINIJUEGOS -->
     <script>
-        let stars = 0;
+        let stars = localStorage.getItem('mimikids_stars') ? parseInt(localStorage.getItem('mimikids_stars')) : 0;
+        document.getElementById('star-count').innerText = stars;
 
         function addStar(amount = 1) {
             stars += amount;
             document.getElementById('star-count').innerText = stars;
+            localStorage.setItem('mimikids_stars', stars);
         }
 
         function goHome() {
             document.getElementById('screen-home').classList.remove('hidden');
-            document.getElementById('game-1').classList.add('hidden');
-            document.getElementById('game-2').classList.add('hidden');
-            document.getElementById('game-3').classList.add('hidden');
-            document.getElementById('game-4').classList.add('hidden');
+            for(let i=1; i<=6; i++) {
+                document.getElementById(`game-${i}`).classList.add('hidden');
+            }
             stopBubbles();
         }
 
         function startMiniGame(id) {
             document.getElementById('screen-home').classList.add('hidden');
-            document.getElementById('game-1').classList.add('hidden');
-            document.getElementById('game-2').classList.add('hidden');
-            document.getElementById('game-3').classList.add('hidden');
-            document.getElementById('game-4').classList.add('hidden');
+            for(let i=1; i<=6; i++) {
+                document.getElementById(`game-${i}`).classList.add('hidden');
+            }
             stopBubbles();
 
-            if (id === 1) {
-                document.getElementById('game-1').classList.remove('hidden');
-            } else if (id === 2) {
-                document.getElementById('game-2').classList.remove('hidden');
-                startBubbles();
-            } else if (id === 3) {
-                document.getElementById('game-3').classList.remove('hidden');
-            } else if (id === 4) {
-                document.getElementById('game-4').classList.remove('hidden');
-            }
+            document.getElementById(`game-${id}`).classList.remove('hidden');
+            if(id === 2) startBubbles();
+            if(id === 5) initMemoryGame();
         }
 
-        // FEEDBACK VISUAL EXPRÉS (SIN AUDIO ROBÓTICO)
         function visualFeedback(text, bgClass) {
             addStar(1);
-            const banner = document.getElementById('farm-banner') || document.getElementById('color-banner') || document.getElementById('vowel-banner');
-            if(banner) {
-                const originalText = banner.innerText;
-                const originalBg = banner.className;
-                banner.innerText = text;
-                banner.className = `text-xl font-bold px-5 py-1.5 rounded-full shadow border-2 transition-all ${bgClass} border-pink-400 scale-105`;
+            const activeBanner = document.querySelector(':not(.hidden) > h2');
+            if(activeBanner) {
+                const originalText = activeBanner.innerText;
+                const originalBg = activeBanner.className;
+                activeBanner.innerText = text;
+                activeBanner.className = `text-lg font-bold px-5 py-1.5 rounded-full shadow border-2 transition-all ${bgClass} border-pink-400 scale-105`;
                 setTimeout(() => {
-                    banner.innerText = originalText;
-                    banner.className = originalBg;
-                }, 800);
+                    activeBanner.innerText = originalText;
+                    activeBanner.className = originalBg;
+                }, 900);
             }
         }
 
-        function triggerVisualFlash() {
+        function feedMascot() {
             addStar(1);
+            const speech = document.getElementById('mascot-speech');
+            const phrases = ["¡Yupi! 🎉", "¡Me encantan las estrellas! ⭐", "¡Eres muy inteligente! 🧠", "¡A seguir jugando! 🚀"];
+            speech.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+            setTimeout(() => {
+                speech.innerText = "Toca una actividad para jugar hoy 👇";
+            }, 1200);
         }
 
-        // BURBUJAS TÁCTILES PURAMENTE VISUALES
+        let isDarkMode = false;
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const body = document.getElementById('body-theme');
+            const btn = document.getElementById('theme-btn');
+            if(isDarkMode) {
+                body.className = "bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 h-screen w-screen flex flex-col justify-between text-white transition-colors duration-500";
+                btn.innerText = "🌙 Noche";
+                btn.className = "bg-purple-900 hover:bg-purple-800 text-purple-200 px-3 py-2 rounded-full font-bold shadow-sm text-xs border-2 border-purple-700";
+            } else {
+                body.className = "bg-gradient-to-br from-sky-200 via-amber-50 to-pink-200 h-screen w-screen flex flex-col justify-between transition-colors duration-500";
+                btn.innerText = "☀️ Día";
+                btn.className = "bg-amber-100 hover:bg-amber-200 text-amber-800 px-3 py-2 rounded-full font-bold shadow-sm text-xs border-2 border-amber-300";
+            }
+        }
+
+        // MEMORY GAME LOGIC
+        function initMemoryGame() {
+            const grid = document.getElementById('memory-grid');
+            grid.innerHTML = '';
+            const items = ['🍎', '🍎', '🐱', '🐱', '⭐', '⭐', '🚗', '🚗'];
+            items.sort(() => Math.random() - 0.5);
+
+            items.forEach((emoji) => {
+                const card = document.createElement('button');
+                card.className = "jelly bg-white border-4 border-rose-300 h-24 rounded-2xl shadow-md flex items-center justify-center text-4xl";
+                card.dataset.emoji = emoji;
+                card.innerText = '❓';
+                card.onclick = () => {
+                    card.innerText = emoji;
+                    card.className = "jelly bg-rose-50 border-4 border-rose-500 h-24 rounded-2xl shadow-md flex items-center justify-center text-4xl";
+                    setTimeout(() => {
+                        card.innerText = '❓';
+                        card.className = "jelly bg-white border-4 border-rose-300 h-24 rounded-2xl shadow-md flex items-center justify-center text-4xl";
+                    }, 600);
+                    addStar(1);
+                };
+                grid.appendChild(card);
+            });
+        }
+
+        // BURBUJAS TÁCTILES
         let bubbleInterval = null;
         function startBubbles() {
             const layer = document.getElementById('bubbles-layer');
             layer.innerHTML = '';
             
             layer.onclick = (e) => {
-                if(e.target === layer) spawnBubbleAt(e.clientX - 35, e.clientY - 35);
+                if(e.target === layer) spawnBubblePercent(Math.floor(Math.random() * 80) + 10);
             };
 
             bubbleInterval = setInterval(() => {
                 if (layer.children.length > 8) return;
-                const randomX = Math.floor(Math.random() * 80) + 10;
-                spawnBubblePercent(randomX);
+                spawnBubblePercent(Math.floor(Math.random() * 80) + 10);
             }, 800);
         }
 
@@ -315,7 +400,7 @@
         }
 
         // CONTROL PARENTAL
-        let numA = 2, numB = 3;
+        let numA = 3, numB = 2;
         function openParentModal() {
             numA = Math.floor(Math.random() * 4) + 1;
             numB = Math.floor(Math.random() * 4) + 1;
@@ -341,7 +426,7 @@
         }
 
         function unlockFullVersion() {
-            alert('¡Gracias! Enlace de pago listo para conectar con Stripe o Google Play.');
+            alert('¡Enlace de pasarela de pagos listo para conectar con Stripe / Google Play!');
             closeParentModal();
         }
     </script>
