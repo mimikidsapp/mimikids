@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MimiKids 3.0 - Perfiles Inteligentes y Juegos</title>
+    <title>MimiKids - Aprende, Juega y Gana Premios</title>
     <style>
         :root {
             --primary: #FF6B6B;
@@ -22,6 +22,7 @@
             padding: 0;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -30,7 +31,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            padding: 12px;
             color: var(--dark);
         }
 
@@ -39,12 +40,12 @@
             width: 100%;
             max-width: 1040px;
             min-height: 700px;
-            border-radius: 32px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.22);
+            border-radius: 30px;
+            box-shadow: 0 22px 55px rgba(0,0,0,0.22);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 8px solid white;
+            border: 6px solid white;
             position: relative;
         }
 
@@ -52,17 +53,17 @@
         header {
             background: linear-gradient(90deg, var(--primary), var(--orange));
             color: white;
-            padding: 15px 25px;
+            padding: 14px 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            transition: background 0.4s ease;
+            transition: background 0.3s ease;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             display: flex;
             align-items: center;
@@ -71,7 +72,7 @@
         }
 
         .user-bar {
-            display: flex;
+            display: none;
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
@@ -79,8 +80,7 @@
 
         .user-pill {
             background: rgba(255,255,255,0.25);
-            backdrop-filter: blur(5px);
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 50px;
             display: flex;
             align-items: center;
@@ -89,11 +89,16 @@
             font-size: 15px;
         }
 
+        .user-pill svg {
+            width: 28px;
+            height: 28px;
+        }
+
         .btn-top {
-            background: rgba(0,0,0,0.25);
+            background: rgba(0,0,0,0.28);
             color: white;
-            border: 2px solid rgba(255,255,255,0.4);
-            padding: 7px 15px;
+            border: 2px solid rgba(255,255,255,0.45);
+            padding: 7px 14px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 800;
@@ -107,7 +112,7 @@
         }
 
         /* =========================================================
-           NUEVO SISTEMA DE AUTENTICACIÓN VISUAL (VISTAS DE PERFIL)
+           SISTEMA DE AUTENTICACIÓN Y SELECCIÓN DE PERSONAJE
            ========================================================= */
         #auth-screen {
             flex: 1;
@@ -115,7 +120,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px;
+            padding: 25px 15px;
             text-align: center;
             background: radial-gradient(circle at top, #ffffff 0%, #f1f5f9 100%);
         }
@@ -123,23 +128,17 @@
         .auth-view {
             display: none;
             width: 100%;
-            max-width: 780px;
+            max-width: 820px;
             flex-direction: column;
             align-items: center;
-            animation: fadeIn 0.25s ease;
         }
 
         .auth-view.active {
             display: flex;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
         .auth-heading {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             color: var(--dark);
             margin-bottom: 6px;
@@ -148,24 +147,24 @@
         .auth-sub {
             font-size: 15px;
             color: #636e72;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
             font-weight: 600;
         }
 
-        /* TARJETAS DE PERFILES (ESTILO NETFLIX KIDS) */
+        /* TARJETAS DE PERFILES GUARDADOS */
         .profiles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(155px, 180px));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(155px, 185px));
+            gap: 16px;
             justify-content: center;
             width: 100%;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .profile-card {
             background: white;
-            border-radius: 26px;
-            padding: 22px 15px;
+            border-radius: 24px;
+            padding: 20px 14px;
             cursor: pointer;
             border: 4px solid #e2e8f0;
             transition: all 0.2s ease;
@@ -173,29 +172,33 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
         }
 
         .profile-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             border-color: var(--purple);
             box-shadow: 0 14px 28px rgba(108, 92, 231, 0.18);
         }
 
         .profile-avatar-circle {
-            width: 78px;
-            height: 78px;
+            width: 82px;
+            height: 82px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 44px;
-            margin-bottom: 12px;
-            box-shadow: inset 0 -4px 0 rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .profile-avatar-circle svg {
+            width: 100%;
+            height: 100%;
         }
 
         .profile-name {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 900;
             color: var(--dark);
             margin-bottom: 6px;
@@ -212,21 +215,18 @@
 
         .delete-profile-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             background: #ffeaa7;
             border: none;
-            width: 26px;
-            height: 26px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            font-size: 12px;
+            font-size: 13px;
             cursor: pointer;
-            opacity: 0;
-            transition: 0.2s;
-        }
-
-        .profile-card:hover .delete-profile-btn {
-            opacity: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .delete-profile-btn:hover {
@@ -235,152 +235,154 @@
         }
 
         .add-profile-card {
-            border: 4px dashed #cbd5e1;
-            background: rgba(255,255,255,0.6);
+            border: 4px dashed #94a3b8;
+            background: #f8fafc;
             justify-content: center;
         }
 
         .add-profile-card:hover {
             border-color: var(--green);
-            background: white;
+            background: #f0fdf4;
         }
 
-        /* TECLADO NUMÉRICO INTERACTIVO PARA EL PIN */
-        .pin-pad-card {
-            background: white;
-            padding: 28px;
-            border-radius: 30px;
-            width: 100%;
-            max-width: 360px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 4px solid var(--secondary);
-        }
-
-        .pin-dots {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            margin: 18px 0;
-        }
-
-        .pin-dot {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            border: 3px solid var(--secondary);
-            background: transparent;
-            transition: all 0.15s ease;
-        }
-
-        .pin-dot.filled {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: scale(1.15);
-        }
-
-        .pin-dot.error {
-            background: #ff4757;
-            border-color: #ff4757;
-            animation: shake 0.3s ease;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-6px); }
-            75% { transform: translateX(6px); }
-        }
-
-        .numpad-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .num-btn {
-            background: #f1f5f9;
-            border: none;
-            padding: 15px 0;
-            border-radius: 18px;
-            font-size: 22px;
-            font-weight: 900;
-            color: var(--dark);
-            cursor: pointer;
-            box-shadow: 0 4px 0 #cbd5e1;
-            transition: 0.1s;
-        }
-
-        .num-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #cbd5e1;
-            background: var(--accent);
-        }
-
-        /* TARJETA DE REGISTRO DE NUEVA CUENTA */
+        /* TARJETA DE REGISTRO CON VISTA PREVIA DEL PERSONAJE EN VIVO */
         .register-card {
             background: white;
-            padding: 28px;
+            padding: 24px;
             border-radius: 28px;
             width: 100%;
-            max-width: 460px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            max-width: 540px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
             border: 4px solid var(--purple);
             text-align: left;
         }
 
-        .input-group {
+        .live-preview-banner {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f8fafc;
+            border: 3px solid #e2e8f0;
+            padding: 12px 18px;
+            border-radius: 22px;
+            margin-bottom: 18px;
+        }
+
+        .preview-avatar-box {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background: #FF6B6B22;
+            border: 3px solid #FF6B6B;
+            flex-shrink: 0;
+            transition: 0.2s;
+        }
+
+        .preview-avatar-box svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin-bottom: 14px;
+        }
+
+        @media (max-width: 500px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         .input-group label {
             display: block;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             font-size: 13px;
-            color: #475569;
+            color: #334155;
         }
 
         .input-group input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 11px 14px;
             border-radius: 14px;
-            border: 3px solid #e2e8f0;
-            font-size: 16px;
+            border: 3px solid #cbd5e1;
+            font-size: 15px;
             font-weight: 700;
             outline: none;
-            transition: 0.2s;
         }
 
         .input-group input:focus {
             border-color: var(--purple);
         }
 
-        .avatar-selector, .color-selector {
+        /* CUADRÍCULA VISIBLE DE PERSONAJES A ELEGIR */
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 8px 0 16px 0;
+        }
+
+        @media (min-width: 480px) {
+            .character-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        .char-card {
+            background: #f8fafc;
+            border: 3px solid #cbd5e1;
+            border-radius: 18px;
+            padding: 10px 6px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.18s ease;
+        }
+
+        .char-card svg {
+            width: 44px;
+            height: 44px;
+        }
+
+        .char-card span {
+            font-size: 11px;
+            font-weight: 800;
+            color: #475569;
+        }
+
+        .char-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--secondary);
+        }
+
+        .char-card.selected {
+            background: #fff9db;
+            border-color: var(--primary);
+            transform: scale(1.06);
+            box-shadow: 0 6px 14px rgba(255, 107, 107, 0.25);
+        }
+
+        .char-card.selected span {
+            color: var(--primary);
+        }
+
+        /* SELECTOR DE COLORES */
+        .color-selector {
             display: flex;
             justify-content: space-between;
-            gap: 8px;
-            margin: 8px 0 16px 0;
+            gap: 10px;
+            margin: 8px 0 18px 0;
             flex-wrap: wrap;
-        }
-
-        .avatar-option {
-            font-size: 28px;
-            width: 52px;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            cursor: pointer;
-            border: 3px solid #e2e8f0;
-            background: #f8fafc;
-            transition: 0.2s;
-        }
-
-        .avatar-option.selected {
-            border-color: var(--primary);
-            transform: scale(1.12);
-            background: var(--accent);
         }
 
         .color-option {
@@ -394,7 +396,7 @@
         }
 
         .color-option.selected {
-            transform: scale(1.2);
+            transform: scale(1.22);
             box-shadow: 0 0 0 3px var(--dark);
         }
 
@@ -410,7 +412,6 @@
             cursor: pointer;
             box-shadow: 0 5px 0 #008f72;
             transition: all 0.1s;
-            margin-top: 6px;
         }
 
         .btn-main:active {
@@ -424,7 +425,7 @@
             color: #64748b;
             font-weight: 800;
             font-size: 14px;
-            margin-top: 14px;
+            margin-top: 12px;
             cursor: pointer;
             width: 100%;
             text-align: center;
@@ -435,8 +436,85 @@
             text-decoration: underline;
         }
 
+        /* TECLADO NUMÉRICO INTERACTIVO (PIN PAD) */
+        .pin-pad-card {
+            background: white;
+            padding: 25px;
+            border-radius: 28px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 4px solid var(--secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pinpad-avatar-holder {
+            width: 76px;
+            height: 76px;
+            margin-bottom: 8px;
+        }
+
+        .pinpad-avatar-holder svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .pin-dots {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin: 16px 0;
+        }
+
+        .pin-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            background: transparent;
+            transition: 0.15s;
+        }
+
+        .pin-dot.filled {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.15);
+        }
+
+        .pin-dot.error {
+            background: #ff4757;
+            border-color: #ff4757;
+        }
+
+        .numpad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .num-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 14px 0;
+            border-radius: 16px;
+            font-size: 21px;
+            font-weight: 900;
+            color: var(--dark);
+            cursor: pointer;
+            box-shadow: 0 4px 0 #cbd5e1;
+        }
+
+        .num-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #cbd5e1;
+            background: var(--accent);
+        }
+
         .backup-bar {
-            margin-top: 15px;
+            margin-top: 12px;
             display: flex;
             gap: 10px;
             justify-content: center;
@@ -454,60 +532,52 @@
             cursor: pointer;
         }
 
-        .btn-backup:hover {
-            background: #cbd5e1;
-        }
-
         /* =========================================================
            PANTALLA PRINCIPAL (DASHBOARD)
            ========================================================= */
         #dashboard-screen {
             display: none;
             flex: 1;
-            padding: 25px;
+            padding: 22px;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
 
         .nav-tabs {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             border-bottom: 2px solid #f1f2f6;
-            padding-bottom: 12px;
+            padding-bottom: 10px;
             overflow-x: auto;
         }
 
         .tab-btn {
             background: #f1f2f6;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 16px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 800;
             color: #57606f;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
+            white-space: nowrap;
         }
 
         .tab-btn.active {
             background: var(--purple);
             color: white;
-            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+            gap: 14px;
         }
 
         .stat-card {
             background: var(--light);
             border-radius: 20px;
-            padding: 15px;
+            padding: 14px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -515,19 +585,19 @@
         }
 
         .stat-icon {
-            font-size: 32px;
+            font-size: 30px;
             background: white;
-            width: 56px;
-            height: 56px;
+            width: 52px;
+            height: 52px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 16px;
+            border-radius: 14px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .stat-info h3 {
-            font-size: 20px;
+            font-size: 19px;
             color: var(--dark);
         }
 
@@ -539,22 +609,22 @@
 
         .progress-section {
             background: #f8f9fa;
-            padding: 16px 20px;
-            border-radius: 20px;
+            padding: 14px 18px;
+            border-radius: 18px;
             border: 2px solid #eee;
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .progress-bar-bg {
             width: 100%;
-            height: 20px;
+            height: 18px;
             background: #dfe6e9;
             border-radius: 50px;
             overflow: hidden;
@@ -564,13 +634,13 @@
             height: 100%;
             background: linear-gradient(90deg, var(--secondary), var(--green));
             width: 0%;
-            transition: width 0.5s ease;
+            transition: width 0.4s ease;
         }
 
         .tab-view {
             display: none;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
         }
 
         .tab-view.active {
@@ -579,30 +649,30 @@
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 15px;
         }
 
         .game-card {
             background: white;
             border-radius: 22px;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
             border: 3px solid #f1f2f6;
-            transition: all 0.2s;
+            transition: 0.2s;
             cursor: pointer;
             position: relative;
         }
 
         .game-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--secondary);
             box-shadow: 0 10px 20px rgba(0,0,0,0.06);
         }
 
         .game-icon {
-            font-size: 46px;
-            margin-bottom: 8px;
+            font-size: 44px;
+            margin-bottom: 6px;
         }
 
         .game-badge {
@@ -618,19 +688,18 @@
 
         .awards-grid, .shop-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
         }
 
         .award-card {
             background: #f8f9fa;
             border-radius: 20px;
-            padding: 18px;
+            padding: 16px;
             text-align: center;
             border: 3px dashed #ced6e0;
-            opacity: 0.6;
+            opacity: 0.55;
             filter: grayscale(100%);
-            transition: 0.3s;
         }
 
         .award-card.unlocked {
@@ -638,14 +707,13 @@
             border: 3px solid #fcc419;
             opacity: 1;
             filter: grayscale(0%);
-            box-shadow: 0 6px 15px rgba(252, 196, 25, 0.2);
         }
 
         .shop-card {
             background: white;
             border: 3px solid #f1f2f6;
-            border-radius: 22px;
-            padding: 18px;
+            border-radius: 20px;
+            padding: 16px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -657,7 +725,7 @@
             background: var(--orange);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 12px;
             font-weight: 800;
             cursor: pointer;
@@ -674,7 +742,6 @@
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.65);
-            backdrop-filter: blur(4px);
             justify-content: center;
             align-items: center;
             padding: 15px;
@@ -683,9 +750,9 @@
 
         .modal-content {
             background: white;
-            padding: 30px;
-            border-radius: 28px;
-            max-width: 520px;
+            padding: 28px;
+            border-radius: 26px;
+            max-width: 500px;
             width: 100%;
             text-align: center;
             position: relative;
@@ -704,11 +771,11 @@
         }
 
         .question-box {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
-            margin: 22px 0;
+            margin: 20px 0;
             color: var(--dark);
-            min-height: 70px;
+            min-height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -725,10 +792,9 @@
             border: 3px solid #dfe6e9;
             padding: 14px;
             border-radius: 16px;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 800;
             cursor: pointer;
-            transition: 0.15s;
             color: var(--dark);
         }
 
@@ -739,8 +805,8 @@
 
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 18px;
+            top: 14px;
+            right: 16px;
             font-size: 22px;
             cursor: pointer;
             background: none;
@@ -750,27 +816,22 @@
 
         #toast-box {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             z-index: 200;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .toast {
             background: var(--dark);
             color: white;
-            padding: 14px 22px;
-            border-radius: 18px;
+            padding: 12px 20px;
+            border-radius: 16px;
             font-weight: 800;
+            font-size: 14px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(40px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
@@ -780,9 +841,9 @@
     <!-- BARRA SUPERIOR -->
     <header id="main-header">
         <div class="logo">🌟 MimiKids</div>
-        <div class="user-bar" id="header-user-bar" style="display: none;">
+        <div class="user-bar" id="header-user-bar">
             <div class="user-pill">
-                <span id="header-avatar">🦁</span>
+                <span id="header-avatar"></span>
                 <span id="header-username">Niño</span>
                 <span id="header-pet"></span>
             </div>
@@ -791,30 +852,78 @@
     </header>
 
     <!-- =========================================================
-         PANTALLA DE AUTENTICACIÓN OPTIMIZADA (3 VISTAS FLUIDAS)
+         PANTALLA DE INICIO DE SESIÓN Y CREACIÓN DE PERSONAJE
          ========================================================= -->
     <div id="auth-screen">
 
-        <!-- VISTA 1: SELECTOR VISUAL DE PERFILES -->
+        <!-- VISTA 1: SELECTOR DE PERFILES -->
         <div id="view-profiles" class="auth-view active">
             <h1 class="auth-heading">¿Quién va a jugar hoy?</h1>
-            <p class="auth-sub">Toca tu personaje para entrar a tu mundo</p>
+            <p class="auth-sub">Toca tu personaje para entrar o crea uno nuevo</p>
 
             <div class="profiles-grid" id="profiles-grid-container"></div>
 
             <div class="backup-bar">
-                <button class="btn-backup" onclick="exportAccounts()">💾 Guardar Respaldo de Cuentas</button>
+                <button class="btn-backup" onclick="exportAccounts()">💾 Guardar Respaldo</button>
                 <button class="btn-backup" onclick="document.getElementById('import-file').click()">📂 Cargar Respaldo</button>
                 <input type="file" id="import-file" style="display:none" accept=".json" onchange="importAccounts(event)">
             </div>
         </div>
 
-        <!-- VISTA 2: TECLADO NUMÉRICO INTERACTIVO (PIN PAD) -->
+        <!-- VISTA 2: CREAR PERSONAJE (CON AVATARES SVG SIEMPRE VISIBLES) -->
+        <div id="view-register" class="auth-view">
+            <div class="register-card">
+                <h2 style="color: var(--purple); margin-bottom: 12px; text-align:center;">✨ Crea tu Personaje</h2>
+
+                <!-- VISTA PREVIA EN VIVO DEL PERSONAJE SELECCIONADO -->
+                <div class="live-preview-banner">
+                    <div class="preview-avatar-box" id="live-preview-circle"></div>
+                    <div>
+                        <div style="font-size:12px; font-weight:800; color:#64748b;">TU PERSONAJE ELEGIDO:</div>
+                        <div id="live-preview-name" style="font-size:19px; font-weight:900; color:var(--dark);">León Valiente</div>
+                        <div style="font-size:12px; color:#00b894; font-weight:800;">🎁 Incluye +10 Estrellas de bienvenida</div>
+                    </div>
+                </div>
+
+                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:13px; margin-bottom:10px; text-align:center;"></div>
+
+                <label style="font-weight:800; font-size:13px; color:#334155;">1. Toca tu personaje favorito:</label>
+                <div class="character-grid" id="character-selector-grid">
+                    <!-- Se llena automáticamente y también tiene respaldo directo -->
+                </div>
+
+                <label style="font-weight:800; font-size:13px; color:#334155;">2. Elige el color de tu traje:</label>
+                <div class="color-selector">
+                    <div class="color-option selected" style="background: #FF6B6B;" onclick="selectThemeColor(this, '#FF6B6B')"></div>
+                    <div class="color-option" style="background: #4ECDC4;" onclick="selectThemeColor(this, '#4ECDC4')"></div>
+                    <div class="color-option" style="background: #6C5CE7;" onclick="selectThemeColor(this, '#6C5CE7')"></div>
+                    <div class="color-option" style="background: #FD9644;" onclick="selectThemeColor(this, '#FD9644')"></div>
+                    <div class="color-option" style="background: #00B894;" onclick="selectThemeColor(this, '#00B894')"></div>
+                    <div class="color-option" style="background: #e84393;" onclick="selectThemeColor(this, '#e84393')"></div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>3. Tu Nombre:</label>
+                        <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Mateo o Sofía" oninput="updateLivePreviewText()">
+                    </div>
+                    <div class="input-group">
+                        <label>4. PIN Secreto (4 números):</label>
+                        <input type="tel" id="reg-pin" maxlength="4" placeholder="Ej: 1234" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    </div>
+                </div>
+
+                <button class="btn-main" onclick="registerNewAccount()">🚀 ¡Guardar Personaje y Jugar!</button>
+                <button class="btn-secondary-link" id="btn-cancel-reg" onclick="showAuthView('view-profiles')">← Volver a las cuentas</button>
+            </div>
+        </div>
+
+        <!-- VISTA 3: TECLADO NUMÉRICO PARA ENTRAR -->
         <div id="view-pinpad" class="auth-view">
             <div class="pin-pad-card">
-                <div id="pinpad-avatar" style="font-size: 56px; margin-bottom: 5px;">🦁</div>
-                <h2 id="pinpad-username" style="color: var(--dark);">Carlitos</h2>
-                <p style="font-size: 13px; color: #64748b; font-weight: 700;">Marca tu PIN secreto de 4 números</p>
+                <div class="pinpad-avatar-holder" id="pinpad-avatar"></div>
+                <h2 id="pinpad-username" style="color: var(--dark);">Jugador</h2>
+                <p style="font-size: 13px; color: #64748b; font-weight: 700;">Marca tu PIN de 4 números</p>
 
                 <div class="pin-dots" id="pin-dots">
                     <div class="pin-dot"></div>
@@ -833,60 +942,19 @@
                     <button class="num-btn" onclick="pressPinDigit('7')">7</button>
                     <button class="num-btn" onclick="pressPinDigit('8')">8</button>
                     <button class="num-btn" onclick="pressPinDigit('9')">9</button>
-                    <button class="num-btn" style="background:#ffeaa7; font-size:16px;" onclick="clearPinDigits()">Limpiar</button>
+                    <button class="num-btn" style="background:#ffeaa7; font-size:15px;" onclick="clearPinDigits()">Borrar</button>
                     <button class="num-btn" onclick="pressPinDigit('0')">0</button>
                     <button class="num-btn" style="background:#fab1a0;" onclick="backspacePinDigit()">⌫</button>
                 </div>
 
-                <button class="btn-secondary-link" onclick="showAuthView('view-profiles')">← Volver a los perfiles</button>
-            </div>
-        </div>
-
-        <!-- VISTA 3: CREAR CUENTA NUEVA PERSONALIZADA -->
-        <div id="view-register" class="auth-view">
-            <div class="register-card">
-                <h2 style="color: var(--purple); margin-bottom: 15px; text-align:center;">✨ Crear Nuevo Explorador</h2>
-                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:13px; margin-bottom:10px; text-align:center;"></div>
-
-                <div class="input-group">
-                    <label>1. ¿Cómo te llamas?</label>
-                    <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Sofía o Mateo">
-                </div>
-
-                <div class="input-group">
-                    <label>2. Crea tu PIN secreto (4 números fáciles de recordar)</label>
-                    <input type="tel" id="reg-pin" maxlength="4" placeholder="Ej: 1234" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                </div>
-
-                <label style="font-weight:800; font-size:13px; color:#475569;">3. Elige tu Avatar:</label>
-                <div class="avatar-selector">
-                    <span class="avatar-option selected" onclick="selectAvatar(this, '🦁')">🦁</span>
-                    <span class="avatar-option" onclick="selectAvatar(this, '🦄')">🦄</span>
-                    <span class="avatar-option" onclick="selectAvatar(this, '🐼')">🐼</span>
-                    <span class="avatar-option" onclick="selectAvatar(this, '🐸')">🐸</span>
-                    <span class="avatar-option" onclick="selectAvatar(this, '🦖')">🦖</span>
-                    <span class="avatar-option" onclick="selectAvatar(this, '🚀')">🚀</span>
-                </div>
-
-                <label style="font-weight:800; font-size:13px; color:#475569;">4. Elige tu Color Favorito:</label>
-                <div class="color-selector">
-                    <div class="color-option selected" style="background: #FF6B6B;" onclick="selectThemeColor(this, '#FF6B6B')"></div>
-                    <div class="color-option" style="background: #4ECDC4;" onclick="selectThemeColor(this, '#4ECDC4')"></div>
-                    <div class="color-option" style="background: #6C5CE7;" onclick="selectThemeColor(this, '#6C5CE7')"></div>
-                    <div class="color-option" style="background: #FD9644;" onclick="selectThemeColor(this, '#FD9644')"></div>
-                    <div class="color-option" style="background: #00B894;" onclick="selectThemeColor(this, '#00B894')"></div>
-                    <div class="color-option" style="background: #e84393;" onclick="selectThemeColor(this, '#e84393')"></div>
-                </div>
-
-                <button class="btn-main" onclick="registerNewAccount()">🎉 ¡Guardar Cuenta y Jugar!</button>
-                <button class="btn-secondary-link" id="btn-cancel-reg" onclick="showAuthView('view-profiles')">Cancelar y volver</button>
+                <button class="btn-secondary-link" onclick="showAuthView('view-profiles')">← Cambiar de personaje</button>
             </div>
         </div>
 
     </div>
 
     <!-- =========================================================
-         PANTALLA 2: PANEL DE JUEGOS Y PROGRESO
+         PANTALLA PRINCIPAL DE JUEGOS Y PREMIOS
          ========================================================= -->
     <div id="dashboard-screen">
         <div class="stats-grid">
@@ -932,11 +1000,10 @@
 
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('games', this)">🎮 Juegos de Enseñanza (6)</button>
-            <button class="tab-btn" onclick="switchTab('awards', this)">🏆 Mis Trofeos y Premios</button>
+            <button class="tab-btn" onclick="switchTab('awards', this)">🏆 Mis Trofeos</button>
             <button class="tab-btn" onclick="switchTab('shop', this)">🐾 Tienda de Mascotas</button>
         </div>
 
-        <!-- JUEGOS -->
         <div id="tab-games" class="tab-view active">
             <div class="games-grid">
                 <div class="game-card" onclick="startGame('math')">
@@ -978,19 +1045,17 @@
             </div>
         </div>
 
-        <!-- TROFEOS -->
         <div id="tab-awards" class="tab-view">
             <div class="awards-grid" id="awards-container"></div>
         </div>
 
-        <!-- TIENDA -->
         <div id="tab-shop" class="tab-view">
             <div class="shop-grid" id="shop-container"></div>
         </div>
     </div>
 </div>
 
-<!-- MODAL DE ACTIVIDAD -->
+<!-- MODAL DE JUEGO -->
 <div id="game-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeGame()">✖</button>
@@ -1004,49 +1069,102 @@
 <div id="toast-box"></div>
 
 <script>
-    // EFECTOS DE SONIDO SINTETIZADOS
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    function playSound(type) {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
+    // =========================================================
+    // 1. GALERÍA DE PERSONAJES SVG (Se ven en cualquier pantalla)
+    // =========================================================
+    const CHARACTERS = {
+        lion: {
+            id: 'lion',
+            label: 'León',
+            svg: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#e67e22"/><circle cx="50" cy="50" r="32" fill="#f39c12"/><circle cx="38" cy="44" r="5" fill="#2d3436"/><circle cx="62" cy="44" r="5" fill="#2d3436"/><polygon points="45,54 55,54 50,61" fill="#d35400"/><path d="M40 66 Q50 74 60 66" stroke="#2d3436" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`
+        },
+        unicorn: {
+            id: 'unicorn',
+            label: 'Unicornio',
+            svg: `<svg viewBox="0 0 100 100"><circle cx="50" cy="54" r="36" fill="#fd79a8"/><circle cx="50" cy="56" r="28" fill="#ffffff"/><polygon points="43,26 57,26 50,4" fill="#ffeaa7" stroke="#fdcb6e" stroke-width="2"/><circle cx="39" cy="50" r="4.5" fill="#2d3436"/><circle cx="61" cy="50" r="4.5" fill="#2d3436"/><path d="M42 66 Q50 73 58 66" stroke="#e84393" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`
+        },
+        panda: {
+            id: 'panda',
+            label: 'Panda',
+            svg: `<svg viewBox="0 0 100 100"><circle cx="26" cy="26" r="14" fill="#2d3436"/><circle cx="74" cy="26" r="14" fill="#2d3436"/><circle cx="50" cy="54" r="36" fill="#ffffff" stroke="#2d3436" stroke-width="4"/><ellipse cx="37" cy="48" rx="9" ry="11" fill="#2d3436"/><ellipse cx="63" cy="48" rx="9" ry="11" fill="#2d3436"/><circle cx="37" cy="47" r="3.5" fill="#fff"/><circle cx="63" cy="47" r="3.5" fill="#fff"/><ellipse cx="50" cy="60" rx="6" ry="4" fill="#2d3436"/></svg>`
+        },
+        frog: {
+            id: 'frog',
+            label: 'Ranita',
+            svg: `<svg viewBox="0 0 100 100"><circle cx="32" cy="28" r="14" fill="#00b894"/><circle cx="68" cy="28" r="14" fill="#00b894"/><ellipse cx="50" cy="58" rx="38" ry="30" fill="#55efc4"/><circle cx="32" cy="28" r="7" fill="#fff"/><circle cx="68" cy="28" r="7" fill="#fff"/><circle cx="32" cy="28" r="4" fill="#2d3436"/><circle cx="68" cy="28" r="4" fill="#2d3436"/><path d="M34 64 Q50 76 66 64" stroke="#006266" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`
+        },
+        dino: {
+            id: 'dino',
+            label: 'Dino',
+            svg: `<svg viewBox="0 0 100 100"><polygon points="50,6 42,22 58,22" fill="#ff7675"/><circle cx="50" cy="54" r="36" fill="#00cec9"/><circle cx="38" cy="45" r="5" fill="#2d3436"/><circle cx="62" cy="45" r="5" fill="#2d3436"/><path d="M35 64 L42 70 L50 64 L58 70 L65 64" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`
+        },
+        astro: {
+            id: 'astro',
+            label: 'Astronauta',
+            svg: `<svg viewBox="0 0 100 100"><circle cx="50" cy="52" r="38" fill="#dfe6e9" stroke="#636e72" stroke-width="4"/><rect x="24" y="34" width="52" height="34" rx="16" fill="#0984e3"/><circle cx="38" cy="46" r="4" fill="#fff"/><path d="M40 58 Q50 65 60 58" stroke="#74b9ff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`
+        }
+    };
 
-        if (type === 'tap') {
-            osc.frequency.setValueAtTime(440, audioCtx.currentTime);
-            gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.08);
-        } else if (type === 'correct') {
-            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
-            osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.35);
-        } else if (type === 'wrong') {
-            osc.type = 'sawtooth';
-            osc.frequency.setValueAtTime(200, audioCtx.currentTime);
-            osc.frequency.setValueAtTime(140, audioCtx.currentTime + 0.15);
-            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.3);
-        } else if (type === 'win') {
-            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
-            osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.12);
-            osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.24);
-            osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.36);
-            gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.65);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.65);
+    function getAvatarSVG(avatarKey) {
+        if (CHARACTERS[avatarKey]) return CHARACTERS[avatarKey].svg;
+        return CHARACTERS.lion.svg;
+    }
+
+    // =========================================================
+    // 2. AUDIO SEGURO (Lazy Init para no bloquear la carga)
+    // =========================================================
+    let audioCtx = null;
+    function playSound(type) {
+        try {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) return;
+            if (!audioCtx) audioCtx = new AudioContextClass();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'tap') {
+                osc.frequency.setValueAtTime(460, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.07, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.07);
+            } else if (type === 'correct') {
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.14, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.32);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.32);
+            } else if (type === 'wrong') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(145, audioCtx.currentTime + 0.14);
+                gain.gain.setValueAtTime(0.11, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.28);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.28);
+            } else if (type === 'win') {
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.11);
+                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.22);
+                osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.33);
+                gain.gain.setValueAtTime(0.16, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.6);
+            }
+        } catch (e) {
+            // Si el navegador bloquea el sonido, el juego continúa sin fallar
         }
     }
 
-    // TROFEOS Y TIENDA
+    // =========================================================
+    // 3. DATOS DE TROFEOS, TIENDA Y PREGUNTAS
+    // =========================================================
     const TROPHIES = [
         { id: 'first_win', icon: '🥉', title: 'Primer Paso', desc: 'Completa tu primera misión', check: u => u.completedGames >= 1 },
         { id: 'stars_50', icon: '🌟', title: 'Coleccionista', desc: 'Gana 50 estrellas en total', check: u => u.totalStarsEarned >= 50 },
@@ -1109,8 +1227,8 @@
         ]
     };
 
-    // VARIABLES DE ESTADO DE AUTENTICACIÓN Y JUEGO
-    let selectedAvatar = '🦁';
+    // VARIABLES DE ESTADO
+    let selectedAvatar = 'lion';
     let selectedColor = '#FF6B6B';
     let targetLoginUserKey = null;
     let enteredPin = '';
@@ -1119,8 +1237,14 @@
     let roundQueue = [];
     let currentRoundIndex = 0;
 
-    window.onload = () => {
+    // =========================================================
+    // 4. INICIALIZACIÓN SEGURA AL ABRIR LA PÁGINA
+    // =========================================================
+    document.addEventListener('DOMContentLoaded', () => {
+        buildCharacterSelectorGrid();
+        updateLivePreviewBanner();
         renderProfileCards();
+
         const activeSession = localStorage.getItem('mimikids_active_user');
         if (activeSession) {
             const users = getUsersDB();
@@ -1128,12 +1252,15 @@
                 loginUser(users[activeSession]);
             }
         }
-    };
+    });
 
-    // GESTIÓN DE BASE DE DATOS LOCAL
     function getUsersDB() {
-        const data = localStorage.getItem('mimikids_users_db');
-        return data ? JSON.parse(data) : {};
+        try {
+            const data = localStorage.getItem('mimikids_users_db');
+            return data ? JSON.parse(data) : {};
+        } catch (e) {
+            return {};
+        }
     }
 
     function saveUsersDB(db) {
@@ -1145,6 +1272,7 @@
         ['math', 'vowels', 'colors', 'animals', 'shapes', 'planet'].forEach(m => {
             if (!user.modules[m]) user.modules[m] = 1;
         });
+        if (!CHARACTERS[user.avatar]) user.avatar = 'lion';
         if (typeof user.totalStarsEarned !== 'number') user.totalStarsEarned = user.stars || 0;
         if (!Array.isArray(user.unlockedTrophies)) user.unlockedTrophies = [];
         if (!Array.isArray(user.ownedPets)) user.ownedPets = [];
@@ -1153,8 +1281,54 @@
         return user;
     }
 
+    // CONSTRUIR LA GALERÍA DE PERSONAJES A ELEGIR
+    function buildCharacterSelectorGrid() {
+        const grid = document.getElementById('character-selector-grid');
+        grid.innerHTML = '';
+        Object.values(CHARACTERS).forEach(char => {
+            const card = document.createElement('div');
+            card.className = 'char-card' + (char.id === selectedAvatar ? ' selected' : '');
+            card.onclick = () => selectCharacter(char.id, card);
+            card.innerHTML = `
+                ${char.svg}
+                <span>${char.label}</span>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function selectCharacter(charId, cardElement) {
+        playSound('tap');
+        selectedAvatar = charId;
+        document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+        cardElement.classList.add('selected');
+        updateLivePreviewBanner();
+    }
+
+    function selectThemeColor(element, color) {
+        playSound('tap');
+        selectedColor = color;
+        document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
+        element.classList.add('selected');
+        updateLivePreviewBanner();
+    }
+
+    function updateLivePreviewBanner() {
+        const previewCircle = document.getElementById('live-preview-circle');
+        previewCircle.innerHTML = getAvatarSVG(selectedAvatar);
+        previewCircle.style.background = selectedColor + '22';
+        previewCircle.style.borderColor = selectedColor;
+        updateLivePreviewText();
+    }
+
+    function updateLivePreviewText() {
+        const nameInput = document.getElementById('reg-username').value.trim();
+        const charLabel = CHARACTERS[selectedAvatar] ? CHARACTERS[selectedAvatar].label : 'Explorador';
+        document.getElementById('live-preview-name').innerText = nameInput ? `${nameInput} (${charLabel})` : `${charLabel} Valiente`;
+    }
+
     // =========================================================
-    // LÓGICA DE NAVEGACIÓN ENTRE VISTAS DE LOGIN Y REGISTRO
+    // 5. VISTAS DE PERFILES, CREACIÓN Y PIN PAD
     // =========================================================
     function showAuthView(viewId) {
         document.querySelectorAll('.auth-view').forEach(v => v.classList.remove('active'));
@@ -1164,14 +1338,13 @@
         }
     }
 
-    // RENDERIZAR TARJETAS DE PERFILES GUARDADOS
     function renderProfileCards() {
         const db = getUsersDB();
         const keys = Object.keys(db);
         const container = document.getElementById('profiles-grid-container');
         container.innerHTML = '';
 
-        // Si no hay ninguna cuenta todavía, llevar directo a crear la primera
+        // Si no hay cuentas creadas, mostrar directamente el creador de personaje con los 6 avatares visibles
         if (keys.length === 0) {
             document.getElementById('btn-cancel-reg').style.display = 'none';
             showAuthView('view-register');
@@ -1189,7 +1362,7 @@
             card.innerHTML = `
                 <button class="delete-profile-btn" title="Borrar cuenta" onclick="deleteProfile(event, '${key}')">🗑️</button>
                 <div class="profile-avatar-circle" style="background: ${u.themeColor}22; border: 3px solid ${u.themeColor};">
-                    ${u.avatar}
+                    ${getAvatarSVG(u.avatar)}
                 </div>
                 <div class="profile-name">${u.username} ${u.equippedPet || ''}</div>
                 <div class="profile-stats-mini">Nv. ${u.level} • ⭐ ${u.stars}</div>
@@ -1197,27 +1370,76 @@
             container.appendChild(card);
         });
 
-        // Tarjeta para Añadir Nuevo Niño
+        // Tarjeta para Crear Nuevo Personaje
         const addCard = document.createElement('div');
         addCard.className = 'profile-card add-profile-card';
         addCard.onclick = () => {
+            playSound('tap');
             document.getElementById('reg-username').value = '';
             document.getElementById('reg-pin').value = '';
             document.getElementById('reg-error').innerText = '';
+            updateLivePreviewBanner();
             showAuthView('view-register');
         };
         addCard.innerHTML = `
             <div class="profile-avatar-circle" style="background:#e2e8f0; font-size:36px;">➕</div>
-            <div class="profile-name" style="color:#475569;">Nueva Cuenta</div>
-            <div class="profile-stats-mini">Crear perfil</div>
+            <div class="profile-name" style="color:#334155;">Nuevo Personaje</div>
+            <div class="profile-stats-mini">Crear cuenta</div>
         `;
         container.appendChild(addCard);
     }
 
-    // ABRIR TECLADO NUMÉRICO PARA UN NIÑO
+    function registerNewAccount() {
+        const username = document.getElementById('reg-username').value.trim();
+        const pin = document.getElementById('reg-pin').value.trim();
+        const errBox = document.getElementById('reg-error');
+
+        if (username.length < 2) {
+            playSound('wrong');
+            errBox.innerText = '⚠️ Escribe tu nombre (al menos 2 letras).';
+            return;
+        }
+        if (pin.length !== 4) {
+            playSound('wrong');
+            errBox.innerText = '⚠️ Tu PIN secreto debe tener 4 números (ej: 1234).';
+            return;
+        }
+
+        const db = getUsersDB();
+        const userKey = username.toLowerCase();
+
+        if (db[userKey]) {
+            playSound('wrong');
+            errBox.innerText = '⚠️ Ese nombre ya está registrado. Elige otro.';
+            return;
+        }
+
+        const newUser = ensureUserSchema({
+            username: username,
+            pin: pin,
+            avatar: selectedAvatar,
+            themeColor: selectedColor,
+            stars: 10,
+            totalStarsEarned: 10,
+            xp: 0,
+            level: 1,
+            completedGames: 0,
+            modules: {},
+            unlockedTrophies: [],
+            ownedPets: [],
+            equippedPet: ''
+        });
+
+        db[userKey] = newUser;
+        saveUsersDB(db);
+        playSound('win');
+        showToast(`🎁 ¡Personaje creado! Recibiste 10 estrellas de regalo.`);
+        loginUser(newUser);
+    }
+
     function openPinPadForUser(userKey) {
         const db = getUsersDB();
-        const user = db[userKey];
+        const user = ensureUserSchema(db[userKey]);
         if (!user) return;
 
         playSound('tap');
@@ -1225,7 +1447,7 @@
         enteredPin = '';
         updatePinDots();
 
-        document.getElementById('pinpad-avatar').innerText = user.avatar;
+        document.getElementById('pinpad-avatar').innerHTML = getAvatarSVG(user.avatar);
         document.getElementById('pinpad-username').innerText = `¡Hola, ${user.username}!`;
         showAuthView('view-pinpad');
     }
@@ -1236,9 +1458,8 @@
         enteredPin += digit;
         updatePinDots();
 
-        // Auto-iniciar sesión al completar los 4 dígitos
         if (enteredPin.length === 4) {
-            setTimeout(verifyPinPadLogin, 180);
+            setTimeout(verifyPinPadLogin, 160);
         }
     }
 
@@ -1275,86 +1496,286 @@
         } else {
             playSound('wrong');
             updatePinDots(true);
-            showToast('🔒 PIN incorrecto, inténtalo de nuevo');
+            showToast('🔒 PIN incorrecto, inténtalo otra vez');
             setTimeout(() => {
                 enteredPin = '';
                 updatePinDots(false);
-            }, 500);
+            }, 450);
         }
     }
 
-    // CREAR UNA CUENTA NUEVA
-    function selectAvatar(element, emoji) {
-        playSound('tap');
-        document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
-        element.classList.add('selected');
-        selectedAvatar = emoji;
-    }
-
-    function selectThemeColor(element, color) {
-        playSound('tap');
-        document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
-        element.classList.add('selected');
-        selectedColor = color;
-    }
-
-    function registerNewAccount() {
-        const username = document.getElementById('reg-username').value.trim();
-        const pin = document.getElementById('reg-pin').value.trim();
-        const errBox = document.getElementById('reg-error');
-
-        if (username.length < 2) {
-            playSound('wrong');
-            errBox.innerText = 'Escribe un nombre de al menos 2 letras.';
-            return;
-        }
-        if (pin.length !== 4) {
-            playSound('wrong');
-            errBox.innerText = 'El PIN secreto debe tener exactamente 4 números.';
-            return;
-        }
-
-        const db = getUsersDB();
-        const userKey = username.toLowerCase();
-
-        if (db[userKey]) {
-            playSound('wrong');
-            errBox.innerText = 'Ya existe una cuenta con ese nombre. Elige otro.';
-            return;
-        }
-
-        const newUser = ensureUserSchema({
-            username: username,
-            pin: pin,
-            avatar: selectedAvatar,
-            themeColor: selectedColor,
-            stars: 10, // Regalo de bienvenida
-            totalStarsEarned: 10,
-            xp: 0,
-            level: 1,
-            completedGames: 0,
-            modules: {},
-            unlockedTrophies: [],
-            ownedPets: [],
-            equippedPet: ''
-        });
-
-        db[userKey] = newUser;
-        saveUsersDB(db);
-        playSound('win');
-        showToast(`🎁 ¡Bienvenido/a ${username}! Recibiste 10 estrellas de regalo.`);
-        loginUser(newUser);
-    }
-
-    // BORRAR PERFIL (CON CONFIRMACIÓN DE PIN)
     function deleteProfile(event, userKey) {
         event.stopPropagation();
         const db = getUsersDB();
         const user = db[userKey];
         if (!user) return;
 
-        const checkPin = prompt(`Para borrar la cuenta de "${user.username}", escribe su PIN de 4 números:`);
+        const checkPin = prompt(`Para borrar el personaje de "${user.username}", escribe su PIN de 4 números:`);
         if (checkPin === null) return;
 
         if (checkPin === user.pin) {
-            delete db[userKey
+            delete db[userKey];
+            saveUsersDB(db);
+            renderProfileCards();
+            showToast(`🗑️ Personaje ${user.username} eliminado.`);
+        } else {
+            alert('PIN incorrecto.');
+        }
+    }
+
+    function exportAccounts() {
+        const db = getUsersDB();
+        if (Object.keys(db).length === 0) {
+            showToast('No hay cuentas para respaldar todavía.');
+            return;
+        }
+        const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'mimikids_respaldo.json';
+        a.click();
+        showToast('💾 Respaldo descargado');
+    }
+
+    function importAccounts(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+            try {
+                const importedDB = JSON.parse(e.target.result);
+                const merged = { ...getUsersDB(), ...importedDB };
+                saveUsersDB(merged);
+                showAuthView('view-profiles');
+                showToast('📂 Cuentas restauradas con éxito');
+            } catch (err) {
+                alert('Archivo inválido.');
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    // =========================================================
+    // 6. PANEL DEL JUGADOR Y MISIONES
+    // =========================================================
+    function loginUser(userObj) {
+        currentUser = ensureUserSchema(userObj);
+        saveCurrentUser();
+        localStorage.setItem('mimikids_active_user', currentUser.username.toLowerCase());
+
+        document.getElementById('auth-screen').style.display = 'none';
+        document.getElementById('dashboard-screen').style.display = 'flex';
+        document.getElementById('header-user-bar').style.display = 'flex';
+
+        document.getElementById('main-header').style.background =
+            `linear-gradient(90deg, ${currentUser.themeColor}, var(--orange))`;
+
+        checkAndUnlockTrophies(false);
+        updateDashboardUI();
+    }
+
+    function saveCurrentUser() {
+        const db = getUsersDB();
+        db[currentUser.username.toLowerCase()] = currentUser;
+        saveUsersDB(db);
+    }
+
+    function logout() {
+        playSound('tap');
+        currentUser = null;
+        localStorage.removeItem('mimikids_active_user');
+        document.getElementById('dashboard-screen').style.display = 'none';
+        document.getElementById('header-user-bar').style.display = 'none';
+        document.getElementById('auth-screen').style.display = 'flex';
+        document.getElementById('main-header').style.background = 'linear-gradient(90deg, var(--primary), var(--orange))';
+        showAuthView('view-profiles');
+    }
+
+    function switchTab(tabName, btnElement) {
+        playSound('tap');
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btnElement.classList.add('active');
+        document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
+        document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    function updateDashboardUI() {
+        document.getElementById('header-avatar').innerHTML = getAvatarSVG(currentUser.avatar);
+        document.getElementById('header-username').innerText = currentUser.username;
+        document.getElementById('header-pet').innerText = currentUser.equippedPet ? ` ${currentUser.equippedPet}` : '';
+
+        document.getElementById('stat-stars').innerText = currentUser.stars;
+        document.getElementById('stat-level').innerText = 'Nivel ' + currentUser.level;
+        document.getElementById('stat-completed').innerText = currentUser.completedGames;
+        document.getElementById('stat-medals').innerText = `${currentUser.unlockedTrophies.length} / ${TROPHIES.length}`;
+
+        const ranks = ['Explorador', 'Aventurero', 'Súper Lector', 'Maestro Estelar', 'Leyenda MimiKids'];
+        document.getElementById('stat-rank').innerText = ranks[Math.min(currentUser.level - 1, ranks.length - 1)];
+
+        const currentLevelXP = currentUser.xp % 100;
+        document.getElementById('progress-text').innerText = `${currentLevelXP} / 100 XP`;
+        document.getElementById('progress-bar').style.width = `${currentLevelXP}%`;
+
+        Object.keys(currentUser.modules).forEach(mod => {
+            const badge = document.getElementById('badge-' + mod);
+            if (badge) badge.innerText = 'Nv. ' + currentUser.modules[mod];
+        });
+
+        renderAwards();
+        renderShop();
+    }
+
+    function renderAwards() {
+        const container = document.getElementById('awards-container');
+        container.innerHTML = '';
+        TROPHIES.forEach(t => {
+            const isUnlocked = currentUser.unlockedTrophies.includes(t.id);
+            const card = document.createElement('div');
+            card.className = 'award-card ' + (isUnlocked ? 'unlocked' : '');
+            card.innerHTML = `
+                <div style="font-size:42px; margin-bottom:6px;">${t.icon}</div>
+                <h4>${t.title}</h4>
+                <p style="font-size:12px; color:#555; margin-top:4px;">${t.desc}</p>
+                <span style="display:inline-block; margin-top:8px; font-size:11px; font-weight:800; color:${isUnlocked ? '#e67e22' : '#999'}">
+                    ${isUnlocked ? '¡DESBLOQUEADO!' : '🔒 Bloqueado'}
+                </span>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function renderShop() {
+        const container = document.getElementById('shop-container');
+        container.innerHTML = '';
+        PET_SHOP.forEach(pet => {
+            const isOwned = currentUser.ownedPets.includes(pet.id);
+            const isEquipped = currentUser.equippedPet === pet.icon;
+            const card = document.createElement('div');
+            card.className = 'shop-card';
+            card.innerHTML = `
+                <div style="font-size:44px;">${pet.icon}</div>
+                <h4>${pet.name}</h4>
+                <p style="font-size:13px; font-weight:bold; color:#f39c12;">⭐ ${pet.cost} Estrellas</p>
+                <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handlePetAction('${pet.id}', '${pet.icon}', ${pet.cost})">
+                    ${isEquipped ? '✅ Equipada' : isOwned ? 'Equipar' : 'Canjear'}
+                </button>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function handlePetAction(petId, petIcon, cost) {
+        if (currentUser.ownedPets.includes(petId)) {
+            currentUser.equippedPet = petIcon;
+            saveCurrentUser();
+            updateDashboardUI();
+            showToast(`${petIcon} ¡Mascota equipada!`);
+            return;
+        }
+        if (currentUser.stars < cost) {
+            playSound('wrong');
+            showToast(`Necesitas ${cost} ⭐ para este premio.`);
+            return;
+        }
+        currentUser.stars -= cost;
+        currentUser.ownedPets.push(petId);
+        currentUser.equippedPet = petIcon;
+        playSound('win');
+        checkAndUnlockTrophies(true);
+        saveCurrentUser();
+        updateDashboardUI();
+        showToast(`🎉 ¡Adoptaste a ${petIcon}!`);
+    }
+
+    function checkAndUnlockTrophies(notify = true) {
+        TROPHIES.forEach(t => {
+            if (!currentUser.unlockedTrophies.includes(t.id) && t.check(currentUser)) {
+                currentUser.unlockedTrophies.push(t.id);
+                if (notify) showToast(`🏆 ¡Trofeo Desbloqueado: ${t.title}!`);
+            }
+        });
+    }
+
+    function showToast(msg) {
+        const box = document.getElementById('toast-box');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerText = msg;
+        box.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    function startGame(category) {
+        playSound('tap');
+        currentCategory = category;
+        const pool = [...questionsDB[category]];
+        roundQueue = pool.sort(() => Math.random() - 0.5).slice(0, 3);
+        currentRoundIndex = 0;
+
+        const titles = {
+            math: '🔢 Misión de Matemáticas',
+            vowels: '🔤 Misión de Lectura y Vocales',
+            colors: '🎨 Misión de Inglés',
+            animals: '🐾 Misión de Mundo Animal',
+            shapes: '📐 Misión de Formas y Lógica',
+            planet: '🌎 Misión del Planeta y Salud'
+        };
+
+        document.getElementById('modal-title').innerText = titles[category];
+        document.getElementById('game-modal').style.display = 'flex';
+        showCurrentQuestion();
+    }
+
+    function showCurrentQuestion() {
+        const currentQ = roundQueue[currentRoundIndex];
+        document.getElementById('round-text').innerText = `Pregunta ${currentRoundIndex + 1} de ${roundQueue.length}`;
+        document.getElementById('question-text').innerText = currentQ.q;
+
+        const optionsBox = document.getElementById('options-container');
+        optionsBox.innerHTML = '';
+
+        currentQ.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, currentQ.a);
+            optionsBox.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selected, correct) {
+        if (selected === correct) {
+            playSound('correct');
+            currentRoundIndex++;
+
+            if (currentRoundIndex < roundQueue.length) {
+                showToast('✅ ¡Correcto! Siguiente pregunta...');
+                showCurrentQuestion();
+            } else {
+                playSound('win');
+                currentUser.stars += 15;
+                currentUser.totalStarsEarned += 15;
+                currentUser.xp += 40;
+                currentUser.completedGames += 1;
+                currentUser.level = Math.floor(currentUser.xp / 100) + 1;
+                currentUser.modules[currentCategory] += 1;
+
+                checkAndUnlockTrophies(true);
+                saveCurrentUser();
+                closeGame();
+                updateDashboardUI();
+                showToast(`🌟 ¡Misión Superada! +15 Estrellas y +40 XP`);
+            }
+        } else {
+            playSound('wrong');
+            showToast('💪 ¡Casi! Inténtalo otra vez');
+        }
+    }
+
+    function closeGame() {
+        document.getElementById('game-modal').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
