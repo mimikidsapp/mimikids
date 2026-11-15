@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MimiKids 2.0 - Aprende, Juega y Gana Premios</title>
+    <title>MimiKids 3.0 - Perfiles Inteligentes y Juegos</title>
     <style>
         :root {
             --primary: #FF6B6B;
@@ -37,10 +37,10 @@
         .app-container {
             background: white;
             width: 100%;
-            max-width: 1020px;
-            min-height: 680px;
+            max-width: 1040px;
+            min-height: 700px;
             border-radius: 32px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.22);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -58,6 +58,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
+            transition: background 0.4s ease;
         }
 
         .logo {
@@ -72,7 +73,7 @@
         .user-bar {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
@@ -89,162 +90,377 @@
         }
 
         .btn-top {
-            background: var(--dark);
+            background: rgba(0,0,0,0.25);
             color: white;
-            border: none;
-            padding: 8px 16px;
+            border: 2px solid rgba(255,255,255,0.4);
+            padding: 7px 15px;
             border-radius: 20px;
             cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s, background 0.2s;
+            font-weight: 800;
+            font-size: 13px;
+            transition: 0.2s;
         }
 
         .btn-top:hover {
-            transform: scale(1.05);
-            background: #e84118;
+            background: var(--dark);
+            border-color: var(--dark);
         }
 
-        /* PANTALLA DE AUTENTICACIÓN */
+        /* =========================================================
+           NUEVO SISTEMA DE AUTENTICACIÓN VISUAL (VISTAS DE PERFIL)
+           ========================================================= */
         #auth-screen {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px;
+            padding: 30px 20px;
             text-align: center;
+            background: radial-gradient(circle at top, #ffffff 0%, #f1f5f9 100%);
         }
 
-        .auth-card {
-            background: var(--light);
-            padding: 30px;
+        .auth-view {
+            display: none;
+            width: 100%;
+            max-width: 780px;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .auth-view.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .auth-heading {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .auth-sub {
+            font-size: 15px;
+            color: #636e72;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* TARJETAS DE PERFILES (ESTILO NETFLIX KIDS) */
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(155px, 180px));
+            gap: 18px;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 26px;
+            padding: 22px 15px;
+            cursor: pointer;
+            border: 4px solid #e2e8f0;
+            transition: all 0.2s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--purple);
+            box-shadow: 0 14px 28px rgba(108, 92, 231, 0.18);
+        }
+
+        .profile-avatar-circle {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 44px;
+            margin-bottom: 12px;
+            box-shadow: inset 0 -4px 0 rgba(0,0,0,0.1);
+        }
+
+        .profile-name {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .profile-stats-mini {
+            font-size: 12px;
+            font-weight: 800;
+            background: #f1f2f6;
+            padding: 4px 10px;
+            border-radius: 20px;
+            color: #555;
+        }
+
+        .delete-profile-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ffeaa7;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.2s;
+        }
+
+        .profile-card:hover .delete-profile-btn {
+            opacity: 1;
+        }
+
+        .delete-profile-btn:hover {
+            background: #ff7675;
+            color: white;
+        }
+
+        .add-profile-card {
+            border: 4px dashed #cbd5e1;
+            background: rgba(255,255,255,0.6);
+            justify-content: center;
+        }
+
+        .add-profile-card:hover {
+            border-color: var(--green);
+            background: white;
+        }
+
+        /* TECLADO NUMÉRICO INTERACTIVO PARA EL PIN */
+        .pin-pad-card {
+            background: white;
+            padding: 28px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 4px solid var(--secondary);
+        }
+
+        .pin-dots {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin: 18px 0;
+        }
+
+        .pin-dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            background: transparent;
+            transition: all 0.15s ease;
+        }
+
+        .pin-dot.filled {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.15);
+        }
+
+        .pin-dot.error {
+            background: #ff4757;
+            border-color: #ff4757;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+
+        .numpad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .num-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 15px 0;
+            border-radius: 18px;
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--dark);
+            cursor: pointer;
+            box-shadow: 0 4px 0 #cbd5e1;
+            transition: 0.1s;
+        }
+
+        .num-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #cbd5e1;
+            background: var(--accent);
+        }
+
+        /* TARJETA DE REGISTRO DE NUEVA CUENTA */
+        .register-card {
+            background: white;
+            padding: 28px;
             border-radius: 28px;
             width: 100%;
-            max-width: 420px;
+            max-width: 460px;
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            border: 3px solid var(--secondary);
-        }
-
-        .auth-card h2 {
-            color: var(--primary);
-            margin-bottom: 18px;
-            font-size: 25px;
+            border: 4px solid var(--purple);
+            text-align: left;
         }
 
         .input-group {
             margin-bottom: 14px;
-            text-align: left;
         }
 
         .input-group label {
             display: block;
-            font-weight: 700;
-            margin-bottom: 5px;
+            font-weight: 800;
+            margin-bottom: 6px;
             font-size: 13px;
-            color: #555;
+            color: #475569;
         }
 
         .input-group input {
             width: 100%;
             padding: 12px 15px;
             border-radius: 14px;
-            border: 2px solid #dfe6e9;
+            border: 3px solid #e2e8f0;
             font-size: 16px;
+            font-weight: 700;
             outline: none;
-            transition: border-color 0.2s;
+            transition: 0.2s;
         }
 
         .input-group input:focus {
-            border-color: var(--secondary);
+            border-color: var(--purple);
         }
 
-        .avatar-selector {
+        .avatar-selector, .color-selector {
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 12px 0;
+            justify-content: space-between;
+            gap: 8px;
+            margin: 8px 0 16px 0;
             flex-wrap: wrap;
         }
 
         .avatar-option {
             font-size: 28px;
-            padding: 8px;
-            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
             cursor: pointer;
-            border: 3px solid transparent;
-            background: white;
-            transition: transform 0.2s;
+            border: 3px solid #e2e8f0;
+            background: #f8fafc;
+            transition: 0.2s;
         }
 
         .avatar-option.selected {
             border-color: var(--primary);
-            transform: scale(1.18);
+            transform: scale(1.12);
             background: var(--accent);
+        }
+
+        .color-option {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #cbd5e1;
+            transition: 0.2s;
+        }
+
+        .color-option.selected {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px var(--dark);
         }
 
         .btn-main {
             width: 100%;
-            background: var(--secondary);
+            background: var(--green);
             color: white;
             border: none;
             padding: 14px;
             border-radius: 16px;
             font-size: 17px;
-            font-weight: 800;
+            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 5px 0 #38ada9;
+            box-shadow: 0 5px 0 #008f72;
             transition: all 0.1s;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .btn-main:active {
             transform: translateY(4px);
-            box-shadow: 0 1px 0 #38ada9;
+            box-shadow: 0 1px 0 #008f72;
         }
 
-        .switch-auth {
-            margin-top: 14px;
+        .btn-secondary-link {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-weight: 800;
             font-size: 14px;
-            color: var(--purple);
-            font-weight: 700;
+            margin-top: 14px;
             cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-secondary-link:hover {
+            color: var(--dark);
             text-decoration: underline;
         }
 
-        .saved-accounts {
-            margin-top: 22px;
-            width: 100%;
-            max-width: 480px;
-        }
-
-        .account-chips {
+        .backup-bar {
+            margin-top: 15px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             justify-content: center;
-            margin-top: 8px;
+            flex-wrap: wrap;
         }
 
-        .account-chip {
-            background: white;
-            border: 2px solid var(--purple);
-            padding: 6px 14px;
-            border-radius: 50px;
+        .btn-backup {
+            background: #e2e8f0;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #475569;
             cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.2s;
-            font-size: 14px;
         }
 
-        .account-chip:hover {
-            background: var(--purple);
-            color: white;
+        .btn-backup:hover {
+            background: #cbd5e1;
         }
 
-        /* DASHBOARD */
+        /* =========================================================
+           PANTALLA PRINCIPAL (DASHBOARD)
+           ========================================================= */
         #dashboard-screen {
             display: none;
             flex: 1;
@@ -253,7 +469,6 @@
             gap: 20px;
         }
 
-        /* NAVEGACIÓN DE PESTAÑAS */
         .nav-tabs {
             display: flex;
             gap: 12px;
@@ -283,7 +498,6 @@
             box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
         }
 
-        /* TARJETAS DE ESTADÍSTICAS */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -323,7 +537,6 @@
             font-weight: 600;
         }
 
-        /* BARRA DE PROGRESO */
         .progress-section {
             background: #f8f9fa;
             padding: 16px 20px;
@@ -354,7 +567,6 @@
             transition: width 0.5s ease;
         }
 
-        /* CONTENIDO DE PESTAÑAS */
         .tab-view {
             display: none;
             flex-direction: column;
@@ -365,7 +577,6 @@
             display: flex;
         }
 
-        /* GRID DE JUEGOS */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -405,10 +616,9 @@
             font-weight: 800;
         }
 
-        /* SALA DE TROFEOS Y PREMIOS */
-        .awards-grid {
+        .awards-grid, .shop-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
             gap: 15px;
         }
 
@@ -429,18 +639,6 @@
             opacity: 1;
             filter: grayscale(0%);
             box-shadow: 0 6px 15px rgba(252, 196, 25, 0.2);
-        }
-
-        .award-icon {
-            font-size: 44px;
-            margin-bottom: 8px;
-        }
-
-        /* TIENDA DE MASCOTAS */
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
         }
 
         .shop-card {
@@ -550,7 +748,6 @@
             color: #999;
         }
 
-        /* NOTIFICACIÓN TOAST DE PREMIO */
         #toast-box {
             position: fixed;
             bottom: 25px;
@@ -568,9 +765,6 @@
             border-radius: 18px;
             font-weight: 800;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-            display: flex;
-            align-items: center;
-            gap: 10px;
             animation: slideIn 0.3s ease;
         }
 
@@ -584,36 +778,87 @@
 
 <div class="app-container">
     <!-- BARRA SUPERIOR -->
-    <header>
-        <div class="logo">🌟 MimiKids 2.0</div>
+    <header id="main-header">
+        <div class="logo">🌟 MimiKids</div>
         <div class="user-bar" id="header-user-bar" style="display: none;">
             <div class="user-pill">
                 <span id="header-avatar">🦁</span>
                 <span id="header-username">Niño</span>
-                <span id="header-pet" title="Tu Mascota Acompañante"></span>
+                <span id="header-pet"></span>
             </div>
-            <button class="btn-top" onclick="logout()">Salir</button>
+            <button class="btn-top" onclick="logout()">🔄 Cambiar Cuenta</button>
         </div>
     </header>
 
-    <!-- PANTALLA 1: LOGIN Y REGISTRO -->
+    <!-- =========================================================
+         PANTALLA DE AUTENTICACIÓN OPTIMIZADA (3 VISTAS FLUIDAS)
+         ========================================================= -->
     <div id="auth-screen">
-        <div class="auth-card">
-            <h2 id="auth-title">¡Hola! Inicia Sesión</h2>
-            <div id="auth-error" style="color:#ff4757; font-weight:bold; font-size:14px; margin-bottom:10px;"></div>
 
-            <div class="input-group">
-                <label>Nombre del Niño/a (Usuario)</label>
-                <input type="text" id="username-input" placeholder="Ej: Carlitos">
+        <!-- VISTA 1: SELECTOR VISUAL DE PERFILES -->
+        <div id="view-profiles" class="auth-view active">
+            <h1 class="auth-heading">¿Quién va a jugar hoy?</h1>
+            <p class="auth-sub">Toca tu personaje para entrar a tu mundo</p>
+
+            <div class="profiles-grid" id="profiles-grid-container"></div>
+
+            <div class="backup-bar">
+                <button class="btn-backup" onclick="exportAccounts()">💾 Guardar Respaldo de Cuentas</button>
+                <button class="btn-backup" onclick="document.getElementById('import-file').click()">📂 Cargar Respaldo</button>
+                <input type="file" id="import-file" style="display:none" accept=".json" onchange="importAccounts(event)">
             </div>
+        </div>
 
-            <div class="input-group">
-                <label>PIN Secreto (4 números)</label>
-                <input type="password" id="pin-input" maxlength="4" placeholder="****">
+        <!-- VISTA 2: TECLADO NUMÉRICO INTERACTIVO (PIN PAD) -->
+        <div id="view-pinpad" class="auth-view">
+            <div class="pin-pad-card">
+                <div id="pinpad-avatar" style="font-size: 56px; margin-bottom: 5px;">🦁</div>
+                <h2 id="pinpad-username" style="color: var(--dark);">Carlitos</h2>
+                <p style="font-size: 13px; color: #64748b; font-weight: 700;">Marca tu PIN secreto de 4 números</p>
+
+                <div class="pin-dots" id="pin-dots">
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                </div>
+
+                <div class="numpad-grid">
+                    <button class="num-btn" onclick="pressPinDigit('1')">1</button>
+                    <button class="num-btn" onclick="pressPinDigit('2')">2</button>
+                    <button class="num-btn" onclick="pressPinDigit('3')">3</button>
+                    <button class="num-btn" onclick="pressPinDigit('4')">4</button>
+                    <button class="num-btn" onclick="pressPinDigit('5')">5</button>
+                    <button class="num-btn" onclick="pressPinDigit('6')">6</button>
+                    <button class="num-btn" onclick="pressPinDigit('7')">7</button>
+                    <button class="num-btn" onclick="pressPinDigit('8')">8</button>
+                    <button class="num-btn" onclick="pressPinDigit('9')">9</button>
+                    <button class="num-btn" style="background:#ffeaa7; font-size:16px;" onclick="clearPinDigits()">Limpiar</button>
+                    <button class="num-btn" onclick="pressPinDigit('0')">0</button>
+                    <button class="num-btn" style="background:#fab1a0;" onclick="backspacePinDigit()">⌫</button>
+                </div>
+
+                <button class="btn-secondary-link" onclick="showAuthView('view-profiles')">← Volver a los perfiles</button>
             </div>
+        </div>
 
-            <div id="avatar-section" style="display: none;">
-                <label style="font-weight:bold; font-size:13px;">Elige tu personaje:</label>
+        <!-- VISTA 3: CREAR CUENTA NUEVA PERSONALIZADA -->
+        <div id="view-register" class="auth-view">
+            <div class="register-card">
+                <h2 style="color: var(--purple); margin-bottom: 15px; text-align:center;">✨ Crear Nuevo Explorador</h2>
+                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:13px; margin-bottom:10px; text-align:center;"></div>
+
+                <div class="input-group">
+                    <label>1. ¿Cómo te llamas?</label>
+                    <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Sofía o Mateo">
+                </div>
+
+                <div class="input-group">
+                    <label>2. Crea tu PIN secreto (4 números fáciles de recordar)</label>
+                    <input type="tel" id="reg-pin" maxlength="4" placeholder="Ej: 1234" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                </div>
+
+                <label style="font-weight:800; font-size:13px; color:#475569;">3. Elige tu Avatar:</label>
                 <div class="avatar-selector">
                     <span class="avatar-option selected" onclick="selectAvatar(this, '🦁')">🦁</span>
                     <span class="avatar-option" onclick="selectAvatar(this, '🦄')">🦄</span>
@@ -622,23 +867,28 @@
                     <span class="avatar-option" onclick="selectAvatar(this, '🦖')">🦖</span>
                     <span class="avatar-option" onclick="selectAvatar(this, '🚀')">🚀</span>
                 </div>
+
+                <label style="font-weight:800; font-size:13px; color:#475569;">4. Elige tu Color Favorito:</label>
+                <div class="color-selector">
+                    <div class="color-option selected" style="background: #FF6B6B;" onclick="selectThemeColor(this, '#FF6B6B')"></div>
+                    <div class="color-option" style="background: #4ECDC4;" onclick="selectThemeColor(this, '#4ECDC4')"></div>
+                    <div class="color-option" style="background: #6C5CE7;" onclick="selectThemeColor(this, '#6C5CE7')"></div>
+                    <div class="color-option" style="background: #FD9644;" onclick="selectThemeColor(this, '#FD9644')"></div>
+                    <div class="color-option" style="background: #00B894;" onclick="selectThemeColor(this, '#00B894')"></div>
+                    <div class="color-option" style="background: #e84393;" onclick="selectThemeColor(this, '#e84393')"></div>
+                </div>
+
+                <button class="btn-main" onclick="registerNewAccount()">🎉 ¡Guardar Cuenta y Jugar!</button>
+                <button class="btn-secondary-link" id="btn-cancel-reg" onclick="showAuthView('view-profiles')">Cancelar y volver</button>
             </div>
-
-            <button class="btn-main" id="auth-btn" onclick="handleAuth()">¡Entrar a Jugar!</button>
-            <p class="switch-auth" id="switch-auth-text" onclick="toggleAuthMode()">
-                ¿No tienes cuenta? Crea una nueva aquí
-            </p>
         </div>
 
-        <div class="saved-accounts" id="saved-accounts-box">
-            <h4 style="color:#555;">Cuentas guardadas en este dispositivo:</h4>
-            <div class="account-chips" id="account-chips-list"></div>
-        </div>
     </div>
 
-    <!-- PANTALLA 2: PANEL PRINCIPAL -->
+    <!-- =========================================================
+         PANTALLA 2: PANEL DE JUEGOS Y PROGRESO
+         ========================================================= -->
     <div id="dashboard-screen">
-        <!-- Estadísticas -->
         <div class="stats-grid">
             <div class="stat-card" style="border-color: var(--accent);">
                 <div class="stat-icon">⭐</div>
@@ -670,10 +920,9 @@
             </div>
         </div>
 
-        <!-- Barra de Nivel -->
         <div class="progress-section">
             <div class="progress-header">
-                <span>Experiencia para subir de Nivel</span>
+                <span>Experiencia para el siguiente Nivel</span>
                 <span id="progress-text">0 / 100 XP</span>
             </div>
             <div class="progress-bar-bg">
@@ -681,14 +930,13 @@
             </div>
         </div>
 
-        <!-- Pestañas -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('games', this)">🎮 Juegos de Enseñanza (6)</button>
             <button class="tab-btn" onclick="switchTab('awards', this)">🏆 Mis Trofeos y Premios</button>
             <button class="tab-btn" onclick="switchTab('shop', this)">🐾 Tienda de Mascotas</button>
         </div>
 
-        <!-- PESTAÑA 1: JUEGOS EDUCATIVOS -->
+        <!-- JUEGOS -->
         <div id="tab-games" class="tab-view active">
             <div class="games-grid">
                 <div class="game-card" onclick="startGame('math')">
@@ -697,59 +945,52 @@
                     <h3>Matemáticas</h3>
                     <p style="font-size: 13px; color:#666; margin-top:4px;">Sumas, restas y conteo</p>
                 </div>
-
                 <div class="game-card" onclick="startGame('vowels')">
                     <span class="game-badge" id="badge-vowels">Nv. 1</span>
                     <div class="game-icon">🔤</div>
                     <h3>Lectura y Vocales</h3>
                     <p style="font-size: 13px; color:#666; margin-top:4px;">Completa las palabras</p>
                 </div>
-
                 <div class="game-card" onclick="startGame('colors')">
                     <span class="game-badge" id="badge-colors">Nv. 1</span>
                     <div class="game-icon">🎨</div>
                     <h3>Inglés Divertido</h3>
                     <p style="font-size: 13px; color:#666; margin-top:4px;">Colores, números y más</p>
                 </div>
-
                 <div class="game-card" onclick="startGame('animals')">
                     <span class="game-badge" id="badge-animals">Nv. 1</span>
                     <div class="game-icon">🐾</div>
                     <h3>Mundo Animal</h3>
                     <p style="font-size: 13px; color:#666; margin-top:4px;">Sonidos, hábitats y crías</p>
                 </div>
-
                 <div class="game-card" onclick="startGame('shapes')">
                     <span class="game-badge" id="badge-shapes">Nv. 1</span>
                     <div class="game-icon">📐</div>
                     <h3>Formas y Lógica</h3>
                     <p style="font-size: 13px; color:#666; margin-top:4px;">Secuencias y figuras</p>
                 </div>
-
                 <div class="game-card" onclick="startGame('planet')">
                     <span class="game-badge" id="badge-planet">Nv. 1</span>
                     <div class="game-icon">🌎</div>
-                    <h3>Planeta yHábitos</h3>
+                    <h3>Planeta y Hábitos</h3>
                     <p style="font-size: 13px; color:#666; margin-top:4px;">Reciclaje, salud y cuerpo</p>
                 </div>
             </div>
         </div>
 
-        <!-- PESTAÑA 2: SALA DE PREMIOS Y TROFEOS -->
+        <!-- TROFEOS -->
         <div id="tab-awards" class="tab-view">
-            <p style="font-size: 14px; color:#555;">¡Juega misiones para desbloquear automáticamente estas medallas especiales!</p>
             <div class="awards-grid" id="awards-container"></div>
         </div>
 
-        <!-- PESTAÑA 3: TIENDA DE MASCOTAS CON ESTRELLAS -->
+        <!-- TIENDA -->
         <div id="tab-shop" class="tab-view">
-            <p style="font-size: 14px; color:#555;">Canjea tus estrellas ⭐ por compañeros virtuales que aparecerán junto a tu nombre.</p>
             <div class="shop-grid" id="shop-container"></div>
         </div>
     </div>
 </div>
 
-<!-- MODAL DE ACTIVIDAD (RONDA DE 3 PREGUNTAS) -->
+<!-- MODAL DE ACTIVIDAD -->
 <div id="game-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeGame()">✖</button>
@@ -760,11 +1001,10 @@
     </div>
 </div>
 
-<!-- CONTENEDOR DE NOTIFICACIONES -->
 <div id="toast-box"></div>
 
 <script>
-    // SONIDOS SINTETIZADOS (No requiere archivos externos)
+    // EFECTOS DE SONIDO SINTETIZADOS
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     function playSound(type) {
         if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -773,17 +1013,23 @@
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
-        if (type === 'correct') {
-            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
-            osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+        if (type === 'tap') {
+            osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+            osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1);
             gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
             osc.start();
             osc.stop(audioCtx.currentTime + 0.35);
         } else if (type === 'wrong') {
             osc.type = 'sawtooth';
-            osc.frequency.setValueAtTime(220, audioCtx.currentTime);
-            osc.frequency.setValueAtTime(160, audioCtx.currentTime + 0.15);
+            osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+            osc.frequency.setValueAtTime(140, audioCtx.currentTime + 0.15);
             gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
             osc.start();
@@ -800,17 +1046,16 @@
         }
     }
 
-    // DEFINICIÓN DE TROFEOS Y PREMIOS
+    // TROFEOS Y TIENDA
     const TROPHIES = [
         { id: 'first_win', icon: '🥉', title: 'Primer Paso', desc: 'Completa tu primera misión', check: u => u.completedGames >= 1 },
-        { id: 'stars_50', icon: '🌟', title: 'Coleccionista', desc: 'Acumula o gana 50 estrellas en total', check: u => u.totalStarsEarned >= 50 },
-        { id: 'math_wiz', icon: '🧮', title: 'Genio Matemático', desc: 'Alcanza el Nivel 3 en Matemáticas', check: u => u.modules.math >= 3 },
-        { id: 'polyglot', icon: '🇬🇧', title: 'Bilingüe', desc: 'Alcanza el Nivel 3 en Inglés', check: u => u.modules.colors >= 3 },
+        { id: 'stars_50', icon: '🌟', title: 'Coleccionista', desc: 'Gana 50 estrellas en total', check: u => u.totalStarsEarned >= 50 },
+        { id: 'math_wiz', icon: '🧮', title: 'Genio Matemático', desc: 'Alcanza Nivel 3 en Matemáticas', check: u => u.modules.math >= 3 },
+        { id: 'polyglot', icon: '🇬🇧', title: 'Bilingüe', desc: 'Alcanza Nivel 3 en Inglés', check: u => u.modules.colors >= 3 },
         { id: 'explorer', icon: '🧭', title: 'Súper Explorador', desc: 'Llega al Nivel General 3', check: u => u.level >= 3 },
-        { id: 'pet_owner', icon: '🐶', title: 'Amigo Fiel', desc: 'Adopta tu primera mascota en la tienda', check: u => u.ownedPets.length > 0 }
+        { id: 'pet_owner', icon: '🐶', title: 'Amigo Fiel', desc: 'Adopta tu primera mascota', check: u => u.ownedPets.length > 0 }
     ];
 
-    // DEFINICIÓN DE TIENDA DE MASCOTAS
     const PET_SHOP = [
         { id: 'pet_dog', icon: '🐶', name: 'Perrito Leal', cost: 25 },
         { id: 'pet_cat', icon: '🐱', name: 'Gatito Mágico', cost: 25 },
@@ -819,7 +1064,6 @@
         { id: 'pet_crown', icon: '👑', name: 'Corona Real', cost: 100 }
     ];
 
-    // BANCO AMPLIADO DE PREGUNTAS (6 MÓDULOS)
     const questionsDB = {
         math: [
             { q: "¿Cuánto es 3 + 4?", options: ["6", "7", "8", "5"], a: "7" },
@@ -865,17 +1109,18 @@
         ]
     };
 
-    // VARIABLES DE ESTADO
-    let isRegisterMode = false;
+    // VARIABLES DE ESTADO DE AUTENTICACIÓN Y JUEGO
     let selectedAvatar = '🦁';
+    let selectedColor = '#FF6B6B';
+    let targetLoginUserKey = null;
+    let enteredPin = '';
     let currentUser = null;
     let currentCategory = null;
     let roundQueue = [];
     let currentRoundIndex = 0;
 
-    // CARGA INICIAL
     window.onload = () => {
-        loadSavedAccountsChips();
+        renderProfileCards();
         const activeSession = localStorage.getItem('mimikids_active_user');
         if (activeSession) {
             const users = getUsersDB();
@@ -885,6 +1130,7 @@
         }
     };
 
+    // GESTIÓN DE BASE DE DATOS LOCAL
     function getUsersDB() {
         const data = localStorage.getItem('mimikids_users_db');
         return data ? JSON.parse(data) : {};
@@ -894,247 +1140,221 @@
         localStorage.setItem('mimikids_users_db', JSON.stringify(db));
     }
 
-    // MIGRACIÓN AUTOMÁTICA PARA CUENTAS DE LA VERSIÓN 1.0
     function ensureUserSchema(user) {
         if (!user.modules) user.modules = {};
-        const defaultModules = ['math', 'vowels', 'colors', 'animals', 'shapes', 'planet'];
-        defaultModules.forEach(m => {
+        ['math', 'vowels', 'colors', 'animals', 'shapes', 'planet'].forEach(m => {
             if (!user.modules[m]) user.modules[m] = 1;
         });
         if (typeof user.totalStarsEarned !== 'number') user.totalStarsEarned = user.stars || 0;
         if (!Array.isArray(user.unlockedTrophies)) user.unlockedTrophies = [];
         if (!Array.isArray(user.ownedPets)) user.ownedPets = [];
         if (!user.equippedPet) user.equippedPet = '';
+        if (!user.themeColor) user.themeColor = '#FF6B6B';
         return user;
     }
 
-    function toggleAuthMode() {
-        isRegisterMode = !isRegisterMode;
-        document.getElementById('auth-error').innerText = '';
-        document.getElementById('auth-title').innerText = isRegisterMode ? 'Crear Cuenta Nueva' : '¡Hola! Inicia Sesión';
-        document.getElementById('avatar-section').style.display = isRegisterMode ? 'block' : 'none';
-        document.getElementById('auth-btn').innerText = isRegisterMode ? 'Registrarme y Jugar' : '¡Entrar a Jugar!';
-        document.getElementById('switch-auth-text').innerText = isRegisterMode 
-            ? '¿Ya tienes cuenta? Inicia sesión aquí' 
-            : '¿No tienes cuenta? Crea una nueva aquí';
+    // =========================================================
+    // LÓGICA DE NAVEGACIÓN ENTRE VISTAS DE LOGIN Y REGISTRO
+    // =========================================================
+    function showAuthView(viewId) {
+        document.querySelectorAll('.auth-view').forEach(v => v.classList.remove('active'));
+        document.getElementById(viewId).classList.add('active');
+        if (viewId === 'view-profiles') {
+            renderProfileCards();
+        }
     }
 
+    // RENDERIZAR TARJETAS DE PERFILES GUARDADOS
+    function renderProfileCards() {
+        const db = getUsersDB();
+        const keys = Object.keys(db);
+        const container = document.getElementById('profiles-grid-container');
+        container.innerHTML = '';
+
+        // Si no hay ninguna cuenta todavía, llevar directo a crear la primera
+        if (keys.length === 0) {
+            document.getElementById('btn-cancel-reg').style.display = 'none';
+            showAuthView('view-register');
+            return;
+        }
+
+        document.getElementById('btn-cancel-reg').style.display = 'block';
+
+        keys.forEach(key => {
+            const u = ensureUserSchema(db[key]);
+            const card = document.createElement('div');
+            card.className = 'profile-card';
+            card.onclick = () => openPinPadForUser(key);
+
+            card.innerHTML = `
+                <button class="delete-profile-btn" title="Borrar cuenta" onclick="deleteProfile(event, '${key}')">🗑️</button>
+                <div class="profile-avatar-circle" style="background: ${u.themeColor}22; border: 3px solid ${u.themeColor};">
+                    ${u.avatar}
+                </div>
+                <div class="profile-name">${u.username} ${u.equippedPet || ''}</div>
+                <div class="profile-stats-mini">Nv. ${u.level} • ⭐ ${u.stars}</div>
+            `;
+            container.appendChild(card);
+        });
+
+        // Tarjeta para Añadir Nuevo Niño
+        const addCard = document.createElement('div');
+        addCard.className = 'profile-card add-profile-card';
+        addCard.onclick = () => {
+            document.getElementById('reg-username').value = '';
+            document.getElementById('reg-pin').value = '';
+            document.getElementById('reg-error').innerText = '';
+            showAuthView('view-register');
+        };
+        addCard.innerHTML = `
+            <div class="profile-avatar-circle" style="background:#e2e8f0; font-size:36px;">➕</div>
+            <div class="profile-name" style="color:#475569;">Nueva Cuenta</div>
+            <div class="profile-stats-mini">Crear perfil</div>
+        `;
+        container.appendChild(addCard);
+    }
+
+    // ABRIR TECLADO NUMÉRICO PARA UN NIÑO
+    function openPinPadForUser(userKey) {
+        const db = getUsersDB();
+        const user = db[userKey];
+        if (!user) return;
+
+        playSound('tap');
+        targetLoginUserKey = userKey;
+        enteredPin = '';
+        updatePinDots();
+
+        document.getElementById('pinpad-avatar').innerText = user.avatar;
+        document.getElementById('pinpad-username').innerText = `¡Hola, ${user.username}!`;
+        showAuthView('view-pinpad');
+    }
+
+    function pressPinDigit(digit) {
+        if (enteredPin.length >= 4) return;
+        playSound('tap');
+        enteredPin += digit;
+        updatePinDots();
+
+        // Auto-iniciar sesión al completar los 4 dígitos
+        if (enteredPin.length === 4) {
+            setTimeout(verifyPinPadLogin, 180);
+        }
+    }
+
+    function backspacePinDigit() {
+        playSound('tap');
+        enteredPin = enteredPin.slice(0, -1);
+        updatePinDots();
+    }
+
+    function clearPinDigits() {
+        playSound('tap');
+        enteredPin = '';
+        updatePinDots();
+    }
+
+    function updatePinDots(isError = false) {
+        const dots = document.querySelectorAll('#pin-dots .pin-dot');
+        dots.forEach((dot, idx) => {
+            dot.className = 'pin-dot';
+            if (isError) {
+                dot.classList.add('error');
+            } else if (idx < enteredPin.length) {
+                dot.classList.add('filled');
+            }
+        });
+    }
+
+    function verifyPinPadLogin() {
+        const db = getUsersDB();
+        const user = db[targetLoginUserKey];
+        if (user && user.pin === enteredPin) {
+            playSound('win');
+            loginUser(user);
+        } else {
+            playSound('wrong');
+            updatePinDots(true);
+            showToast('🔒 PIN incorrecto, inténtalo de nuevo');
+            setTimeout(() => {
+                enteredPin = '';
+                updatePinDots(false);
+            }, 500);
+        }
+    }
+
+    // CREAR UNA CUENTA NUEVA
     function selectAvatar(element, emoji) {
+        playSound('tap');
         document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
         element.classList.add('selected');
         selectedAvatar = emoji;
     }
 
-    function handleAuth() {
-        const username = document.getElementById('username-input').value.trim();
-        const pin = document.getElementById('pin-input').value.trim();
-        const errorBox = document.getElementById('auth-error');
+    function selectThemeColor(element, color) {
+        playSound('tap');
+        document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
+        element.classList.add('selected');
+        selectedColor = color;
+    }
 
-        if (!username || !pin) {
-            errorBox.innerText = 'Por favor escribe tu nombre y tu PIN.';
+    function registerNewAccount() {
+        const username = document.getElementById('reg-username').value.trim();
+        const pin = document.getElementById('reg-pin').value.trim();
+        const errBox = document.getElementById('reg-error');
+
+        if (username.length < 2) {
+            playSound('wrong');
+            errBox.innerText = 'Escribe un nombre de al menos 2 letras.';
+            return;
+        }
+        if (pin.length !== 4) {
+            playSound('wrong');
+            errBox.innerText = 'El PIN secreto debe tener exactamente 4 números.';
             return;
         }
 
         const db = getUsersDB();
         const userKey = username.toLowerCase();
 
-        if (isRegisterMode) {
-            if (db[userKey]) {
-                errorBox.innerText = 'Ese nombre ya existe. Elige otro o inicia sesión.';
-                return;
-            }
-            const newUser = ensureUserSchema({
-                username: username,
-                pin: pin,
-                avatar: selectedAvatar,
-                stars: 0,
-                totalStarsEarned: 0,
-                xp: 0,
-                level: 1,
-                completedGames: 0,
-                modules: {},
-                unlockedTrophies: [],
-                ownedPets: [],
-                equippedPet: ''
-            });
-            db[userKey] = newUser;
-            saveUsersDB(db);
-            loginUser(newUser);
-        } else {
-            if (!db[userKey] || db[userKey].pin !== pin) {
-                errorBox.innerText = 'Usuario o PIN incorrecto.';
-                return;
-            }
-            loginUser(db[userKey]);
-        }
-    }
-
-    function loginUser(userObj) {
-        currentUser = ensureUserSchema(userObj);
-        saveCurrentUser();
-        localStorage.setItem('mimikids_active_user', currentUser.username.toLowerCase());
-
-        document.getElementById('auth-screen').style.display = 'none';
-        document.getElementById('dashboard-screen').style.display = 'flex';
-        document.getElementById('header-user-bar').style.display = 'flex';
-
-        checkAndUnlockTrophies(false);
-        updateDashboardUI();
-    }
-
-    function saveCurrentUser() {
-        const db = getUsersDB();
-        db[currentUser.username.toLowerCase()] = currentUser;
-        saveUsersDB(db);
-    }
-
-    function switchTab(tabName, btnElement) {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btnElement.classList.add('active');
-
-        document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
-        document.getElementById('tab-' + tabName).classList.add('active');
-    }
-
-    function updateDashboardUI() {
-        document.getElementById('header-avatar').innerText = currentUser.avatar;
-        document.getElementById('header-username').innerText = currentUser.username;
-        document.getElementById('header-pet').innerText = currentUser.equippedPet ? ` ${currentUser.equippedPet}` : '';
-
-        document.getElementById('stat-stars').innerText = currentUser.stars;
-        document.getElementById('stat-level').innerText = 'Nivel ' + currentUser.level;
-        document.getElementById('stat-completed').innerText = currentUser.completedGames;
-        document.getElementById('stat-medals').innerText = `${currentUser.unlockedTrophies.length} / ${TROPHIES.length}`;
-
-        const ranks = ['Explorador', 'Aventurero', 'Súper Lector', 'Maestro Estelar', 'Leyenda MimiKids'];
-        document.getElementById('stat-rank').innerText = ranks[Math.min(currentUser.level - 1, ranks.length - 1)];
-
-        const currentLevelXP = currentUser.xp % 100;
-        document.getElementById('progress-text').innerText = `${currentLevelXP} / 100 XP`;
-        document.getElementById('progress-bar').style.width = `${currentLevelXP}%`;
-
-        // Actualizar medallas de los 6 módulos
-        Object.keys(currentUser.modules).forEach(mod => {
-            const badge = document.getElementById('badge-' + mod);
-            if (badge) badge.innerText = 'Nv. ' + currentUser.modules[mod];
-        });
-
-        renderAwards();
-        renderShop();
-    }
-
-    function renderAwards() {
-        const container = document.getElementById('awards-container');
-        container.innerHTML = '';
-        TROPHIES.forEach(t => {
-            const isUnlocked = currentUser.unlockedTrophies.includes(t.id);
-            const card = document.createElement('div');
-            card.className = 'award-card ' + (isUnlocked ? 'unlocked' : '');
-            card.innerHTML = `
-                <div class="award-icon">${t.icon}</div>
-                <h4>${t.title}</h4>
-                <p style="font-size:12px; color:#555; margin-top:4px;">${t.desc}</p>
-                <span style="display:inline-block; margin-top:8px; font-size:11px; font-weight:800; color:${isUnlocked ? '#e67e22' : '#999'}">
-                    ${isUnlocked ? '¡DESBLOQUEADO!' : '🔒 Bloqueado'}
-                </span>
-            `;
-            container.appendChild(card);
-        });
-    }
-
-    function renderShop() {
-        const container = document.getElementById('shop-container');
-        container.innerHTML = '';
-        PET_SHOP.forEach(pet => {
-            const isOwned = currentUser.ownedPets.includes(pet.id);
-            const isEquipped = currentUser.equippedPet === pet.icon;
-            const card = document.createElement('div');
-            card.className = 'shop-card';
-            card.innerHTML = `
-                <div style="font-size:46px;">${pet.icon}</div>
-                <h4>${pet.name}</h4>
-                <p style="font-size:13px; font-weight:bold; color:#f39c12;">⭐ ${pet.cost} Estrellas</p>
-                <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handlePetAction('${pet.id}', '${pet.icon}', ${pet.cost})">
-                    ${isEquipped ? '✅ Equipada' : isOwned ? 'Equipar' : 'Canjear'}
-                </button>
-            `;
-            container.appendChild(card);
-        });
-    }
-
-    function handlePetAction(petId, petIcon, cost) {
-        if (currentUser.ownedPets.includes(petId)) {
-            currentUser.equippedPet = petIcon;
-            saveCurrentUser();
-            updateDashboardUI();
-            showToast(`${petIcon} ¡Mascota equipada junto a tu nombre!`);
-            return;
-        }
-
-        if (currentUser.stars < cost) {
+        if (db[userKey]) {
             playSound('wrong');
-            showToast(`Necesitas ${cost} ⭐ para este premio. ¡Sigue jugando!`);
+            errBox.innerText = 'Ya existe una cuenta con ese nombre. Elige otro.';
             return;
         }
 
-        currentUser.stars -= cost;
-        currentUser.ownedPets.push(petId);
-        currentUser.equippedPet = petIcon;
-        playSound('win');
-        checkAndUnlockTrophies(true);
-        saveCurrentUser();
-        updateDashboardUI();
-        showToast(`🎉 ¡Felicidades! Desbloqueaste a ${petIcon}`);
-    }
-
-    function checkAndUnlockTrophies(notify = true) {
-        TROPHIES.forEach(t => {
-            if (!currentUser.unlockedTrophies.includes(t.id) && t.check(currentUser)) {
-                currentUser.unlockedTrophies.push(t.id);
-                if (notify) {
-                    showToast(`🏆 ¡Nuevo Trofeo Desbloqueado: ${t.title}!`);
-                }
-            }
+        const newUser = ensureUserSchema({
+            username: username,
+            pin: pin,
+            avatar: selectedAvatar,
+            themeColor: selectedColor,
+            stars: 10, // Regalo de bienvenida
+            totalStarsEarned: 10,
+            xp: 0,
+            level: 1,
+            completedGames: 0,
+            modules: {},
+            unlockedTrophies: [],
+            ownedPets: [],
+            equippedPet: ''
         });
+
+        db[userKey] = newUser;
+        saveUsersDB(db);
+        playSound('win');
+        showToast(`🎁 ¡Bienvenido/a ${username}! Recibiste 10 estrellas de regalo.`);
+        loginUser(newUser);
     }
 
-    function showToast(msg) {
-        const box = document.getElementById('toast-box');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerText = msg;
-        box.appendChild(toast);
-        setTimeout(() => toast.remove(), 3500);
-    }
+    // BORRAR PERFIL (CON CONFIRMACIÓN DE PIN)
+    function deleteProfile(event, userKey) {
+        event.stopPropagation();
+        const db = getUsersDB();
+        const user = db[userKey];
+        if (!user) return;
 
-    // SISTEMA DE JUEGOS POR RONDAS (3 PREGUNTAS POR MISIÓN)
-    function startGame(category) {
-        currentCategory = category;
-        const pool = [...questionsDB[category]];
-        // Mezclar y tomar 3 preguntas
-        roundQueue = pool.sort(() => Math.random() - 0.5).slice(0, 3);
-        currentRoundIndex = 0;
+        const checkPin = prompt(`Para borrar la cuenta de "${user.username}", escribe su PIN de 4 números:`);
+        if (checkPin === null) return;
 
-        const titles = {
-            math: '🔢 Misión de Matemáticas',
-            vowels: '🔤 Misión de Lectura y Vocales',
-            colors: '🎨 Misión de Inglés',
-            animals: '🐾 Misión de Mundo Animal',
-            shapes: '📐 Misión de Formas y Lógica',
-            planet: '🌎 Misión del Planeta y Salud'
-        };
-
-        document.getElementById('modal-title').innerText = titles[category];
-        document.getElementById('game-modal').style.display = 'flex';
-        showCurrentQuestion();
-    }
-
-    function showCurrentQuestion() {
-        const currentQ = roundQueue[currentRoundIndex];
-        document.getElementById('round-text').innerText = `Pregunta ${currentRoundIndex + 1} de ${roundQueue.length}`;
-        document.getElementById('question-text').innerText = currentQ.q;
-
-        const optionsBox = document.getElementById('options-container');
-        optionsBox.innerHTML = '';
-
-        currentQ
+        if (checkPin === user.pin) {
+            delete db[userKey
