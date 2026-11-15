@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MimiKids 6.0 - Juegos Visuales y TV Kids Segura (1-4 Años)</title>
+    <title>MimiKids Turbo - Videojuego Educativo de 3 Carriles (1-4 Años)</title>
     <style>
         :root {
             --primary: #FF6B6B;
@@ -26,26 +26,26 @@
         }
 
         body {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 8px;
             color: var(--dark);
         }
 
         .app-container {
             background: white;
             width: 100%;
-            max-width: 1080px;
+            max-width: 1040px;
             min-height: 720px;
-            border-radius: 34px;
-            box-shadow: 0 22px 55px rgba(0,0,0,0.2);
+            border-radius: 32px;
+            box-shadow: 0 22px 55px rgba(0,0,0,0.22);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 8px solid white;
+            border: 7px solid white;
             position: relative;
         }
 
@@ -60,22 +60,22 @@
         header {
             background: linear-gradient(90deg, var(--primary), var(--orange));
             color: white;
-            padding: 12px 20px;
+            padding: 10px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             transition: background 0.3s ease;
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 23px;
             font-weight: 900;
             display: flex;
             align-items: center;
             gap: 8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.18);
             cursor: pointer;
         }
 
@@ -88,53 +88,43 @@
 
         .user-pill {
             background: rgba(255,255,255,0.28);
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-weight: 900;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
         }
 
         .user-pill svg {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
         }
 
         .btn-icon-top {
             background: rgba(255,255,255,0.92);
             color: var(--dark);
             border: none;
-            padding: 8px 13px;
+            padding: 7px 12px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 900;
-            font-size: 17px;
+            font-size: 16px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             box-shadow: 0 4px 0 rgba(0,0,0,0.15);
-            transition: transform 0.15s;
+            transition: transform 0.1s;
         }
 
         .btn-icon-top:active {
             transform: translateY(3px);
         }
 
-        .btn-daily {
-            background: var(--accent);
-            animation: bounceBtn 1.5s infinite;
-        }
-
-        @keyframes bounceBtn {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-        }
-
         /* =========================================================
-           PANTALLA DE PERFILES Y LLAVE VISUAL
+           PANTALLA DE PERFILES Y LLAVE DE DIBUJO
            ========================================================= */
         #auth-screen {
             flex: 1;
@@ -161,17 +151,17 @@
 
         .profiles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(165px, 200px));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 195px));
+            gap: 16px;
             justify-content: center;
             width: 100%;
-            margin: 20px 0;
+            margin: 18px 0;
         }
 
         .profile-card {
             background: white;
-            border-radius: 30px;
-            padding: 22px 14px;
+            border-radius: 28px;
+            padding: 20px 14px;
             cursor: pointer;
             border: 5px solid #e2e8f0;
             transition: all 0.2s ease;
@@ -188,8 +178,8 @@
         }
 
         .profile-avatar-circle {
-            width: 92px;
-            height: 92px;
+            width: 88px;
+            height: 88px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -204,41 +194,41 @@
         }
 
         .profile-name {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 900;
             color: var(--dark);
             margin-bottom: 6px;
         }
 
         .profile-stars-badge {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 900;
             background: #fff9db;
             border: 2px solid #fcc419;
-            padding: 4px 14px;
+            padding: 4px 12px;
             border-radius: 30px;
             color: #d9480f;
         }
 
         .delete-profile-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             background: #ffeaa7;
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
         }
 
         .visual-pin-card {
             background: white;
-            padding: 28px;
-            border-radius: 32px;
+            padding: 25px;
+            border-radius: 30px;
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.12);
             border: 5px solid var(--secondary);
             display: flex;
@@ -247,9 +237,9 @@
         }
 
         .pinpad-avatar-holder {
-            width: 76px;
-            height: 76px;
-            margin-bottom: 8px;
+            width: 74px;
+            height: 74px;
+            margin-bottom: 6px;
         }
 
         .pinpad-avatar-holder svg {
@@ -257,62 +247,54 @@
             height: 100%;
         }
 
-        .key-slots {
-            display: flex;
-            gap: 18px;
-            margin: 14px 0;
-        }
-
         .key-slot {
-            width: 68px;
-            height: 68px;
-            border-radius: 22px;
+            width: 66px;
+            height: 66px;
+            border-radius: 20px;
             border: 4px dashed var(--secondary);
             background: #f8fafc;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 38px;
-            transition: 0.2s;
+            font-size: 36px;
+            margin: 12px 0;
         }
 
         .key-slot.filled {
             border-style: solid;
             border-color: var(--green);
             background: #e6fffa;
-            transform: scale(1.08);
         }
 
         .pic-pad-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            gap: 10px;
             width: 100%;
-            margin-top: 8px;
         }
 
         .pic-key-btn {
             background: #fff9db;
             border: 4px solid #fcc419;
-            border-radius: 24px;
-            padding: 14px 0;
-            font-size: 42px;
+            border-radius: 22px;
+            padding: 12px 0;
+            font-size: 40px;
             cursor: pointer;
-            box-shadow: 0 6px 0 #f59f00;
+            box-shadow: 0 5px 0 #f59f00;
         }
 
         .pic-key-btn:active {
             transform: translateY(4px);
-            box-shadow: 0 2px 0 #f59f00;
+            box-shadow: 0 1px 0 #f59f00;
         }
 
-        /* CREADOR DE PERSONAJE */
+        /* REGISTRO DE PILOTO */
         .register-card {
             background: white;
-            padding: 24px;
-            border-radius: 30px;
+            padding: 22px;
+            border-radius: 28px;
             width: 100%;
-            max-width: 540px;
+            max-width: 530px;
             box-shadow: 0 12px 32px rgba(0,0,0,0.1);
             border: 5px solid var(--purple);
             text-align: left;
@@ -321,17 +303,17 @@
         .live-preview-banner {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
             background: #f8fafc;
             border: 3px solid #e2e8f0;
-            padding: 12px 18px;
-            border-radius: 22px;
-            margin-bottom: 16px;
+            padding: 10px 16px;
+            border-radius: 20px;
+            margin-bottom: 14px;
         }
 
         .preview-avatar-box {
-            width: 70px;
-            height: 70px;
+            width: 66px;
+            height: 66px;
             border-radius: 50%;
             padding: 8px;
             background: #FF6B6B22;
@@ -347,8 +329,8 @@
         .character-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 8px 0 14px 0;
+            gap: 8px;
+            margin: 6px 0 12px 0;
         }
 
         @media (min-width: 480px) {
@@ -358,41 +340,41 @@
         .char-card {
             background: #f8fafc;
             border: 3px solid #cbd5e1;
-            border-radius: 20px;
-            padding: 10px 6px;
+            border-radius: 18px;
+            padding: 8px 4px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
         .char-card svg {
-            width: 46px;
-            height: 46px;
+            width: 42px;
+            height: 42px;
         }
 
         .char-card span {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
         }
 
         .char-card.selected {
             background: #fff9db;
             border-color: var(--primary);
-            transform: scale(1.08);
+            transform: scale(1.06);
         }
 
         .color-selector {
             display: flex;
             justify-content: space-between;
-            gap: 10px;
-            margin: 8px 0 14px 0;
+            gap: 8px;
+            margin: 6px 0 12px 0;
         }
 
         .color-option {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             cursor: pointer;
             border: 3px solid white;
@@ -400,7 +382,7 @@
         }
 
         .color-option.selected {
-            transform: scale(1.22);
+            transform: scale(1.2);
             box-shadow: 0 0 0 3px var(--dark);
         }
 
@@ -408,24 +390,24 @@
             display: flex;
             gap: 8px;
             justify-content: space-between;
-            margin: 8px 0 16px 0;
+            margin: 6px 0 14px 0;
         }
 
         .key-pick-item {
             flex: 1;
-            font-size: 28px;
-            padding: 8px 0;
+            font-size: 26px;
+            padding: 6px 0;
             text-align: center;
             background: #f8fafc;
             border: 3px solid #cbd5e1;
-            border-radius: 16px;
+            border-radius: 14px;
             cursor: pointer;
         }
 
         .key-pick-item.selected {
             background: #e6fffa;
             border-color: var(--green);
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .btn-main {
@@ -433,8 +415,8 @@
             background: var(--green);
             color: white;
             border: none;
-            padding: 15px;
-            border-radius: 18px;
+            padding: 14px;
+            border-radius: 16px;
             font-size: 18px;
             font-weight: 900;
             cursor: pointer;
@@ -442,14 +424,14 @@
         }
 
         /* =========================================================
-           PANEL DEL NIÑO (5 BOTONES GIGANTES INCLUYENDO TV KIDS)
+           DASHBOARD Y MOTOR DEL VIDEOJUEGO DE 3 CARRILES
            ========================================================= */
         #dashboard-screen {
             display: none;
             flex: 1;
-            padding: 16px;
+            padding: 14px;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
         .kid-status-bar {
@@ -458,26 +440,25 @@
             align-items: center;
             background: #fff9db;
             border: 4px solid #fcc419;
-            border-radius: 26px;
-            padding: 10px 18px;
+            border-radius: 22px;
+            padding: 8px 16px;
             flex-wrap: wrap;
-            gap: 12px;
-            cursor: pointer;
+            gap: 10px;
         }
 
         .star-counter-big {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             color: #d9480f;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .xp-stars-track {
             flex: 1;
-            min-width: 160px;
-            height: 22px;
+            min-width: 140px;
+            height: 20px;
             background: #fff;
             border-radius: 50px;
             border: 3px solid #fcc419;
@@ -488,26 +469,26 @@
             height: 100%;
             background: linear-gradient(90deg, #fcc419, #00b894);
             width: 0%;
-            transition: width 0.5s ease;
+            transition: width 0.4s ease;
         }
 
         .big-nav-tabs {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 8px;
         }
 
         .big-tab-btn {
             background: #f1f5f9;
             border: 4px solid #e2e8f0;
-            padding: 10px 4px;
-            border-radius: 22px;
+            padding: 8px 4px;
+            border-radius: 20px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3px;
-            font-size: 30px;
+            gap: 2px;
+            font-size: 26px;
             transition: 0.2s;
         }
 
@@ -520,14 +501,14 @@
         .big-tab-btn.active {
             background: #fff0f6;
             border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 0 rgba(255,107,107,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 0 rgba(255,107,107,0.25);
         }
 
         .tab-view {
             display: none;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             flex: 1;
         }
 
@@ -535,458 +516,165 @@
             display: flex;
         }
 
-        /* TARJETAS DE JUEGOS Y DE VIDEOS */
-        .toddler-games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
-            gap: 14px;
-        }
-
-        .toddler-game-card {
-            border-radius: 28px;
-            padding: 22px 14px;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            border: 5px solid rgba(0,0,0,0.08);
-            box-shadow: 0 8px 0 rgba(0,0,0,0.12);
-            transition: transform 0.15s;
-        }
-
-        .toddler-game-card:active {
-            transform: translateY(5px);
-            box-shadow: 0 3px 0 rgba(0,0,0,0.12);
-        }
-
-        .toddler-game-icon {
-            font-size: 62px;
-            line-height: 1;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
-        }
-
-        .toddler-game-title {
-            font-size: 19px;
-            font-weight: 900;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.25);
-        }
-
-        .toddler-stars-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255,255,255,0.92);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 900;
-            color: var(--dark);
-        }
-
-        /* =========================================================
-           NUEVO: REPRODUCTOR DE VIDEOS Y CUENTOS CON ESCUDO BEBÉ
-           ========================================================= */
-        #video-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.82);
-            justify-content: center;
-            align-items: center;
-            padding: 12px;
-            z-index: 150;
-        }
-
-        .video-modal-card {
-            background: #1e272e;
-            border: 6px solid var(--accent);
-            border-radius: 34px;
-            width: 100%;
-            max-width: 720px;
-            padding: 20px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            position: relative;
-        }
-
-        .video-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .btn-baby-shield {
-            background: var(--green);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-weight: 900;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 4px 0 #008f72;
-        }
-
-        .btn-baby-shield.off {
-            background: #636e72;
-            box-shadow: 0 4px 0 #2d3436;
-        }
-
-        .video-stage-wrapper {
-            position: relative;
-            width: 100%;
-            height: 360px;
-            border-radius: 26px;
-            overflow: hidden;
-            background: linear-gradient(180deg, #74b9ff 0%, #a29bfe 100%);
-            border: 4px solid rgba(255,255,255,0.25);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Escenario de Cuentos Animados Integrados */
-        .story-animated-character {
-            font-size: 115px;
-            animation: floatStory 1.4s ease-in-out infinite;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
-        }
-
-        @keyframes floatStory {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-14px) scale(1.08); }
-        }
-
-        .story-caption-pill {
-            margin-top: 18px;
-            background: rgba(0,0,0,0.45);
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-size: 22px;
-            font-weight: 900;
-            text-align: center;
-            max-width: 90%;
-        }
-
-        /* Escudo transparente para que el bebé toque sin salir del video */
-        #baby-touch-shield {
-            position: absolute;
-            inset: 0;
-            z-index: 20;
-            cursor: pointer;
-        }
-
-        .touch-sparkle {
-            position: absolute;
-            font-size: 38px;
-            pointer-events: none;
-            animation: popSparkle 0.7s ease forwards;
-        }
-
-        @keyframes popSparkle {
-            0% { transform: scale(0.4); opacity: 1; }
-            100% { transform: translateY(-45px) scale(1.5); opacity: 0; }
-        }
-
-        .video-progress-bar {
-            width: 100%;
-            height: 16px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 30px;
-            overflow: hidden;
-        }
-
-        .video-progress-fill {
-            height: 100%;
-            width: 0%;
-            background: var(--accent);
-            transition: width 0.4s ease;
-        }
-
-        /* =========================================================
-           MODAL DE JUEGOS VISUALES Y RESTO DE COMPONENTES
-           ========================================================= */
-        #game-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-            padding: 12px;
-            z-index: 100;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 24px;
-            border-radius: 34px;
-            max-width: 580px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            border: 6px solid var(--secondary);
-        }
-
-        .visual-stage {
-            background: #f8fafc;
-            border: 4px dashed #cbd5e1;
-            border-radius: 28px;
-            padding: 18px;
-            margin: 12px 0 18px 0;
-            min-height: 145px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .stage-big-visual {
-            font-size: 76px;
-            line-height: 1.1;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .silhouette-shadow {
-            filter: brightness(0) drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-        }
-
-        .color-splat-circle {
-            width: 105px;
-            height: 105px;
-            border-radius: 50%;
-            border: 6px solid white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-speak-giant {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 10px 22px;
-            border-radius: 50px;
-            font-size: 19px;
-            font-weight: 900;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 5px 0 #38ada9;
-        }
-
-        .toddler-options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-
-        .toddler-opt-btn {
-            background: #ffffff;
-            border: 5px solid #e2e8f0;
-            border-radius: 28px;
-            padding: 16px 10px;
-            min-height: 120px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 56px;
-            box-shadow: 0 8px 0 #cbd5e1;
-            transition: transform 0.12s;
-        }
-
-        .toddler-opt-btn:active {
-            transform: translateY(5px);
-            box-shadow: 0 3px 0 #cbd5e1;
-        }
-
-        .toddler-opt-btn.correct-flash {
-            background: #d3f9d8;
-            border-color: var(--green);
-            transform: scale(1.06);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 14px;
-            right: 16px;
-            font-size: 26px;
-            cursor: pointer;
-            background: #f1f5f9;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: none;
-        }
-
-        /* ZONA CREATIVA */
-        .arcade-subnav {
+        /* SELECTOR DE MUNDOS / TEMAS DE CARRERA */
+        .race-modes-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 8px;
         }
 
-        .arcade-btn {
+        .mode-pill-btn {
             background: white;
-            border: 4px solid #e2e8f0;
+            border: 3px solid #cbd5e1;
+            border-radius: 16px;
             padding: 8px 6px;
-            border-radius: 20px;
             font-weight: 900;
+            font-size: 13px;
             cursor: pointer;
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .mode-pill-btn.active {
+            background: var(--purple);
+            color: white;
+            border-color: var(--purple);
+            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+        }
+
+        /* CONTENEDOR PRINCIPAL DE LA PISTA DE CARRERAS */
+        .race-arena-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 10px;
+            width: 100%;
         }
 
-        .arcade-btn span { font-size: 12px; }
-        .arcade-btn.active { border-color: var(--purple); background: #f3f0ff; }
+        .race-hud-banner {
+            width: 100%;
+            max-width: 520px;
+            background: linear-gradient(90deg, #2d3436, #485460);
+            color: white;
+            border-radius: 24px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            border: 4px solid var(--accent);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
 
-        .arcade-panel {
-            display: none;
-            background: #f8fafc;
-            border: 4px solid #e2e8f0;
-            border-radius: 28px;
-            padding: 16px;
-            flex-direction: column;
+        .mission-target-box {
+            display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .arcade-panel.active { display: flex; }
-
-        #bubble-stage {
-            width: 100%;
-            height: 270px;
-            background: linear-gradient(180deg, #dff9fb 0%, #c7ecee 100%);
-            border-radius: 24px;
-            border: 4px solid #7ed6df;
-            position: relative;
-            overflow: hidden;
-            touch-action: none;
-        }
-
-        .floating-bubble {
-            position: absolute;
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 44px;
-            cursor: pointer;
-            box-shadow: inset -6px -6px 14px rgba(0,0,0,0.12), 0 6px 14px rgba(0,0,0,0.1);
-            border: 3px solid rgba(255,255,255,0.8);
-        }
-
-        .memory-board {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .mem-card {
-            aspect-ratio: 1;
-            background: var(--purple);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 52px;
-            cursor: pointer;
-            color: white;
-            box-shadow: 0 7px 0 #4834d4;
-        }
-
-        .mem-card.flipped, .mem-card.matched {
+        .mission-visual-badge {
+            width: 62px;
+            height: 62px;
+            border-radius: 18px;
             background: white;
-            border: 5px solid var(--secondary);
-            box-shadow: 0 5px 0 #cbd5e1;
-        }
-
-        .canvas-toolbar {
+            color: var(--dark);
             display: flex;
-            gap: 8px;
             align-items: center;
-            flex-wrap: wrap;
             justify-content: center;
-        }
-
-        .swatch-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 0 0 2px #cbd5e1;
-            cursor: pointer;
-        }
-
-        .swatch-btn.active {
-            transform: scale(1.2);
-            box-shadow: 0 0 0 4px var(--dark);
-        }
-
-        #draw-canvas {
-            background: white;
-            border: 5px solid var(--secondary);
-            border-radius: 24px;
-            cursor: crosshair;
-            touch-action: none;
-            max-width: 100%;
-        }
-
-        .piano-keys {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .piano-key {
-            flex: 1;
-            min-width: 55px;
-            height: 160px;
-            border: none;
-            border-radius: 0 0 22px 22px;
-            color: white;
+            font-size: 36px;
             font-weight: 900;
-            font-size: 32px;
+            border: 4px solid var(--secondary);
+            flex-shrink: 0;
+        }
+
+        .canvas-stage-box {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 6px solid #2d3436;
+            box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+            background: #2ecc71;
+        }
+
+        #race-canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            touch-action: none;
+            cursor: pointer;
+        }
+
+        /* OVERLAY DE INICIO / PAUSA SOBRE LA PISTA */
+        #race-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
             align-items: center;
-            padding-bottom: 16px;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            z-index: 15;
+        }
+
+        .btn-start-race {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            border: 4px solid white;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 26px;
+            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 8px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+            animation: pulseRaceBtn 1.3s infinite;
         }
 
-        .piano-key:active {
-            transform: translateY(6px);
-            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+        @keyframes pulseRaceBtn {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.07); }
         }
 
+        /* BOTONES TÁCTILES GIGANTES DE 3 CARRILES */
+        .lane-controls-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .lane-touch-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 0;
+            border-radius: 20px;
+            font-size: 26px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #38ada9;
+            transition: transform 0.08s;
+        }
+
+        .lane-touch-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #38ada9;
+            background: var(--orange);
+        }
+
+        /* TIENDA DE VEHÍCULOS, MASCOTAS Y TROFEOS */
         .shop-grid, .awards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
         }
 
         .shop-card, .award-card {
@@ -998,7 +686,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .award-card { opacity: 0.45; filter: grayscale(100%); }
@@ -1008,10 +696,10 @@
             background: var(--orange);
             color: white;
             border: none;
-            padding: 10px 16px;
-            border-radius: 16px;
+            padding: 9px 14px;
+            border-radius: 14px;
             font-weight: 900;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             width: 100%;
         }
@@ -1054,8 +742,8 @@
         .toast {
             background: var(--dark);
             color: white;
-            padding: 14px 22px;
-            border-radius: 20px;
+            padding: 12px 20px;
+            border-radius: 18px;
             font-weight: 900;
             font-size: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
@@ -1069,55 +757,56 @@
 <div class="app-container">
     <!-- BARRA SUPERIOR -->
     <header id="main-header">
-        <div class="logo" onclick="speakText('Mimi Kids')">🌟 MimiKids</div>
+        <div class="logo" onclick="speakText('Mimi Kids Turbo')">🏎️ MimiKids Turbo</div>
         <div class="user-bar" id="header-user-bar">
-            <button class="btn-icon-top btn-daily" id="btn-daily-gift" onclick="claimDailyChest()" style="display:none;">🎁</button>
+            <button class="btn-icon-top" id="btn-daily-gift" onclick="claimDailyChest()" style="display:none; background:var(--accent);">🎁</button>
             <button class="btn-icon-top" id="btn-voice-toggle" onclick="toggleVoice()">🔊</button>
-            <div class="user-pill" onclick="speakText('Hola ' + currentUser.username)">
+            <div class="user-pill" onclick="speakText('Piloto ' + currentUser.username)">
                 <span id="header-avatar"></span>
-                <span id="header-username">Bebé</span>
+                <span id="header-username">Piloto</span>
                 <span id="header-pet"></span>
             </div>
             <button class="btn-icon-top" onclick="openParentTab()" title="Zona de Padres">🔒👨‍👩‍👧</button>
-            <button class="btn-icon-top" onclick="logout()" title="Cambiar Niño">🔄</button>
+            <button class="btn-icon-top" onclick="logout()" title="Cambiar Piloto">🔄</button>
         </div>
     </header>
 
     <!-- =========================================================
-         PANTALLA DE PERFILES (ENTRADA CON DIBUJITOS)
+         PANTALLA DE SELECCIÓN DE PILOTO Y LLAVE VISUAL
          ========================================================= -->
     <div id="auth-screen">
 
+        <!-- VISTA 1: PERFILES -->
         <div id="view-profiles" class="auth-view active">
-            <h1 style="font-size:27px; font-weight:900;">👋 ¡Toca tu dibujo para jugar!</h1>
+            <h1 style="font-size:27px; font-weight:900;">🏁 ¡Toca tu Piloto para correr!</h1>
             <div class="profiles-grid" id="profiles-grid-container"></div>
 
-            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
                 <button class="btn-icon-top" style="font-size:13px;" onclick="exportAccounts()">💾 Guardar Copia</button>
                 <button class="btn-icon-top" style="font-size:13px;" onclick="document.getElementById('import-file').click()">📂 Cargar Copia</button>
                 <input type="file" id="import-file" style="display:none" accept=".json" onchange="importAccounts(event)">
             </div>
         </div>
 
-        <!-- CREAR PERSONAJE -->
+        <!-- VISTA 2: CREAR PILOTO -->
         <div id="view-register" class="auth-view">
             <div class="register-card">
-                <h2 style="color: var(--purple); margin-bottom: 10px; text-align:center;">✨ Nuevo Personaje</h2>
+                <h2 style="color: var(--purple); margin-bottom: 10px; text-align:center;">🏎️ Crear Nuevo Piloto</h2>
 
                 <div class="live-preview-banner">
                     <div class="preview-avatar-box" id="live-preview-circle"></div>
                     <div>
-                        <div id="live-preview-name" style="font-size:20px; font-weight:900; color:var(--dark);">León</div>
-                        <div style="font-size:13px; color:#00b894; font-weight:800;">🎁 Regalo: +10 Estrellas ⭐</div>
+                        <div id="live-preview-name" style="font-size:19px; font-weight:900; color:var(--dark);">León Piloto</div>
+                        <div style="font-size:12px; color:#00b894; font-weight:800;">🎁 Incluye Auto Rojo + 10 Estrellas ⭐</div>
                     </div>
                 </div>
 
-                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:14px; margin-bottom:8px; text-align:center;"></div>
+                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:13px; margin-bottom:8px; text-align:center;"></div>
 
-                <label style="font-weight:800; font-size:14px;">1. Elige el personaje:</label>
+                <label style="font-weight:800; font-size:13px;">1. Elige tu personaje:</label>
                 <div class="character-grid" id="character-selector-grid"></div>
 
-                <label style="font-weight:800; font-size:14px;">2. Elige su color favorito:</label>
+                <label style="font-weight:800; font-size:13px;">2. Elige tu color de equipo:</label>
                 <div class="color-selector">
                     <div class="color-option selected" style="background: #FF6B6B;" onclick="selectThemeColor(this, '#FF6B6B')"></div>
                     <div class="color-option" style="background: #4ECDC4;" onclick="selectThemeColor(this, '#4ECDC4')"></div>
@@ -1127,11 +816,11 @@
                     <div class="color-option" style="background: #e84393;" onclick="selectThemeColor(this, '#e84393')"></div>
                 </div>
 
-                <label style="font-weight:800; font-size:14px;">3. Nombre del niño/a:</label>
-                <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Mateo o Sofía" oninput="updateLivePreviewText()" style="width:100%; padding:11px; border-radius:14px; border:3px solid #cbd5e1; font-size:16px; font-weight:800; margin:6px 0 12px 0;">
+                <label style="font-weight:800; font-size:13px;">3. Nombre del niño/a:</label>
+                <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Mateo o Sofía" oninput="updateLivePreviewText()" style="width:100%; padding:10px; border-radius:14px; border:3px solid #cbd5e1; font-size:16px; font-weight:800; margin:5px 0 10px 0;">
 
-                <label style="font-weight:800; font-size:14px;">4. Elige su dibujo mágico para entrar:</label>
-                <div class="key-picker-row" id="reg-key-picker">
+                <label style="font-weight:800; font-size:13px;">4. Elige su dibujo mágico para entrar:</label>
+                <div class="key-picker-row">
                     <div class="key-pick-item selected" onclick="selectVisualKey(this, '🌞')">🌞</div>
                     <div class="key-pick-item" onclick="selectVisualKey(this, '🍎')">🍎</div>
                     <div class="key-pick-item" onclick="selectVisualKey(this, '🚗')">🚗</div>
@@ -1140,21 +829,19 @@
                     <div class="key-pick-item" onclick="selectVisualKey(this, '⭐')">⭐</div>
                 </div>
 
-                <button class="btn-main" onclick="registerNewAccount()">🚀 ¡Empezar a Jugar!</button>
+                <button class="btn-main" onclick="registerNewAccount()">🚀 ¡Guardar y Correr!</button>
                 <button style="background:none; border:none; width:100%; margin-top:10px; font-weight:800; color:#64748b; cursor:pointer;" id="btn-cancel-reg" onclick="showAuthView('view-profiles')">← Volver</button>
             </div>
         </div>
 
-        <!-- ENTRADA CON DIBUJO MÁGICO -->
+        <!-- VISTA 3: LLAVE VISUAL -->
         <div id="view-pinpad" class="auth-view">
             <div class="visual-pin-card">
                 <div class="pinpad-avatar-holder" id="pinpad-avatar"></div>
-                <h2 id="pinpad-username" style="font-size:24px;">¡Hola!</h2>
-                <p style="font-size:15px; color:#555; font-weight:800; margin-top:4px;">Toca tu dibujito mágico para entrar:</p>
+                <h2 id="pinpad-username" style="font-size:23px;">¡Hola!</h2>
+                <p style="font-size:14px; color:#555; font-weight:800;">Toca tu dibujito mágico para encender el motor:</p>
 
-                <div class="key-slots">
-                    <div class="key-slot" id="visual-slot-1">❓</div>
-                </div>
+                <div class="key-slot" id="visual-slot-1">❓</div>
 
                 <div class="pic-pad-grid">
                     <button class="pic-key-btn" onclick="pressVisualKey('🌞')">🌞</button>
@@ -1165,151 +852,119 @@
                     <button class="pic-key-btn" onclick="pressVisualKey('⭐')">⭐</button>
                 </div>
 
-                <button style="background:none; border:none; margin-top:16px; font-weight:800; color:#64748b; cursor:pointer;" onclick="showAuthView('view-profiles')">← Cambiar de niño</button>
+                <button style="background:none; border:none; margin-top:14px; font-weight:800; color:#64748b; cursor:pointer;" onclick="showAuthView('view-profiles')">← Cambiar de piloto</button>
             </div>
         </div>
 
     </div>
 
     <!-- =========================================================
-         PANEL DEL NIÑO (CON NUEVA PESTAÑA TV KIDS)
+         PANEL DEL VIDEOJUEGO Y GARAJE
          ========================================================= -->
     <div id="dashboard-screen">
+        <!-- Contador de Estrellas y Nivel -->
         <div class="kid-status-bar" onclick="speakText('Tienes ' + currentUser.stars + ' estrellas')">
             <div class="star-counter-big">⭐ <span id="stat-stars">0</span></div>
             <div class="xp-stars-track">
                 <div class="xp-stars-fill" id="progress-bar"></div>
             </div>
-            <div style="font-size:21px; font-weight:900;">🏆 Nv. <span id="stat-level">1</span></div>
+            <div style="font-size:20px; font-weight:900;">🏆 Nv. <span id="stat-level">1</span></div>
         </div>
 
-        <!-- 5 BOTONES GIGANTES -->
+        <!-- Navegación -->
         <div class="big-nav-tabs">
-            <button class="big-tab-btn active" onclick="switchTab('games', this, 'Juegos de aprender')">
-                🎈<span>Jugar</span>
+            <button class="big-tab-btn active" onclick="switchTab('race', this, 'Pista de carreras')">
+                🏎️<span>¡Correr!</span>
             </button>
-            <button class="big-tab-btn" onclick="switchTab('videos', this, 'Videos y cuentos animados')">
-                📺<span>Videos</span>
-            </button>
-            <button class="big-tab-btn" onclick="switchTab('arcade', this, 'Burbujas, pintar y piano')">
-                🎨<span>Crear</span>
+            <button class="big-tab-btn" onclick="switchTab('garage', this, 'Garaje de carritos y mascotas')">
+                🚗<span>Garaje</span>
             </button>
             <button class="big-tab-btn" onclick="switchTab('awards', this, 'Tus trofeos')">
                 🏆<span>Trofeos</span>
             </button>
-            <button class="big-tab-btn" onclick="switchTab('shop', this, 'Tienda de mascotas y premios')">
-                🐶<span>Mascotas</span>
+            <button class="big-tab-btn" onclick="switchTab('rewards', this, 'Premios de mamá y papá')">
+                🎁<span>Premios</span>
             </button>
         </div>
 
-        <!-- PESTAÑA 1: 6 JUEGOS VISUALES -->
-        <div id="tab-games" class="tab-view active">
-            <div class="toddler-games-grid">
-                <div class="toddler-game-card" style="background: linear-gradient(135deg, #FF6B6B, #ff8e8e);" onclick="startGame('colors')">
-                    <span class="toddler-stars-tag">⭐ <span id="badge-colors">1</span></span>
-                    <div class="toddler-game-icon">🎨</div>
-                    <div class="toddler-game-title">Colores</div>
+        <!-- =====================================================
+             PESTAÑA 1: EL VIDEOJUEGO DE CARRERAS DE 3 CARRILES
+             ===================================================== -->
+        <div id="tab-race" class="tab-view active">
+            <!-- Selector de qué queremos aprender mientras corremos -->
+            <div class="race-modes-bar">
+                <button class="mode-pill-btn active" onclick="setRaceTopic('all', this)">🌈 Todo</button>
+                <button class="mode-pill-btn" onclick="setRaceTopic('colors', this)">🎨 Colores</button>
+                <button class="mode-pill-btn" onclick="setRaceTopic('animals', this)">🐮 Animales</button>
+                <button class="mode-pill-btn" onclick="setRaceTopic('counting', this)">🎈 1, 2 y 3</button>
+            </div>
+
+            <div class="race-arena-wrapper">
+                <!-- Cartel Superior con el Objetivo Actual de la Carrera -->
+                <div class="race-hud-banner">
+                    <div class="mission-target-box">
+                        <div class="mission-visual-badge" id="hud-target-badge">🔴</div>
+                        <div>
+                            <div style="font-size:11px; color:#ffeaa7; font-weight:800;">CRUZA EL PUENTE:</div>
+                            <div id="hud-target-text" style="font-size:18px; font-weight:900;">¡Color ROJO!</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <div style="background:rgba(255,255,255,0.15); padding:6px 12px; border-radius:14px; font-weight:900; font-size:15px;">
+                            🏁 <span id="hud-gates-progress">0 / 5</span>
+                        </div>
+                        <button class="btn-icon-top" onclick="speakCurrentMission()" title="Repetir instrucción">🔊</button>
+                    </div>
                 </div>
-                <div class="toddler-game-card" style="background: linear-gradient(135deg, #4ECDC4, #2bcbba);" onclick="startGame('animals')">
-                    <span class="toddler-stars-tag">⭐ <span id="badge-animals">1</span></span>
-                    <div class="toddler-game-icon">🐮</div>
-                    <div class="toddler-game-title">Animales</div>
+
+                <!-- Lienzo HTML5 Canvas a 60 FPS -->
+                <div class="canvas-stage-box">
+                    <canvas id="race-canvas" width="500" height="390"></canvas>
+
+                    <!-- Pantalla superpuesta antes de arrancar -->
+                    <div id="race-overlay">
+                        <div style="font-size:68px; margin-bottom:10px;" id="overlay-vehicle-icon">🏎️</div>
+                        <h2 id="overlay-title" style="font-size:26px; margin-bottom:8px;">¡Listo para la Carrera!</h2>
+                        <p style="font-size:15px; margin-bottom:18px; max-width:340px; font-weight:700;">
+                            Mueve tu carrito al carril correcto para cruzar por los puentes mágicos y ganar estrellas ⭐
+                        </p>
+                        <button class="btn-start-race" onclick="startRaceEngine()">🚦 ¡ARRANCAR!</button>
+                    </div>
                 </div>
-                <div class="toddler-game-card" style="background: linear-gradient(135deg, #FD9644, #f7b731);" onclick="startGame('counting')">
-                    <span class="toddler-stars-tag">⭐ <span id="badge-counting">1</span></span>
-                    <div class="toddler-game-icon">🍎</div>
-                    <div class="toddler-game-title">1, 2 y 3</div>
-                </div>
-                <div class="toddler-game-card" style="background: linear-gradient(135deg, #6C5CE7, #a29bfe);" onclick="startGame('shadows')">
-                    <span class="toddler-stars-tag">⭐ <span id="badge-shadows">1</span></span>
-                    <div class="toddler-game-icon">🕵️</div>
-                    <div class="toddler-game-title">Sombras</div>
-                </div>
-                <div class="toddler-game-card" style="background: linear-gradient(135deg, #00B894, #55efc4);" onclick="startGame('sizes')">
-                    <span class="toddler-stars-tag">⭐ <span id="badge-sizes">1</span></span>
-                    <div class="toddler-game-icon">🐘</div>
-                    <div class="toddler-game-title">Tamaños</div>
-                </div>
-                <div class="toddler-game-card" style="background: linear-gradient(135deg, #e84393, #fd79a8);" onclick="startGame('emotions')">
-                    <span class="toddler-stars-tag">⭐ <span id="badge-emotions">1</span></span>
-                    <div class="toddler-game-icon">😄</div>
-                    <div class="toddler-game-title">Caritas</div>
+
+                <!-- Botones Gigantes para cambiar a Carril 1, 2 o 3 -->
+                <div class="lane-controls-bar">
+                    <button class="lane-touch-btn" onpointerdown="movePlayerToLane(0)">⬅️ Izquierda</button>
+                    <button class="lane-touch-btn" style="background:var(--purple); box-shadow: 0 6px 0 #4834d4;" onpointerdown="movePlayerToLane(1)">⬆️ Centro</button>
+                    <button class="lane-touch-btn" onpointerdown="movePlayerToLane(2)">Derecha ➡️</button>
                 </div>
             </div>
         </div>
 
-        <!-- PESTAÑA 2 (NUEVA): TV KIDS - CUENTOS ANIMADOS Y VIDEOS DE PAPÁ/MAMÁ -->
-        <div id="tab-videos" class="tab-view">
-            <h3 style="font-size:17px; color:var(--purple);">🎬 Cuentos Musicales Animados (+15 ⭐ al verlos)</h3>
-            <div class="toddler-games-grid" id="builtin-stories-grid"></div>
+        <!-- PESTAÑA 2: GARAJE DE VEHÍCULOS Y MASCOTAS COPILOTO -->
+        <div id="tab-garage" class="tab-view">
+            <h3 style="font-size:17px; color:var(--purple);">🏎️ Elige o Desbloquea tu Vehículo</h3>
+            <div class="shop-grid" id="vehicles-shop-container"></div>
 
-            <h3 style="font-size:17px; color:var(--primary); margin-top:6px;">📺 Videos Favoritos de Papá y Mamá</h3>
-            <div class="toddler-games-grid" id="custom-videos-grid"></div>
+            <h3 style="font-size:17px; color:var(--primary); margin-top:8px;">🐶 Mascotas Copiloto (Van contigo en la carrera)</h3>
+            <div class="shop-grid" id="pets-shop-container"></div>
         </div>
 
-        <!-- PESTAÑA 3: JUEGOS SENSORIALES -->
-        <div id="tab-arcade" class="tab-view">
-            <div class="arcade-subnav">
-                <button class="arcade-btn active" onclick="switchArcade('bubbles', this, 'Explota las burbujas')">🫧<span>Burbujas</span></button>
-                <button class="arcade-btn" onclick="switchArcade('draw', this, 'Pizarra para pintar')">🖌️<span>Pintar</span></button>
-                <button class="arcade-btn" onclick="switchArcade('piano', this, 'Piano de sonidos')">🎹<span>Piano</span></button>
-                <button class="arcade-btn" onclick="switchArcade('memory', this, 'Busca las parejas')">🃏<span>Parejas</span></button>
-            </div>
-
-            <div id="arcade-bubbles" class="arcade-panel active">
-                <div style="font-weight:900; font-size:17px; color:var(--purple);">
-                    🫧 ¡Toca las burbujas con tu dedo! (<span id="bubble-score">0</span> / 8)
-                </div>
-                <div id="bubble-stage"></div>
-            </div>
-
-            <div id="arcade-draw" class="arcade-panel">
-                <div class="canvas-toolbar">
-                    <div class="swatch-btn active" style="background:#FF6B6B" onclick="setDrawColor('#FF6B6B', this, 'Rojo')"></div>
-                    <div class="swatch-btn" style="background:#4ECDC4" onclick="setDrawColor('#4ECDC4', this, 'Azul')"></div>
-                    <div class="swatch-btn" style="background:#f1c40f" onclick="setDrawColor('#f1c40f', this, 'Amarillo')"></div>
-                    <div class="swatch-btn" style="background:#00B894" onclick="setDrawColor('#00B894', this, 'Verde')"></div>
-                    <div class="swatch-btn" style="background:#6C5CE7" onclick="setDrawColor('#6C5CE7', this, 'Morado')"></div>
-                    <button class="btn-icon-top" onclick="stampCanvasEmoji()">🌟 Sello</button>
-                    <button class="btn-icon-top" onclick="clearCanvas()">🧽 Borrar</button>
-                    <button class="btn-icon-top" style="background:var(--green); color:white;" onclick="completeDrawingReward()">✅ ¡Listo! (+10 ⭐)</button>
-                </div>
-                <canvas id="draw-canvas" width="520" height="250"></canvas>
-            </div>
-
-            <div id="arcade-piano" class="arcade-panel">
-                <div class="piano-keys">
-                    <button class="piano-key" style="background:#FF6B6B" onclick="playPianoNote(261.63, '🐶 Guau')">🐶</button>
-                    <button class="piano-key" style="background:#FD9644" onclick="playPianoNote(293.66, '🐱 Miau')">🐱</button>
-                    <button class="piano-key" style="background:#f1c40f" onclick="playPianoNote(329.63, '🐤 Pío')">🐤</button>
-                    <button class="piano-key" style="background:#00B894" onclick="playPianoNote(349.23, '🐸 Croac')">🐸</button>
-                    <button class="piano-key" style="background:#4ECDC4" onclick="playPianoNote(392.00, '🐮 Muuu')">🐮</button>
-                    <button class="piano-key" style="background:#6C5CE7" onclick="playPianoNote(440.00, '🦁 Grrr')">🦁</button>
-                </div>
-            </div>
-
-            <div id="arcade-memory" class="arcade-panel">
-                <div class="memory-board" id="memory-board"></div>
-            </div>
-        </div>
-
-        <!-- PESTAÑA 4: TROFEOS -->
+        <!-- PESTAÑA 3: SALA DE TROFEOS -->
         <div id="tab-awards" class="tab-view">
             <div class="awards-grid" id="awards-container"></div>
         </div>
 
-        <!-- PESTAÑA 5: TIENDA DE MASCOTAS Y PREMIOS -->
-        <div id="tab-shop" class="tab-view">
-            <div class="shop-grid" id="shop-container"></div>
-            <h3 style="font-size:17px; margin-top:8px;">🎁 Premios de Mamá y Papá</h3>
+        <!-- PESTAÑA 4: PREMIOS DE MAMÁ Y PAPÁ -->
+        <div id="tab-rewards" class="tab-view">
             <div class="shop-grid" id="real-rewards-container"></div>
         </div>
 
-        <!-- PESTAÑA 6: ZONA DE PADRES (REPORTES, PREMIOS Y GESTOR DE VIDEOS) -->
+        <!-- PESTAÑA 5: ZONA DE PADRES -->
         <div id="tab-parents" class="tab-view">
             <div id="parent-lock-view" class="parent-box" style="text-align:center;">
-                <h3>🔒 Solo para Papá y Mamá</h3>
-                <p style="font-size:13px; color:#555; margin:6px 0 14px;">Resuelve esta multiplicación para abrir el panel de padres:</p>
+                <h3>🔒 Control Parental</h3>
+                <p style="font-size:13px; color:#555; margin:6px 0 14px;">Resuelve esta multiplicación para ver estadísticas y configurar premios:</p>
                 <div id="parent-math-q" style="font-size:22px; font-weight:900; color:var(--purple); margin-bottom:12px;">¿Cuánto es 7 × 8?</div>
                 <div style="display:flex; gap:10px; justify-content:center; max-width:280px; margin:0 auto;">
                     <input type="tel" id="parent-math-input" placeholder="Respuesta" style="padding:10px; border-radius:12px; border:2px solid #cbd5e1; width:120px; text-align:center; font-weight:800;">
@@ -1319,42 +974,25 @@
 
             <div id="parent-unlocked-view" class="parent-box" style="display:none;">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
-                    <h3>📊 Progreso de <span id="parent-child-name"></span></h3>
-                    <button class="btn-icon-top" style="background:var(--accent); font-size:14px;" onclick="giveBonusStars()">🌟 Regalar +20 Estrellas</button>
+                    <h3>📊 Desempeño en Pista de <span id="parent-child-name"></span></h3>
+                    <button class="btn-icon-top" style="background:var(--accent); font-size:14px;" onclick="giveBonusStars()">🌟 Regalar +25 Estrellas</button>
                 </div>
 
                 <table class="report-table">
                     <thead>
                         <tr>
-                            <th>Juego Visual</th>
-                            <th>Nivel</th>
-                            <th>Aciertos</th>
-                            <th>Intentos</th>
+                            <th>Categoría de Puentes</th>
+                            <th>Puentes Cruzados Bien</th>
+                            <th>Intentos por Reforzar</th>
                         </tr>
                     </thead>
                     <tbody id="parent-report-body"></tbody>
                 </table>
 
-                <!-- GESTOR PARA AGREGAR VIDEOS EDUCATIVOS DE YOUTUBE O MP4 -->
-                <h4 style="margin: 16px 0 8px;">📺 Añadir Video Educativo (YouTube o MP4) a la TV del Niño</h4>
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
-                    <input type="text" id="new-video-title" placeholder="Nombre (ej: Canción de la Vaca Lola)" style="flex:1; min-width:170px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
-                    <input type="text" id="new-video-url" placeholder="Pega enlace de YouTube o .mp4" style="flex:1; min-width:190px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
-                    <select id="new-video-icon" style="padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-size:18px;">
-                        <option value="🐮">🐮</option>
-                        <option value="🎵">🎵</option>
-                        <option value="🚂">🚂</option>
-                        <option value="🦖">🦖</option>
-                        <option value="🦄">🦄</option>
-                        <option value="🚀">🚀</option>
-                    </select>
-                    <button class="btn-buy" style="width:auto; background:var(--green);" onclick="addCustomParentVideo()">➕ Añadir Video</button>
-                </div>
-
-                <h4 style="margin: 14px 0 8px;">🎁 Añadir Premio Real (Ej: Helado, Parque, Cuento)</h4>
+                <h4 style="margin: 16px 0 8px;">🎁 Crear Premio Familiar (Canjeable con estrellas)</h4>
                 <div style="display:flex; gap:8px; flex-wrap:wrap;">
                     <input type="text" id="new-reward-title" placeholder="Ej: 🍦 Ir por un helado" style="flex:1; min-width:170px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
-                    <input type="number" id="new-reward-cost" placeholder="Estrellas (ej: 50)" style="width:135px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <input type="number" id="new-reward-cost" placeholder="Estrellas (ej: 60)" style="width:135px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
                     <button class="btn-buy" style="width:auto; background:var(--purple);" onclick="addCustomParentReward()">➕ Guardar Premio</button>
                 </div>
             </div>
@@ -1362,52 +1000,11 @@
     </div>
 </div>
 
-<!-- =========================================================
-     MODAL DE REPRODUCTOR TV KIDS CON ESCUDO PARA BEBÉS
-     ========================================================= -->
-<div id="video-modal">
-    <div class="video-modal-card">
-        <div class="video-top-bar">
-            <h3 id="video-modal-title" style="font-size:20px;">🎬 Cuento Animado</h3>
-            <div style="display:flex; gap:8px; align-items:center;">
-                <button class="btn-baby-shield" id="btn-shield-toggle" onclick="toggleBabyShield()">🛡️ Escudo Bebé: ON</button>
-                <button class="btn-icon-top" style="background:#ff7675; color:white;" onclick="closeVideoPlayer()">✖ Salir</button>
-            </div>
-        </div>
-
-        <div class="video-stage-wrapper" id="video-stage-wrapper">
-            <!-- Contenido dinámico del Cuento Animado o Iframe de Video -->
-            <div id="video-inner-content" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;"></div>
-            <!-- Escudo transparente anti-toques accidentales -->
-            <div id="baby-touch-shield" onpointerdown="handleBabyShieldTouch(event)"></div>
-        </div>
-
-        <div class="video-progress-bar">
-            <div class="video-progress-fill" id="video-progress-fill"></div>
-        </div>
-    </div>
-</div>
-
-<!-- MODAL DE JUEGOS VISUALES -->
-<div id="game-modal">
-    <div class="modal-content">
-        <button class="close-modal" onclick="closeGame()">✖</button>
-        <div class="round-indicator" id="round-text" style="font-size:18px;">⭐ 1 / 3</div>
-
-        <div class="visual-stage">
-            <div class="stage-big-visual" id="stage-visual-content"></div>
-            <button class="btn-speak-giant" onclick="speakCurrentQuestion()">🔊 Escuchar otra vez</button>
-        </div>
-
-        <div class="toddler-options-grid" id="options-container"></div>
-    </div>
-</div>
-
 <div id="toast-box"></div>
 
 <script>
     // =========================================================
-    // 1. PERSONAJES VECTORIALES SVG
+    // 1. AVATARES VECTORIALES SVG
     // =========================================================
     const CHARACTERS = {
         lion: {
@@ -1441,12 +1038,12 @@
     }
 
     // =========================================================
-    // 2. AUDIO Y VOZ
+    // 2. SONIDOS DE MOTOR, MONEDAS Y VOZ EN ESPAÑOL
     // =========================================================
     let audioCtx = null;
     let voiceEnabled = true;
 
-    function playSound(type, customFreq = 440) {
+    function playSound(type) {
         try {
             const AudioContextClass = window.AudioContext || window.webkitAudioContext;
             if (!AudioContextClass) return;
@@ -1458,43 +1055,45 @@
             osc.connect(gain);
             gain.connect(audioCtx.destination);
 
-            if (type === 'tap' || type === 'pop') {
-                osc.frequency.setValueAtTime(type === 'pop' ? 680 : 480, audioCtx.currentTime);
+            if (type === 'tap') {
+                osc.frequency.setValueAtTime(500, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.07);
+            } else if (type === 'star') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(1174.66, audioCtx.currentTime + 0.06);
                 gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.18);
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.08);
-            } else if (type === 'note') {
+                osc.stop(audioCtx.currentTime + 0.18);
+            } else if (type === 'turbo') {
                 osc.type = 'triangle';
-                osc.frequency.setValueAtTime(customFreq, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.45);
+                osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.28);
+                gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.45);
-            } else if (type === 'correct') {
-                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
-                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1);
-                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.32);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.32);
+                osc.stop(audioCtx.currentTime + 0.35);
             } else if (type === 'wrong') {
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(260, audioCtx.currentTime);
-                osc.frequency.setValueAtTime(210, audioCtx.currentTime + 0.12);
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(250, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(190, audioCtx.currentTime + 0.12);
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.25);
             } else if (type === 'win') {
                 osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
-                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.11);
-                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.22);
-                osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.33);
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1);
+                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2);
+                osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.3);
                 gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.55);
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.6);
+                osc.stop(audioCtx.currentTime + 0.55);
             }
         } catch (e) {}
     }
@@ -1506,8 +1105,8 @@
             const clean = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
             const utter = new SpeechSynthesisUtterance(clean);
             utter.lang = 'es-ES';
-            utter.rate = 0.92;
-            utter.pitch = 1.15;
+            utter.rate = 0.94;
+            utter.pitch = 1.12;
             window.speechSynthesis.speak(utter);
         } catch (e) {}
     }
@@ -1547,329 +1146,189 @@
     }
 
     // =========================================================
-    // 3. EPISODIOS ANIMADOS INTEGRADOS (TV KIDS SIN INTERNET)
+    // 3. BANCO DE MISIONES DE PUENTES PARA LA CARRERA
     // =========================================================
-    const BUILTIN_STORIES = [
-        {
-            id: 'story_vowels',
-            title: 'Las Vocales',
-            icon: '🔤🐝',
-            gradient: 'linear-gradient(135deg, #FF6B6B, #FD9644)',
-            scenes: [
-                { bg: '#ff7675', visual: '🅰️ 🐝', label: 'A de Abeja', voice: '¡La letra A! A de Abeja, bzzzz', note: 261.63 },
-                { bg: '#74b9ff', visual: '🅴 🐘', label: 'E de Elefante', voice: '¡La letra E! E de Elefante gigante', note: 293.66 },
-                { bg: '#55efc4', visual: '🅸 🏝️', label: 'I de Isla', voice: '¡La letra I! I de Isla bonita', note: 329.63 },
-                { bg: '#ffeaa7', visual: '🅾️ 🐻', label: 'O de Oso', voice: '¡La letra O! O de Osito cariñoso', note: 392.00 },
-                { bg: '#a29bfe', visual: '🆄 🍇', label: 'U de Uva', voice: '¡Y la letra U! U de Uvas deliciosas. ¡Muy bien!', note: 523.25 }
-            ]
-        },
-        {
-            id: 'story_farm',
-            title: 'La Granja',
-            icon: '🐮🚜',
-            gradient: 'linear-gradient(135deg, #00B894, #55efc4)',
-            scenes: [
-                { bg: '#55efc4', visual: '🐮 🥛', label: 'La Vaca dice Muuu', voice: 'En la granja está la vaca, y dice Muuuuuu', note: 261.63 },
-                { bg: '#ffeaa7', visual: '🐤 🌾', label: 'El Pollito dice Pío', voice: 'El pollito pequeñito dice Pío, pío, pío', note: 349.23 },
-                { bg: '#fab1a0', visual: '🐷  mud', label: 'El Cerdito dice Oink', voice: 'El cerdito gordito salta y dice Oink, oink', note: 329.63 },
-                { bg: '#74b9ff', visual: '🦆 💧', label: 'El Patito dice Cuac', voice: 'Y el patito nada en el agua diciendo Cuac, cuac', note: 523.25 }
-            ]
-        },
-        {
-            id: 'story_colors',
-            title: 'Los Colores',
-            icon: '🚂🌈',
-            gradient: 'linear-gradient(135deg, #6C5CE7, #a29bfe)',
-            scenes: [
-                { bg: '#ff4757', visual: '🍎 🍓 🚒', label: 'Rojo Brillante', voice: '¡Chuuu chuuu! Llegó el color Rojo, como la manzana y la fresa', note: 261.63 },
-                { bg: '#f1c40f', visual: '🌞 🍌 ⭐', label: 'Amarillo Sol', voice: '¡Mira cómo brilla el Amarillo! Como el sol y el guineo', note: 329.63 },
-                { bg: '#0984e3', visual: '🐳 🚙 💧', label: 'Azul como el Mar', voice: 'Aquí está el color Azul, como la ballena en el mar', note: 392.00 },
-                { bg: '#00b894', visual: '🐸 🐢 🌳', label: 'Verde Naturaleza', voice: '¡Y el color Verde! Como la ranita saltarina', note: 523.25 }
-            ]
-        },
-        {
-            id: 'story_teeth',
-            title: 'Mis Dientes',
-            icon: '🪥😁',
-            gradient: 'linear-gradient(135deg, #4ECDC4, #0984e3)',
-            scenes: [
-                { bg: '#74b9ff', visual: '🍎 🍽️ 😋', label: 'Después de comer...', voice: 'Después de comer nuestra comida rica...', note: 261.63 },
-                { bg: '#00cec9', visual: '🪥 🫧 🦷', label: 'Chiki Chiki Chiki', voice: 'Tomamos el cepillo y hacemos chiki, chiki, chiki arriba y abajo', note: 329.63 },
-                { bg: '#55efc4', visual: '😁 ✨ 🌟', label: '¡Dientes Limpios!', voice: '¡Mira qué sonrisa tan limpia y brillante! ¡Bravo!', note: 523.25 }
-            ]
-        }
-    ];
-
-    // =========================================================
-    // 4. JUEGOS VISUALES (1 A 4 AÑOS)
-    // =========================================================
-    const MODULE_NAMES = {
-        colors: '🎨 Colores',
-        animals: '🐮 Animales y Sonidos',
-        counting: '🍎 Contar 1, 2 y 3',
-        shadows: '🕵️ Adivina la Sombra',
-        sizes: '🐘 Grande y Pequeño',
-        emotions: '😄 Las Caritas'
-    };
-
-    const visualQuestionsDB = {
+    const RACE_CHALLENGES = {
         colors: [
             {
-                voice: "¡Toca las cosas de color ROJO! Como la manzana.",
-                stageHTML: `<div class="color-splat-circle" style="background:#ff4757;"></div>`,
-                options: [
-                    { html: `🍎🍓`, ok: true, speak: "¡Rojo! Muy bien" },
-                    { html: `🐸🥒`, ok: false, speak: "Ese es verde" },
-                    { html: `🚙🐳`, ok: false, speak: "Ese es azul" },
-                    { html: `🌞🍌`, ok: false, speak: "Ese es amarillo" }
+                badge: '🔴', title: '¡Puente ROJO!',
+                voice: '¡Pasa por el puente ROJO!',
+                correct: { icon: '🍎', color: '#ff4757' },
+                wrongs: [
+                    { icon: '🐳', color: '#0984e3' },
+                    { icon: '🐸', color: '#00b894' },
+                    { icon: '🌞', color: '#f1c40f' }
                 ]
             },
             {
-                voice: "¡Toca el color AMARILLO! Como el sol y el guineo.",
-                stageHTML: `<div class="color-splat-circle" style="background:#ffd32a;"></div>`,
-                options: [
-                    { html: `🌞🍌`, ok: true, speak: "¡Amarillo! Excelente" },
-                    { html: `🍎🚒`, ok: false, speak: "Ese es rojo" },
-                    { html: `🍇🍆`, ok: false, speak: "Ese es morado" },
-                    { html: `🚙🐬`, ok: false, speak: "Ese es azul" }
+                badge: '🔵', title: '¡Puente AZUL!',
+                voice: '¡Cruza por el puente AZUL!',
+                correct: { icon: '🐳', color: '#0984e3' },
+                wrongs: [
+                    { icon: '🍎', color: '#ff4757' },
+                    { icon: '🌞', color: '#f1c40f' },
+                    { icon: '🐸', color: '#00b894' }
                 ]
             },
             {
-                voice: "¡Busca el color AZUL! Como la ballena.",
-                stageHTML: `<div class="color-splat-circle" style="background:#0984e3;"></div>`,
-                options: [
-                    { html: `🐳🚙`, ok: true, speak: "¡Azul! Súper bien" },
-                    { html: `🐸🥦`, ok: false, speak: "Ese es verde" },
-                    { html: `🍓🍎`, ok: false, speak: "Ese es rojo" },
-                    { html: `🌞🍋`, ok: false, speak: "Ese es amarillo" }
+                badge: '🟡', title: '¡Puente AMARILLO!',
+                voice: '¡Busca el puente AMARILLO como el sol!',
+                correct: { icon: '🌞', color: '#f1c40f' },
+                wrongs: [
+                    { icon: '🍇', color: '#6c5ce7' },
+                    { icon: '🍎', color: '#ff4757' },
+                    { icon: '🐳', color: '#0984e3' }
                 ]
             },
             {
-                voice: "¡Toca el color VERDE! Como la ranita.",
-                stageHTML: `<div class="color-splat-circle" style="background:#00b894;"></div>`,
-                options: [
-                    { html: `🐸🐢`, ok: true, speak: "¡Verde! Muy bien" },
-                    { html: `🍎🍓`, ok: false, speak: "Ese es rojo" },
-                    { html: `🌞🍌`, ok: false, speak: "Ese es amarillo" },
-                    { html: `🐳🚙`, ok: false, speak: "Ese es azul" }
+                badge: '🟢', title: '¡Puente VERDE!',
+                voice: '¡Pasa por el puente VERDE!',
+                correct: { icon: '🐸', color: '#00b894' },
+                wrongs: [
+                    { icon: '🍎', color: '#ff4757' },
+                    { icon: '🐳', color: '#0984e3' },
+                    { icon: '🌞', color: '#f1c40f' }
                 ]
             }
         ],
         animals: [
             {
-                voice: "¿Quién hace Muuuuu y nos da leche? ¡Toca la vaca!",
-                stageHTML: `🥛 🔊`,
-                options: [
-                    { html: `🐮`, ok: true, speak: "¡Muuuu! La vaca" },
-                    { html: `🐶`, ok: false, speak: "Ese es el perro, guau guau" },
-                    { html: `🐱`, ok: false, speak: "Ese es el gato, miau" },
-                    { html: `🐸`, ok: false, speak: "Esa es la rana" }
+                badge: '🐮', title: '¡La Vaca (Muuu)!',
+                voice: '¿Quién hace Muuuuu? ¡Pasa por la vaca!',
+                correct: { icon: '🐮', color: '#00b894' },
+                wrongs: [
+                    { icon: '🐶', color: '#fd9644' },
+                    { icon: '🐱', color: '#6c5ce7' },
+                    { icon: '🐷', color: '#fd79a8' }
                 ]
             },
             {
-                voice: "¿Quién dice Guau Guau? ¡Toca el perrito!",
-                stageHTML: `🦴 🔊`,
-                options: [
-                    { html: `🐶`, ok: true, speak: "¡Guau guau! El perrito" },
-                    { html: `🐷`, ok: false, speak: "Ese es el cerdito" },
-                    { html: `🐔`, ok: false, speak: "Esa es la gallina" },
-                    { html: `🐑`, ok: false, speak: "Esa es la oveja" }
+                badge: '🐶', title: '¡El Perrito (Guau)!',
+                voice: '¿Quién dice Guau Guau? ¡Pasa por el perrito!',
+                correct: { icon: '🐶', color: '#fd9644' },
+                wrongs: [
+                    { icon: '🐮', color: '#00b894' },
+                    { icon: '🐸', color: '#2ecc71' },
+                    { icon: '🐔', color: '#e17055' }
                 ]
             },
             {
-                voice: "¿Quién dice Miau? ¡Toca el gatito!",
-                stageHTML: `🧶 🔊`,
-                options: [
-                    { html: `🐱`, ok: true, speak: "¡Miau! El gatito" },
-                    { html: `🦁`, ok: false, speak: "Ese es el león" },
-                    { html: `🦆`, ok: false, speak: "Ese es el pato, cuac cuac" },
-                    { html: `🐮`, ok: false, speak: "Esa es la vaca" }
+                badge: '🐱', title: '¡El Gatito (Miau)!',
+                voice: '¿Quién dice Miau? ¡Cruza por el gatito!',
+                correct: { icon: '🐱', color: '#6c5ce7' },
+                wrongs: [
+                    { icon: '🦁', color: '#e67e22' },
+                    { icon: '🐷', color: '#fd79a8' },
+                    { icon: '🦆', color: '#0984e3' }
                 ]
             },
             {
-                voice: "¿Quién come guineos y salta en los árboles? ¡Toca el monito!",
-                stageHTML: `🍌 🌴`,
-                options: [
-                    { html: `🐵`, ok: true, speak: "¡El monito! Uaa uaa" },
-                    { html: `🐟`, ok: false, speak: "Ese es el pececito" },
-                    { html: `🐢`, ok: false, speak: "Esa es la tortuga" },
-                    { html: `🐷`, ok: false, speak: "Ese es el cerdito" }
+                badge: '🦁', title: '¡El León (Grrr)!',
+                voice: '¿Quién ruge fuerte Grrrr? ¡Pasa por el león!',
+                correct: { icon: '🦁', color: '#e67e22' },
+                wrongs: [
+                    { icon: '🐤', color: '#f1c40f' },
+                    { icon: '🐸', color: '#00b894' },
+                    { icon: '🐮', color: '#0984e3' }
                 ]
             }
         ],
         counting: [
             {
-                voice: "Mira arriba: hay UNA manzana. ¡Toca donde hay solo UNA estrella!",
-                stageHTML: `🍎`,
-                options: [
-                    { html: `⭐`, ok: true, speak: "¡Una estrella! Muy bien" },
-                    { html: `⭐⭐`, ok: false, speak: "Ahí hay dos" },
-                    { html: `⭐⭐⭐`, ok: false, speak: "Ahí hay tres" },
-                    { html: `⭐⭐⭐⭐`, ok: false, speak: "Ahí hay cuatro" }
+                badge: '1️⃣', title: '¡1 Manzana!',
+                voice: '¡Pasa por donde hay UNA sola manzana!',
+                correct: { icon: '🍎', color: '#ff4757' },
+                wrongs: [
+                    { icon: '🍎🍎', color: '#0984e3' },
+                    { icon: '🍎🍎🍎', color: '#6c5ce7' }
                 ]
             },
             {
-                voice: "Contemos juntos: ¡Uno y Dos patitos! Toca donde hay DOS globos.",
-                stageHTML: `🐤 🐤`,
-                options: [
-                    { html: `🎈🎈`, ok: true, speak: "¡Uno y dos globos! Bravo" },
-                    { html: `🎈`, ok: false, speak: "Ahí hay solo uno" },
-                    { html: `🎈🎈🎈`, ok: false, speak: "Ahí hay tres" },
-                    { html: `🎈🎈🎈🎈`, ok: false, speak: "Ahí hay muchos" }
+                badge: '2️⃣', title: '¡2 Globos!',
+                voice: '¡Uno y dos! Pasa por donde hay DOS globos.',
+                correct: { icon: '🎈🎈', color: '#00b894' },
+                wrongs: [
+                    { icon: '🎈', color: '#fd9644' },
+                    { icon: '🎈🎈🎈', color: '#e84393' }
                 ]
             },
             {
-                voice: "Contemos: ¡Uno, Dos y Tres carritos! Toca donde hay TRES pelotas.",
-                stageHTML: `🚗 🚗 🚗`,
-                options: [
-                    { html: `⚽⚽⚽`, ok: true, speak: "¡Uno, dos y tres! Excelente" },
-                    { html: `⚽`, ok: false, speak: "Ahí hay una" },
-                    { html: `⚽⚽`, ok: false, speak: "Ahí hay dos" },
-                    { html: `⚽⚽⚽⚽`, ok: false, speak: "Ahí hay cuatro" }
-                ]
-            }
-        ],
-        shadows: [
-            {
-                voice: "Mira la sombra negra... ¿Quién se esconde ahí? ¡Toca el dinosaurio!",
-                stageHTML: `<span class="silhouette-shadow" style="font-size:95px;">🦖</span>`,
-                options: [
-                    { html: `🦖`, ok: true, speak: "¡Sí! Es el dinosaurio" },
-                    { html: `🚗`, ok: false, speak: "No, ese es un carro" },
-                    { html: `🍌`, ok: false, speak: "No, ese es un guineo" },
-                    { html: `🏠`, ok: false, speak: "No, esa es una casa" }
-                ]
-            },
-            {
-                voice: "Mira la sombra... ¿Qué es? ¡Toca el cohete espacial!",
-                stageHTML: `<span class="silhouette-shadow" style="font-size:95px;">🚀</span>`,
-                options: [
-                    { html: `🚀`, ok: true, speak: "¡Sí! El cohete espacial" },
-                    { html: `🐸`, ok: false, speak: "Esa es la ranita" },
-                    { html: `🍎`, ok: false, speak: "Esa es la manzana" },
-                    { html: `🐶`, ok: false, speak: "Ese es el perrito" }
-                ]
-            },
-            {
-                voice: "Adivina la sombra... ¡Toca el elefante!",
-                stageHTML: `<span class="silhouette-shadow" style="font-size:95px;">🐘</span>`,
-                options: [
-                    { html: `🐘`, ok: true, speak: "¡Bravo! Es el elefante" },
-                    { html: `🦋`, ok: false, speak: "Esa es la mariposa" },
-                    { html: `🍕`, ok: false, speak: "Esa es la pizza" },
-                    { html: `🌞`, ok: false, speak: "Ese es el sol" }
-                ]
-            }
-        ],
-        sizes: [
-            {
-                voice: "¡Toca el perrito más GRANDE!",
-                stageHTML: `🐶`,
-                options: [
-                    { html: `<span style="font-size:78px;">🐶</span>`, ok: true, speak: "¡Ese es el más grande!" },
-                    { html: `<span style="font-size:28px;">🐶</span>`, ok: false, speak: "Ese es pequeñito" },
-                    { html: `<span style="font-size:32px;">🐶</span>`, ok: false, speak: "Ese es chiquito" },
-                    { html: `<span style="font-size:26px;">🐶</span>`, ok: false, speak: "Busca el grande" }
-                ]
-            },
-            {
-                voice: "Ahora busca la estrella más PEQUEÑITA, la bebé.",
-                stageHTML: `⭐`,
-                options: [
-                    { html: `<span style="font-size:26px;">⭐</span>`, ok: true, speak: "¡Sí! La estrellita pequeñita" },
-                    { html: `<span style="font-size:76px;">⭐</span>`, ok: false, speak: "Esa es grandota" },
-                    { html: `<span style="font-size:72px;">⭐</span>`, ok: false, speak: "Esa es muy grande" },
-                    { html: `<span style="font-size:68px;">⭐</span>`, ok: false, speak: "Busca la más chiquita" }
-                ]
-            },
-            {
-                voice: "¿Cuál es más GRANDE? ¿El elefante o la hormiguita? ¡Toca el elefante!",
-                stageHTML: `🐘 🐜`,
-                options: [
-                    { html: `🐘`, ok: true, speak: "¡El elefante es gigante!" },
-                    { html: `🐜`, ok: false, speak: "La hormiguita es pequeñita" },
-                    { html: `🐝`, ok: false, speak: "La abejita es pequeña" },
-                    { html: `🐞`, ok: false, speak: "Busca el elefante grande" }
-                ]
-            }
-        ],
-        emotions: [
-            {
-                voice: "¡Toca la carita que está muy FELIZ y sonriendo!",
-                stageHTML: `😄`,
-                options: [
-                    { html: `😄`, ok: true, speak: "¡Está muy feliz!" },
-                    { html: `😢`, ok: false, speak: "Esa carita está triste" },
-                    { html: `😠`, ok: false, speak: "Esa carita está enojada" },
-                    { html: `😴`, ok: false, speak: "Esa carita tiene sueño" }
-                ]
-            },
-            {
-                voice: "¡Toca la carita que tiene SUEÑO y está durmiendo!",
-                stageHTML: `😴 🌙`,
-                options: [
-                    { html: `😴`, ok: true, speak: "¡Shhh! Está durmiendo" },
-                    { html: `😄`, ok: false, speak: "Esa está despierta y feliz" },
-                    { html: `😠`, ok: false, speak: "Esa está enojada" },
-                    { html: `😮`, ok: false, speak: "Esa está sorprendida" }
-                ]
-            },
-            {
-                voice: "¡Toca la carita que está TRISTE y llorando!",
-                stageHTML: `😢 💧`,
-                options: [
-                    { html: `😢`, ok: true, speak: "Sí, está triste, demosle un abrazo" },
-                    { html: `😄`, ok: false, speak: "Esa está riendo" },
-                    { html: `🥳`, ok: false, speak: "Esa está de fiesta" },
-                    { html: `😴`, ok: false, speak: "Esa está durmiendo" }
+                badge: '3️⃣', title: '¡3 Estrellas!',
+                voice: '¡Uno, dos y tres! Cruza por las TRES estrellas.',
+                correct: { icon: '⭐⭐⭐', color: '#6c5ce7' },
+                wrongs: [
+                    { icon: '⭐', color: '#0984e3' },
+                    { icon: '⭐⭐', color: '#ff4757' }
                 ]
             }
         ]
     };
 
-    const TROPHIES = [
-        { id: 'first_win', icon: '🥉', title: 'Primera Estrella', check: u => u.completedGames >= 1 },
-        { id: 'stars_50', icon: '🌟', title: 'Súper Estrellita', check: u => u.totalStarsEarned >= 50 },
-        { id: 'color_wiz', icon: '🎨', title: 'Rey del Color', check: u => u.modules.colors >= 3 },
-        { id: 'animal_friend', icon: '🐮', title: 'Amigo Animal', check: u => u.modules.animals >= 3 },
-        { id: 'explorer', icon: '🚀', title: 'Campeón Nv. 3', check: u => u.level >= 3 },
-        { id: 'pet_owner', icon: '🐶', title: 'Mi Mascota', check: u => u.ownedPets.length > 0 }
+    // GARAJE DE VEHÍCULOS Y MASCOTAS
+    const VEHICLES_SHOP = [
+        { id: 'car_red', icon: '🏎️', name: 'Auto Veloz', cost: 0 },
+        { id: 'car_police', icon: '🚓', name: 'Patrulla', cost: 25 },
+        { id: 'car_fire', icon: '🚒', name: 'Bomberos', cost: 35 },
+        { id: 'car_train', icon: '🚂', name: 'Tren Chuchú', cost: 50 },
+        { id: 'car_dino', icon: '🦖', name: 'Súper Dino', cost: 65 },
+        { id: 'car_rocket', icon: '🚀', name: 'Cohete Turbo', cost: 85 }
     ];
 
     const PET_SHOP = [
         { id: 'pet_dog', icon: '🐶', name: 'Perrito', cost: 20 },
         { id: 'pet_cat', icon: '🐱', name: 'Gatito', cost: 20 },
-        { id: 'pet_dino', icon: '🦕', name: 'Bebé Dino', cost: 40 },
-        { id: 'pet_unicorn', icon: '🦄', name: 'Unicornio', cost: 60 },
-        { id: 'pet_crown', icon: '👑', name: 'Corona', cost: 80 }
+        { id: 'pet_unicorn', icon: '🦄', name: 'Unicornio', cost: 45 },
+        { id: 'pet_crown', icon: '👑', name: 'Corona Real', cost: 70 }
     ];
 
-    // VARIABLES DE ESTADO
+    const TROPHIES = [
+        { id: 'first_race', icon: '🏁', title: 'Primera Meta', check: u => u.completedGames >= 1 },
+        { id: 'stars_50', icon: '🌟', title: '50 Estrellas', check: u => u.totalStarsEarned >= 50 },
+        { id: 'new_car', icon: '🚒', title: 'Nuevo Auto', check: u => u.ownedVehicles.length >= 2 },
+        { id: 'pet_owner', icon: '🐶', title: 'Copiloto Fiel', check: u => u.ownedPets.length >= 1 },
+        { id: 'level_3', icon: '🏆', title: 'Piloto Nv. 3', check: u => u.level >= 3 },
+        { id: 'champion', icon: '👑', title: 'Rey de la Pista', check: u => u.completedGames >= 5 }
+    ];
+
+    // VARIABLES DE CUENTA Y ESTADO
     let selectedAvatar = 'lion';
     let selectedColor = '#FF6B6B';
     let selectedVisualKey = '🌞';
     let targetLoginUserKey = null;
     let currentUser = null;
-    let currentCategory = null;
-    let roundQueue = [];
-    let currentRoundIndex = 0;
     let parentExpectedAnswer = 56;
-    let bubbleInterval = null;
-    let bubblesPopped = 0;
-
-    // VARIABLES DEL REPRODUCTOR TV KIDS
-    let storyTimer = null;
-    let babyShieldActive = true;
 
     // =========================================================
-    // 5. INICIALIZACIÓN Y ESQUEMA DE USUARIO
+    // 4. MOTOR EN TIEMPO REAL DEL JUEGO DE CARRERAS (60 FPS)
+    // =========================================================
+    let raceRunning = false;
+    let raceAnimFrame = null;
+    let selectedRaceTopic = 'all';
+    let currentMission = null;
+    let currentMissionCat = 'colors';
+    let gatesPassedInRound = 0;
+    const GATES_PER_TROPHY_LAP = 5;
+
+    // Estado físico de la pista y el jugador
+    let playerLane = 1; // 0 = Izquierda, 1 = Centro, 2 = Derecha
+    let playerVisualX = 250;
+    let roadLineOffset = 0;
+    let turboTimer = 0;
+    let bounceTimer = 0;
+
+    let activeGateWave = null; // Ola de 3 puentes que baja por los carriles
+    let roadStars = [];        // Estrellas coleccionables en la carretera
+    let particles = [];        // Chispas y estrellitas al cruzar puentes
+
+    // =========================================================
+    // 5. INICIALIZACIÓN Y COMPATIBILIDAD DE CUENTAS
     // =========================================================
     document.addEventListener('DOMContentLoaded', () => {
         buildCharacterSelectorGrid();
         updateLivePreviewBanner();
         renderProfileCards();
-        initDrawingCanvas();
-        initMemoryGame();
+        setupRaceCanvasControls();
+        drawStaticPreviewRoad();
 
         const activeSession = localStorage.getItem('mimikids_active_user');
         if (activeSession) {
@@ -1894,10 +1353,8 @@
     }
 
     function ensureUserSchema(user) {
-        if (!user.modules) user.modules = {};
         if (!user.moduleStats) user.moduleStats = {};
-        ['colors', 'animals', 'counting', 'shadows', 'sizes', 'emotions'].forEach(m => {
-            if (!user.modules[m]) user.modules[m] = 1;
+        ['colors', 'animals', 'counting'].forEach(m => {
             if (!user.moduleStats[m]) user.moduleStats[m] = { hits: 0, misses: 0 };
         });
         if (!CHARACTERS[user.avatar]) user.avatar = 'lion';
@@ -1905,14 +1362,13 @@
         if (typeof user.totalStarsEarned !== 'number') user.totalStarsEarned = user.stars || 0;
         if (!Array.isArray(user.unlockedTrophies)) user.unlockedTrophies = [];
         if (!Array.isArray(user.ownedPets)) user.ownedPets = [];
+        if (!Array.isArray(user.ownedVehicles)) user.ownedVehicles = ['car_red'];
+        if (!user.equippedVehicle) user.equippedVehicle = '🏎️';
         if (!Array.isArray(user.customRewards)) {
             user.customRewards = [
                 { id: 'rew_1', title: '🍦 Helado favorito', cost: 50 },
                 { id: 'rew_2', title: '🛝 Ir al parque', cost: 70 }
             ];
-        }
-        if (!Array.isArray(user.customVideos)) {
-            user.customVideos = [];
         }
         if (!user.equippedPet) user.equippedPet = '';
         if (!user.themeColor) user.themeColor = '#FF6B6B';
@@ -1921,7 +1377,7 @@
     }
 
     // =========================================================
-    // 6. GESTIÓN DE PERFILES Y LLAVE DE DIBUJO
+    // 6. REGISTRO Y LOGIN CON DIBUJO SECRETO
     // =========================================================
     function buildCharacterSelectorGrid() {
         const grid = document.getElementById('character-selector-grid');
@@ -1967,8 +1423,8 @@
 
     function updateLivePreviewText() {
         const nameInput = document.getElementById('reg-username').value.trim();
-        const charLabel = CHARACTERS[selectedAvatar] ? CHARACTERS[selectedAvatar].label : 'Bebé';
-        document.getElementById('live-preview-name').innerText = nameInput ? `${nameInput}` : charLabel;
+        const charLabel = CHARACTERS[selectedAvatar] ? CHARACTERS[selectedAvatar].label : 'Piloto';
+        document.getElementById('live-preview-name').innerText = nameInput ? `${nameInput}` : `${charLabel} Piloto`;
     }
 
     function showAuthView(viewId) {
@@ -2001,14 +1457,15 @@
                 <div class="profile-avatar-circle" style="background: ${u.themeColor}22; border: 4px solid ${u.themeColor};">
                     ${getAvatarSVG(u.avatar)}
                 </div>
-                <div class="profile-name">${u.username} ${u.equippedPet || ''}</div>
+                <div class="profile-name">${u.username} ${u.equippedVehicle || '🏎️'}</div>
                 <div class="profile-stars-badge">⭐ ${u.stars}</div>
             `;
             container.appendChild(card);
         });
 
         const addCard = document.createElement('div');
-        addCard.className = 'profile-card add-profile-card';
+        addCard.className = 'profile-card';
+        addCard.style.borderStyle = 'dashed';
         addCard.onclick = () => {
             playSound('tap');
             document.getElementById('reg-username').value = '';
@@ -2017,8 +1474,8 @@
             showAuthView('view-register');
         };
         addCard.innerHTML = `
-            <div class="profile-avatar-circle" style="background:#e2e8f0; font-size:44px;">➕</div>
-            <div class="profile-name" style="color:#334155;">Nuevo Niño/a</div>
+            <div class="profile-avatar-circle" style="background:#e2e8f0; font-size:42px;">➕</div>
+            <div class="profile-name" style="color:#334155;">Nuevo Piloto</div>
         `;
         container.appendChild(addCard);
     }
@@ -2068,12 +1525,13 @@
 
         playSound('tap');
         targetLoginUserKey = userKey;
-        document.getElementById('visual-slot-1').innerText = '❓';
-        document.getElementById('visual-slot-1').classList.remove('filled');
+        const slot = document.getElementById('visual-slot-1');
+        slot.innerText = '❓';
+        slot.classList.remove('filled');
 
         document.getElementById('pinpad-avatar').innerHTML = getAvatarSVG(user.avatar);
         document.getElementById('pinpad-username').innerText = `¡Hola, ${user.username}!`;
-        speakText(`Hola ${user.username}, toca tu dibujito mágico para entrar`);
+        speakText(`Hola ${user.username}, toca tu dibujito mágico`);
         showAuthView('view-pinpad');
     }
 
@@ -2088,14 +1546,14 @@
 
         if (!user.visualKey || icon === user.visualKey) {
             playSound('win');
-            setTimeout(() => loginUser(user), 220);
+            setTimeout(() => loginUser(user), 200);
         } else {
             playSound('wrong');
             speakText(`Busca tu dibujito ${user.visualKey}`);
             setTimeout(() => {
                 slot.innerText = '❓';
                 slot.classList.remove('filled');
-            }, 500);
+            }, 450);
         }
     }
 
@@ -2116,7 +1574,7 @@
         const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = 'mimikids_cuentas.json';
+        a.download = 'mimikids_turbo_cuentas.json';
         a.click();
     }
 
@@ -2136,7 +1594,7 @@
     }
 
     // =========================================================
-    // 7. PANEL DEL NIÑO Y PESTAÑA DE VIDEOS EDUCATIVOS
+    // 7. GESTIÓN DE SESIÓN Y PANTALLA PRINCIPAL
     // =========================================================
     function loginUser(userObj) {
         currentUser = ensureUserSchema(userObj);
@@ -2153,7 +1611,26 @@
         checkDailyChestVisibility();
         checkAndUnlockTrophies(false);
         updateDashboardUI();
-        speakText(`¡Hola ${currentUser.username}! Vamos a jugar`);
+        stopRaceEngine();
+        speakText(`¡Listo para correr, ${currentUser.username}!`);
+    }
+
+    function saveCurrentUser() {
+        const db = getUsersDB();
+        db[currentUser.username.toLowerCase()] = currentUser;
+        saveUsersDB(db);
+    }
+
+    function logout() {
+        playSound('tap');
+        stopRaceEngine();
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        currentUser = null;
+        localStorage.removeItem('mimikids_active_user');
+        document.getElementById('dashboard-screen').style.display = 'none';
+        document.getElementById('header-user-bar').style.display = 'none';
+        document.getElementById('auth-screen').style.display = 'flex';
+        showAuthView('view-profiles');
     }
 
     function checkDailyChestVisibility() {
@@ -2166,8 +1643,8 @@
         const today = new Date().toISOString().slice(0, 10);
         if (currentUser.lastDailyClaim === today) return;
         currentUser.lastDailyClaim = today;
-        awardStarsAndXP(15, 25, '🎁 ¡Regalo sorpresa! +15 Estrellas');
-        speakText('¡Sorpresa! Ganaste muchas estrellas');
+        awardStarsAndXP(15, 25, '🎁 ¡Cofre Diario! +15 Estrellas');
+        speakText('¡Sorpresa! Ganaste quince estrellas');
         checkDailyChestVisibility();
     }
 
@@ -2177,36 +1654,15 @@
         currentUser.xp += xpToAdd;
         currentUser.level = Math.floor(currentUser.xp / 100) + 1;
 
-        playSound('win');
-        launchConfetti();
         checkAndUnlockTrophies(true);
         saveCurrentUser();
         updateDashboardUI();
-        showToast(message);
-    }
-
-    function saveCurrentUser() {
-        const db = getUsersDB();
-        db[currentUser.username.toLowerCase()] = currentUser;
-        saveUsersDB(db);
-    }
-
-    function logout() {
-        playSound('tap');
-        stopBubbleSpawner();
-        closeVideoPlayer();
-        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-        currentUser = null;
-        localStorage.removeItem('mimikids_active_user');
-        document.getElementById('dashboard-screen').style.display = 'none';
-        document.getElementById('header-user-bar').style.display = 'none';
-        document.getElementById('auth-screen').style.display = 'flex';
-        showAuthView('view-profiles');
+        if (message) showToast(message);
     }
 
     function switchTab(tabName, btnElement, voiceLabel) {
         playSound('tap');
-        stopBubbleSpawner();
+        if (tabName !== 'race') stopRaceEngine();
         if (voiceLabel) speakText(voiceLabel);
 
         document.querySelectorAll('.big-tab-btn').forEach(b => b.classList.remove('active'));
@@ -2214,16 +1670,11 @@
 
         document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
         document.getElementById('tab-' + tabName).classList.add('active');
-
-        if (tabName === 'arcade') {
-            const bubblesActive = document.getElementById('arcade-bubbles').classList.contains('active');
-            if (bubblesActive) startBubbleSpawner();
-        }
     }
 
     function openParentTab() {
         playSound('tap');
-        stopBubbleSpawner();
+        stopRaceEngine();
         document.querySelectorAll('.big-tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
         document.getElementById('tab-parents').classList.add('active');
@@ -2237,531 +1688,424 @@
 
         document.getElementById('stat-stars').innerText = currentUser.stars;
         document.getElementById('stat-level').innerText = currentUser.level;
+        document.getElementById('overlay-vehicle-icon').innerText = currentUser.equippedVehicle || '🏎️';
 
         const currentLevelXP = currentUser.xp % 100;
         document.getElementById('progress-bar').style.width = `${currentLevelXP}%`;
 
-        Object.keys(currentUser.modules).forEach(mod => {
-            const badge = document.getElementById('badge-' + mod);
-            if (badge) badge.innerText = currentUser.modules[mod];
-        });
-
-        renderVideosTab();
+        renderGarage();
         renderAwards();
-        renderShop();
         renderRealRewards();
         renderParentReport();
     }
 
     // =========================================================
-    // 8. MOTOR DE TV KIDS (CUENTOS ANIMADOS + YOUTUBE/MP4 CON ESCUDO)
+    // 8. LÓGICA DEL VIDEOJUEGO DE CARRERAS DE 3 CARRILES
     // =========================================================
-    function renderVideosTab() {
-        const storiesGrid = document.getElementById('builtin-stories-grid');
-        storiesGrid.innerHTML = '';
-
-        BUILTIN_STORIES.forEach(st => {
-            const card = document.createElement('div');
-            card.className = 'toddler-game-card';
-            card.style.background = st.gradient;
-            card.onclick = () => playBuiltinStory(st);
-            card.innerHTML = `
-                <span class="toddler-stars-tag">▶️ +15 ⭐</span>
-                <div class="toddler-game-icon">${st.icon}</div>
-                <div class="toddler-game-title">${st.title}</div>
-            `;
-            storiesGrid.appendChild(card);
-        });
-
-        const customGrid = document.getElementById('custom-videos-grid');
-        customGrid.innerHTML = '';
-
-        if (!currentUser.customVideos || currentUser.customVideos.length === 0) {
-            customGrid.innerHTML = `
-                <div style="grid-column: 1/-1; background:#f8fafc; border:3px dashed #cbd5e1; border-radius:22px; padding:16px; text-align:center; color:#64748b; font-weight:800; font-size:14px;">
-                    👨‍👩‍👧 Papá o Mamá pueden añadir videos educativos desde el botón 🔒👨‍👩‍👧 arriba a la derecha.
-                </div>
-            `;
-            return;
-        }
-
-        currentUser.customVideos.forEach((vid, idx) => {
-            const card = document.createElement('div');
-            card.className = 'toddler-game-card';
-            card.style.background = 'linear-gradient(135deg, #0984e3, #74b9ff)';
-            card.onclick = () => playCustomVideo(vid);
-            card.innerHTML = `
-                <span class="toddler-stars-tag">📺 Ver</span>
-                <div class="toddler-game-icon">${vid.icon || '🎬'}</div>
-                <div class="toddler-game-title">${vid.title}</div>
-            `;
-            customGrid.appendChild(card);
-        });
-    }
-
-    function playBuiltinStory(story) {
-        closeVideoPlayer();
-        babyShieldActive = true;
-        updateShieldButtonUI();
-
-        document.getElementById('video-modal-title').innerText = `🎬 ${story.title}`;
-        document.getElementById('video-modal').style.display = 'flex';
-
-        let sceneIdx = 0;
-        const stageWrapper = document.getElementById('video-stage-wrapper');
-        const inner = document.getElementById('video-inner-content');
-        const progFill = document.getElementById('video-progress-fill');
-
-        function showScene() {
-            if (sceneIdx >= story.scenes.length) {
-                closeVideoPlayer();
-                awardStarsAndXP(15, 35, `🎬 ¡Viste el cuento ${story.title}! +15 Estrellas`);
-                speakText('¡Qué lindo cuento! Ganaste quince estrellas');
-                return;
-            }
-            const sc = story.scenes[sceneIdx];
-            stageWrapper.style.background = sc.bg;
-            inner.innerHTML = `
-                <div class="story-animated-character">${sc.visual}</div>
-                <div class="story-caption-pill">${sc.label}</div>
-            `;
-            progFill.style.width = `${Math.round(((sceneIdx + 1) / story.scenes.length) * 100)}%`;
-            playSound('note', sc.note);
-            speakText(sc.voice);
-            sceneIdx++;
-            storyTimer = setTimeout(showScene, 4200);
-        }
-
-        showScene();
-    }
-
-    function extractYouTubeID(url) {
-        const reg = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
-        const match = url.match(reg);
-        return match ? match[1] : null;
-    }
-
-    function playCustomVideo(vid) {
-        closeVideoPlayer();
-        babyShieldActive = true;
-        updateShieldButtonUI();
-
-        document.getElementById('video-modal-title').innerText = `📺 ${vid.title}`;
-        document.getElementById('video-modal').style.display = 'flex';
-        document.getElementById('video-progress-fill').style.width = '100%';
-
-        const inner = document.getElementById('video-inner-content');
-        const ytId = extractYouTubeID(vid.url);
-
-        if (ytId) {
-            inner.innerHTML = `
-                <iframe width="100%" height="100%" 
-                    src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1" 
-                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                </iframe>
-            `;
-        } else {
-            inner.innerHTML = `
-                <video width="100%" height="100%" src="${vid.url}" autoplay controls style="object-fit:cover;"></video>
-            `;
-        }
-    }
-
-    function toggleBabyShield() {
-        babyShieldActive = !babyShieldActive;
-        updateShieldButtonUI();
-    }
-
-    function updateShieldButtonUI() {
-        const shieldLayer = document.getElementById('baby-touch-shield');
-        const btn = document.getElementById('btn-shield-toggle');
-        shieldLayer.style.display = babyShieldActive ? 'block' : 'none';
-        btn.className = 'btn-baby-shield' + (babyShieldActive ? '' : ' off');
-        btn.innerText = babyShieldActive ? '🛡️ Escudo Bebé: ON' : '🔓 Escudo: OFF';
-    }
-
-    // Cuando el bebé toca el video con el Escudo activo, salen estrellitas sin pausar ni salir
-    function handleBabyShieldTouch(e) {
-        playSound('pop');
-        const wrapper = document.getElementById('video-stage-wrapper');
-        const rect = wrapper.getBoundingClientRect();
-        const sp = document.createElement('div');
-        sp.className = 'touch-sparkle';
-        sp.innerText = ['⭐', '✨', '🫧', '💛', '🎈'][Math.floor(Math.random() * 5)];
-        sp.style.left = (e.clientX - rect.left - 18) + 'px';
-        sp.style.top = (e.clientY - rect.top - 18) + 'px';
-        wrapper.appendChild(sp);
-        setTimeout(() => sp.remove(), 700);
-    }
-
-    function closeVideoPlayer() {
-        if (storyTimer) {
-            clearTimeout(storyTimer);
-            storyTimer = null;
-        }
-        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-        document.getElementById('video-inner-content').innerHTML = '';
-        document.getElementById('video-modal').style.display = 'none';
-    }
-
-    function addCustomParentVideo() {
-        const title = document.getElementById('new-video-title').value.trim();
-        const url = document.getElementById('new-video-url').value.trim();
-        const icon = document.getElementById('new-video-icon').value;
-
-        if (!title || !url) {
-            showToast('Escribe el título y pega el enlace del video.');
-            return;
-        }
-
-        currentUser.customVideos.push({ id: 'vid_' + Date.now(), title, url, icon });
-        document.getElementById('new-video-title').value = '';
-        document.getElementById('new-video-url').value = '';
-        saveCurrentUser();
-        updateDashboardUI();
-        showToast('📺 Video añadido a la pestaña Videos del niño');
-    }
-
-    // =========================================================
-    // 9. MOTOR DE PREGUNTAS VISUALES
-    // =========================================================
-    function startGame(category) {
+    function setRaceTopic(topic, btn) {
         playSound('tap');
-        currentCategory = category;
-        const pool = [...visualQuestionsDB[category]];
-        roundQueue = pool.sort(() => Math.random() - 0.5).slice(0, 3);
-        currentRoundIndex = 0;
-
-        document.getElementById('game-modal').style.display = 'flex';
-        showCurrentQuestion();
-    }
-
-    function showCurrentQuestion() {
-        const currentQ = roundQueue[currentRoundIndex];
-        document.getElementById('round-text').innerText = `⭐ ${currentRoundIndex + 1} / ${roundQueue.length}`;
-        document.getElementById('stage-visual-content').innerHTML = currentQ.stageHTML;
-
-        speakCurrentQuestion();
-
-        const optionsBox = document.getElementById('options-container');
-        optionsBox.innerHTML = '';
-
-        const shuffledOptions = [...currentQ.options].sort(() => Math.random() - 0.5);
-
-        shuffledOptions.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.className = 'toddler-opt-btn';
-            btn.innerHTML = opt.html;
-            btn.onclick = () => checkVisualAnswer(opt, btn);
-            optionsBox.appendChild(btn);
-        });
-    }
-
-    function speakCurrentQuestion() {
-        const currentQ = roundQueue[currentRoundIndex];
-        if (!currentQ) return;
-        speakText(currentQ.voice);
-    }
-
-    function checkVisualAnswer(opt, btnElement) {
-        if (opt.ok) {
-            playSound('correct');
-            btnElement.classList.add('correct-flash');
-            speakText(opt.speak || '¡Muy bien!');
-            currentUser.moduleStats[currentCategory].hits += 1;
-            currentRoundIndex++;
-
-            setTimeout(() => {
-                if (currentRoundIndex < roundQueue.length) {
-                    showCurrentQuestion();
-                } else {
-                    currentUser.completedGames += 1;
-                    currentUser.modules[currentCategory] += 1;
-                    closeGame();
-                    awardStarsAndXP(15, 40, '🌟 ¡Bravo! Ganaste +15 Estrellas');
-                    speakText(`¡Bravo ${currentUser.username}! Ganaste quince estrellas`);
-                }
-            }, 950);
-        } else {
-            playSound('wrong');
-            currentUser.moduleStats[currentCategory].misses += 1;
-            saveCurrentUser();
-            speakText(opt.speak || 'Intenta con otro dibujo');
-        }
-    }
-
-    function closeGame() {
-        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-        document.getElementById('game-modal').style.display = 'none';
-    }
-
-    // =========================================================
-    // 10. JUEGOS SENSORIALES (BURBUJAS, PINTAR, PIANO, PAREJAS)
-    // =========================================================
-    function switchArcade(mode, btn, voiceText) {
-        playSound('tap');
-        stopBubbleSpawner();
-        if (voiceText) speakText(voiceText);
-
-        document.querySelectorAll('.arcade-btn').forEach(b => b.classList.remove('active'));
+        selectedRaceTopic = topic;
+        document.querySelectorAll('.mode-pill-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        document.querySelectorAll('.arcade-panel').forEach(p => p.classList.remove('active'));
-        document.getElementById('arcade-' + mode).classList.add('active');
-
-        if (mode === 'bubbles') startBubbleSpawner();
+        if (raceRunning) pickNextRaceMission();
     }
 
-    function startBubbleSpawner() {
-        stopBubbleSpawner();
-        bubblesPopped = 0;
-        document.getElementById('bubble-score').innerText = '0';
-        const stage = document.getElementById('bubble-stage');
-        stage.innerHTML = '';
+    function setupRaceCanvasControls() {
+        const canvas = document.getElementById('race-canvas');
+        let startX = 0;
 
-        spawnSingleBubble();
-        bubbleInterval = setInterval(spawnSingleBubble, 900);
-    }
-
-    function stopBubbleSpawner() {
-        if (bubbleInterval) {
-            clearInterval(bubbleInterval);
-            bubbleInterval = null;
-        }
-    }
-
-    function spawnSingleBubble() {
-        const stage = document.getElementById('bubble-stage');
-        if (!stage) return;
-        const icons = ['🎈', '🫧', '⭐', '🦋', '🍓', '🐳', '🌞'];
-        const colors = ['#ff7675', '#74b9ff', '#55efc4', '#ffeaa7', '#a29bfe', '#fd79a8'];
-
-        const b = document.createElement('div');
-        b.className = 'floating-bubble';
-        b.innerText = icons[Math.floor(Math.random() * icons.length)];
-        b.style.background = colors[Math.floor(Math.random() * colors.length)];
-        b.style.left = Math.floor(Math.random() * 78 + 5) + '%';
-        b.style.bottom = '-80px';
-
-        b.onpointerdown = () => {
-            playSound('pop');
-            b.style.transform = 'scale(1.5)';
-            b.style.opacity = '0';
-            setTimeout(() => b.remove(), 120);
-            bubblesPopped++;
-            document.getElementById('bubble-score').innerText = bubblesPopped;
-
-            if (bubblesPopped >= 8) {
-                bubblesPopped = 0;
-                document.getElementById('bubble-score').innerText = '0';
-                awardStarsAndXP(10, 25, '🫧 ¡Burbujas explotadas! +10 Estrellas');
-                speakText('¡Muy bien! Ganaste diez estrellas');
-            }
-        };
-
-        stage.appendChild(b);
-
-        let pos = -80;
-        const moveTimer = setInterval(() => {
-            if (!document.body.contains(b)) {
-                clearInterval(moveTimer);
-                return;
-            }
-            pos += 2.2;
-            b.style.bottom = pos + 'px';
-            if (pos > 310) {
-                b.remove();
-                clearInterval(moveTimer);
-            }
-        }, 30);
-    }
-
-    let memoryCards = [];
-    let flippedIndices = [];
-    let matchedCount = 0;
-    let lockBoard = false;
-
-    function initMemoryGame() {
-        const emojis = ['🐶', '🐸', '🌞'];
-        memoryCards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
-        flippedIndices = [];
-        matchedCount = 0;
-        lockBoard = false;
-        const board = document.getElementById('memory-board');
-        board.innerHTML = '';
-        memoryCards.forEach((icon, idx) => {
-            const card = document.createElement('div');
-            card.className = 'mem-card';
-            card.id = 'mem-card-' + idx;
-            card.innerText = '🌟';
-            card.onclick = () => flipMemoryCard(idx);
-            board.appendChild(card);
-        });
-    }
-
-    function flipMemoryCard(idx) {
-        if (lockBoard) return;
-        const cardEl = document.getElementById('mem-card-' + idx);
-        if (!cardEl || cardEl.classList.contains('flipped') || cardEl.classList.contains('matched')) return;
-
-        playSound('tap');
-        cardEl.classList.add('flipped');
-        cardEl.innerText = memoryCards[idx];
-        flippedIndices.push(idx);
-
-        if (flippedIndices.length === 2) {
-            lockBoard = true;
-            const [firstIdx, secondIdx] = flippedIndices;
-            if (memoryCards[firstIdx] === memoryCards[secondIdx]) {
-                playSound('correct');
-                document.getElementById('mem-card-' + firstIdx).classList.add('matched');
-                document.getElementById('mem-card-' + secondIdx).classList.add('matched');
-                flippedIndices = [];
-                matchedCount += 2;
-                lockBoard = false;
-
-                if (matchedCount === memoryCards.length) {
-                    awardStarsAndXP(15, 35, '🃏 ¡Encontraste las parejas! +15 Estrellas');
-                    speakText('¡Lo lograste! Encontraste todas las parejas');
-                    setTimeout(initMemoryGame, 1500);
-                }
-            } else {
-                setTimeout(() => {
-                    const c1 = document.getElementById('mem-card-' + firstIdx);
-                    const c2 = document.getElementById('mem-card-' + secondIdx);
-                    if (c1) { c1.classList.remove('flipped'); c1.innerText = '🌟'; }
-                    if (c2) { c2.classList.remove('flipped'); c2.innerText = '🌟'; }
-                    flippedIndices = [];
-                    lockBoard = false;
-                }, 800);
-            }
-        }
-    }
-
-    let isDrawing = false;
-    let drawColor = '#FF6B6B';
-    let strokeCount = 0;
-
-    function initDrawingCanvas() {
-        const canvas = document.getElementById('draw-canvas');
-        const ctx = canvas.getContext('2d');
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.lineWidth = 14;
-
-        function getPos(e) {
-            const rect = canvas.getBoundingClientRect();
-            return {
-                x: (e.clientX - rect.left) * (canvas.width / rect.width),
-                y: (e.clientY - rect.top) * (canvas.height / rect.height)
-            };
-        }
-
+        // Tocar directamente el carril Izquierdo, Central o Derecho en la pista
         canvas.addEventListener('pointerdown', e => {
-            isDrawing = true;
-            strokeCount++;
-            const pos = getPos(e);
-            ctx.beginPath();
-            ctx.moveTo(pos.x, pos.y);
-            ctx.strokeStyle = drawColor;
-            ctx.lineTo(pos.x + 0.5, pos.y + 0.5);
-            ctx.stroke();
+            const rect = canvas.getBoundingClientRect();
+            const relX = (e.clientX - rect.left) * (canvas.width / rect.width);
+            startX = e.clientX;
+
+            if (relX < 185) movePlayerToLane(0);
+            else if (relX > 315) movePlayerToLane(2);
+            else movePlayerToLane(1);
         });
 
-        canvas.addEventListener('pointermove', e => {
-            if (!isDrawing) return;
-            const pos = getPos(e);
-            ctx.strokeStyle = drawColor;
-            ctx.lineTo(pos.x, pos.y);
-            ctx.stroke();
+        // Deslizar el dedo (Swipe)
+        canvas.addEventListener('pointerup', e => {
+            const diff = e.clientX - startX;
+            if (Math.abs(diff) > 35) {
+                if (diff > 0 && playerLane < 2) movePlayerToLane(playerLane + 1);
+                else if (diff < 0 && playerLane > 0) movePlayerToLane(playerLane - 1);
+            }
         });
 
-        window.addEventListener('pointerup', () => { isDrawing = false; });
+        // Flechas del teclado para computadora
+        window.addEventListener('keydown', e => {
+            if (!raceRunning) return;
+            if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+                if (playerLane > 0) movePlayerToLane(playerLane - 1);
+            } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+                if (playerLane < 2) movePlayerToLane(playerLane + 1);
+            } else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
+                movePlayerToLane(1);
+            }
+        });
     }
 
-    function setDrawColor(color, el, colorName) {
+    function movePlayerToLane(laneIndex) {
+        playerLane = Math.max(0, Math.min(2, laneIndex));
         playSound('tap');
-        drawColor = color;
-        speakText(colorName);
-        document.querySelectorAll('.swatch-btn').forEach(b => b.classList.remove('active'));
-        el.classList.add('active');
     }
 
-    function stampCanvasEmoji() {
-        playSound('pop');
-        strokeCount++;
-        const canvas = document.getElementById('draw-canvas');
-        const ctx = canvas.getContext('2d');
-        const stamps = ['⭐', '❤️', '🦋', '🌞', '🦖', '🦄'];
-        ctx.font = '48px serif';
-        ctx.fillText(
-            stamps[Math.floor(Math.random() * stamps.length)],
-            Math.random() * (canvas.width - 70) + 20,
-            Math.random() * (canvas.height - 60) + 50
-        );
+    function startRaceEngine() {
+        document.getElementById('race-overlay').style.display = 'none';
+        raceRunning = true;
+        gatesPassedInRound = 0;
+        playerLane = 1;
+        playerVisualX = 250;
+        roadStars = [];
+        particles = [];
+        turboTimer = 0;
+        updateGatesHUD();
+
+        pickNextRaceMission();
+        if (raceAnimFrame) cancelAnimationFrame(raceAnimFrame);
+        raceLoop();
     }
 
-    function clearCanvas() {
-        const canvas = document.getElementById('draw-canvas');
-        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-        strokeCount = 0;
+    function stopRaceEngine() {
+        raceRunning = false;
+        if (raceAnimFrame) cancelAnimationFrame(raceAnimFrame);
+        const overlay = document.getElementById('race-overlay');
+        if (overlay) overlay.style.display = 'flex';
+        drawStaticPreviewRoad();
     }
 
-    function completeDrawingReward() {
-        if (strokeCount < 1) {
-            speakText('Pinta con tu dedito primero');
-            return;
-        }
-        clearCanvas();
-        awardStarsAndXP(10, 25, '🎨 ¡Qué dibujo tan lindo! +10 Estrellas');
-        speakText('¡Qué dibujo tan bonito! Ganaste diez estrellas');
+    function pickNextRaceMission() {
+        const categories = selectedRaceTopic === 'all'
+            ? ['colors', 'animals', 'counting']
+            : [selectedRaceTopic];
+
+        currentMissionCat = categories[Math.floor(Math.random() * categories.length)];
+        const pool = RACE_CHALLENGES[currentMissionCat];
+        currentMission = pool[Math.floor(Math.random() * pool.length)];
+
+        document.getElementById('hud-target-badge').innerText = currentMission.badge;
+        document.getElementById('hud-target-text').innerText = currentMission.title;
+
+        speakCurrentMission();
+        spawnGateWaveForCurrentMission();
     }
 
-    let pianoTouches = 0;
-    function playPianoNote(freq, voiceSound) {
-        playSound('note', freq);
-        speakText(voiceSound);
-        if (++pianoTouches >= 6) {
-            pianoTouches = 0;
-            awardStarsAndXP(10, 20, '🎹 ¡Qué linda música! +10 Estrellas');
-        }
+    function speakCurrentMission() {
+        if (currentMission) speakText(currentMission.voice);
     }
 
-    // =========================================================
-    // 11. TROFEOS, TIENDA Y PANEL DE PADRES
-    // =========================================================
-    function renderAwards() {
-        const container = document.getElementById('awards-container');
-        container.innerHTML = '';
-        TROPHIES.forEach(t => {
-            const isUnlocked = currentUser.unlockedTrophies.includes(t.id);
-            const card = document.createElement('div');
-            card.className = 'award-card ' + (isUnlocked ? 'unlocked' : '');
-            card.onclick = () => speakText(t.title);
-            card.innerHTML = `
-                <div style="font-size:54px;">${t.icon}</div>
-                <h4>${t.title}</h4>
-            `;
-            container.appendChild(card);
+    function spawnGateWaveForCurrentMission() {
+        // Elegir en cuál de los 3 carriles estará el puente correcto
+        const correctLane = Math.floor(Math.random() * 3);
+        const shuffledWrongs = [...currentMission.wrongs].sort(() => Math.random() - 0.5);
+        let wrongIdx = 0;
+
+        const bridges = [0, 1, 2].map(lane => {
+            if (lane === correctLane) {
+                return {
+                    lane,
+                    icon: currentMission.correct.icon,
+                    color: currentMission.correct.color,
+                    isCorrect: true
+                };
+            } else {
+                const w = shuffledWrongs[wrongIdx++ % shuffledWrongs.length];
+                return {
+                    lane,
+                    icon: w.icon,
+                    color: w.color,
+                    isCorrect: false
+                };
+            }
         });
+
+        activeGateWave = {
+            y: -110,
+            passed: false,
+            bridges
+        };
     }
 
-    function renderShop() {
-        const container = document.getElementById('shop-container');
-        container.innerHTML = '';
+    function updateGatesHUD() {
+        document.getElementById('hud-gates-progress').innerText = `${gatesPassedInRound} / ${GATES_PER_TROPHY_LAP}`;
+    }
+
+    function spawnParticles(x, y, color) {
+        for (let i = 0; i < 18; i++) {
+            particles.push({
+                x, y,
+                vx: (Math.random() - 0.5) * 8,
+                vy: (Math.random() - 0.5) * 8 - 2,
+                size: Math.random() * 8 + 4,
+                color,
+                life: 28
+            });
+        }
+    }
+
+    // BUCLE PRINCIPAL A 60 FPS
+    function raceLoop() {
+        if (!raceRunning) return;
+
+        const canvas = document.getElementById('race-canvas');
+        const ctx = canvas.getContext('2d');
+        const laneCenters = [125, 250, 375];
+
+        // Velocidad amigable para niños de 1 a 4 años (+ Turbo cuando aciertan)
+        const baseSpeed = turboTimer > 0 ? 5.6 : 2.9;
+        if (turboTimer > 0) turboTimer--;
+        if (bounceTimer > 0) bounceTimer--;
+
+        // 1. DIBUJAR CÉSPED Y BORDES DE PISTA
+        ctx.fillStyle = turboTimer > 0 ? '#55efc4' : '#2ecc71';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Carretera de 3 carriles (X: 60 a 440 = 380px total)
+        ctx.fillStyle = '#34495e';
+        ctx.fillRect(60, 0, 380, canvas.height);
+
+        // Bordes blancos y rojos animados
+        roadLineOffset = (roadLineOffset + baseSpeed * 1.4) % 48;
+        for (let y = -48; y < canvas.height + 48; y += 48) {
+            const drawY = y + roadLineOffset;
+            ctx.fillStyle = '#ff7675';
+            ctx.fillRect(50, drawY, 10, 24);
+            ctx.fillRect(440, drawY, 10, 24);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(50, drawY + 24, 10, 24);
+            ctx.fillRect(440, drawY + 24, 10, 24);
+
+            // Líneas divisorias de los 3 carriles
+            ctx.fillStyle = 'rgba(255,255,255,0.55)';
+            ctx.fillRect(184, drawY, 5, 26);
+            ctx.fillRect(311, drawY, 5, 26);
+        }
+
+        // 2. GENERAR Y DIBUJAR ESTRELLAS EN LA PISTA
+        if (Math.random() < 0.028 && roadStars.length < 4) {
+            const randomLane = Math.floor(Math.random() * 3);
+            roadStars.push({
+                lane: randomLane,
+                x: laneCenters[randomLane],
+                y: -30
+            });
+        }
+
+        ctx.font = '30px serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        for (let i = roadStars.length - 1; i >= 0; i--) {
+            const st = roadStars[i];
+            st.y += baseSpeed;
+            ctx.fillText('⭐', st.x, st.y);
+
+            // Colisión con el carrito del niño
+            if (st.y > 280 && st.y < 355 && st.lane === playerLane) {
+                playSound('star');
+                currentUser.stars += 1;
+                currentUser.totalStarsEarned += 1;
+                document.getElementById('stat-stars').innerText = currentUser.stars;
+                spawnParticles(st.x, st.y, '#ffeaa7');
+                roadStars.splice(i, 1);
+            } else if (st.y > canvas.height + 30) {
+                roadStars.splice(i, 1);
+            }
+        }
+
+        // 3. DIBUJAR Y ACTUALIZAR LOS 3 PUENTES EDUCATIVOS
+        if (activeGateWave) {
+            activeGateWave.y += baseSpeed * 0.82;
+
+            activeGateWave.bridges.forEach(br => {
+                const centerX = laneCenters[br.lane];
+                const boxW = 112;
+                const boxH = 68;
+                const boxX = centerX - boxW / 2;
+                const boxY = activeGateWave.y;
+
+                // Sombra y Marco del Puente
+                ctx.fillStyle = 'rgba(0,0,0,0.22)';
+                ctx.beginPath();
+                ctx.roundRect(boxX + 3, boxY + 5, boxW, boxH, 16);
+                ctx.fill();
+
+                ctx.fillStyle = br.color;
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.roundRect(boxX, boxY, boxW, boxH, 16);
+                ctx.fill();
+                ctx.stroke();
+
+                // Dibujo grande sobre el puente
+                ctx.font = br.icon.length > 2 ? '26px serif' : '40px serif';
+                ctx.fillText(br.icon, centerX, boxY + boxH / 2 + 2);
+            });
+
+            // Evaluar cuando el carrito cruza por debajo de los puentes (Y = 275)
+            if (!activeGateWave.passed && activeGateWave.y >= 265) {
+                activeGateWave.passed = true;
+                const chosenBridge = activeGateWave.bridges.find(b => b.lane === playerLane);
+
+                if (chosenBridge && chosenBridge.isCorrect) {
+                    // ¡CRUZÓ EL PUENTE CORRECTO!
+                    playSound('turbo');
+                    turboTimer = 45;
+                    gatesPassedInRound++;
+                    currentUser.moduleStats[currentMissionCat].hits += 1;
+                    spawnParticles(laneCenters[playerLane], 300, '#55efc4');
+                    updateGatesHUD();
+
+                    if (gatesPassedInRound >= GATES_PER_TROPHY_LAP) {
+                        // ¡TERMINÓ LA VUELTA DE 5 PUENTES!
+                        currentUser.completedGames += 1;
+                        awardStarsAndXP(20, 45, '🏁 ¡Vuelta Completada! +20 Estrellas');
+                        speakText(`¡Campeón ${currentUser.username}! Ganaste veinte estrellas`);
+                        launchConfetti();
+                        stopRaceEngine();
+                        document.getElementById('overlay-title').innerText = '🏆 ¡Vuelta Completada! +20 ⭐';
+                        return;
+                    } else {
+                        speakText('¡Súper Turbo!');
+                        setTimeout(() => {
+                            if (raceRunning) pickNextRaceMission();
+                        }, 600);
+                    }
+                } else {
+                    // CRUZÓ EL PUENTE EQUIVOCADO (Sin perder, rebota suave y repite la ola)
+                    playSound('wrong');
+                    bounceTimer = 20;
+                    currentUser.moduleStats[currentMissionCat].misses += 1;
+                    saveCurrentUser();
+                    speakText('¡Uy! ' + currentMission.voice);
+                    setTimeout(() => {
+                        if (raceRunning) spawnGateWaveForCurrentMission();
+                    }, 500);
+                }
+            }
+        }
+
+        // 4. INTERPOLACIÓN SUAVE DEL VEHÍCULO DEL NIÑO
+        const targetX = laneCenters[playerLane];
+        playerVisualX += (targetX - playerVisualX) * 0.22;
+        const carY = 320 + (bounceTimer > 0 ? Math.sin(bounceTimer) * 6 : 0);
+
+        // Estela arcoíris si lleva Súper Turbo
+        if (turboTimer > 0) {
+            ctx.fillStyle = 'rgba(255, 230, 109, 0.55)';
+            ctx.beginPath();
+            ctx.arc(playerVisualX, carY + 26, 26, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Plataforma circular bajo el vehículo con el color del niño
+        ctx.fillStyle = currentUser.themeColor;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(playerVisualX, carY, 34, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Vehículo equipado + Mascota copiloto
+        ctx.font = '46px serif';
+        ctx.fillText(currentUser.equippedVehicle || '🏎️', playerVisualX, carY - 2);
+
+        if (currentUser.equippedPet) {
+            ctx.font = '24px serif';
+            ctx.fillText(currentUser.equippedPet, playerVisualX + 26, carY - 22);
+        }
+
+        // 5. PARTÍCULAS DE FIESTA
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.life--;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y, p.size, p.size);
+            if (p.life <= 0) particles.splice(i, 1);
+        }
+
+        raceAnimFrame = requestAnimationFrame(raceLoop);
+    }
+
+    function drawStaticPreviewRoad() {
+        const canvas = document.getElementById('race-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#2ecc71';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#34495e';
+        ctx.fillRect(60, 0, 380, canvas.height);
+    }
+
+    // =========================================================
+    // 9. GARAJE, TROFEOS Y PANEL DE PADRES
+    // =========================================================
+    function renderGarage() {
+        const vContainer = document.getElementById('vehicles-shop-container');
+        vContainer.innerHTML = '';
+
+        VEHICLES_SHOP.forEach(v => {
+            const isOwned = currentUser.ownedVehicles.includes(v.id);
+            const isEquipped = currentUser.equippedVehicle === v.icon;
+            const card = document.createElement('div');
+            card.className = 'shop-card';
+            card.innerHTML = `
+                <div style="font-size:52px;">${v.icon}</div>
+                <h4>${v.name}</h4>
+                <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handleVehicleAction('${v.id}', '${v.icon}', ${v.cost}, '${v.name}')">
+                    ${isEquipped ? '✅ En Uso' : isOwned ? 'Usar' : `⭐ ${v.cost}`}
+                </button>
+            `;
+            vContainer.appendChild(card);
+        });
+
+        const pContainer = document.getElementById('pets-shop-container');
+        pContainer.innerHTML = '';
+
         PET_SHOP.forEach(pet => {
             const isOwned = currentUser.ownedPets.includes(pet.id);
             const isEquipped = currentUser.equippedPet === pet.icon;
             const card = document.createElement('div');
             card.className = 'shop-card';
             card.innerHTML = `
-                <div style="font-size:56px;">${pet.icon}</div>
+                <div style="font-size:50px;">${pet.icon}</div>
                 <h4>${pet.name}</h4>
                 <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handlePetAction('${pet.id}', '${pet.icon}', ${pet.cost}, '${pet.name}')">
-                    ${isEquipped ? '✅' : isOwned ? 'Poner' : `⭐ ${pet.cost}`}
+                    ${isEquipped ? '✅ Copiloto' : isOwned ? 'Poner' : `⭐ ${pet.cost}`}
                 </button>
             `;
-            container.appendChild(card);
+            pContainer.appendChild(card);
         });
+    }
+
+    function handleVehicleAction(vId, vIcon, cost, vName) {
+        if (currentUser.ownedVehicles.includes(vId)) {
+            currentUser.equippedVehicle = vIcon;
+            saveCurrentUser();
+            updateDashboardUI();
+            speakText(`Listo tu ${vName}`);
+            return;
+        }
+        if (currentUser.stars < cost) {
+            playSound('wrong');
+            speakText('Corre más carreras para ganar estrellas');
+            return;
+        }
+        currentUser.stars -= cost;
+        currentUser.ownedVehicles.push(vId);
+        currentUser.equippedVehicle = vIcon;
+        playSound('win');
+        launchConfetti();
+        checkAndUnlockTrophies(true);
+        saveCurrentUser();
+        updateDashboardUI();
+        speakText(`¡Desbloqueaste ${vName}!`);
     }
 
     function handlePetAction(petId, petIcon, cost, petName) {
@@ -2769,12 +2113,12 @@
             currentUser.equippedPet = petIcon;
             saveCurrentUser();
             updateDashboardUI();
-            speakText(`Elegiste a ${petName}`);
+            speakText(`${petName} sube a tu carrito`);
             return;
         }
         if (currentUser.stars < cost) {
             playSound('wrong');
-            speakText(`Juega más para ganar estrellas`);
+            speakText('Necesitas más estrellas');
             return;
         }
         currentUser.stars -= cost;
@@ -2786,6 +2130,22 @@
         saveCurrentUser();
         updateDashboardUI();
         speakText(`¡Ganaste a ${petName}!`);
+    }
+
+    function renderAwards() {
+        const container = document.getElementById('awards-container');
+        container.innerHTML = '';
+        TROPHIES.forEach(t => {
+            const isUnlocked = currentUser.unlockedTrophies.includes(t.id);
+            const card = document.createElement('div');
+            card.className = 'award-card ' + (isUnlocked ? 'unlocked' : '');
+            card.onclick = () => speakText(t.title);
+            card.innerHTML = `
+                <div style="font-size:52px;">${t.icon}</div>
+                <h4>${t.title}</h4>
+            `;
+            container.appendChild(card);
+        });
     }
 
     function renderRealRewards() {
@@ -2810,7 +2170,7 @@
         if (!rew) return;
         if (currentUser.stars < rew.cost) {
             playSound('wrong');
-            speakText('Te faltan estrellitas para este premio');
+            speakText('Te faltan estrellas para este premio');
             return;
         }
         currentUser.stars -= rew.cost;
@@ -2818,7 +2178,7 @@
         launchConfetti();
         saveCurrentUser();
         updateDashboardUI();
-        speakText(`¡Ganaste el premio ${rew.title}! Muéstrale a mamá o papá`);
+        speakText(`¡Ganaste ${rew.title}! Muéstrale a mamá o papá`);
         alert(`🎉 ¡PREMIO CANJEADO!\n\n${rew.title}`);
     }
 
@@ -2844,7 +2204,7 @@
     function verifyParentAccess() {
         const val = parseInt(document.getElementById('parent-math-input').value, 10);
         if (val === parentExpectedAnswer) {
-            playSound('correct');
+            playSound('win');
             document.getElementById('parent-lock-view').style.display = 'none';
             document.getElementById('parent-unlocked-view').style.display = 'block';
             renderParentReport();
@@ -2859,12 +2219,16 @@
         document.getElementById('parent-child-name').innerText = currentUser.username;
         const tbody = document.getElementById('parent-report-body');
         tbody.innerHTML = '';
-        Object.keys(MODULE_NAMES).forEach(key => {
+        const labels = {
+            colors: '🎨 Puentes de Colores',
+            animals: '🐮 Puentes de Animales y Sonidos',
+            counting: '🎈 Puentes de Contar (1, 2 y 3)'
+        };
+        Object.keys(labels).forEach(key => {
             const st = currentUser.moduleStats[key] || { hits: 0, misses: 0 };
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><b>${MODULE_NAMES[key]}</b></td>
-                <td>Nv. ${currentUser.modules[key]}</td>
+                <td><b>${labels[key]}</b></td>
                 <td style="color:#00b894; font-weight:800;">${st.hits}</td>
                 <td style="color:#d63031; font-weight:800;">${st.misses}</td>
             `;
@@ -2873,7 +2237,7 @@
     }
 
     function giveBonusStars() {
-        awardStarsAndXP(20, 15, '🌟 ¡+20 Estrellas de regalo!');
+        awardStarsAndXP(25, 20, '🌟 ¡+25 Estrellas de regalo!');
     }
 
     function addCustomParentReward() {
