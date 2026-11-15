@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MimiKids - Aprende, Juega y Gana Premios</title>
+    <title>MimiKids 4.0 - Edición Completa Interactiva</title>
     <style>
         :root {
             --primary: #FF6B6B;
@@ -38,8 +38,8 @@
         .app-container {
             background: white;
             width: 100%;
-            max-width: 1040px;
-            min-height: 700px;
+            max-width: 1080px;
+            min-height: 720px;
             border-radius: 30px;
             box-shadow: 0 22px 55px rgba(0,0,0,0.22);
             overflow: hidden;
@@ -47,6 +47,14 @@
             flex-direction: column;
             border: 6px solid white;
             position: relative;
+        }
+
+        /* CONFETI CANVAS */
+        #confetti-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
         }
 
         /* BARRA SUPERIOR */
@@ -74,13 +82,13 @@
         .user-bar {
             display: none;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .user-pill {
             background: rgba(255,255,255,0.25);
-            padding: 6px 14px;
+            padding: 5px 14px;
             border-radius: 50px;
             display: flex;
             align-items: center;
@@ -95,20 +103,32 @@
         }
 
         .btn-top {
-            background: rgba(0,0,0,0.28);
+            background: rgba(0,0,0,0.25);
             color: white;
             border: 2px solid rgba(255,255,255,0.45);
-            padding: 7px 14px;
+            padding: 7px 13px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 800;
-            font-size: 13px;
+            font-size: 12px;
             transition: 0.2s;
         }
 
         .btn-top:hover {
             background: var(--dark);
             border-color: var(--dark);
+        }
+
+        .btn-daily {
+            background: var(--accent);
+            color: var(--dark);
+            border: 2px solid white;
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
         }
 
         /* =========================================================
@@ -151,7 +171,6 @@
             font-weight: 600;
         }
 
-        /* TARJETAS DE PERFILES GUARDADOS */
         .profiles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(155px, 185px));
@@ -245,7 +264,7 @@
             background: #f0fdf4;
         }
 
-        /* TARJETA DE REGISTRO CON VISTA PREVIA DEL PERSONAJE EN VIVO */
+        /* TARJETA DE REGISTRO */
         .register-card {
             background: white;
             padding: 24px;
@@ -279,7 +298,6 @@
             background: #FF6B6B22;
             border: 3px solid #FF6B6B;
             flex-shrink: 0;
-            transition: 0.2s;
         }
 
         .preview-avatar-box svg {
@@ -295,9 +313,7 @@
         }
 
         @media (max-width: 500px) {
-            .input-row {
-                grid-template-columns: 1fr;
-            }
+            .input-row { grid-template-columns: 1fr; }
         }
 
         .input-group label {
@@ -322,7 +338,6 @@
             border-color: var(--purple);
         }
 
-        /* CUADRÍCULA VISIBLE DE PERSONAJES A ELEGIR */
         .character-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -331,9 +346,7 @@
         }
 
         @media (min-width: 480px) {
-            .character-grid {
-                grid-template-columns: repeat(6, 1fr);
-            }
+            .character-grid { grid-template-columns: repeat(6, 1fr); }
         }
 
         .char-card {
@@ -360,11 +373,6 @@
             color: #475569;
         }
 
-        .char-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--secondary);
-        }
-
         .char-card.selected {
             background: #fff9db;
             border-color: var(--primary);
@@ -372,11 +380,6 @@
             box-shadow: 0 6px 14px rgba(255, 107, 107, 0.25);
         }
 
-        .char-card.selected span {
-            color: var(--primary);
-        }
-
-        /* SELECTOR DE COLORES */
         .color-selector {
             display: flex;
             justify-content: space-between;
@@ -411,7 +414,6 @@
             font-weight: 900;
             cursor: pointer;
             box-shadow: 0 5px 0 #008f72;
-            transition: all 0.1s;
         }
 
         .btn-main:active {
@@ -431,12 +433,7 @@
             text-align: center;
         }
 
-        .btn-secondary-link:hover {
-            color: var(--dark);
-            text-decoration: underline;
-        }
-
-        /* TECLADO NUMÉRICO INTERACTIVO (PIN PAD) */
+        /* TECLADO NUMÉRICO */
         .pin-pad-card {
             background: white;
             padding: 25px;
@@ -538,14 +535,14 @@
         #dashboard-screen {
             display: none;
             flex: 1;
-            padding: 22px;
+            padding: 20px;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
         }
 
         .nav-tabs {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             border-bottom: 2px solid #f1f2f6;
             padding-bottom: 10px;
             overflow-x: auto;
@@ -554,13 +551,14 @@
         .tab-btn {
             background: #f1f2f6;
             border: none;
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 16px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
             color: #57606f;
             cursor: pointer;
             white-space: nowrap;
+            transition: 0.2s;
         }
 
         .tab-btn.active {
@@ -570,14 +568,14 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
         }
 
         .stat-card {
             background: var(--light);
-            border-radius: 20px;
-            padding: 14px;
+            border-radius: 18px;
+            padding: 12px 14px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -585,10 +583,10 @@
         }
 
         .stat-icon {
-            font-size: 30px;
+            font-size: 28px;
             background: white;
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -597,19 +595,19 @@
         }
 
         .stat-info h3 {
-            font-size: 19px;
+            font-size: 18px;
             color: var(--dark);
         }
 
         .stat-info p {
-            font-size: 12px;
+            font-size: 11px;
             color: #636e72;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .progress-section {
             background: #f8f9fa;
-            padding: 14px 18px;
+            padding: 12px 18px;
             border-radius: 18px;
             border: 2px solid #eee;
         }
@@ -624,7 +622,7 @@
 
         .progress-bar-bg {
             width: 100%;
-            height: 18px;
+            height: 16px;
             background: #dfe6e9;
             border-radius: 50px;
             overflow: hidden;
@@ -649,8 +647,8 @@
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
         }
 
         .game-card {
@@ -671,7 +669,7 @@
         }
 
         .game-icon {
-            font-size: 44px;
+            font-size: 42px;
             margin-bottom: 6px;
         }
 
@@ -686,9 +684,153 @@
             font-weight: 800;
         }
 
+        /* =========================================================
+           ESTILOS DE LABORATORIO CREATIVO (MEMORIA, PIZARRA, PIANO)
+           ========================================================= */
+        .arcade-subnav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .arcade-btn {
+            background: white;
+            border: 3px solid #e2e8f0;
+            padding: 10px 18px;
+            border-radius: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .arcade-btn.active {
+            border-color: var(--primary);
+            background: #fff5f5;
+            color: var(--primary);
+        }
+
+        .arcade-panel {
+            display: none;
+            background: #f8fafc;
+            border: 3px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .arcade-panel.active {
+            display: flex;
+        }
+
+        /* JUEGO DE MEMORIA */
+        .memory-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .mem-card {
+            aspect-ratio: 1;
+            background: var(--purple);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            cursor: pointer;
+            color: white;
+            font-weight: 900;
+            box-shadow: 0 5px 0 #4834d4;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .mem-card.flipped, .mem-card.matched {
+            background: white;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 4px 0 #cbd5e1;
+        }
+
+        .mem-card.matched {
+            border-color: var(--green);
+            background: #e6fffa;
+        }
+
+        /* PIZARRA DE DIBUJO TÁCTIL */
+        .canvas-toolbar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .swatch-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #cbd5e1;
+            cursor: pointer;
+        }
+
+        .swatch-btn.active {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px var(--dark);
+        }
+
+        #draw-canvas {
+            background: white;
+            border: 4px solid var(--secondary);
+            border-radius: 20px;
+            cursor: crosshair;
+            touch-action: none;
+            max-width: 100%;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+
+        /* MINI PIANO MUSICAL */
+        .piano-keys {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 600px;
+            margin: 10px 0;
+        }
+
+        .piano-key {
+            flex: 1;
+            min-width: 62px;
+            height: 150px;
+            border: none;
+            border-radius: 0 0 18px 18px;
+            color: white;
+            font-weight: 900;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 0 rgba(0,0,0,0.2);
+            transition: transform 0.08s;
+        }
+
+        .piano-key:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+        }
+
+        /* TROFEOS, TIENDA Y PREMIOS REALES */
         .awards-grid, .shop-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
             gap: 14px;
         }
 
@@ -736,7 +878,36 @@
             background: var(--green);
         }
 
-        /* MODAL DE JUEGO */
+        /* PANEL DE PADRES */
+        .parent-box {
+            background: #f8fafc;
+            border: 3px solid #cbd5e1;
+            border-radius: 22px;
+            padding: 20px;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .report-table th, .report-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 13px;
+        }
+
+        .report-table th {
+            background: #e2e8f0;
+            font-weight: 800;
+        }
+
+        /* MODAL DE JUEGO CON BOTÓN DE VOZ */
         #game-modal {
             display: none;
             position: fixed;
@@ -750,9 +921,9 @@
 
         .modal-content {
             background: white;
-            padding: 28px;
+            padding: 26px;
             border-radius: 26px;
-            max-width: 500px;
+            max-width: 510px;
             width: 100%;
             text-align: center;
             position: relative;
@@ -770,15 +941,32 @@
             margin-top: 6px;
         }
 
-        .question-box {
-            font-size: 26px;
-            font-weight: 900;
-            margin: 20px 0;
-            color: var(--dark);
-            min-height: 65px;
+        .question-row {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
+            margin: 18px 0;
+            min-height: 65px;
+        }
+
+        .question-box {
+            font-size: 25px;
+            font-weight: 900;
+            color: var(--dark);
+        }
+
+        .btn-speak {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            flex-shrink: 0;
+            box-shadow: 0 4px 0 #38ada9;
         }
 
         .options-grid {
@@ -792,7 +980,7 @@
             border: 3px solid #dfe6e9;
             padding: 14px;
             border-radius: 16px;
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 800;
             cursor: pointer;
             color: var(--dark);
@@ -837,11 +1025,15 @@
 </head>
 <body>
 
+<canvas id="confetti-canvas"></canvas>
+
 <div class="app-container">
     <!-- BARRA SUPERIOR -->
     <header id="main-header">
-        <div class="logo">🌟 MimiKids</div>
+        <div class="logo">🌟 MimiKids 4.0</div>
         <div class="user-bar" id="header-user-bar">
+            <button class="btn-top btn-daily" id="btn-daily-gift" onclick="claimDailyChest()" style="display:none;">🎁 Cofre Diario</button>
+            <button class="btn-top" id="btn-voice-toggle" onclick="toggleVoice()">🔊 Voz: ON</button>
             <div class="user-pill">
                 <span id="header-avatar"></span>
                 <span id="header-username">Niño</span>
@@ -870,12 +1062,11 @@
             </div>
         </div>
 
-        <!-- VISTA 2: CREAR PERSONAJE (CON AVATARES SVG SIEMPRE VISIBLES) -->
+        <!-- VISTA 2: CREAR PERSONAJE -->
         <div id="view-register" class="auth-view">
             <div class="register-card">
                 <h2 style="color: var(--purple); margin-bottom: 12px; text-align:center;">✨ Crea tu Personaje</h2>
 
-                <!-- VISTA PREVIA EN VIVO DEL PERSONAJE SELECCIONADO -->
                 <div class="live-preview-banner">
                     <div class="preview-avatar-box" id="live-preview-circle"></div>
                     <div>
@@ -888,9 +1079,7 @@
                 <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:13px; margin-bottom:10px; text-align:center;"></div>
 
                 <label style="font-weight:800; font-size:13px; color:#334155;">1. Toca tu personaje favorito:</label>
-                <div class="character-grid" id="character-selector-grid">
-                    <!-- Se llena automáticamente y también tiene respaldo directo -->
-                </div>
+                <div class="character-grid" id="character-selector-grid"></div>
 
                 <label style="font-weight:800; font-size:13px; color:#334155;">2. Elige el color de tu traje:</label>
                 <div class="color-selector">
@@ -918,7 +1107,7 @@
             </div>
         </div>
 
-        <!-- VISTA 3: TECLADO NUMÉRICO PARA ENTRAR -->
+        <!-- VISTA 3: TECLADO NUMÉRICO -->
         <div id="view-pinpad" class="auth-view">
             <div class="pin-pad-card">
                 <div class="pinpad-avatar-holder" id="pinpad-avatar"></div>
@@ -954,7 +1143,7 @@
     </div>
 
     <!-- =========================================================
-         PANTALLA PRINCIPAL DE JUEGOS Y PREMIOS
+         PANTALLA PRINCIPAL DE JUEGOS, LABORATORIO Y PADRES
          ========================================================= -->
     <div id="dashboard-screen">
         <div class="stats-grid">
@@ -999,11 +1188,14 @@
         </div>
 
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('games', this)">🎮 Juegos de Enseñanza (6)</button>
+            <button class="tab-btn active" onclick="switchTab('games', this)">🎮 Misiones (6)</button>
+            <button class="tab-btn" onclick="switchTab('arcade', this)">🎨 Memoria, Dibujo y Piano</button>
             <button class="tab-btn" onclick="switchTab('awards', this)">🏆 Mis Trofeos</button>
-            <button class="tab-btn" onclick="switchTab('shop', this)">🐾 Tienda de Mascotas</button>
+            <button class="tab-btn" onclick="switchTab('shop', this)">🐾 Mascotas y Premios</button>
+            <button class="tab-btn" onclick="switchTab('parents', this)">👨‍👩‍👧 Zona de Padres</button>
         </div>
 
+        <!-- PESTAÑA 1: 6 MISIONES EDUCATIVAS -->
         <div id="tab-games" class="tab-view active">
             <div class="games-grid">
                 <div class="game-card" onclick="startGame('math')">
@@ -1021,8 +1213,8 @@
                 <div class="game-card" onclick="startGame('colors')">
                     <span class="game-badge" id="badge-colors">Nv. 1</span>
                     <div class="game-icon">🎨</div>
-                    <h3>Inglés Divertido</h3>
-                    <p style="font-size: 13px; color:#666; margin-top:4px;">Colores, números y más</p>
+                    <h3>Inglés con Voz</h3>
+                    <p style="font-size: 13px; color:#666; margin-top:4px;">Escucha y aprende inglés</p>
                 </div>
                 <div class="game-card" onclick="startGame('animals')">
                     <span class="game-badge" id="badge-animals">Nv. 1</span>
@@ -1045,23 +1237,124 @@
             </div>
         </div>
 
+        <!-- PESTAÑA 2: MINI-JUEGOS INTERACTIVOS (MEMORIA, DIBUJO Y PIANO) -->
+        <div id="tab-arcade" class="tab-view">
+            <div class="arcade-subnav">
+                <button class="arcade-btn active" onclick="switchArcade('memory', this)">🃏 Parejas de Memoria (+20 ⭐)</button>
+                <button class="arcade-btn" onclick="switchArcade('draw', this)">🖌️ Pizarra Mágica (+10 ⭐)</button>
+                <button class="arcade-btn" onclick="switchArcade('piano', this)">🎹 Piano Musical (+10 ⭐)</button>
+            </div>
+
+            <!-- SUB-JUEGO 1: MEMORIA -->
+            <div id="arcade-memory" class="arcade-panel active">
+                <div style="display:flex; justify-content:space-between; width:100%; max-width:420px; align-items:center;">
+                    <span style="font-weight:800; font-size:14px;">Encuentra las 6 parejas iguales:</span>
+                    <button class="btn-backup" onclick="initMemoryGame()">🔄 Reiniciar Cartas</button>
+                </div>
+                <div class="memory-board" id="memory-board"></div>
+            </div>
+
+            <!-- SUB-JUEGO 2: PIZARRA DE DIBUJO -->
+            <div id="arcade-draw" class="arcade-panel">
+                <div style="font-weight:800; font-size:15px; color:var(--purple);" id="draw-prompt">
+                    🎨 Reto Creativo: ¡Dibuja una estrella o tu animal favorito!
+                </div>
+                <div class="canvas-toolbar">
+                    <div class="swatch-btn active" style="background:#FF6B6B" onclick="setDrawColor('#FF6B6B', this)"></div>
+                    <div class="swatch-btn" style="background:#4ECDC4" onclick="setDrawColor('#4ECDC4', this)"></div>
+                    <div class="swatch-btn" style="background:#6C5CE7" onclick="setDrawColor('#6C5CE7', this)"></div>
+                    <div class="swatch-btn" style="background:#FD9644" onclick="setDrawColor('#FD9644', this)"></div>
+                    <div class="swatch-btn" style="background:#00B894" onclick="setDrawColor('#00B894', this)"></div>
+                    <div class="swatch-btn" style="background:#2D3436" onclick="setDrawColor('#2D3436', this)"></div>
+                    <button class="btn-backup" onclick="clearCanvas()">🧽 Limpiar</button>
+                    <button class="btn-backup" style="background:var(--green); color:white;" onclick="completeDrawingReward()">✨ Terminé mi Dibujo (+10 ⭐)</button>
+                </div>
+                <canvas id="draw-canvas" width="520" height="270"></canvas>
+            </div>
+
+            <!-- SUB-JUEGO 3: PIANO MUSICAL -->
+            <div id="arcade-piano" class="arcade-panel">
+                <div style="font-weight:800; font-size:15px;">🎵 Toca las teclas de colores para crear música (Toca 8 notas para ganar +10 ⭐)</div>
+                <div class="piano-keys">
+                    <button class="piano-key" style="background:#FF6B6B" onclick="playPianoNote(261.63, 'Do')">DO</button>
+                    <button class="piano-key" style="background:#FD9644" onclick="playPianoNote(293.66, 'Re')">RE</button>
+                    <button class="piano-key" style="background:#f1c40f" onclick="playPianoNote(329.63, 'Mi')">MI</button>
+                    <button class="piano-key" style="background:#00B894" onclick="playPianoNote(349.23, 'Fa')">FA</button>
+                    <button class="piano-key" style="background:#4ECDC4" onclick="playPianoNote(392.00, 'Sol')">SOL</button>
+                    <button class="piano-key" style="background:#0984e3" onclick="playPianoNote(440.00, 'La')">LA</button>
+                    <button class="piano-key" style="background:#6C5CE7" onclick="playPianoNote(493.88, 'Si')">SI</button>
+                    <button class="piano-key" style="background:#e84393" onclick="playPianoNote(523.25, 'Do Alto')">DO+</button>
+                </div>
+                <div id="piano-progress" style="font-size:13px; font-weight:800; color:#64748b;">Notas tocadas: 0 / 8</div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 3: TROFEOS -->
         <div id="tab-awards" class="tab-view">
             <div class="awards-grid" id="awards-container"></div>
         </div>
 
+        <!-- PESTAÑA 4: TIENDA DE MASCOTAS + PREMIOS DE LA VIDA REAL -->
         <div id="tab-shop" class="tab-view">
+            <h3 style="font-size:17px;">🐾 Compañeros Virtuales</h3>
             <div class="shop-grid" id="shop-container"></div>
+
+            <h3 style="font-size:17px; margin-top:10px;">🎁 Premios Especiales en Casa (Configurados por Papá/Mamá)</h3>
+            <div class="shop-grid" id="real-rewards-container"></div>
+        </div>
+
+        <!-- PESTAÑA 5: ZONA DE PADRES (BLOQUEO CON RETO MATEMÁTICO) -->
+        <div id="tab-parents" class="tab-view">
+            <div id="parent-lock-view" class="parent-box" style="text-align:center;">
+                <h3>🔒 Control Parental</h3>
+                <p style="font-size:13px; color:#555; margin:6px 0 14px;">Resuelve esta multiplicación para entrar a las estadísticas y premios familiares:</p>
+                <div id="parent-math-q" style="font-size:22px; font-weight:900; color:var(--purple); margin-bottom:12px;">¿Cuánto es 7 × 8?</div>
+                <div style="display:flex; gap:10px; justify-content:center; max-width:280px; margin:0 auto;">
+                    <input type="tel" id="parent-math-input" placeholder="Respuesta" style="padding:10px; border-radius:12px; border:2px solid #cbd5e1; width:120px; text-align:center; font-weight:800;">
+                    <button class="btn-buy" style="width:auto;" onclick="verifyParentAccess()">Desbloquear</button>
+                </div>
+            </div>
+
+            <div id="parent-unlocked-view" class="parent-box" style="display:none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+                    <h3>📊 Reporte de Aprendizaje de <span id="parent-child-name"></span></h3>
+                    <button class="btn-backup" onclick="giveBonusStars()">🌟 Regalar +20 Estrellas por portarse bien</button>
+                </div>
+
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Materia</th>
+                            <th>Nivel</th>
+                            <th>Aciertos</th>
+                            <th>Intentos por reforzar</th>
+                            <th>Precisión</th>
+                        </tr>
+                    </thead>
+                    <tbody id="parent-report-body"></tbody>
+                </table>
+
+                <h4 style="margin: 18px 0 8px;">🎁 Crear Premio de la Vida Real (Para que el niño lo canjee con estrellas)</h4>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <input type="text" id="new-reward-title" placeholder="Ej: Ir por un helado 🍦 o 30 min de TV" style="flex:1; min-width:200px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <input type="number" id="new-reward-cost" placeholder="Costo ⭐ (ej: 80)" style="width:140px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <button class="btn-buy" style="width:auto; background:var(--purple);" onclick="addCustomParentReward()">➕ Añadir Premio</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- MODAL DE JUEGO -->
+<!-- MODAL DE JUEGO CON ALTAVOZ DE VOZ -->
 <div id="game-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeGame()">✖</button>
         <h3 id="modal-title">Misión</h3>
         <div class="round-indicator" id="round-text">Pregunta 1 de 3</div>
-        <div class="question-box" id="question-text">¿Pregunta?</div>
+        <div class="question-row">
+            <div class="question-box" id="question-text">¿Pregunta?</div>
+            <button class="btn-speak" title="Escuchar pregunta en voz alta" onclick="speakCurrentQuestion()">🔊</button>
+        </div>
         <div class="options-grid" id="options-container"></div>
     </div>
 </div>
@@ -1070,51 +1363,46 @@
 
 <script>
     // =========================================================
-    // 1. GALERÍA DE PERSONAJES SVG (Se ven en cualquier pantalla)
+    // 1. GALERÍA DE PERSONAJES SVG
     // =========================================================
     const CHARACTERS = {
         lion: {
-            id: 'lion',
-            label: 'León',
+            id: 'lion', label: 'León',
             svg: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#e67e22"/><circle cx="50" cy="50" r="32" fill="#f39c12"/><circle cx="38" cy="44" r="5" fill="#2d3436"/><circle cx="62" cy="44" r="5" fill="#2d3436"/><polygon points="45,54 55,54 50,61" fill="#d35400"/><path d="M40 66 Q50 74 60 66" stroke="#2d3436" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`
         },
         unicorn: {
-            id: 'unicorn',
-            label: 'Unicornio',
+            id: 'unicorn', label: 'Unicornio',
             svg: `<svg viewBox="0 0 100 100"><circle cx="50" cy="54" r="36" fill="#fd79a8"/><circle cx="50" cy="56" r="28" fill="#ffffff"/><polygon points="43,26 57,26 50,4" fill="#ffeaa7" stroke="#fdcb6e" stroke-width="2"/><circle cx="39" cy="50" r="4.5" fill="#2d3436"/><circle cx="61" cy="50" r="4.5" fill="#2d3436"/><path d="M42 66 Q50 73 58 66" stroke="#e84393" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`
         },
         panda: {
-            id: 'panda',
-            label: 'Panda',
+            id: 'panda', label: 'Panda',
             svg: `<svg viewBox="0 0 100 100"><circle cx="26" cy="26" r="14" fill="#2d3436"/><circle cx="74" cy="26" r="14" fill="#2d3436"/><circle cx="50" cy="54" r="36" fill="#ffffff" stroke="#2d3436" stroke-width="4"/><ellipse cx="37" cy="48" rx="9" ry="11" fill="#2d3436"/><ellipse cx="63" cy="48" rx="9" ry="11" fill="#2d3436"/><circle cx="37" cy="47" r="3.5" fill="#fff"/><circle cx="63" cy="47" r="3.5" fill="#fff"/><ellipse cx="50" cy="60" rx="6" ry="4" fill="#2d3436"/></svg>`
         },
         frog: {
-            id: 'frog',
-            label: 'Ranita',
+            id: 'frog', label: 'Ranita',
             svg: `<svg viewBox="0 0 100 100"><circle cx="32" cy="28" r="14" fill="#00b894"/><circle cx="68" cy="28" r="14" fill="#00b894"/><ellipse cx="50" cy="58" rx="38" ry="30" fill="#55efc4"/><circle cx="32" cy="28" r="7" fill="#fff"/><circle cx="68" cy="28" r="7" fill="#fff"/><circle cx="32" cy="28" r="4" fill="#2d3436"/><circle cx="68" cy="28" r="4" fill="#2d3436"/><path d="M34 64 Q50 76 66 64" stroke="#006266" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`
         },
         dino: {
-            id: 'dino',
-            label: 'Dino',
+            id: 'dino', label: 'Dino',
             svg: `<svg viewBox="0 0 100 100"><polygon points="50,6 42,22 58,22" fill="#ff7675"/><circle cx="50" cy="54" r="36" fill="#00cec9"/><circle cx="38" cy="45" r="5" fill="#2d3436"/><circle cx="62" cy="45" r="5" fill="#2d3436"/><path d="M35 64 L42 70 L50 64 L58 70 L65 64" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`
         },
         astro: {
-            id: 'astro',
-            label: 'Astronauta',
+            id: 'astro', label: 'Astronauta',
             svg: `<svg viewBox="0 0 100 100"><circle cx="50" cy="52" r="38" fill="#dfe6e9" stroke="#636e72" stroke-width="4"/><rect x="24" y="34" width="52" height="34" rx="16" fill="#0984e3"/><circle cx="38" cy="46" r="4" fill="#fff"/><path d="M40 58 Q50 65 60 58" stroke="#74b9ff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`
         }
     };
 
     function getAvatarSVG(avatarKey) {
-        if (CHARACTERS[avatarKey]) return CHARACTERS[avatarKey].svg;
-        return CHARACTERS.lion.svg;
+        return CHARACTERS[avatarKey] ? CHARACTERS[avatarKey].svg : CHARACTERS.lion.svg;
     }
 
     // =========================================================
-    // 2. AUDIO SEGURO (Lazy Init para no bloquear la carga)
+    // 2. AUDIO WEB Y VOZ INTELIGENTE (ESPAÑOL / INGLÉS)
     // =========================================================
     let audioCtx = null;
-    function playSound(type) {
+    let voiceEnabled = true;
+
+    function playSound(type, customFreq = 440) {
         try {
             const AudioContextClass = window.AudioContext || window.webkitAudioContext;
             if (!AudioContextClass) return;
@@ -1132,6 +1420,13 @@
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.07);
+            } else if (type === 'note') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(customFreq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.22, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.45);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.45);
             } else if (type === 'correct') {
                 osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
                 osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1);
@@ -1157,13 +1452,65 @@
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.6);
             }
-        } catch (e) {
-            // Si el navegador bloquea el sonido, el juego continúa sin fallar
-        }
+        } catch (e) {}
+    }
+
+    function speakText(text, lang = 'es-ES') {
+        if (!voiceEnabled || !('speechSynthesis' in window)) return;
+        try {
+            window.speechSynthesis.cancel();
+            // Limpiar emojis y guiones bajos para lectura limpia
+            const clean = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '').replace(/_/g, ' ');
+            const utter = new SpeechSynthesisUtterance(clean);
+            utter.lang = lang;
+            utter.rate = 0.95;
+            utter.pitch = 1.1;
+            window.speechSynthesis.speak(utter);
+        } catch (e) {}
+    }
+
+    function toggleVoice() {
+        voiceEnabled = !voiceEnabled;
+        document.getElementById('btn-voice-toggle').innerText = voiceEnabled ? '🔊 Voz: ON' : '🔇 Voz: OFF';
+        if (voiceEnabled) speakText('Voz activada');
     }
 
     // =========================================================
-    // 3. DATOS DE TROFEOS, TIENDA Y PREGUNTAS
+    // 3. LLUVIA DE CONFETI EN PANTALLA
+    // =========================================================
+    function launchConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const pieces = Array.from({ length: 75 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * -canvas.height * 0.5,
+            size: Math.random() * 8 + 5,
+            color: ['#FF6B6B', '#4ECDC4', '#FFE66D', '#6C5CE7', '#00B894', '#FD9644'][Math.floor(Math.random() * 6)],
+            speedY: Math.random() * 4 + 3,
+            speedX: (Math.random() - 0.5) * 3
+        }));
+
+        let frames = 0;
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pieces.forEach(p => {
+                p.y += p.speedY;
+                p.x += p.speedX;
+                ctx.fillStyle = p.color;
+                ctx.fillRect(p.x, p.y, p.size, p.size);
+            });
+            frames++;
+            if (frames < 110) requestAnimationFrame(animate);
+            else ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        animate();
+    }
+
+    // =========================================================
+    // 4. TROFEOS, TIENDA Y BANCO DE PREGUNTAS
     // =========================================================
     const TROPHIES = [
         { id: 'first_win', icon: '🥉', title: 'Primer Paso', desc: 'Completa tu primera misión', check: u => u.completedGames >= 1 },
@@ -1182,20 +1529,29 @@
         { id: 'pet_crown', icon: '👑', name: 'Corona Real', cost: 100 }
     ];
 
+    const MODULE_NAMES = {
+        math: '🔢 Matemáticas',
+        vowels: '🔤 Lectura y Vocales',
+        colors: '🎨 Inglés Divertido',
+        animals: '🐾 Mundo Animal',
+        shapes: '📐 Formas y Lógica',
+        planet: '🌎 Planeta y Hábitos'
+    };
+
     const questionsDB = {
         math: [
-            { q: "¿Cuánto es 3 + 4?", options: ["6", "7", "8", "5"], a: "7" },
-            { q: "¿Cuánto es 6 + 5?", options: ["10", "11", "12", "9"], a: "11" },
-            { q: "¿Cuánto es 9 - 4?", options: ["5", "4", "6", "3"], a: "5" },
-            { q: "🍎🍎 + 🍎🍎🍎 = ?", options: ["4", "5", "6", "3"], a: "5" },
+            { q: "¿Cuánto es 3 más 4?", options: ["6", "7", "8", "5"], a: "7" },
+            { q: "¿Cuánto es 6 más 5?", options: ["10", "11", "12", "9"], a: "11" },
+            { q: "¿Cuánto es 9 menos 4?", options: ["5", "4", "6", "3"], a: "5" },
+            { q: "🍎🍎 + 🍎🍎🍎 = ?", voice: "¿Cuánto es 2 manzanas más 3 manzanas?", options: ["4", "5", "6", "3"], a: "5" },
             { q: "¿Qué número sigue? 2, 4, 6, ...", options: ["7", "8", "9", "10"], a: "8" }
         ],
         vowels: [
-            { q: "🐝 _ B E J A", options: ["A", "E", "I", "O"], a: "A" },
-            { q: "🐘 _ L E F A N T E", options: ["O", "U", "E", "A"], a: "E" },
-            { q: "🏝️ _ S L A", options: ["I", "E", "A", "U"], a: "I" },
-            { q: "🐻 _ S O", options: ["A", "O", "U", "E"], a: "O" },
-            { q: "🍇 _ V A", options: ["I", "U", "A", "O"], a: "U" }
+            { q: "🐝 _ B E J A", voice: "¿Con qué vocal empieza Abeja?", options: ["A", "E", "I", "O"], a: "A" },
+            { q: "🐘 _ L E F A N T E", voice: "¿Con qué vocal empieza Elefante?", options: ["O", "U", "E", "A"], a: "E" },
+            { q: "🏝️ _ S L A", voice: "¿Con qué vocal empieza Isla?", options: ["I", "E", "A", "U"], a: "I" },
+            { q: "🐻 _ S O", voice: "¿Con qué vocal empieza Oso?", options: ["A", "O", "U", "E"], a: "O" },
+            { q: "🍇 _ V A", voice: "¿Con qué vocal empieza Uva?", options: ["I", "U", "A", "O"], a: "U" }
         ],
         colors: [
             { q: "🍎 Rojo en inglés se dice...", options: ["Blue", "Red", "Green", "Yellow"], a: "Red" },
@@ -1208,14 +1564,14 @@
             { q: "¿Qué animal nos da la leche? 🥛", options: ["🐎 Caballo", "🐄 Vaca", "🐖 Cerdo", "🐔 Gallina"], a: "🐄 Vaca" },
             { q: "¿Dónde vive la ballena? 🐋", options: ["En el bosque", "En el océano", "En el desierto", "En el río"], a: "En el océano" },
             { q: "¿Cuál de estos animales vuela?", options: ["🦅 Águila", "🐧 Pingüino", "🐢 Tortuga", "🐘 Elefante"], a: "🦅 Águila" },
-            { q: "¿Qué animal hace 'Miau'?", options: ["🐶 Perro", "🐱 Gato", "🦆 Pato", "🐑 Oveja"], a: "🐱 Gato" },
+            { q: "¿Qué animal hace Miau?", options: ["🐶 Perro", "🐱 Gato", "🦆 Pato", "🐑 Oveja"], a: "🐱 Gato" },
             { q: "¿Cuál tiene el cuello muy largo?", options: ["🦒 Jirafa", "🦓 Cebra", "🦁 León", "🐒 Mono"], a: "🦒 Jirafa" }
         ],
         shapes: [
             { q: "¿Cuántos lados tiene un Triángulo? 🔺", options: ["2", "3", "4", "5"], a: "3" },
-            { q: "Sigue la serie: 🔴 🔵 🔴 🔵 ...", options: ["🟢", "🔴", "🟡", "🟣"], a: "🔴" },
+            { q: "Sigue la serie: 🔴 🔵 🔴 🔵 ...", voice: "¿Qué color sigue en la serie: rojo, azul, rojo, azul?", options: ["🟢", "🔴", "🟡", "🟣"], a: "🔴" },
             { q: "¿Qué forma tiene una pelota? ⚽", options: ["Cuadrado", "Triángulo", "Círculo / Esfera", "Estrella"], a: "Círculo / Esfera" },
-            { q: "Sigue la serie: ⭐ ⭐ 🌙 ⭐ ⭐ ...", options: ["⭐", "☀️", "🌙", "☁️"], a: "🌙" },
+            { q: "Sigue la serie: ⭐ ⭐ 🌙 ⭐ ⭐ ...", voice: "¿Qué figura sigue: estrella, estrella, luna, estrella, estrella?", options: ["⭐", "☀️", "🌙", "☁️"], a: "🌙" },
             { q: "¿Cuántos lados iguales tiene un Cuadrado? 🟦", options: ["3", "4", "5", "6"], a: "4" }
         ],
         planet: [
@@ -1227,7 +1583,7 @@
         ]
     };
 
-    // VARIABLES DE ESTADO
+    // VARIABLES GLOBALES
     let selectedAvatar = 'lion';
     let selectedColor = '#FF6B6B';
     let targetLoginUserKey = null;
@@ -1236,14 +1592,17 @@
     let currentCategory = null;
     let roundQueue = [];
     let currentRoundIndex = 0;
+    let parentExpectedAnswer = 56;
 
     // =========================================================
-    // 4. INICIALIZACIÓN SEGURA AL ABRIR LA PÁGINA
+    // 5. ARRANQUE Y COMPATIBILIDAD DE DATOS
     // =========================================================
     document.addEventListener('DOMContentLoaded', () => {
         buildCharacterSelectorGrid();
         updateLivePreviewBanner();
         renderProfileCards();
+        initDrawingCanvas();
+        initMemoryGame();
 
         const activeSession = localStorage.getItem('mimikids_active_user');
         if (activeSession) {
@@ -1269,19 +1628,30 @@
 
     function ensureUserSchema(user) {
         if (!user.modules) user.modules = {};
+        if (!user.moduleStats) user.moduleStats = {};
         ['math', 'vowels', 'colors', 'animals', 'shapes', 'planet'].forEach(m => {
             if (!user.modules[m]) user.modules[m] = 1;
+            if (!user.moduleStats[m]) user.moduleStats[m] = { hits: 0, misses: 0 };
         });
         if (!CHARACTERS[user.avatar]) user.avatar = 'lion';
         if (typeof user.totalStarsEarned !== 'number') user.totalStarsEarned = user.stars || 0;
         if (!Array.isArray(user.unlockedTrophies)) user.unlockedTrophies = [];
         if (!Array.isArray(user.ownedPets)) user.ownedPets = [];
+        if (!Array.isArray(user.customRewards)) {
+            user.customRewards = [
+                { id: 'rew_1', title: '🍦 Ir por un helado', cost: 80 },
+                { id: 'rew_2', title: '🎬 Elegir película familiar', cost: 100 }
+            ];
+        }
         if (!user.equippedPet) user.equippedPet = '';
         if (!user.themeColor) user.themeColor = '#FF6B6B';
+        if (!user.lastDailyClaim) user.lastDailyClaim = '';
         return user;
     }
 
-    // CONSTRUIR LA GALERÍA DE PERSONAJES A ELEGIR
+    // =========================================================
+    // 6. CREADOR DE PERSONAJES Y LOGIN
+    // =========================================================
     function buildCharacterSelectorGrid() {
         const grid = document.getElementById('character-selector-grid');
         grid.innerHTML = '';
@@ -1289,10 +1659,7 @@
             const card = document.createElement('div');
             card.className = 'char-card' + (char.id === selectedAvatar ? ' selected' : '');
             card.onclick = () => selectCharacter(char.id, card);
-            card.innerHTML = `
-                ${char.svg}
-                <span>${char.label}</span>
-            `;
+            card.innerHTML = `${char.svg}<span>${char.label}</span>`;
             grid.appendChild(card);
         });
     }
@@ -1327,15 +1694,10 @@
         document.getElementById('live-preview-name').innerText = nameInput ? `${nameInput} (${charLabel})` : `${charLabel} Valiente`;
     }
 
-    // =========================================================
-    // 5. VISTAS DE PERFILES, CREACIÓN Y PIN PAD
-    // =========================================================
     function showAuthView(viewId) {
         document.querySelectorAll('.auth-view').forEach(v => v.classList.remove('active'));
         document.getElementById(viewId).classList.add('active');
-        if (viewId === 'view-profiles') {
-            renderProfileCards();
-        }
+        if (viewId === 'view-profiles') renderProfileCards();
     }
 
     function renderProfileCards() {
@@ -1344,7 +1706,6 @@
         const container = document.getElementById('profiles-grid-container');
         container.innerHTML = '';
 
-        // Si no hay cuentas creadas, mostrar directamente el creador de personaje con los 6 avatares visibles
         if (keys.length === 0) {
             document.getElementById('btn-cancel-reg').style.display = 'none';
             showAuthView('view-register');
@@ -1358,7 +1719,6 @@
             const card = document.createElement('div');
             card.className = 'profile-card';
             card.onclick = () => openPinPadForUser(key);
-
             card.innerHTML = `
                 <button class="delete-profile-btn" title="Borrar cuenta" onclick="deleteProfile(event, '${key}')">🗑️</button>
                 <div class="profile-avatar-circle" style="background: ${u.themeColor}22; border: 3px solid ${u.themeColor};">
@@ -1370,7 +1730,6 @@
             container.appendChild(card);
         });
 
-        // Tarjeta para Crear Nuevo Personaje
         const addCard = document.createElement('div');
         addCard.className = 'profile-card add-profile-card';
         addCard.onclick = () => {
@@ -1401,7 +1760,7 @@
         }
         if (pin.length !== 4) {
             playSound('wrong');
-            errBox.innerText = '⚠️ Tu PIN secreto debe tener 4 números (ej: 1234).';
+            errBox.innerText = '⚠️ Tu PIN secreto debe tener 4 números.';
             return;
         }
 
@@ -1423,17 +1782,14 @@
             totalStarsEarned: 10,
             xp: 0,
             level: 1,
-            completedGames: 0,
-            modules: {},
-            unlockedTrophies: [],
-            ownedPets: [],
-            equippedPet: ''
+            completedGames: 0
         });
 
         db[userKey] = newUser;
         saveUsersDB(db);
         playSound('win');
-        showToast(`🎁 ¡Personaje creado! Recibiste 10 estrellas de regalo.`);
+        launchConfetti();
+        showToast(`🎁 ¡Bienvenido/a ${username}! Recibiste +10 estrellas.`);
         loginUser(newUser);
     }
 
@@ -1457,10 +1813,7 @@
         playSound('tap');
         enteredPin += digit;
         updatePinDots();
-
-        if (enteredPin.length === 4) {
-            setTimeout(verifyPinPadLogin, 160);
-        }
+        if (enteredPin.length === 4) setTimeout(verifyPinPadLogin, 160);
     }
 
     function backspacePinDigit() {
@@ -1479,11 +1832,8 @@
         const dots = document.querySelectorAll('#pin-dots .pin-dot');
         dots.forEach((dot, idx) => {
             dot.className = 'pin-dot';
-            if (isError) {
-                dot.classList.add('error');
-            } else if (idx < enteredPin.length) {
-                dot.classList.add('filled');
-            }
+            if (isError) dot.classList.add('error');
+            else if (idx < enteredPin.length) dot.classList.add('filled');
         });
     }
 
@@ -1509,10 +1859,8 @@
         const db = getUsersDB();
         const user = db[userKey];
         if (!user) return;
-
         const checkPin = prompt(`Para borrar el personaje de "${user.username}", escribe su PIN de 4 números:`);
         if (checkPin === null) return;
-
         if (checkPin === user.pin) {
             delete db[userKey];
             saveUsersDB(db);
@@ -1544,8 +1892,7 @@
         reader.onload = e => {
             try {
                 const importedDB = JSON.parse(e.target.result);
-                const merged = { ...getUsersDB(), ...importedDB };
-                saveUsersDB(merged);
+                saveUsersDB({ ...getUsersDB(), ...importedDB });
                 showAuthView('view-profiles');
                 showToast('📂 Cuentas restauradas con éxito');
             } catch (err) {
@@ -1556,7 +1903,7 @@
     }
 
     // =========================================================
-    // 6. PANEL DEL JUGADOR Y MISIONES
+    // 7. SESIÓN ACTIVA, COFRE DIARIO Y RECOMPENSAS
     // =========================================================
     function loginUser(userObj) {
         currentUser = ensureUserSchema(userObj);
@@ -1570,8 +1917,44 @@
         document.getElementById('main-header').style.background =
             `linear-gradient(90deg, ${currentUser.themeColor}, var(--orange))`;
 
+        checkDailyChestVisibility();
         checkAndUnlockTrophies(false);
         updateDashboardUI();
+    }
+
+    function checkDailyChestVisibility() {
+        const today = new Date().toISOString().slice(0, 10);
+        const btn = document.getElementById('btn-daily-gift');
+        btn.style.display = (currentUser.lastDailyClaim !== today) ? 'inline-block' : 'none';
+    }
+
+    function claimDailyChest() {
+        const today = new Date().toISOString().slice(0, 10);
+        if (currentUser.lastDailyClaim === today) return;
+
+        const bonus = 15;
+        currentUser.lastDailyClaim = today;
+        awardStarsAndXP(bonus, 20, `🎁 ¡Cofre Diario abierto! Ganaste +${bonus} Estrellas`);
+        checkDailyChestVisibility();
+    }
+
+    function awardStarsAndXP(starsToAdd, xpToAdd, message) {
+        const prevLevel = currentUser.level;
+        currentUser.stars += starsToAdd;
+        currentUser.totalStarsEarned += starsToAdd;
+        currentUser.xp += xpToAdd;
+        currentUser.level = Math.floor(currentUser.xp / 100) + 1;
+
+        playSound('win');
+        launchConfetti();
+        checkAndUnlockTrophies(true);
+        saveCurrentUser();
+        updateDashboardUI();
+        showToast(message);
+
+        if (currentUser.level > prevLevel) {
+            speakText(`¡Felicidades ${currentUser.username}! Subiste al nivel ${currentUser.level}`);
+        }
     }
 
     function saveCurrentUser() {
@@ -1582,6 +1965,7 @@
 
     function logout() {
         playSound('tap');
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
         currentUser = null;
         localStorage.removeItem('mimikids_active_user');
         document.getElementById('dashboard-screen').style.display = 'none';
@@ -1597,6 +1981,8 @@
         btnElement.classList.add('active');
         document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
         document.getElementById('tab-' + tabName).classList.add('active');
+
+        if (tabName === 'parents') prepareParentGate();
     }
 
     function updateDashboardUI() {
@@ -1623,8 +2009,176 @@
 
         renderAwards();
         renderShop();
+        renderRealRewards();
+        renderParentReport();
     }
 
+    // =========================================================
+    // 8. MINI-JUEGOS INTERACTIVOS (MEMORIA, DIBUJO Y PIANO)
+    // =========================================================
+    function switchArcade(mode, btn) {
+        playSound('tap');
+        document.querySelectorAll('.arcade-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.arcade-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById('arcade-' + mode).classList.add('active');
+    }
+
+    // JUEGO DE MEMORIA
+    let memoryCards = [];
+    let flippedIndices = [];
+    let matchedCount = 0;
+    let lockBoard = false;
+
+    function initMemoryGame() {
+        const emojis = ['🦁', '🦄', '🐼', '🐸', '🦖', '🚀'];
+        memoryCards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+        flippedIndices = [];
+        matchedCount = 0;
+        lockBoard = false;
+        renderMemoryBoard();
+    }
+
+    function renderMemoryBoard() {
+        const board = document.getElementById('memory-board');
+        board.innerHTML = '';
+        memoryCards.forEach((icon, idx) => {
+            const card = document.createElement('div');
+            const isFlipped = flippedIndices.includes(idx);
+            const isMatched = card.dataset.matched === 'true';
+            card.className = 'mem-card';
+            card.id = 'mem-card-' + idx;
+            card.innerText = '?';
+            card.onclick = () => flipMemoryCard(idx);
+            board.appendChild(card);
+        });
+    }
+
+    function flipMemoryCard(idx) {
+        if (lockBoard) return;
+        const cardEl = document.getElementById('mem-card-' + idx);
+        if (!cardEl || cardEl.classList.contains('flipped') || cardEl.classList.contains('matched')) return;
+
+        playSound('tap');
+        cardEl.classList.add('flipped');
+        cardEl.innerText = memoryCards[idx];
+        flippedIndices.push(idx);
+
+        if (flippedIndices.length === 2) {
+            lockBoard = true;
+            const [firstIdx, secondIdx] = flippedIndices;
+            if (memoryCards[firstIdx] === memoryCards[secondIdx]) {
+                playSound('correct');
+                document.getElementById('mem-card-' + firstIdx).classList.add('matched');
+                document.getElementById('mem-card-' + secondIdx).classList.add('matched');
+                flippedIndices = [];
+                matchedCount += 2;
+                lockBoard = false;
+
+                if (matchedCount === memoryCards.length) {
+                    currentUser.completedGames += 1;
+                    awardStarsAndXP(20, 45, '🃏 ¡Memoria Completada! Ganaste +20 Estrellas');
+                    setTimeout(initMemoryGame, 1600);
+                }
+            } else {
+                setTimeout(() => {
+                    const c1 = document.getElementById('mem-card-' + firstIdx);
+                    const c2 = document.getElementById('mem-card-' + secondIdx);
+                    if (c1) { c1.classList.remove('flipped'); c1.innerText = '?'; }
+                    if (c2) { c2.classList.remove('flipped'); c2.innerText = '?'; }
+                    flippedIndices = [];
+                    lockBoard = false;
+                }, 750);
+            }
+        }
+    }
+
+    // PIZARRA DE DIBUJO TÁCTIL
+    let isDrawing = false;
+    let drawColor = '#FF6B6B';
+    let strokeCount = 0;
+
+    function initDrawingCanvas() {
+        const canvas = document.getElementById('draw-canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = 6;
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return {
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
+            };
+        }
+
+        canvas.addEventListener('pointerdown', e => {
+            isDrawing = true;
+            strokeCount++;
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        });
+
+        canvas.addEventListener('pointermove', e => {
+            if (!isDrawing) return;
+            const pos = getPos(e);
+            ctx.strokeStyle = drawColor;
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        });
+
+        window.addEventListener('pointerup', () => { isDrawing = false; });
+    }
+
+    function setDrawColor(color, el) {
+        playSound('tap');
+        drawColor = color;
+        document.querySelectorAll('.swatch-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    function clearCanvas() {
+        const canvas = document.getElementById('draw-canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        strokeCount = 0;
+    }
+
+    function completeDrawingReward() {
+        if (strokeCount < 2) {
+            showToast('🖌️ ¡Haz un dibujo primero en la pizarra!');
+            return;
+        }
+        const prompts = [
+            '🎨 Reto Creativo: ¡Dibuja una casa o un árbol!',
+            '🎨 Reto Creativo: ¡Escribe tu nombre con colores!',
+            '🎨 Reto Creativo: ¡Dibuja un sol sonriente!'
+        ];
+        document.getElementById('draw-prompt').innerText = prompts[Math.floor(Math.random() * prompts.length)];
+        clearCanvas();
+        awardStarsAndXP(10, 25, '🎨 ¡Obra de arte terminada! +10 Estrellas');
+    }
+
+    // MINI PIANO MUSICAL
+    let pianoNotesPlayed = 0;
+    function playPianoNote(freq, noteName) {
+        playSound('note', freq);
+        pianoNotesPlayed++;
+        document.getElementById('piano-progress').innerText = `Notas tocadas: ${pianoNotesPlayed} / 8 (${noteName})`;
+        if (pianoNotesPlayed >= 8) {
+            pianoNotesPlayed = 0;
+            document.getElementById('piano-progress').innerText = `Notas tocadas: 0 / 8`;
+            awardStarsAndXP(10, 25, '🎹 ¡Concierto musical completado! +10 Estrellas');
+        }
+    }
+
+    // =========================================================
+    // 9. TROFEOS, MASCOTAS Y PREMIOS FAMILIARES
+    // =========================================================
     function renderAwards() {
         const container = document.getElementById('awards-container');
         container.innerHTML = '';
@@ -1653,7 +2207,7 @@
             const card = document.createElement('div');
             card.className = 'shop-card';
             card.innerHTML = `
-                <div style="font-size:44px;">${pet.icon}</div>
+                <div style="font-size:42px;">${pet.icon}</div>
                 <h4>${pet.name}</h4>
                 <p style="font-size:13px; font-weight:bold; color:#f39c12;">⭐ ${pet.cost} Estrellas</p>
                 <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handlePetAction('${pet.id}', '${pet.icon}', ${pet.cost})">
@@ -1662,6 +2216,40 @@
             `;
             container.appendChild(card);
         });
+    }
+
+    function renderRealRewards() {
+        const container = document.getElementById('real-rewards-container');
+        container.innerHTML = '';
+        currentUser.customRewards.forEach((rew, idx) => {
+            const card = document.createElement('div');
+            card.className = 'shop-card';
+            card.innerHTML = `
+                <div style="font-size:36px;">🎟️</div>
+                <h4>${rew.title}</h4>
+                <p style="font-size:13px; font-weight:bold; color:#6C5CE7;">⭐ ${rew.cost} Estrellas</p>
+                <button class="btn-buy" style="background:var(--purple);" onclick="redeemRealReward(${idx})">
+                    Canjear Vale
+                </button>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function redeemRealReward(idx) {
+        const rew = currentUser.customRewards[idx];
+        if (!rew) return;
+        if (currentUser.stars < rew.cost) {
+            playSound('wrong');
+            showToast(`Necesitas ${rew.cost} ⭐ para canjear "${rew.title}".`);
+            return;
+        }
+        currentUser.stars -= rew.cost;
+        playSound('win');
+        launchConfetti();
+        saveCurrentUser();
+        updateDashboardUI();
+        alert(`🎉 ¡VALE CANJEADO CON ÉXITO!\n\nMuéstrale esta pantalla a Papá o Mamá:\nPremio ganado: ${rew.title}`);
     }
 
     function handlePetAction(petId, petIcon, cost) {
@@ -1681,6 +2269,7 @@
         currentUser.ownedPets.push(petId);
         currentUser.equippedPet = petIcon;
         playSound('win');
+        launchConfetti();
         checkAndUnlockTrophies(true);
         saveCurrentUser();
         updateDashboardUI();
@@ -1696,15 +2285,76 @@
         });
     }
 
-    function showToast(msg) {
-        const box = document.getElementById('toast-box');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerText = msg;
-        box.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+    // =========================================================
+    // 10. ZONA DE PADRES Y ESTADÍSTICAS
+    // =========================================================
+    function prepareParentGate() {
+        document.getElementById('parent-lock-view').style.display = 'block';
+        document.getElementById('parent-unlocked-view').style.display = 'none';
+        document.getElementById('parent-math-input').value = '';
+        const a = Math.floor(Math.random() * 4) + 6; // 6..9
+        const b = Math.floor(Math.random() * 4) + 6;
+        parentExpectedAnswer = a * b;
+        document.getElementById('parent-math-q').innerText = `¿Cuánto es ${a} × ${b}?`;
     }
 
+    function verifyParentAccess() {
+        const val = parseInt(document.getElementById('parent-math-input').value, 10);
+        if (val === parentExpectedAnswer) {
+            playSound('correct');
+            document.getElementById('parent-lock-view').style.display = 'none';
+            document.getElementById('parent-unlocked-view').style.display = 'block';
+            renderParentReport();
+        } else {
+            playSound('wrong');
+            showToast('Respuesta incorrecta. Acceso solo para adultos.');
+        }
+    }
+
+    function renderParentReport() {
+        if (!currentUser) return;
+        document.getElementById('parent-child-name').innerText = currentUser.username;
+        const tbody = document.getElementById('parent-report-body');
+        tbody.innerHTML = '';
+
+        Object.keys(MODULE_NAMES).forEach(key => {
+            const st = currentUser.moduleStats[key] || { hits: 0, misses: 0 };
+            const total = st.hits + st.misses;
+            const acc = total > 0 ? Math.round((st.hits / total) * 100) + '%' : 'Sin datos';
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><b>${MODULE_NAMES[key]}</b></td>
+                <td>Nv. ${currentUser.modules[key]}</td>
+                <td style="color:#00b894; font-weight:800;">${st.hits}</td>
+                <td style="color:#d63031; font-weight:800;">${st.misses}</td>
+                <td><b>${acc}</b></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function giveBonusStars() {
+        awardStarsAndXP(20, 10, '🌟 ¡Papá/Mamá te regaló +20 Estrellas!');
+    }
+
+    function addCustomParentReward() {
+        const title = document.getElementById('new-reward-title').value.trim();
+        const cost = parseInt(document.getElementById('new-reward-cost').value, 10);
+        if (!title || isNaN(cost) || cost < 5) {
+            showToast('Escribe un nombre y un costo válido en estrellas.');
+            return;
+        }
+        currentUser.customRewards.push({ id: 'rew_' + Date.now(), title, cost });
+        document.getElementById('new-reward-title').value = '';
+        document.getElementById('new-reward-cost').value = '';
+        saveCurrentUser();
+        updateDashboardUI();
+        showToast('🎁 Premio añadido a la tienda del niño');
+    }
+
+    // =========================================================
+    // 11. MOTOR DE MISIONES CON LECTURA DE VOZ
+    // =========================================================
     function startGame(category) {
         playSound('tap');
         currentCategory = category;
@@ -1712,16 +2362,7 @@
         roundQueue = pool.sort(() => Math.random() - 0.5).slice(0, 3);
         currentRoundIndex = 0;
 
-        const titles = {
-            math: '🔢 Misión de Matemáticas',
-            vowels: '🔤 Misión de Lectura y Vocales',
-            colors: '🎨 Misión de Inglés',
-            animals: '🐾 Misión de Mundo Animal',
-            shapes: '📐 Misión de Formas y Lógica',
-            planet: '🌎 Misión del Planeta y Salud'
-        };
-
-        document.getElementById('modal-title').innerText = titles[category];
+        document.getElementById('modal-title').innerText = MODULE_NAMES[category];
         document.getElementById('game-modal').style.display = 'flex';
         showCurrentQuestion();
     }
@@ -1729,53 +2370,4 @@
     function showCurrentQuestion() {
         const currentQ = roundQueue[currentRoundIndex];
         document.getElementById('round-text').innerText = `Pregunta ${currentRoundIndex + 1} de ${roundQueue.length}`;
-        document.getElementById('question-text').innerText = currentQ.q;
-
-        const optionsBox = document.getElementById('options-container');
-        optionsBox.innerHTML = '';
-
-        currentQ.options.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerText = opt;
-            btn.onclick = () => checkAnswer(opt, currentQ.a);
-            optionsBox.appendChild(btn);
-        });
-    }
-
-    function checkAnswer(selected, correct) {
-        if (selected === correct) {
-            playSound('correct');
-            currentRoundIndex++;
-
-            if (currentRoundIndex < roundQueue.length) {
-                showToast('✅ ¡Correcto! Siguiente pregunta...');
-                showCurrentQuestion();
-            } else {
-                playSound('win');
-                currentUser.stars += 15;
-                currentUser.totalStarsEarned += 15;
-                currentUser.xp += 40;
-                currentUser.completedGames += 1;
-                currentUser.level = Math.floor(currentUser.xp / 100) + 1;
-                currentUser.modules[currentCategory] += 1;
-
-                checkAndUnlockTrophies(true);
-                saveCurrentUser();
-                closeGame();
-                updateDashboardUI();
-                showToast(`🌟 ¡Misión Superada! +15 Estrellas y +40 XP`);
-            }
-        } else {
-            playSound('wrong');
-            showToast('💪 ¡Casi! Inténtalo otra vez');
-        }
-    }
-
-    function closeGame() {
-        document.getElementById('game-modal').style.display = 'none';
-    }
-</script>
-
-</body>
-</html>
+        document.getElementById('question-
