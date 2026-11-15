@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MimiKids 4.0 - Edición Completa Interactiva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MimiKids 5.0 - Especial 1 a 4 Años (100% Visual y Con Voz)</title>
     <style>
         :root {
             --primary: #FF6B6B;
@@ -26,30 +26,29 @@
         }
 
         body {
-            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 12px;
+            padding: 10px;
             color: var(--dark);
         }
 
         .app-container {
             background: white;
             width: 100%;
-            max-width: 1080px;
-            min-height: 720px;
-            border-radius: 30px;
-            box-shadow: 0 22px 55px rgba(0,0,0,0.22);
+            max-width: 1060px;
+            min-height: 700px;
+            border-radius: 34px;
+            box-shadow: 0 22px 55px rgba(0,0,0,0.2);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 6px solid white;
+            border: 8px solid white;
             position: relative;
         }
 
-        /* CONFETI CANVAS */
         #confetti-canvas {
             position: fixed;
             inset: 0;
@@ -57,11 +56,11 @@
             z-index: 999;
         }
 
-        /* BARRA SUPERIOR */
+        /* BARRA SUPERIOR MUY VISUAL */
         header {
             background: linear-gradient(90deg, var(--primary), var(--orange));
             color: white;
-            padding: 14px 22px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -71,68 +70,70 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             display: flex;
             align-items: center;
             gap: 8px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            cursor: pointer;
         }
 
         .user-bar {
             display: none;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .user-pill {
-            background: rgba(255,255,255,0.25);
-            padding: 5px 14px;
+            background: rgba(255,255,255,0.28);
+            padding: 6px 14px;
             border-radius: 50px;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-weight: 800;
-            font-size: 15px;
+            font-weight: 900;
+            font-size: 17px;
         }
 
         .user-pill svg {
-            width: 28px;
-            height: 28px;
+            width: 34px;
+            height: 34px;
         }
 
-        .btn-top {
-            background: rgba(0,0,0,0.25);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.45);
-            padding: 7px 13px;
-            border-radius: 20px;
+        .btn-icon-top {
+            background: rgba(255,255,255,0.9);
+            color: var(--dark);
+            border: none;
+            padding: 8px 14px;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: 800;
-            font-size: 12px;
-            transition: 0.2s;
+            font-weight: 900;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+            transition: transform 0.15s;
         }
 
-        .btn-top:hover {
-            background: var(--dark);
-            border-color: var(--dark);
+        .btn-icon-top:active {
+            transform: translateY(3px);
         }
 
         .btn-daily {
             background: var(--accent);
-            color: var(--dark);
-            border: 2px solid white;
-            animation: pulse 1.6s infinite;
+            animation: bounceBtn 1.5s infinite;
         }
 
-        @keyframes pulse {
+        @keyframes bounceBtn {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.06); }
+            50% { transform: scale(1.08); }
         }
 
         /* =========================================================
-           SISTEMA DE AUTENTICACIÓN Y SELECCIÓN DE PERSONAJE
+           PANTALLA DE PERFILES Y LLAVE DE DIBUJITOS
            ========================================================= */
         #auth-screen {
             flex: 1;
@@ -140,7 +141,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 25px 15px;
+            padding: 20px;
             text-align: center;
             background: radial-gradient(circle at top, #ffffff 0%, #f1f5f9 100%);
         }
@@ -157,52 +158,37 @@
             display: flex;
         }
 
-        .auth-heading {
-            font-size: 26px;
-            font-weight: 900;
-            color: var(--dark);
-            margin-bottom: 6px;
-        }
-
-        .auth-sub {
-            font-size: 15px;
-            color: #636e72;
-            margin-bottom: 22px;
-            font-weight: 600;
-        }
-
         .profiles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(155px, 185px));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(165px, 200px));
+            gap: 18px;
             justify-content: center;
             width: 100%;
-            margin-bottom: 22px;
+            margin: 20px 0;
         }
 
         .profile-card {
             background: white;
-            border-radius: 24px;
-            padding: 20px 14px;
+            border-radius: 30px;
+            padding: 22px 14px;
             cursor: pointer;
-            border: 4px solid #e2e8f0;
+            border: 5px solid #e2e8f0;
             transition: all 0.2s ease;
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
 
         .profile-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.05);
             border-color: var(--purple);
-            box-shadow: 0 14px 28px rgba(108, 92, 231, 0.18);
         }
 
         .profile-avatar-circle {
-            width: 82px;
-            height: 82px;
+            width: 96px;
+            height: 96px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -217,62 +203,108 @@
         }
 
         .profile-name {
-            font-size: 17px;
+            font-size: 20px;
             font-weight: 900;
             color: var(--dark);
             margin-bottom: 6px;
         }
 
-        .profile-stats-mini {
-            font-size: 12px;
-            font-weight: 800;
-            background: #f1f2f6;
-            padding: 4px 10px;
-            border-radius: 20px;
-            color: #555;
+        .profile-stars-badge {
+            font-size: 16px;
+            font-weight: 900;
+            background: #fff9db;
+            border: 2px solid #fcc419;
+            padding: 4px 14px;
+            border-radius: 30px;
+            color: #d9480f;
         }
 
         .delete-profile-btn {
             position: absolute;
-            top: 8px;
-            right: 8px;
+            top: 10px;
+            right: 10px;
             background: #ffeaa7;
             border: none;
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
+        }
+
+        /* LLAVE SECRETA VISUAL (2 DIBUJITOS EN VEZ DE NÚMEROS) */
+        .visual-pin-card {
+            background: white;
+            padding: 28px;
+            border-radius: 32px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border: 5px solid var(--secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .key-slots {
+            display: flex;
+            gap: 18px;
+            margin: 16px 0;
+        }
+
+        .key-slot {
+            width: 68px;
+            height: 68px;
+            border-radius: 22px;
+            border: 4px dashed var(--secondary);
+            background: #f8fafc;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 38px;
+            transition: 0.2s;
         }
 
-        .delete-profile-btn:hover {
-            background: #ff7675;
-            color: white;
-        }
-
-        .add-profile-card {
-            border: 4px dashed #94a3b8;
-            background: #f8fafc;
-            justify-content: center;
-        }
-
-        .add-profile-card:hover {
+        .key-slot.filled {
+            border-style: solid;
             border-color: var(--green);
-            background: #f0fdf4;
+            background: #e6fffa;
+            transform: scale(1.08);
         }
 
-        /* TARJETA DE REGISTRO */
+        .pic-pad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .pic-key-btn {
+            background: #fff9db;
+            border: 4px solid #fcc419;
+            border-radius: 24px;
+            padding: 14px 0;
+            font-size: 42px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #f59f00;
+            transition: transform 0.1s;
+        }
+
+        .pic-key-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #f59f00;
+        }
+
+        /* CREADOR DE PERSONAJE */
         .register-card {
             background: white;
             padding: 24px;
-            border-radius: 28px;
+            border-radius: 30px;
             width: 100%;
             max-width: 540px;
             box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-            border: 4px solid var(--purple);
+            border: 5px solid var(--purple);
             text-align: left;
         }
 
@@ -284,16 +316,13 @@
             border: 3px solid #e2e8f0;
             padding: 12px 18px;
             border-radius: 22px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .preview-avatar-box {
-            width: 68px;
-            height: 68px;
+            width: 72px;
+            height: 72px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 8px;
             background: #FF6B6B22;
             border: 3px solid #FF6B6B;
@@ -305,44 +334,11 @@
             height: 100%;
         }
 
-        .input-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        @media (max-width: 500px) {
-            .input-row { grid-template-columns: 1fr; }
-        }
-
-        .input-group label {
-            display: block;
-            font-weight: 800;
-            margin-bottom: 5px;
-            font-size: 13px;
-            color: #334155;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 11px 14px;
-            border-radius: 14px;
-            border: 3px solid #cbd5e1;
-            font-size: 15px;
-            font-weight: 700;
-            outline: none;
-        }
-
-        .input-group input:focus {
-            border-color: var(--purple);
-        }
-
         .character-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin: 8px 0 16px 0;
+            margin: 8px 0 14px 0;
         }
 
         @media (min-width: 480px) {
@@ -352,50 +348,45 @@
         .char-card {
             background: #f8fafc;
             border: 3px solid #cbd5e1;
-            border-radius: 18px;
+            border-radius: 20px;
             padding: 10px 6px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
-            transition: all 0.18s ease;
+            gap: 4px;
         }
 
         .char-card svg {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
         }
 
         .char-card span {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 800;
-            color: #475569;
         }
 
         .char-card.selected {
             background: #fff9db;
             border-color: var(--primary);
-            transform: scale(1.06);
-            box-shadow: 0 6px 14px rgba(255, 107, 107, 0.25);
+            transform: scale(1.08);
         }
 
         .color-selector {
             display: flex;
             justify-content: space-between;
             gap: 10px;
-            margin: 8px 0 18px 0;
-            flex-wrap: wrap;
+            margin: 8px 0 14px 0;
         }
 
         .color-option {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
             border: 3px solid white;
             box-shadow: 0 0 0 2px #cbd5e1;
-            transition: 0.2s;
         }
 
         .color-option.selected {
@@ -403,332 +394,403 @@
             box-shadow: 0 0 0 3px var(--dark);
         }
 
+        .key-picker-row {
+            display: flex;
+            gap: 8px;
+            justify-content: space-between;
+            margin: 8px 0 16px 0;
+        }
+
+        .key-pick-item {
+            flex: 1;
+            font-size: 30px;
+            padding: 8px 0;
+            text-align: center;
+            background: #f8fafc;
+            border: 3px solid #cbd5e1;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        .key-pick-item.selected {
+            background: #e6fffa;
+            border-color: var(--green);
+            transform: scale(1.1);
+        }
+
         .btn-main {
             width: 100%;
             background: var(--green);
             color: white;
             border: none;
-            padding: 14px;
-            border-radius: 16px;
-            font-size: 17px;
+            padding: 15px;
+            border-radius: 18px;
+            font-size: 18px;
             font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 5px 0 #008f72;
-        }
-
-        .btn-main:active {
-            transform: translateY(4px);
-            box-shadow: 0 1px 0 #008f72;
-        }
-
-        .btn-secondary-link {
-            background: none;
-            border: none;
-            color: #64748b;
-            font-weight: 800;
-            font-size: 14px;
-            margin-top: 12px;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* TECLADO NUMÉRICO */
-        .pin-pad-card {
-            background: white;
-            padding: 25px;
-            border-radius: 28px;
-            width: 100%;
-            max-width: 350px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 4px solid var(--secondary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .pinpad-avatar-holder {
-            width: 76px;
-            height: 76px;
-            margin-bottom: 8px;
-        }
-
-        .pinpad-avatar-holder svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .pin-dots {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            margin: 16px 0;
-        }
-
-        .pin-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 3px solid var(--secondary);
-            background: transparent;
-            transition: 0.15s;
-        }
-
-        .pin-dot.filled {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: scale(1.15);
-        }
-
-        .pin-dot.error {
-            background: #ff4757;
-            border-color: #ff4757;
-        }
-
-        .numpad-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            width: 100%;
-        }
-
-        .num-btn {
-            background: #f1f5f9;
-            border: none;
-            padding: 14px 0;
-            border-radius: 16px;
-            font-size: 21px;
-            font-weight: 900;
-            color: var(--dark);
-            cursor: pointer;
-            box-shadow: 0 4px 0 #cbd5e1;
-        }
-
-        .num-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #cbd5e1;
-            background: var(--accent);
-        }
-
-        .backup-bar {
-            margin-top: 12px;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-backup {
-            background: #e2e8f0;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 800;
-            color: #475569;
-            cursor: pointer;
+            box-shadow: 0 6px 0 #008f72;
         }
 
         /* =========================================================
-           PANTALLA PRINCIPAL (DASHBOARD)
+           PANEL DEL NIÑO (ICONOS GIGANTES, CERO TEXTO COMPLEJO)
            ========================================================= */
         #dashboard-screen {
             display: none;
             flex: 1;
-            padding: 20px;
+            padding: 18px;
             flex-direction: column;
             gap: 16px;
         }
 
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-            border-bottom: 2px solid #f1f2f6;
-            padding-bottom: 10px;
-            overflow-x: auto;
-        }
-
-        .tab-btn {
-            background: #f1f2f6;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 16px;
-            font-size: 13px;
-            font-weight: 800;
-            color: #57606f;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: 0.2s;
-        }
-
-        .tab-btn.active {
-            background: var(--purple);
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 12px;
-        }
-
-        .stat-card {
-            background: var(--light);
-            border-radius: 18px;
-            padding: 12px 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 4px solid #dfe6e9;
-        }
-
-        .stat-icon {
-            font-size: 28px;
-            background: white;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 14px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .stat-info h3 {
-            font-size: 18px;
-            color: var(--dark);
-        }
-
-        .stat-info p {
-            font-size: 11px;
-            color: #636e72;
-            font-weight: 700;
-        }
-
-        .progress-section {
-            background: #f8f9fa;
-            padding: 12px 18px;
-            border-radius: 18px;
-            border: 2px solid #eee;
-        }
-
-        .progress-header {
+        /* BARRA DE ESTRELLAS Y NIVEL MUY VISUAL */
+        .kid-status-bar {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 6px;
-            font-weight: 800;
-            font-size: 13px;
+            align-items: center;
+            background: #fff9db;
+            border: 4px solid #fcc419;
+            border-radius: 26px;
+            padding: 12px 20px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .progress-bar-bg {
-            width: 100%;
-            height: 16px;
-            background: #dfe6e9;
+        .star-counter-big {
+            font-size: 28px;
+            font-weight: 900;
+            color: #d9480f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .xp-stars-track {
+            flex: 1;
+            min-width: 180px;
+            height: 24px;
+            background: #fff;
             border-radius: 50px;
+            border: 3px solid #fcc419;
             overflow: hidden;
         }
 
-        .progress-bar-fill {
+        .xp-stars-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--green));
+            background: linear-gradient(90deg, #fcc419, #00b894);
             width: 0%;
-            transition: width 0.4s ease;
+            transition: width 0.5s ease;
+        }
+
+        /* BOTONES DE NAVEGACIÓN GIGANTES CON ICONO Y VOZ */
+        .big-nav-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .big-tab-btn {
+            background: #f1f5f9;
+            border: 4px solid #e2e8f0;
+            padding: 12px 8px;
+            border-radius: 24px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 32px;
+            transition: 0.2s;
+        }
+
+        .big-tab-btn span {
+            font-size: 13px;
+            font-weight: 900;
+            color: var(--dark);
+        }
+
+        .big-tab-btn.active {
+            background: #fff0f6;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 rgba(255,107,107,0.25);
         }
 
         .tab-view {
             display: none;
             flex-direction: column;
             gap: 16px;
+            flex: 1;
         }
 
         .tab-view.active {
             display: flex;
         }
 
-        .games-grid {
+        /* TARJETAS DE JUEGO GIGANTES Y COLORIDAS PARA 1-4 AÑOS */
+        .toddler-games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
         }
 
-        .game-card {
-            background: white;
-            border-radius: 22px;
-            padding: 18px;
+        .toddler-game-card {
+            border-radius: 28px;
+            padding: 24px 16px;
             text-align: center;
-            border: 3px solid #f1f2f6;
-            transition: 0.2s;
             cursor: pointer;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            border: 5px solid rgba(0,0,0,0.08);
+            box-shadow: 0 8px 0 rgba(0,0,0,0.12);
+            transition: transform 0.15s;
         }
 
-        .game-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--secondary);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+        .toddler-game-card:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 rgba(0,0,0,0.12);
         }
 
-        .game-icon {
-            font-size: 42px;
-            margin-bottom: 6px;
+        .toddler-game-icon {
+            font-size: 68px;
+            line-height: 1;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
         }
 
-        .game-badge {
+        .toddler-game-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+        }
+
+        .toddler-stars-tag {
             position: absolute;
             top: 12px;
             right: 12px;
-            background: var(--accent);
+            background: rgba(255,255,255,0.92);
             padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 800;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 900;
+            color: var(--dark);
         }
 
         /* =========================================================
-           ESTILOS DE LABORATORIO CREATIVO (MEMORIA, PIZARRA, PIANO)
+           MODAL VISUAL DE JUEGO (SIN TEXTO QUE LEER, SOLO DIBUJOS)
+           ========================================================= */
+        #game-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 24px;
+            border-radius: 34px;
+            max-width: 580px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            border: 6px solid var(--secondary);
+        }
+
+        .visual-stage {
+            background: #f8fafc;
+            border: 4px dashed #cbd5e1;
+            border-radius: 28px;
+            padding: 20px;
+            margin: 14px 0 20px 0;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .stage-big-visual {
+            font-size: 78px;
+            line-height: 1.1;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Sombra negra para el juego de adivinar siluetas */
+        .silhouette-shadow {
+            filter: brightness(0) drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        .color-splat-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-speak-giant {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 0 #38ada9;
+        }
+
+        .btn-speak-giant:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #38ada9;
+        }
+
+        /* BOTONES DE RESPUESTA GIGANTES (PARA DEDOS PEQUEÑOS) */
+        .toddler-options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .toddler-opt-btn {
+            background: #ffffff;
+            border: 5px solid #e2e8f0;
+            border-radius: 28px;
+            padding: 18px 10px;
+            min-height: 125px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 58px;
+            box-shadow: 0 8px 0 #cbd5e1;
+            transition: transform 0.12s, border-color 0.2s;
+        }
+
+        .toddler-opt-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #cbd5e1;
+        }
+
+        .toddler-opt-btn.correct-flash {
+            background: #d3f9d8;
+            border-color: var(--green);
+            transform: scale(1.06);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            font-size: 28px;
+            cursor: pointer;
+            background: #f1f5f9;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        /* =========================================================
+           ZONA SENSORIAL: EXPLOTA BURBUJAS, PIZARRA, MEMORIA Y PIANO
            ========================================================= */
         .arcade-subnav {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
         }
 
         .arcade-btn {
             background: white;
-            border: 3px solid #e2e8f0;
-            padding: 10px 18px;
-            border-radius: 16px;
-            font-weight: 800;
+            border: 4px solid #e2e8f0;
+            padding: 10px 6px;
+            border-radius: 20px;
+            font-weight: 900;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 26px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .arcade-btn span {
+            font-size: 12px;
         }
 
         .arcade-btn.active {
-            border-color: var(--primary);
-            background: #fff5f5;
-            color: var(--primary);
+            border-color: var(--purple);
+            background: #f3f0ff;
         }
 
         .arcade-panel {
             display: none;
             background: #f8fafc;
-            border: 3px solid #e2e8f0;
-            border-radius: 24px;
-            padding: 20px;
+            border: 4px solid #e2e8f0;
+            border-radius: 28px;
+            padding: 16px;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .arcade-panel.active {
             display: flex;
         }
 
-        /* JUEGO DE MEMORIA */
+        /* JUEGO DE EXPLOTAR BURBUJAS Y GLOBOS (1 A 2 AÑOS) */
+        #bubble-stage {
+            width: 100%;
+            height: 290px;
+            background: linear-gradient(180deg, #dff9fb 0%, #c7ecee 100%);
+            border-radius: 24px;
+            border: 4px solid #7ed6df;
+            position: relative;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        .floating-bubble {
+            position: absolute;
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 46px;
+            cursor: pointer;
+            box-shadow: inset -6px -6px 14px rgba(0,0,0,0.12), 0 6px 14px rgba(0,0,0,0.1);
+            border: 3px solid rgba(255,255,255,0.8);
+            transition: transform 0.1s;
+        }
+
+        .floating-bubble:active {
+            transform: scale(1.3);
+        }
+
+        /* MEMORIA 6 CARTAS GRANDES (3 PARES PARA 1-4 AÑOS) */
         .memory-board {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
             width: 100%;
             max-width: 420px;
         }
@@ -736,22 +798,20 @@
         .mem-card {
             aspect-ratio: 1;
             background: var(--purple);
-            border-radius: 18px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
+            font-size: 54px;
             cursor: pointer;
             color: white;
-            font-weight: 900;
-            box-shadow: 0 5px 0 #4834d4;
-            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 7px 0 #4834d4;
         }
 
         .mem-card.flipped, .mem-card.matched {
             background: white;
-            border: 3px solid var(--secondary);
-            box-shadow: 0 4px 0 #cbd5e1;
+            border: 5px solid var(--secondary);
+            box-shadow: 0 5px 0 #cbd5e1;
         }
 
         .mem-card.matched {
@@ -759,7 +819,7 @@
             background: #e6fffa;
         }
 
-        /* PIZARRA DE DIBUJO TÁCTIL */
+        /* PIZARRA Y SELLOS MÁGICOS */
         .canvas-toolbar {
             display: flex;
             gap: 10px;
@@ -769,49 +829,46 @@
         }
 
         .swatch-btn {
-            width: 34px;
-            height: 34px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            border: 3px solid white;
+            border: 4px solid white;
             box-shadow: 0 0 0 2px #cbd5e1;
             cursor: pointer;
         }
 
         .swatch-btn.active {
-            transform: scale(1.2);
-            box-shadow: 0 0 0 3px var(--dark);
+            transform: scale(1.22);
+            box-shadow: 0 0 0 4px var(--dark);
         }
 
         #draw-canvas {
             background: white;
-            border: 4px solid var(--secondary);
-            border-radius: 20px;
+            border: 5px solid var(--secondary);
+            border-radius: 24px;
             cursor: crosshair;
             touch-action: none;
             max-width: 100%;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
         }
 
-        /* MINI PIANO MUSICAL */
+        /* PIANO DE ANIMALES Y COLORES */
         .piano-keys {
             display: flex;
             gap: 8px;
             justify-content: center;
-            flex-wrap: wrap;
             width: 100%;
-            max-width: 600px;
-            margin: 10px 0;
+            max-width: 620px;
         }
 
         .piano-key {
             flex: 1;
-            min-width: 62px;
-            height: 150px;
+            min-width: 58px;
+            height: 165px;
             border: none;
-            border-radius: 0 0 18px 18px;
+            border-radius: 0 0 22px 22px;
             color: white;
             font-weight: 900;
-            font-size: 16px;
+            font-size: 32px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -819,43 +876,25 @@
             padding-bottom: 16px;
             cursor: pointer;
             box-shadow: 0 8px 0 rgba(0,0,0,0.2);
-            transition: transform 0.08s;
         }
 
         .piano-key:active {
-            transform: translateY(5px);
-            box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
         }
 
-        /* TROFEOS, TIENDA Y PREMIOS REALES */
-        .awards-grid, .shop-grid {
+        /* TIENDA Y PADRES */
+        .shop-grid, .awards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
             gap: 14px;
         }
 
-        .award-card {
-            background: #f8f9fa;
-            border-radius: 20px;
-            padding: 16px;
-            text-align: center;
-            border: 3px dashed #ced6e0;
-            opacity: 0.55;
-            filter: grayscale(100%);
-        }
-
-        .award-card.unlocked {
-            background: #fff9db;
-            border: 3px solid #fcc419;
-            opacity: 1;
-            filter: grayscale(0%);
-        }
-
-        .shop-card {
+        .shop-card, .award-card {
             background: white;
-            border: 3px solid #f1f2f6;
-            border-radius: 20px;
-            padding: 16px;
+            border: 4px solid #f1f2f6;
+            border-radius: 24px;
+            padding: 18px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -863,13 +902,26 @@
             gap: 8px;
         }
 
+        .award-card {
+            opacity: 0.45;
+            filter: grayscale(100%);
+        }
+
+        .award-card.unlocked {
+            background: #fff9db;
+            border-color: #fcc419;
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
         .btn-buy {
             background: var(--orange);
             color: white;
             border: none;
-            padding: 8px 14px;
-            border-radius: 12px;
-            font-weight: 800;
+            padding: 10px 16px;
+            border-radius: 16px;
+            font-weight: 900;
+            font-size: 16px;
             cursor: pointer;
             width: 100%;
         }
@@ -878,7 +930,6 @@
             background: var(--green);
         }
 
-        /* PANEL DE PADRES */
         .parent-box {
             background: #f8fafc;
             border: 3px solid #cbd5e1;
@@ -896,110 +947,10 @@
         }
 
         .report-table th, .report-table td {
-            padding: 10px 12px;
+            padding: 10px;
             text-align: left;
             border-bottom: 1px solid #f1f5f9;
             font-size: 13px;
-        }
-
-        .report-table th {
-            background: #e2e8f0;
-            font-weight: 800;
-        }
-
-        /* MODAL DE JUEGO CON BOTÓN DE VOZ */
-        #game-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.65);
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-            z-index: 100;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 26px;
-            border-radius: 26px;
-            max-width: 510px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            border: 5px solid var(--secondary);
-        }
-
-        .round-indicator {
-            display: inline-block;
-            background: #f1f2f6;
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-weight: 800;
-            font-size: 13px;
-            color: var(--purple);
-            margin-top: 6px;
-        }
-
-        .question-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 18px 0;
-            min-height: 65px;
-        }
-
-        .question-box {
-            font-size: 25px;
-            font-weight: 900;
-            color: var(--dark);
-        }
-
-        .btn-speak {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            flex-shrink: 0;
-            box-shadow: 0 4px 0 #38ada9;
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .option-btn {
-            background: var(--light);
-            border: 3px solid #dfe6e9;
-            padding: 14px;
-            border-radius: 16px;
-            font-size: 18px;
-            font-weight: 800;
-            cursor: pointer;
-            color: var(--dark);
-        }
-
-        .option-btn:hover {
-            border-color: var(--secondary);
-            background: #e3fafc;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 14px;
-            right: 16px;
-            font-size: 22px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: #999;
         }
 
         #toast-box {
@@ -1015,10 +966,10 @@
         .toast {
             background: var(--dark);
             color: white;
-            padding: 12px 20px;
-            border-radius: 16px;
-            font-weight: 800;
-            font-size: 14px;
+            padding: 14px 22px;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
         }
     </style>
@@ -1030,34 +981,33 @@
 <div class="app-container">
     <!-- BARRA SUPERIOR -->
     <header id="main-header">
-        <div class="logo">🌟 MimiKids 4.0</div>
+        <div class="logo" onclick="speakText('Mimi Kids, aprende jugando')">🌟 MimiKids</div>
         <div class="user-bar" id="header-user-bar">
-            <button class="btn-top btn-daily" id="btn-daily-gift" onclick="claimDailyChest()" style="display:none;">🎁 Cofre Diario</button>
-            <button class="btn-top" id="btn-voice-toggle" onclick="toggleVoice()">🔊 Voz: ON</button>
-            <div class="user-pill">
+            <button class="btn-icon-top btn-daily" id="btn-daily-gift" onclick="claimDailyChest()" style="display:none;">🎁</button>
+            <button class="btn-icon-top" id="btn-voice-toggle" onclick="toggleVoice()">🔊</button>
+            <div class="user-pill" onclick="speakText('Hola ' + currentUser.username)">
                 <span id="header-avatar"></span>
-                <span id="header-username">Niño</span>
+                <span id="header-username">Bebé</span>
                 <span id="header-pet"></span>
             </div>
-            <button class="btn-top" onclick="logout()">🔄 Cambiar Cuenta</button>
+            <button class="btn-icon-top" onclick="openParentTab()" title="Zona de Padres">🔒👨‍👩‍👧</button>
+            <button class="btn-icon-top" onclick="logout()" title="Cambiar Niño">🔄</button>
         </div>
     </header>
 
     <!-- =========================================================
-         PANTALLA DE INICIO DE SESIÓN Y CREACIÓN DE PERSONAJE
+         PANTALLA DE PERFILES (ENTRADA CON DIBUJITOS PARA 1-4 AÑOS)
          ========================================================= -->
     <div id="auth-screen">
 
-        <!-- VISTA 1: SELECTOR DE PERFILES -->
+        <!-- VISTA 1: TARJETAS DE PERFILES GIGANTES -->
         <div id="view-profiles" class="auth-view active">
-            <h1 class="auth-heading">¿Quién va a jugar hoy?</h1>
-            <p class="auth-sub">Toca tu personaje para entrar o crea uno nuevo</p>
-
+            <h1 style="font-size:28px; font-weight:900;">👋 ¡Toca tu dibujo para jugar!</h1>
             <div class="profiles-grid" id="profiles-grid-container"></div>
 
-            <div class="backup-bar">
-                <button class="btn-backup" onclick="exportAccounts()">💾 Guardar Respaldo</button>
-                <button class="btn-backup" onclick="document.getElementById('import-file').click()">📂 Cargar Respaldo</button>
+            <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                <button class="btn-icon-top" style="font-size:13px;" onclick="exportAccounts()">💾 Guardar Copia</button>
+                <button class="btn-icon-top" style="font-size:13px;" onclick="document.getElementById('import-file').click()">📂 Cargar Copia</button>
                 <input type="file" id="import-file" style="display:none" accept=".json" onchange="importAccounts(event)">
             </div>
         </div>
@@ -1065,23 +1015,22 @@
         <!-- VISTA 2: CREAR PERSONAJE -->
         <div id="view-register" class="auth-view">
             <div class="register-card">
-                <h2 style="color: var(--purple); margin-bottom: 12px; text-align:center;">✨ Crea tu Personaje</h2>
+                <h2 style="color: var(--purple); margin-bottom: 12px; text-align:center;">✨ Nuevo Personaje</h2>
 
                 <div class="live-preview-banner">
                     <div class="preview-avatar-box" id="live-preview-circle"></div>
                     <div>
-                        <div style="font-size:12px; font-weight:800; color:#64748b;">TU PERSONAJE ELEGIDO:</div>
-                        <div id="live-preview-name" style="font-size:19px; font-weight:900; color:var(--dark);">León Valiente</div>
-                        <div style="font-size:12px; color:#00b894; font-weight:800;">🎁 Incluye +10 Estrellas de bienvenida</div>
+                        <div id="live-preview-name" style="font-size:20px; font-weight:900; color:var(--dark);">León</div>
+                        <div style="font-size:13px; color:#00b894; font-weight:800;">🎁 Regalo: +10 Estrellas ⭐</div>
                     </div>
                 </div>
 
-                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:13px; margin-bottom:10px; text-align:center;"></div>
+                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:14px; margin-bottom:10px; text-align:center;"></div>
 
-                <label style="font-weight:800; font-size:13px; color:#334155;">1. Toca tu personaje favorito:</label>
+                <label style="font-weight:800; font-size:14px;">1. Elige el personaje del niño/a:</label>
                 <div class="character-grid" id="character-selector-grid"></div>
 
-                <label style="font-weight:800; font-size:13px; color:#334155;">2. Elige el color de tu traje:</label>
+                <label style="font-weight:800; font-size:14px;">2. Elige su color favorito:</label>
                 <div class="color-selector">
                     <div class="color-option selected" style="background: #FF6B6B;" onclick="selectThemeColor(this, '#FF6B6B')"></div>
                     <div class="color-option" style="background: #4ECDC4;" onclick="selectThemeColor(this, '#4ECDC4')"></div>
@@ -1091,271 +1040,239 @@
                     <div class="color-option" style="background: #e84393;" onclick="selectThemeColor(this, '#e84393')"></div>
                 </div>
 
-                <div class="input-row">
-                    <div class="input-group">
-                        <label>3. Tu Nombre:</label>
-                        <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Mateo o Sofía" oninput="updateLivePreviewText()">
-                    </div>
-                    <div class="input-group">
-                        <label>4. PIN Secreto (4 números):</label>
-                        <input type="tel" id="reg-pin" maxlength="4" placeholder="Ej: 1234" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                    </div>
+                <label style="font-weight:800; font-size:14px;">3. Nombre del niño/a:</label>
+                <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Mateo o Sofía" oninput="updateLivePreviewText()" style="width:100%; padding:12px; border-radius:14px; border:3px solid #cbd5e1; font-size:16px; font-weight:800; margin:6px 0 14px 0;">
+
+                <label style="font-weight:800; font-size:14px;">4. Elige su dibujo secreto para entrar (Opcional, fácil para bebés):</label>
+                <div class="key-picker-row" id="reg-key-picker">
+                    <div class="key-pick-item selected" onclick="selectVisualKey(this, '🌞')">🌞</div>
+                    <div class="key-pick-item" onclick="selectVisualKey(this, '🍎')">🍎</div>
+                    <div class="key-pick-item" onclick="selectVisualKey(this, '🚗')">🚗</div>
+                    <div class="key-pick-item" onclick="selectVisualKey(this, '🐶')">🐶</div>
+                    <div class="key-pick-item" onclick="selectVisualKey(this, '🎈')">🎈</div>
+                    <div class="key-pick-item" onclick="selectVisualKey(this, '⭐')">⭐</div>
                 </div>
 
-                <button class="btn-main" onclick="registerNewAccount()">🚀 ¡Guardar Personaje y Jugar!</button>
-                <button class="btn-secondary-link" id="btn-cancel-reg" onclick="showAuthView('view-profiles')">← Volver a las cuentas</button>
+                <button class="btn-main" onclick="registerNewAccount()">🚀 ¡Empezar a Jugar!</button>
+                <button style="background:none; border:none; width:100%; margin-top:12px; font-weight:800; color:#64748b; cursor:pointer;" id="btn-cancel-reg" onclick="showAuthView('view-profiles')">← Volver</button>
             </div>
         </div>
 
-        <!-- VISTA 3: TECLADO NUMÉRICO -->
+        <!-- VISTA 3: ENTRADA CON DIBUJO SECRETO (1 SOLO TOQUE PARA NIÑOS DE 1-4 AÑOS) -->
         <div id="view-pinpad" class="auth-view">
-            <div class="pin-pad-card">
+            <div class="visual-pin-card">
                 <div class="pinpad-avatar-holder" id="pinpad-avatar"></div>
-                <h2 id="pinpad-username" style="color: var(--dark);">Jugador</h2>
-                <p style="font-size: 13px; color: #64748b; font-weight: 700;">Marca tu PIN de 4 números</p>
+                <h2 id="pinpad-username" style="font-size:24px;">¡Hola!</h2>
+                <p style="font-size:15px; color:#555; font-weight:800; margin-top:4px;">Toca tu dibujito mágico para entrar:</p>
 
-                <div class="pin-dots" id="pin-dots">
-                    <div class="pin-dot"></div>
-                    <div class="pin-dot"></div>
-                    <div class="pin-dot"></div>
-                    <div class="pin-dot"></div>
+                <div class="key-slots">
+                    <div class="key-slot" id="visual-slot-1">❓</div>
                 </div>
 
-                <div class="numpad-grid">
-                    <button class="num-btn" onclick="pressPinDigit('1')">1</button>
-                    <button class="num-btn" onclick="pressPinDigit('2')">2</button>
-                    <button class="num-btn" onclick="pressPinDigit('3')">3</button>
-                    <button class="num-btn" onclick="pressPinDigit('4')">4</button>
-                    <button class="num-btn" onclick="pressPinDigit('5')">5</button>
-                    <button class="num-btn" onclick="pressPinDigit('6')">6</button>
-                    <button class="num-btn" onclick="pressPinDigit('7')">7</button>
-                    <button class="num-btn" onclick="pressPinDigit('8')">8</button>
-                    <button class="num-btn" onclick="pressPinDigit('9')">9</button>
-                    <button class="num-btn" style="background:#ffeaa7; font-size:15px;" onclick="clearPinDigits()">Borrar</button>
-                    <button class="num-btn" onclick="pressPinDigit('0')">0</button>
-                    <button class="num-btn" style="background:#fab1a0;" onclick="backspacePinDigit()">⌫</button>
+                <div class="pic-pad-grid">
+                    <button class="pic-key-btn" onclick="pressVisualKey('🌞')">🌞</button>
+                    <button class="pic-key-btn" onclick="pressVisualKey('🍎')">🍎</button>
+                    <button class="pic-key-btn" onclick="pressVisualKey('🚗')">🚗</button>
+                    <button class="pic-key-btn" onclick="pressVisualKey('🐶')">🐶</button>
+                    <button class="pic-key-btn" onclick="pressVisualKey('🎈')">🎈</button>
+                    <button class="pic-key-btn" onclick="pressVisualKey('⭐')">⭐</button>
                 </div>
 
-                <button class="btn-secondary-link" onclick="showAuthView('view-profiles')">← Cambiar de personaje</button>
+                <button style="background:none; border:none; margin-top:16px; font-weight:800; color:#64748b; cursor:pointer;" onclick="showAuthView('view-profiles')">← Cambiar de niño</button>
             </div>
         </div>
 
     </div>
 
     <!-- =========================================================
-         PANTALLA PRINCIPAL DE JUEGOS, LABORATORIO Y PADRES
+         PANEL DE JUEGOS VISUALES (1-4 AÑOS)
          ========================================================= -->
     <div id="dashboard-screen">
-        <div class="stats-grid">
-            <div class="stat-card" style="border-color: var(--accent);">
-                <div class="stat-icon">⭐</div>
-                <div class="stat-info">
-                    <h3 id="stat-stars">0</h3>
-                    <p>Estrellas Disponibles</p>
-                </div>
+        <!-- Contador gigante de estrellas -->
+        <div class="kid-status-bar" onclick="speakText('Tienes ' + currentUser.stars + ' estrellas')">
+            <div class="star-counter-big">⭐ <span id="stat-stars">0</span></div>
+            <div class="xp-stars-track">
+                <div class="xp-stars-fill" id="progress-bar"></div>
             </div>
-            <div class="stat-card" style="border-color: var(--secondary);">
-                <div class="stat-icon">🏆</div>
-                <div class="stat-info">
-                    <h3 id="stat-level">Nivel 1</h3>
-                    <p id="stat-rank">Explorador</p>
-                </div>
-            </div>
-            <div class="stat-card" style="border-color: var(--orange);">
-                <div class="stat-icon">🏅</div>
-                <div class="stat-info">
-                    <h3 id="stat-medals">0 / 6</h3>
-                    <p>Trofeos Ganados</p>
-                </div>
-            </div>
-            <div class="stat-card" style="border-color: var(--primary);">
-                <div class="stat-icon">✅</div>
-                <div class="stat-info">
-                    <h3 id="stat-completed">0</h3>
-                    <p>Misiones Superadas</p>
-                </div>
-            </div>
+            <div style="font-size:22px; font-weight:900;">🏆 Nv. <span id="stat-level">1</span></div>
         </div>
 
-        <div class="progress-section">
-            <div class="progress-header">
-                <span>Experiencia para el siguiente Nivel</span>
-                <span id="progress-text">0 / 100 XP</span>
-            </div>
-            <div class="progress-bar-bg">
-                <div class="progress-bar-fill" id="progress-bar"></div>
-            </div>
+        <!-- 4 Botones Gigantes con Dibujo -->
+        <div class="big-nav-tabs">
+            <button class="big-tab-btn active" onclick="switchTab('games', this, 'Juegos de aprender')">
+                🎈<span>Jugar</span>
+            </button>
+            <button class="big-tab-btn" onclick="switchTab('arcade', this, 'Burbujas, pintar y piano')">
+                🎨<span>Crear</span>
+            </button>
+            <button class="big-tab-btn" onclick="switchTab('awards', this, 'Tus trofeos')">
+                🏆<span>Trofeos</span>
+            </button>
+            <button class="big-tab-btn" onclick="switchTab('shop', this, 'Tienda de mascotas y premios')">
+                🐶<span>Mascotas</span>
+            </button>
         </div>
 
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('games', this)">🎮 Misiones (6)</button>
-            <button class="tab-btn" onclick="switchTab('arcade', this)">🎨 Memoria, Dibujo y Piano</button>
-            <button class="tab-btn" onclick="switchTab('awards', this)">🏆 Mis Trofeos</button>
-            <button class="tab-btn" onclick="switchTab('shop', this)">🐾 Mascotas y Premios</button>
-            <button class="tab-btn" onclick="switchTab('parents', this)">👨‍👩‍👧 Zona de Padres</button>
-        </div>
-
-        <!-- PESTAÑA 1: 6 MISIONES EDUCATIVAS -->
+        <!-- PESTAÑA 1: 6 JUEGOS 100% VISUALES Y CON VOZ -->
         <div id="tab-games" class="tab-view active">
-            <div class="games-grid">
-                <div class="game-card" onclick="startGame('math')">
-                    <span class="game-badge" id="badge-math">Nv. 1</span>
-                    <div class="game-icon">🔢</div>
-                    <h3>Matemáticas</h3>
-                    <p style="font-size: 13px; color:#666; margin-top:4px;">Sumas, restas y conteo</p>
+            <div class="toddler-games-grid">
+                <div class="toddler-game-card" style="background: linear-gradient(135deg, #FF6B6B, #ff8e8e);" onclick="startGame('colors')">
+                    <span class="toddler-stars-tag">⭐ <span id="badge-colors">1</span></span>
+                    <div class="toddler-game-icon">🎨</div>
+                    <div class="toddler-game-title">Colores</div>
                 </div>
-                <div class="game-card" onclick="startGame('vowels')">
-                    <span class="game-badge" id="badge-vowels">Nv. 1</span>
-                    <div class="game-icon">🔤</div>
-                    <h3>Lectura y Vocales</h3>
-                    <p style="font-size: 13px; color:#666; margin-top:4px;">Completa las palabras</p>
+
+                <div class="toddler-game-card" style="background: linear-gradient(135deg, #4ECDC4, #2bcbba);" onclick="startGame('animals')">
+                    <span class="toddler-stars-tag">⭐ <span id="badge-animals">1</span></span>
+                    <div class="toddler-game-icon">🐮</div>
+                    <div class="toddler-game-title">Animales</div>
                 </div>
-                <div class="game-card" onclick="startGame('colors')">
-                    <span class="game-badge" id="badge-colors">Nv. 1</span>
-                    <div class="game-icon">🎨</div>
-                    <h3>Inglés con Voz</h3>
-                    <p style="font-size: 13px; color:#666; margin-top:4px;">Escucha y aprende inglés</p>
+
+                <div class="toddler-game-card" style="background: linear-gradient(135deg, #FD9644, #f7b731);" onclick="startGame('counting')">
+                    <span class="toddler-stars-tag">⭐ <span id="badge-counting">1</span></span>
+                    <div class="toddler-game-icon">🍎</div>
+                    <div class="toddler-game-title">1, 2 y 3</div>
                 </div>
-                <div class="game-card" onclick="startGame('animals')">
-                    <span class="game-badge" id="badge-animals">Nv. 1</span>
-                    <div class="game-icon">🐾</div>
-                    <h3>Mundo Animal</h3>
-                    <p style="font-size: 13px; color:#666; margin-top:4px;">Sonidos, hábitats y crías</p>
+
+                <div class="toddler-game-card" style="background: linear-gradient(135deg, #6C5CE7, #a29bfe);" onclick="startGame('shadows')">
+                    <span class="toddler-stars-tag">⭐ <span id="badge-shadows">1</span></span>
+                    <div class="toddler-game-icon">🕵️</div>
+                    <div class="toddler-game-title">Sombras</div>
                 </div>
-                <div class="game-card" onclick="startGame('shapes')">
-                    <span class="game-badge" id="badge-shapes">Nv. 1</span>
-                    <div class="game-icon">📐</div>
-                    <h3>Formas y Lógica</h3>
-                    <p style="font-size: 13px; color:#666; margin-top:4px;">Secuencias y figuras</p>
+
+                <div class="toddler-game-card" style="background: linear-gradient(135deg, #00B894, #55efc4);" onclick="startGame('sizes')">
+                    <span class="toddler-stars-tag">⭐ <span id="badge-sizes">1</span></span>
+                    <div class="toddler-game-icon">🐘</div>
+                    <div class="toddler-game-title">Tamaños</div>
                 </div>
-                <div class="game-card" onclick="startGame('planet')">
-                    <span class="game-badge" id="badge-planet">Nv. 1</span>
-                    <div class="game-icon">🌎</div>
-                    <h3>Planeta y Hábitos</h3>
-                    <p style="font-size: 13px; color:#666; margin-top:4px;">Reciclaje, salud y cuerpo</p>
+
+                <div class="toddler-game-card" style="background: linear-gradient(135deg, #e84393, #fd79a8);" onclick="startGame('emotions')">
+                    <span class="toddler-stars-tag">⭐ <span id="badge-emotions">1</span></span>
+                    <div class="toddler-game-icon">😄</div>
+                    <div class="toddler-game-title">Caritas</div>
                 </div>
             </div>
         </div>
 
-        <!-- PESTAÑA 2: MINI-JUEGOS INTERACTIVOS (MEMORIA, DIBUJO Y PIANO) -->
+        <!-- PESTAÑA 2: JUEGOS SENSORIALES (BURBUJAS, MEMORIA, PINTAR, PIANO) -->
         <div id="tab-arcade" class="tab-view">
             <div class="arcade-subnav">
-                <button class="arcade-btn active" onclick="switchArcade('memory', this)">🃏 Parejas de Memoria (+20 ⭐)</button>
-                <button class="arcade-btn" onclick="switchArcade('draw', this)">🖌️ Pizarra Mágica (+10 ⭐)</button>
-                <button class="arcade-btn" onclick="switchArcade('piano', this)">🎹 Piano Musical (+10 ⭐)</button>
+                <button class="arcade-btn active" onclick="switchArcade('bubbles', this, 'Explota las burbujas')">🫧<span>Burbujas</span></button>
+                <button class="arcade-btn" onclick="switchArcade('draw', this, 'Pizarra para pintar')">🖌️<span>Pintar</span></button>
+                <button class="arcade-btn" onclick="switchArcade('piano', this, 'Piano de sonidos')">🎹<span>Piano</span></button>
+                <button class="arcade-btn" onclick="switchArcade('memory', this, 'Busca las parejas')">🃏<span>Parejas</span></button>
             </div>
 
-            <!-- SUB-JUEGO 1: MEMORIA -->
-            <div id="arcade-memory" class="arcade-panel active">
-                <div style="display:flex; justify-content:space-between; width:100%; max-width:420px; align-items:center;">
-                    <span style="font-weight:800; font-size:14px;">Encuentra las 6 parejas iguales:</span>
-                    <button class="btn-backup" onclick="initMemoryGame()">🔄 Reiniciar Cartas</button>
+            <!-- SUB-JUEGO 1: EXPLOTA BURBUJAS Y GLOBOS (IDEAL 1-3 AÑOS) -->
+            <div id="arcade-bubbles" class="arcade-panel active">
+                <div style="font-weight:900; font-size:17px; color:var(--purple);">
+                    🫧 ¡Toca las burbujas con tu dedo! (<span id="bubble-score">0</span> / 8)
                 </div>
-                <div class="memory-board" id="memory-board"></div>
+                <div id="bubble-stage"></div>
             </div>
 
-            <!-- SUB-JUEGO 2: PIZARRA DE DIBUJO -->
+            <!-- SUB-JUEGO 2: PIZARRA DE DEDOS GRUESOS -->
             <div id="arcade-draw" class="arcade-panel">
-                <div style="font-weight:800; font-size:15px; color:var(--purple);" id="draw-prompt">
-                    🎨 Reto Creativo: ¡Dibuja una estrella o tu animal favorito!
-                </div>
                 <div class="canvas-toolbar">
-                    <div class="swatch-btn active" style="background:#FF6B6B" onclick="setDrawColor('#FF6B6B', this)"></div>
-                    <div class="swatch-btn" style="background:#4ECDC4" onclick="setDrawColor('#4ECDC4', this)"></div>
-                    <div class="swatch-btn" style="background:#6C5CE7" onclick="setDrawColor('#6C5CE7', this)"></div>
-                    <div class="swatch-btn" style="background:#FD9644" onclick="setDrawColor('#FD9644', this)"></div>
-                    <div class="swatch-btn" style="background:#00B894" onclick="setDrawColor('#00B894', this)"></div>
-                    <div class="swatch-btn" style="background:#2D3436" onclick="setDrawColor('#2D3436', this)"></div>
-                    <button class="btn-backup" onclick="clearCanvas()">🧽 Limpiar</button>
-                    <button class="btn-backup" style="background:var(--green); color:white;" onclick="completeDrawingReward()">✨ Terminé mi Dibujo (+10 ⭐)</button>
+                    <div class="swatch-btn active" style="background:#FF6B6B" onclick="setDrawColor('#FF6B6B', this, 'Rojo')"></div>
+                    <div class="swatch-btn" style="background:#4ECDC4" onclick="setDrawColor('#4ECDC4', this, 'Azul')"></div>
+                    <div class="swatch-btn" style="background:#f1c40f" onclick="setDrawColor('#f1c40f', this, 'Amarillo')"></div>
+                    <div class="swatch-btn" style="background:#00B894" onclick="setDrawColor('#00B894', this, 'Verde')"></div>
+                    <div class="swatch-btn" style="background:#6C5CE7" onclick="setDrawColor('#6C5CE7', this, 'Morado')"></div>
+                    <button class="btn-icon-top" onclick="stampCanvasEmoji()">🌟 Sello</button>
+                    <button class="btn-icon-top" onclick="clearCanvas()">🧽 Borrar</button>
+                    <button class="btn-icon-top" style="background:var(--green); color:white;" onclick="completeDrawingReward()">✅ ¡Listo! (+10 ⭐)</button>
                 </div>
-                <canvas id="draw-canvas" width="520" height="270"></canvas>
+                <canvas id="draw-canvas" width="520" height="260"></canvas>
             </div>
 
-            <!-- SUB-JUEGO 3: PIANO MUSICAL -->
+            <!-- SUB-JUEGO 3: PIANO DE ANIMALES Y NOTAS -->
             <div id="arcade-piano" class="arcade-panel">
-                <div style="font-weight:800; font-size:15px;">🎵 Toca las teclas de colores para crear música (Toca 8 notas para ganar +10 ⭐)</div>
                 <div class="piano-keys">
-                    <button class="piano-key" style="background:#FF6B6B" onclick="playPianoNote(261.63, 'Do')">DO</button>
-                    <button class="piano-key" style="background:#FD9644" onclick="playPianoNote(293.66, 'Re')">RE</button>
-                    <button class="piano-key" style="background:#f1c40f" onclick="playPianoNote(329.63, 'Mi')">MI</button>
-                    <button class="piano-key" style="background:#00B894" onclick="playPianoNote(349.23, 'Fa')">FA</button>
-                    <button class="piano-key" style="background:#4ECDC4" onclick="playPianoNote(392.00, 'Sol')">SOL</button>
-                    <button class="piano-key" style="background:#0984e3" onclick="playPianoNote(440.00, 'La')">LA</button>
-                    <button class="piano-key" style="background:#6C5CE7" onclick="playPianoNote(493.88, 'Si')">SI</button>
-                    <button class="piano-key" style="background:#e84393" onclick="playPianoNote(523.25, 'Do Alto')">DO+</button>
+                    <button class="piano-key" style="background:#FF6B6B" onclick="playPianoNote(261.63, '🐶 Guau')">🐶</button>
+                    <button class="piano-key" style="background:#FD9644" onclick="playPianoNote(293.66, '🐱 Miau')">🐱</button>
+                    <button class="piano-key" style="background:#f1c40f" onclick="playPianoNote(329.63, '🐤 Pío')">🐤</button>
+                    <button class="piano-key" style="background:#00B894" onclick="playPianoNote(349.23, '🐸 Croac')">🐸</button>
+                    <button class="piano-key" style="background:#4ECDC4" onclick="playPianoNote(392.00, '🐮 Muuu')">🐮</button>
+                    <button class="piano-key" style="background:#6C5CE7" onclick="playPianoNote(440.00, '🦁 Grrr')">🦁</button>
                 </div>
-                <div id="piano-progress" style="font-size:13px; font-weight:800; color:#64748b;">Notas tocadas: 0 / 8</div>
+            </div>
+
+            <!-- SUB-JUEGO 4: MEMORIA FÁCIL (6 CARTAS GRANDES) -->
+            <div id="arcade-memory" class="arcade-panel">
+                <div class="memory-board" id="memory-board"></div>
             </div>
         </div>
 
-        <!-- PESTAÑA 3: TROFEOS -->
+        <!-- PESTAÑA 3: TROFEOS VISUALES -->
         <div id="tab-awards" class="tab-view">
             <div class="awards-grid" id="awards-container"></div>
         </div>
 
-        <!-- PESTAÑA 4: TIENDA DE MASCOTAS + PREMIOS DE LA VIDA REAL -->
+        <!-- PESTAÑA 4: MASCOTAS Y PREMIOS -->
         <div id="tab-shop" class="tab-view">
-            <h3 style="font-size:17px;">🐾 Compañeros Virtuales</h3>
             <div class="shop-grid" id="shop-container"></div>
-
-            <h3 style="font-size:17px; margin-top:10px;">🎁 Premios Especiales en Casa (Configurados por Papá/Mamá)</h3>
+            <h3 style="font-size:17px; margin-top:8px;">🎁 Premios de Mamá y Papá</h3>
             <div class="shop-grid" id="real-rewards-container"></div>
         </div>
 
-        <!-- PESTAÑA 5: ZONA DE PADRES (BLOQUEO CON RETO MATEMÁTICO) -->
+        <!-- PESTAÑA 5: ZONA DE PADRES PROTEGIDA -->
         <div id="tab-parents" class="tab-view">
             <div id="parent-lock-view" class="parent-box" style="text-align:center;">
-                <h3>🔒 Control Parental</h3>
-                <p style="font-size:13px; color:#555; margin:6px 0 14px;">Resuelve esta multiplicación para entrar a las estadísticas y premios familiares:</p>
+                <h3>🔒 Solo para Papá y Mamá</h3>
+                <p style="font-size:13px; color:#555; margin:6px 0 14px;">Resuelve esta multiplicación para abrir el panel de padres:</p>
                 <div id="parent-math-q" style="font-size:22px; font-weight:900; color:var(--purple); margin-bottom:12px;">¿Cuánto es 7 × 8?</div>
                 <div style="display:flex; gap:10px; justify-content:center; max-width:280px; margin:0 auto;">
                     <input type="tel" id="parent-math-input" placeholder="Respuesta" style="padding:10px; border-radius:12px; border:2px solid #cbd5e1; width:120px; text-align:center; font-weight:800;">
-                    <button class="btn-buy" style="width:auto;" onclick="verifyParentAccess()">Desbloquear</button>
+                    <button class="btn-buy" style="width:auto;" onclick="verifyParentAccess()">Entrar</button>
                 </div>
             </div>
 
             <div id="parent-unlocked-view" class="parent-box" style="display:none;">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
-                    <h3>📊 Reporte de Aprendizaje de <span id="parent-child-name"></span></h3>
-                    <button class="btn-backup" onclick="giveBonusStars()">🌟 Regalar +20 Estrellas por portarse bien</button>
+                    <h3>📊 Progreso de <span id="parent-child-name"></span></h3>
+                    <button class="btn-icon-top" style="background:var(--accent);" onclick="giveBonusStars()">🌟 Regalar +20 Estrellas</button>
                 </div>
 
                 <table class="report-table">
                     <thead>
                         <tr>
-                            <th>Materia</th>
+                            <th>Juego Visual</th>
                             <th>Nivel</th>
                             <th>Aciertos</th>
-                            <th>Intentos por reforzar</th>
-                            <th>Precisión</th>
+                            <th>Intentos</th>
                         </tr>
                     </thead>
                     <tbody id="parent-report-body"></tbody>
                 </table>
 
-                <h4 style="margin: 18px 0 8px;">🎁 Crear Premio de la Vida Real (Para que el niño lo canjee con estrellas)</h4>
+                <h4 style="margin: 18px 0 8px;">🎁 Añadir Premio Real (Ej: Helado, Parque, Cuento)</h4>
                 <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <input type="text" id="new-reward-title" placeholder="Ej: Ir por un helado 🍦 o 30 min de TV" style="flex:1; min-width:200px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
-                    <input type="number" id="new-reward-cost" placeholder="Costo ⭐ (ej: 80)" style="width:140px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
-                    <button class="btn-buy" style="width:auto; background:var(--purple);" onclick="addCustomParentReward()">➕ Añadir Premio</button>
+                    <input type="text" id="new-reward-title" placeholder="Ej: 🍦 Ir por un helado" style="flex:1; min-width:180px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <input type="number" id="new-reward-cost" placeholder="Estrellas (ej: 50)" style="width:140px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <button class="btn-buy" style="width:auto; background:var(--purple);" onclick="addCustomParentReward()">➕ Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- MODAL DE JUEGO CON ALTAVOZ DE VOZ -->
+<!-- =========================================================
+     MODAL DE JUEGO 100% VISUAL Y HABLADO
+     ========================================================= -->
 <div id="game-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeGame()">✖</button>
-        <h3 id="modal-title">Misión</h3>
-        <div class="round-indicator" id="round-text">Pregunta 1 de 3</div>
-        <div class="question-row">
-            <div class="question-box" id="question-text">¿Pregunta?</div>
-            <button class="btn-speak" title="Escuchar pregunta en voz alta" onclick="speakCurrentQuestion()">🔊</button>
+        <div class="round-indicator" id="round-text" style="font-size:18px;">⭐ 1 / 3</div>
+
+        <!-- ESCENARIO VISUAL GIGANTE -->
+        <div class="visual-stage">
+            <div class="stage-big-visual" id="stage-visual-content"></div>
+            <button class="btn-speak-giant" onclick="speakCurrentQuestion()">🔊 Escuchar otra vez</button>
         </div>
-        <div class="options-grid" id="options-container"></div>
+
+        <!-- 4 BOTONES GIGANTES SOLO CON DIBUJOS -->
+        <div class="toddler-options-grid" id="options-container"></div>
     </div>
 </div>
 
@@ -1363,7 +1280,7 @@
 
 <script>
     // =========================================================
-    // 1. GALERÍA DE PERSONAJES SVG
+    // 1. PERSONAJES VECTORIALES SVG
     // =========================================================
     const CHARACTERS = {
         lion: {
@@ -1392,12 +1309,12 @@
         }
     };
 
-    function getAvatarSVG(avatarKey) {
-        return CHARACTERS[avatarKey] ? CHARACTERS[avatarKey].svg : CHARACTERS.lion.svg;
+    function getAvatarSVG(key) {
+        return CHARACTERS[key] ? CHARACTERS[key].svg : CHARACTERS.lion.svg;
     }
 
     // =========================================================
-    // 2. AUDIO WEB Y VOZ INTELIGENTE (ESPAÑOL / INGLÉS)
+    // 2. SONIDOS Y VOZ MATERNAL PARA NIÑOS DE 1 A 4 AÑOS
     // =========================================================
     let audioCtx = null;
     let voiceEnabled = true;
@@ -1414,12 +1331,12 @@
             osc.connect(gain);
             gain.connect(audioCtx.destination);
 
-            if (type === 'tap') {
-                osc.frequency.setValueAtTime(460, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.07, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
+            if (type === 'tap' || type === 'pop') {
+                osc.frequency.setValueAtTime(type === 'pop' ? 680 : 480, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.07);
+                osc.stop(audioCtx.currentTime + 0.08);
             } else if (type === 'note') {
                 osc.type = 'triangle';
                 osc.frequency.setValueAtTime(customFreq, audioCtx.currentTime);
@@ -1430,24 +1347,24 @@
             } else if (type === 'correct') {
                 osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
                 osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1);
-                gain.gain.setValueAtTime(0.14, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.32);
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.32);
             } else if (type === 'wrong') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(200, audioCtx.currentTime);
-                osc.frequency.setValueAtTime(145, audioCtx.currentTime + 0.14);
-                gain.gain.setValueAtTime(0.11, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.28);
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(260, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(210, audioCtx.currentTime + 0.12);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.28);
+                osc.stop(audioCtx.currentTime + 0.25);
             } else if (type === 'win') {
                 osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
                 osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.11);
                 osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.22);
                 osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.33);
-                gain.gain.setValueAtTime(0.16, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.6);
@@ -1455,44 +1372,38 @@
         } catch (e) {}
     }
 
-    function speakText(text, lang = 'es-ES') {
+    function speakText(text) {
         if (!voiceEnabled || !('speechSynthesis' in window)) return;
         try {
             window.speechSynthesis.cancel();
-            // Limpiar emojis y guiones bajos para lectura limpia
-            const clean = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '').replace(/_/g, ' ');
+            const clean = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
             const utter = new SpeechSynthesisUtterance(clean);
-            utter.lang = lang;
-            utter.rate = 0.95;
-            utter.pitch = 1.1;
+            utter.lang = 'es-ES';
+            utter.rate = 0.92;
+            utter.pitch = 1.15;
             window.speechSynthesis.speak(utter);
         } catch (e) {}
     }
 
     function toggleVoice() {
         voiceEnabled = !voiceEnabled;
-        document.getElementById('btn-voice-toggle').innerText = voiceEnabled ? '🔊 Voz: ON' : '🔇 Voz: OFF';
+        document.getElementById('btn-voice-toggle').innerText = voiceEnabled ? '🔊' : '🔇';
         if (voiceEnabled) speakText('Voz activada');
     }
 
-    // =========================================================
-    // 3. LLUVIA DE CONFETI EN PANTALLA
-    // =========================================================
     function launchConfetti() {
         const canvas = document.getElementById('confetti-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
-        const pieces = Array.from({ length: 75 }, () => ({
+        const pieces = Array.from({ length: 70 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * -canvas.height * 0.5,
-            size: Math.random() * 8 + 5,
+            size: Math.random() * 9 + 6,
             color: ['#FF6B6B', '#4ECDC4', '#FFE66D', '#6C5CE7', '#00B894', '#FD9644'][Math.floor(Math.random() * 6)],
             speedY: Math.random() * 4 + 3,
             speedX: (Math.random() - 0.5) * 3
         }));
-
         let frames = 0;
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -1502,100 +1413,271 @@
                 ctx.fillStyle = p.color;
                 ctx.fillRect(p.x, p.y, p.size, p.size);
             });
-            frames++;
-            if (frames < 110) requestAnimationFrame(animate);
+            if (++frames < 100) requestAnimationFrame(animate);
             else ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
         animate();
     }
 
     // =========================================================
-    // 4. TROFEOS, TIENDA Y BANCO DE PREGUNTAS
+    // 3. BANCO DE JUEGOS 100% VISUALES (CERO LECTURA REQUERIDA)
     // =========================================================
-    const TROPHIES = [
-        { id: 'first_win', icon: '🥉', title: 'Primer Paso', desc: 'Completa tu primera misión', check: u => u.completedGames >= 1 },
-        { id: 'stars_50', icon: '🌟', title: 'Coleccionista', desc: 'Gana 50 estrellas en total', check: u => u.totalStarsEarned >= 50 },
-        { id: 'math_wiz', icon: '🧮', title: 'Genio Matemático', desc: 'Alcanza Nivel 3 en Matemáticas', check: u => u.modules.math >= 3 },
-        { id: 'polyglot', icon: '🇬🇧', title: 'Bilingüe', desc: 'Alcanza Nivel 3 en Inglés', check: u => u.modules.colors >= 3 },
-        { id: 'explorer', icon: '🧭', title: 'Súper Explorador', desc: 'Llega al Nivel General 3', check: u => u.level >= 3 },
-        { id: 'pet_owner', icon: '🐶', title: 'Amigo Fiel', desc: 'Adopta tu primera mascota', check: u => u.ownedPets.length > 0 }
-    ];
-
-    const PET_SHOP = [
-        { id: 'pet_dog', icon: '🐶', name: 'Perrito Leal', cost: 25 },
-        { id: 'pet_cat', icon: '🐱', name: 'Gatito Mágico', cost: 25 },
-        { id: 'pet_dragon', icon: '🐉', name: 'Bebé Dragón', cost: 50 },
-        { id: 'pet_alien', icon: '👾', name: 'Amigo Galáctico', cost: 75 },
-        { id: 'pet_crown', icon: '👑', name: 'Corona Real', cost: 100 }
-    ];
-
     const MODULE_NAMES = {
-        math: '🔢 Matemáticas',
-        vowels: '🔤 Lectura y Vocales',
-        colors: '🎨 Inglés Divertido',
-        animals: '🐾 Mundo Animal',
-        shapes: '📐 Formas y Lógica',
-        planet: '🌎 Planeta y Hábitos'
+        colors: '🎨 Colores',
+        animals: '🐮 Animales y Sonidos',
+        counting: '🍎 Contar 1, 2 y 3',
+        shadows: '🕵️ Adivina la Sombra',
+        sizes: '🐘 Grande y Pequeño',
+        emotions: '😄 Las Caritas'
     };
 
-    const questionsDB = {
-        math: [
-            { q: "¿Cuánto es 3 más 4?", options: ["6", "7", "8", "5"], a: "7" },
-            { q: "¿Cuánto es 6 más 5?", options: ["10", "11", "12", "9"], a: "11" },
-            { q: "¿Cuánto es 9 menos 4?", options: ["5", "4", "6", "3"], a: "5" },
-            { q: "🍎🍎 + 🍎🍎🍎 = ?", voice: "¿Cuánto es 2 manzanas más 3 manzanas?", options: ["4", "5", "6", "3"], a: "5" },
-            { q: "¿Qué número sigue? 2, 4, 6, ...", options: ["7", "8", "9", "10"], a: "8" }
-        ],
-        vowels: [
-            { q: "🐝 _ B E J A", voice: "¿Con qué vocal empieza Abeja?", options: ["A", "E", "I", "O"], a: "A" },
-            { q: "🐘 _ L E F A N T E", voice: "¿Con qué vocal empieza Elefante?", options: ["O", "U", "E", "A"], a: "E" },
-            { q: "🏝️ _ S L A", voice: "¿Con qué vocal empieza Isla?", options: ["I", "E", "A", "U"], a: "I" },
-            { q: "🐻 _ S O", voice: "¿Con qué vocal empieza Oso?", options: ["A", "O", "U", "E"], a: "O" },
-            { q: "🍇 _ V A", voice: "¿Con qué vocal empieza Uva?", options: ["I", "U", "A", "O"], a: "U" }
-        ],
+    const visualQuestionsDB = {
         colors: [
-            { q: "🍎 Rojo en inglés se dice...", options: ["Blue", "Red", "Green", "Yellow"], a: "Red" },
-            { q: "☀️ Amarillo en inglés es...", options: ["Yellow", "Pink", "Black", "White"], a: "Yellow" },
-            { q: "🌊 Azul en inglés es...", options: ["Green", "Orange", "Blue", "Purple"], a: "Blue" },
-            { q: "🐸 Verde en inglés es...", options: ["Green", "Red", "Brown", "Blue"], a: "Green" },
-            { q: "🐶 Perro en inglés se dice...", options: ["Cat", "Bird", "Dog", "Fish"], a: "Dog" }
+            {
+                voice: "¡Toca las cosas de color ROJO! Como la manzana.",
+                stageHTML: `<div class="color-splat-circle" style="background:#ff4757;"></div>`,
+                options: [
+                    { html: `🍎🍓`, ok: true, speak: "¡Rojo! Muy bien" },
+                    { html: `🐸🥒`, ok: false, speak: "Ese es verde" },
+                    { html: `🚙🐳`, ok: false, speak: "Ese es azul" },
+                    { html: `🌞🍌`, ok: false, speak: "Ese es amarillo" }
+                ]
+            },
+            {
+                voice: "¡Toca el color AMARILLO! Como el sol y el guineo.",
+                stageHTML: `<div class="color-splat-circle" style="background:#ffd32a;"></div>`,
+                options: [
+                    { html: `🌞🍌`, ok: true, speak: "¡Amarillo! Excelente" },
+                    { html: `🍎🚒`, ok: false, speak: "Ese es rojo" },
+                    { html: `🍇🍆`, ok: false, speak: "Ese es morado" },
+                    { html: `🚙🐬`, ok: false, speak: "Ese es azul" }
+                ]
+            },
+            {
+                voice: "¡Busca el color AZUL! Como la ballena.",
+                stageHTML: `<div class="color-splat-circle" style="background:#0984e3;"></div>`,
+                options: [
+                    { html: `🐳🚙`, ok: true, speak: "¡Azul! Súper bien" },
+                    { html: `🐸🥦`, ok: false, speak: "Ese es verde" },
+                    { html: `🍓🍎`, ok: false, speak: "Ese es rojo" },
+                    { html: `🌞🍋`, ok: false, speak: "Ese es amarillo" }
+                ]
+            },
+            {
+                voice: "¡Toca el color VERDE! Como la ranita.",
+                stageHTML: `<div class="color-splat-circle" style="background:#00b894;"></div>`,
+                options: [
+                    { html: `🐸🐢`, ok: true, speak: "¡Verde! Muy bien" },
+                    { html: `🍎🍓`, ok: false, speak: "Ese es rojo" },
+                    { html: `🌞🍌`, ok: false, speak: "Ese es amarillo" },
+                    { html: `🐳🚙`, ok: false, speak: "Ese es azul" }
+                ]
+            }
         ],
         animals: [
-            { q: "¿Qué animal nos da la leche? 🥛", options: ["🐎 Caballo", "🐄 Vaca", "🐖 Cerdo", "🐔 Gallina"], a: "🐄 Vaca" },
-            { q: "¿Dónde vive la ballena? 🐋", options: ["En el bosque", "En el océano", "En el desierto", "En el río"], a: "En el océano" },
-            { q: "¿Cuál de estos animales vuela?", options: ["🦅 Águila", "🐧 Pingüino", "🐢 Tortuga", "🐘 Elefante"], a: "🦅 Águila" },
-            { q: "¿Qué animal hace Miau?", options: ["🐶 Perro", "🐱 Gato", "🦆 Pato", "🐑 Oveja"], a: "🐱 Gato" },
-            { q: "¿Cuál tiene el cuello muy largo?", options: ["🦒 Jirafa", "🦓 Cebra", "🦁 León", "🐒 Mono"], a: "🦒 Jirafa" }
+            {
+                voice: "¿Quién hace Muuuuu y nos da leche? ¡Toca la vaca!",
+                stageHTML: `🥛 🔊`,
+                options: [
+                    { html: `🐮`, ok: true, speak: "¡Muuuu! La vaca" },
+                    { html: `🐶`, ok: false, speak: "Ese es el perro, guau guau" },
+                    { html: `🐱`, ok: false, speak: "Ese es el gato, miau" },
+                    { html: `🐸`, ok: false, speak: "Esa es la rana" }
+                ]
+            },
+            {
+                voice: "¿Quién dice Guau Guau? ¡Toca el perrito!",
+                stageHTML: `🦴 🔊`,
+                options: [
+                    { html: `🐶`, ok: true, speak: "¡Guau guau! El perrito" },
+                    { html: `🐷`, ok: false, speak: "Ese es el cerdito" },
+                    { html: `🐔`, ok: false, speak: "Esa es la gallina" },
+                    { html: `🐑`, ok: false, speak: "Esa es la oveja" }
+                ]
+            },
+            {
+                voice: "¿Quién dice Miau? ¡Toca el gatito!",
+                stageHTML: `🧶 🔊`,
+                options: [
+                    { html: `🐱`, ok: true, speak: "¡Miau! El gatito" },
+                    { html: `🦁`, ok: false, speak: "Ese es el león" },
+                    { html: `🦆`, ok: false, speak: "Ese es el pato, cuac cuac" },
+                    { html: `🐮`, ok: false, speak: "Esa es la vaca" }
+                ]
+            },
+            {
+                voice: "¿Quién come guineos y salta en los árboles? ¡Toca el monito!",
+                stageHTML: `🍌 🌴`,
+                options: [
+                    { html: `🐵`, ok: true, speak: "¡El monito! Uaa uaa" },
+                    { html: `🐟`, ok: false, speak: "Ese es el pececito" },
+                    { html: `🐢`, ok: false, speak: "Esa es la tortuga" },
+                    { html: `🐷`, ok: false, speak: "Ese es el cerdito" }
+                ]
+            }
         ],
-        shapes: [
-            { q: "¿Cuántos lados tiene un Triángulo? 🔺", options: ["2", "3", "4", "5"], a: "3" },
-            { q: "Sigue la serie: 🔴 🔵 🔴 🔵 ...", voice: "¿Qué color sigue en la serie: rojo, azul, rojo, azul?", options: ["🟢", "🔴", "🟡", "🟣"], a: "🔴" },
-            { q: "¿Qué forma tiene una pelota? ⚽", options: ["Cuadrado", "Triángulo", "Círculo / Esfera", "Estrella"], a: "Círculo / Esfera" },
-            { q: "Sigue la serie: ⭐ ⭐ 🌙 ⭐ ⭐ ...", voice: "¿Qué figura sigue: estrella, estrella, luna, estrella, estrella?", options: ["⭐", "☀️", "🌙", "☁️"], a: "🌙" },
-            { q: "¿Cuántos lados iguales tiene un Cuadrado? 🟦", options: ["3", "4", "5", "6"], a: "4" }
+        counting: [
+            {
+                voice: "Mira arriba: hay UNA manzana. ¡Toca donde hay solo UNA estrella!",
+                stageHTML: `🍎`,
+                options: [
+                    { html: `⭐`, ok: true, speak: "¡Una estrella! Muy bien" },
+                    { html: `⭐⭐`, ok: false, speak: "Ahí hay dos" },
+                    { html: `⭐⭐⭐`, ok: false, speak: "Ahí hay tres" },
+                    { html: `⭐⭐⭐⭐`, ok: false, speak: "Ahí hay cuatro" }
+                ]
+            },
+            {
+                voice: "Contemos juntos: ¡Uno y Dos patitos! Toca donde hay DOS globos.",
+                stageHTML: `🐤 🐤`,
+                options: [
+                    { html: `🎈🎈`, ok: true, speak: "¡Uno y dos globos! Bravo" },
+                    { html: `🎈`, ok: false, speak: "Ahí hay solo uno" },
+                    { html: `🎈🎈🎈`, ok: false, speak: "Ahí hay tres" },
+                    { html: `🎈🎈🎈🎈`, ok: false, speak: "Ahí hay muchos" }
+                ]
+            },
+            {
+                voice: "Contemos: ¡Uno, Dos y Tres carritos! Toca donde hay TRES pelotas.",
+                stageHTML: `🚗 🚗 🚗`,
+                options: [
+                    { html: `⚽⚽⚽`, ok: true, speak: "¡Uno, dos y tres! Excelente" },
+                    { html: `⚽`, ok: false, speak: "Ahí hay una" },
+                    { html: `⚽⚽`, ok: false, speak: "Ahí hay dos" },
+                    { html: `⚽⚽⚽⚽`, ok: false, speak: "Ahí hay cuatro" }
+                ]
+            }
         ],
-        planet: [
-            { q: "¿Qué debemos hacer después de comer?", options: ["Cepillar los dientes 🪥", "Dormir", "Ver TV", "Correr"], a: "Cepillar los dientes 🪥" },
-            { q: "¿Dónde debemos tirar la basura? 🗑️", options: ["En el suelo", "En el río", "En el zafacón / papelera", "En la calle"], a: "En el zafacón / papelera" },
-            { q: "Para ahorrar agua debemos...", options: ["Dejar la pluma abierta", "Cerrar la llave al enjabonarnos", "Bañarnos 2 horas", "Jugar con manguera"], a: "Cerrar la llave al enjabonarnos" },
-            { q: "¿Cuál de estos alimentos es más saludable?", options: ["🍎 Manzana", "🍬 Caramelos", "🍟 Papas fritas", "🥤 Refresco"], a: "🍎 Manzana" },
-            { q: "¿Qué necesitan las plantas para crecer? 🌱", options: ["Agua y Sol ☀️", "Dulces", "Juguetes", "Refresco"], a: "Agua y Sol ☀️" }
+        shadows: [
+            {
+                voice: "Mira la sombra negra... ¿Quién se esconde ahí? ¡Toca el dinosaurio!",
+                stageHTML: `<span class="silhouette-shadow" style="font-size:95px;">🦖</span>`,
+                options: [
+                    { html: `🦖`, ok: true, speak: "¡Sí! Es el dinosaurio" },
+                    { html: `🚗`, ok: false, speak: "No, ese es un carro" },
+                    { html: `🍌`, ok: false, speak: "No, ese es un guineo" },
+                    { html: `🏠`, ok: false, speak: "No, esa es una casa" }
+                ]
+            },
+            {
+                voice: "Mira la sombra... ¿Qué es? ¡Toca el cohete espacial!",
+                stageHTML: `<span class="silhouette-shadow" style="font-size:95px;">🚀</span>`,
+                options: [
+                    { html: `🚀`, ok: true, speak: "¡Sí! El cohete espacial" },
+                    { html: `🐸`, ok: false, speak: "Esa es la ranita" },
+                    { html: `🍎`, ok: false, speak: "Esa es la manzana" },
+                    { html: `🐶`, ok: false, speak: "Ese es el perrito" }
+                ]
+            },
+            {
+                voice: "Adivina la sombra... ¡Toca el elefante!",
+                stageHTML: `<span class="silhouette-shadow" style="font-size:95px;">🐘</span>`,
+                options: [
+                    { html: `🐘`, ok: true, speak: "¡Bravo! Es el elefante" },
+                    { html: `🦋`, ok: false, speak: "Esa es la mariposa" },
+                    { html: `🍕`, ok: false, speak: "Esa es la pizza" },
+                    { html: `🌞`, ok: false, speak: "Ese es el sol" }
+                ]
+            }
+        ],
+        sizes: [
+            {
+                voice: "¡Toca el perrito más GRANDE!",
+                stageHTML: `🐶`,
+                options: [
+                    { html: `<span style="font-size:78px;">🐶</span>`, ok: true, speak: "¡Ese es el más grande!" },
+                    { html: `<span style="font-size:28px;">🐶</span>`, ok: false, speak: "Ese es pequeñito" },
+                    { html: `<span style="font-size:32px;">🐶</span>`, ok: false, speak: "Ese es chiquito" },
+                    { html: `<span style="font-size:26px;">🐶</span>`, ok: false, speak: "Busca el grande" }
+                ]
+            },
+            {
+                voice: "Ahora busca la estrella más PEQUEÑITA, la bebé.",
+                stageHTML: `⭐`,
+                options: [
+                    { html: `<span style="font-size:26px;">⭐</span>`, ok: true, speak: "¡Sí! La estrellita pequeñita" },
+                    { html: `<span style="font-size:76px;">⭐</span>`, ok: false, speak: "Esa es grandota" },
+                    { html: `<span style="font-size:72px;">⭐</span>`, ok: false, speak: "Esa es muy grande" },
+                    { html: `<span style="font-size:68px;">⭐</span>`, ok: false, speak: "Busca la más chiquita" }
+                ]
+            },
+            {
+                voice: "¿Cuál es más GRANDE? ¿El elefante o la hormiguita? ¡Toca el elefante!",
+                stageHTML: `🐘 🐜`,
+                options: [
+                    { html: `🐘`, ok: true, speak: "¡El elefante es gigante!" },
+                    { html: `🐜`, ok: false, speak: "La hormiguita es pequeñita" },
+                    { html: `🐝`, ok: false, speak: "La abejita es pequeña" },
+                    { html: `🐞`, ok: false, speak: "Busca el elefante grande" }
+                ]
+            }
+        ],
+        emotions: [
+            {
+                voice: "¡Toca la carita que está muy FELIZ y sonriendo!",
+                stageHTML: `😄`,
+                options: [
+                    { html: `😄`, ok: true, speak: "¡Está muy feliz!" },
+                    { html: `😢`, ok: false, speak: "Esa carita está triste" },
+                    { html: `😠`, ok: false, speak: "Esa carita está enojada" },
+                    { html: `😴`, ok: false, speak: "Esa carita tiene sueño" }
+                ]
+            },
+            {
+                voice: "¡Toca la carita que tiene SUEÑO y está durmiendo!",
+                stageHTML: `😴 🌙`,
+                options: [
+                    { html: `😴`, ok: true, speak: "¡Shhh! Está durmiendo" },
+                    { html: `😄`, ok: false, speak: "Esa está despierta y feliz" },
+                    { html: `😠`, ok: false, speak: "Esa está enojada" },
+                    { html: `😮`, ok: false, speak: "Esa está sorprendida" }
+                ]
+            },
+            {
+                voice: "¡Toca la carita que está TRISTE y llorando!",
+                stageHTML: `😢 💧`,
+                options: [
+                    { html: `😢`, ok: true, speak: "Sí, está triste, demosle un abrazo" },
+                    { html: `😄`, ok: false, speak: "Esa está riendo" },
+                    { html: `🥳`, ok: false, speak: "Esa está de fiesta" },
+                    { html: `😴`, ok: false, speak: "Esa está durmiendo" }
+                ]
+            }
         ]
     };
 
-    // VARIABLES GLOBALES
+    const TROPHIES = [
+        { id: 'first_win', icon: '🥉', title: 'Primera Estrella', check: u => u.completedGames >= 1 },
+        { id: 'stars_50', icon: '🌟', title: 'Súper Estrellita', check: u => u.totalStarsEarned >= 50 },
+        { id: 'color_wiz', icon: '🎨', title: 'Rey del Color', check: u => u.modules.colors >= 3 },
+        { id: 'animal_friend', icon: '🐮', title: 'Amigo Animal', check: u => u.modules.animals >= 3 },
+        { id: 'explorer', icon: '🚀', title: 'Campeón Nv. 3', check: u => u.level >= 3 },
+        { id: 'pet_owner', icon: '🐶', title: 'Mi Mascota', check: u => u.ownedPets.length > 0 }
+    ];
+
+    const PET_SHOP = [
+        { id: 'pet_dog', icon: '🐶', name: 'Perrito', cost: 20 },
+        { id: 'pet_cat', icon: '🐱', name: 'Gatito', cost: 20 },
+        { id: 'pet_dino', icon: '🦕', name: 'Bebé Dino', cost: 40 },
+        { id: 'pet_unicorn', icon: '🦄', name: 'Unicornio', cost: 60 },
+        { id: 'pet_crown', icon: '👑', name: 'Corona', cost: 80 }
+    ];
+
+    // VARIABLES DE ESTADO
     let selectedAvatar = 'lion';
     let selectedColor = '#FF6B6B';
+    let selectedVisualKey = '🌞';
     let targetLoginUserKey = null;
-    let enteredPin = '';
     let currentUser = null;
     let currentCategory = null;
     let roundQueue = [];
     let currentRoundIndex = 0;
     let parentExpectedAnswer = 56;
+    let bubbleInterval = null;
+    let bubblesPopped = 0;
 
     // =========================================================
-    // 5. ARRANQUE Y COMPATIBILIDAD DE DATOS
+    // 4. ARRANQUE Y COMPATIBILIDAD AUTOMÁTICA
     // =========================================================
     document.addEventListener('DOMContentLoaded', () => {
         buildCharacterSelectorGrid();
@@ -1629,18 +1711,19 @@
     function ensureUserSchema(user) {
         if (!user.modules) user.modules = {};
         if (!user.moduleStats) user.moduleStats = {};
-        ['math', 'vowels', 'colors', 'animals', 'shapes', 'planet'].forEach(m => {
+        ['colors', 'animals', 'counting', 'shadows', 'sizes', 'emotions'].forEach(m => {
             if (!user.modules[m]) user.modules[m] = 1;
             if (!user.moduleStats[m]) user.moduleStats[m] = { hits: 0, misses: 0 };
         });
         if (!CHARACTERS[user.avatar]) user.avatar = 'lion';
+        if (!user.visualKey) user.visualKey = '🌞';
         if (typeof user.totalStarsEarned !== 'number') user.totalStarsEarned = user.stars || 0;
         if (!Array.isArray(user.unlockedTrophies)) user.unlockedTrophies = [];
         if (!Array.isArray(user.ownedPets)) user.ownedPets = [];
         if (!Array.isArray(user.customRewards)) {
             user.customRewards = [
-                { id: 'rew_1', title: '🍦 Ir por un helado', cost: 80 },
-                { id: 'rew_2', title: '🎬 Elegir película familiar', cost: 100 }
+                { id: 'rew_1', title: '🍦 Helado favorito', cost: 50 },
+                { id: 'rew_2', title: '🛝 Ir al parque', cost: 70 }
             ];
         }
         if (!user.equippedPet) user.equippedPet = '';
@@ -1650,7 +1733,7 @@
     }
 
     // =========================================================
-    // 6. CREADOR DE PERSONAJES Y LOGIN
+    // 5. PERFILES Y LLAVE DE DIBUJITO (ESPECIAL 1 A 4 AÑOS)
     // =========================================================
     function buildCharacterSelectorGrid() {
         const grid = document.getElementById('character-selector-grid');
@@ -1658,18 +1741,17 @@
         Object.values(CHARACTERS).forEach(char => {
             const card = document.createElement('div');
             card.className = 'char-card' + (char.id === selectedAvatar ? ' selected' : '');
-            card.onclick = () => selectCharacter(char.id, card);
+            card.onclick = () => {
+                playSound('tap');
+                selectedAvatar = char.id;
+                speakText(char.label);
+                document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                updateLivePreviewBanner();
+            };
             card.innerHTML = `${char.svg}<span>${char.label}</span>`;
             grid.appendChild(card);
         });
-    }
-
-    function selectCharacter(charId, cardElement) {
-        playSound('tap');
-        selectedAvatar = charId;
-        document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
-        cardElement.classList.add('selected');
-        updateLivePreviewBanner();
     }
 
     function selectThemeColor(element, color) {
@@ -1678,6 +1760,13 @@
         document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
         element.classList.add('selected');
         updateLivePreviewBanner();
+    }
+
+    function selectVisualKey(element, icon) {
+        playSound('tap');
+        selectedVisualKey = icon;
+        document.querySelectorAll('.key-pick-item').forEach(el => el.classList.remove('selected'));
+        element.classList.add('selected');
     }
 
     function updateLivePreviewBanner() {
@@ -1690,8 +1779,8 @@
 
     function updateLivePreviewText() {
         const nameInput = document.getElementById('reg-username').value.trim();
-        const charLabel = CHARACTERS[selectedAvatar] ? CHARACTERS[selectedAvatar].label : 'Explorador';
-        document.getElementById('live-preview-name').innerText = nameInput ? `${nameInput} (${charLabel})` : `${charLabel} Valiente`;
+        const charLabel = CHARACTERS[selectedAvatar] ? CHARACTERS[selectedAvatar].label : 'Bebé';
+        document.getElementById('live-preview-name').innerText = nameInput ? `${nameInput}` : charLabel;
     }
 
     function showAuthView(viewId) {
@@ -1718,14 +1807,14 @@
             const u = ensureUserSchema(db[key]);
             const card = document.createElement('div');
             card.className = 'profile-card';
-            card.onclick = () => openPinPadForUser(key);
+            card.onclick = () => openVisualPinForUser(key);
             card.innerHTML = `
-                <button class="delete-profile-btn" title="Borrar cuenta" onclick="deleteProfile(event, '${key}')">🗑️</button>
-                <div class="profile-avatar-circle" style="background: ${u.themeColor}22; border: 3px solid ${u.themeColor};">
+                <button class="delete-profile-btn" title="Borrar" onclick="deleteProfile(event, '${key}')">🗑️</button>
+                <div class="profile-avatar-circle" style="background: ${u.themeColor}22; border: 4px solid ${u.themeColor};">
                     ${getAvatarSVG(u.avatar)}
                 </div>
                 <div class="profile-name">${u.username} ${u.equippedPet || ''}</div>
-                <div class="profile-stats-mini">Nv. ${u.level} • ⭐ ${u.stars}</div>
+                <div class="profile-stars-badge">⭐ ${u.stars}</div>
             `;
             container.appendChild(card);
         });
@@ -1735,32 +1824,24 @@
         addCard.onclick = () => {
             playSound('tap');
             document.getElementById('reg-username').value = '';
-            document.getElementById('reg-pin').value = '';
             document.getElementById('reg-error').innerText = '';
             updateLivePreviewBanner();
             showAuthView('view-register');
         };
         addCard.innerHTML = `
-            <div class="profile-avatar-circle" style="background:#e2e8f0; font-size:36px;">➕</div>
-            <div class="profile-name" style="color:#334155;">Nuevo Personaje</div>
-            <div class="profile-stats-mini">Crear cuenta</div>
+            <div class="profile-avatar-circle" style="background:#e2e8f0; font-size:44px;">➕</div>
+            <div class="profile-name" style="color:#334155;">Nuevo Niño/a</div>
         `;
         container.appendChild(addCard);
     }
 
     function registerNewAccount() {
         const username = document.getElementById('reg-username').value.trim();
-        const pin = document.getElementById('reg-pin').value.trim();
         const errBox = document.getElementById('reg-error');
 
         if (username.length < 2) {
             playSound('wrong');
-            errBox.innerText = '⚠️ Escribe tu nombre (al menos 2 letras).';
-            return;
-        }
-        if (pin.length !== 4) {
-            playSound('wrong');
-            errBox.innerText = '⚠️ Tu PIN secreto debe tener 4 números.';
+            errBox.innerText = '⚠️ Escribe el nombre del niño o niña.';
             return;
         }
 
@@ -1769,13 +1850,13 @@
 
         if (db[userKey]) {
             playSound('wrong');
-            errBox.innerText = '⚠️ Ese nombre ya está registrado. Elige otro.';
+            errBox.innerText = '⚠️ Ya existe ese nombre. Elige otro.';
             return;
         }
 
         const newUser = ensureUserSchema({
             username: username,
-            pin: pin,
+            visualKey: selectedVisualKey,
             avatar: selectedAvatar,
             themeColor: selectedColor,
             stars: 10,
@@ -1789,68 +1870,45 @@
         saveUsersDB(db);
         playSound('win');
         launchConfetti();
-        showToast(`🎁 ¡Bienvenido/a ${username}! Recibiste +10 estrellas.`);
         loginUser(newUser);
     }
 
-    function openPinPadForUser(userKey) {
+    function openVisualPinForUser(userKey) {
         const db = getUsersDB();
         const user = ensureUserSchema(db[userKey]);
         if (!user) return;
 
         playSound('tap');
         targetLoginUserKey = userKey;
-        enteredPin = '';
-        updatePinDots();
+        document.getElementById('visual-slot-1').innerText = '❓';
+        document.getElementById('visual-slot-1').classList.remove('filled');
 
         document.getElementById('pinpad-avatar').innerHTML = getAvatarSVG(user.avatar);
         document.getElementById('pinpad-username').innerText = `¡Hola, ${user.username}!`;
+        speakText(`Hola ${user.username}, toca tu dibujito mágico para entrar`);
         showAuthView('view-pinpad');
     }
 
-    function pressPinDigit(digit) {
-        if (enteredPin.length >= 4) return;
-        playSound('tap');
-        enteredPin += digit;
-        updatePinDots();
-        if (enteredPin.length === 4) setTimeout(verifyPinPadLogin, 160);
-    }
-
-    function backspacePinDigit() {
-        playSound('tap');
-        enteredPin = enteredPin.slice(0, -1);
-        updatePinDots();
-    }
-
-    function clearPinDigits() {
-        playSound('tap');
-        enteredPin = '';
-        updatePinDots();
-    }
-
-    function updatePinDots(isError = false) {
-        const dots = document.querySelectorAll('#pin-dots .pin-dot');
-        dots.forEach((dot, idx) => {
-            dot.className = 'pin-dot';
-            if (isError) dot.classList.add('error');
-            else if (idx < enteredPin.length) dot.classList.add('filled');
-        });
-    }
-
-    function verifyPinPadLogin() {
+    function pressVisualKey(icon) {
         const db = getUsersDB();
-        const user = db[targetLoginUserKey];
-        if (user && user.pin === enteredPin) {
+        const user = ensureUserSchema(db[targetLoginUserKey]);
+        if (!user) return;
+
+        const slot = document.getElementById('visual-slot-1');
+        slot.innerText = icon;
+        slot.classList.add('filled');
+
+        // Acepta su dibujo secreto (o si venía de versión anterior sin dibujo, cualquiera lo deja entrar y lo guarda)
+        if (!user.visualKey || icon === user.visualKey) {
             playSound('win');
-            loginUser(user);
+            setTimeout(() => loginUser(user), 220);
         } else {
             playSound('wrong');
-            updatePinDots(true);
-            showToast('🔒 PIN incorrecto, inténtalo otra vez');
+            speakText(`Busca tu dibujito ${user.visualKey}`);
             setTimeout(() => {
-                enteredPin = '';
-                updatePinDots(false);
-            }, 450);
+                slot.innerText = '❓';
+                slot.classList.remove('filled');
+            }, 500);
         }
     }
 
@@ -1859,30 +1917,20 @@
         const db = getUsersDB();
         const user = db[userKey];
         if (!user) return;
-        const checkPin = prompt(`Para borrar el personaje de "${user.username}", escribe su PIN de 4 números:`);
-        if (checkPin === null) return;
-        if (checkPin === user.pin) {
+        if (confirm(`¿Seguro que deseas borrar el perfil de "${user.username}"?`)) {
             delete db[userKey];
             saveUsersDB(db);
             renderProfileCards();
-            showToast(`🗑️ Personaje ${user.username} eliminado.`);
-        } else {
-            alert('PIN incorrecto.');
         }
     }
 
     function exportAccounts() {
         const db = getUsersDB();
-        if (Object.keys(db).length === 0) {
-            showToast('No hay cuentas para respaldar todavía.');
-            return;
-        }
         const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = 'mimikids_respaldo.json';
+        a.download = 'mimikids_cuentas.json';
         a.click();
-        showToast('💾 Respaldo descargado');
     }
 
     function importAccounts(event) {
@@ -1894,16 +1942,14 @@
                 const importedDB = JSON.parse(e.target.result);
                 saveUsersDB({ ...getUsersDB(), ...importedDB });
                 showAuthView('view-profiles');
-                showToast('📂 Cuentas restauradas con éxito');
-            } catch (err) {
-                alert('Archivo inválido.');
-            }
+                showToast('📂 Cuentas cargadas');
+            } catch (err) {}
         };
         reader.readAsText(file);
     }
 
     // =========================================================
-    // 7. SESIÓN ACTIVA, COFRE DIARIO Y RECOMPENSAS
+    // 6. PANEL PRINCIPAL Y JUEGOS VISUALES
     // =========================================================
     function loginUser(userObj) {
         currentUser = ensureUserSchema(userObj);
@@ -1920,26 +1966,25 @@
         checkDailyChestVisibility();
         checkAndUnlockTrophies(false);
         updateDashboardUI();
+        speakText(`¡Hola ${currentUser.username}! Vamos a jugar`);
     }
 
     function checkDailyChestVisibility() {
         const today = new Date().toISOString().slice(0, 10);
-        const btn = document.getElementById('btn-daily-gift');
-        btn.style.display = (currentUser.lastDailyClaim !== today) ? 'inline-block' : 'none';
+        document.getElementById('btn-daily-gift').style.display =
+            (currentUser.lastDailyClaim !== today) ? 'inline-flex' : 'none';
     }
 
     function claimDailyChest() {
         const today = new Date().toISOString().slice(0, 10);
         if (currentUser.lastDailyClaim === today) return;
-
-        const bonus = 15;
         currentUser.lastDailyClaim = today;
-        awardStarsAndXP(bonus, 20, `🎁 ¡Cofre Diario abierto! Ganaste +${bonus} Estrellas`);
+        awardStarsAndXP(15, 25, '🎁 ¡Regalo sorpresa! +15 Estrellas');
+        speakText('¡Sorpresa! Ganaste muchas estrellas');
         checkDailyChestVisibility();
     }
 
     function awardStarsAndXP(starsToAdd, xpToAdd, message) {
-        const prevLevel = currentUser.level;
         currentUser.stars += starsToAdd;
         currentUser.totalStarsEarned += starsToAdd;
         currentUser.xp += xpToAdd;
@@ -1951,10 +1996,6 @@
         saveCurrentUser();
         updateDashboardUI();
         showToast(message);
-
-        if (currentUser.level > prevLevel) {
-            speakText(`¡Felicidades ${currentUser.username}! Subiste al nivel ${currentUser.level}`);
-        }
     }
 
     function saveCurrentUser() {
@@ -1965,24 +2006,40 @@
 
     function logout() {
         playSound('tap');
+        stopBubbleSpawner();
         if ('speechSynthesis' in window) window.speechSynthesis.cancel();
         currentUser = null;
         localStorage.removeItem('mimikids_active_user');
         document.getElementById('dashboard-screen').style.display = 'none';
         document.getElementById('header-user-bar').style.display = 'none';
         document.getElementById('auth-screen').style.display = 'flex';
-        document.getElementById('main-header').style.background = 'linear-gradient(90deg, var(--primary), var(--orange))';
         showAuthView('view-profiles');
     }
 
-    function switchTab(tabName, btnElement) {
+    function switchTab(tabName, btnElement, voiceLabel) {
         playSound('tap');
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btnElement.classList.add('active');
+        stopBubbleSpawner();
+        if (voiceLabel) speakText(voiceLabel);
+
+        document.querySelectorAll('.big-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btnElement) btnElement.classList.add('active');
+
         document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
         document.getElementById('tab-' + tabName).classList.add('active');
 
-        if (tabName === 'parents') prepareParentGate();
+        if (tabName === 'arcade') {
+            const bubblesActive = document.getElementById('arcade-bubbles').classList.contains('active');
+            if (bubblesActive) startBubbleSpawner();
+        }
+    }
+
+    function openParentTab() {
+        playSound('tap');
+        stopBubbleSpawner();
+        document.querySelectorAll('.big-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
+        document.getElementById('tab-parents').classList.add('active');
+        prepareParentGate();
     }
 
     function updateDashboardUI() {
@@ -1991,20 +2048,14 @@
         document.getElementById('header-pet').innerText = currentUser.equippedPet ? ` ${currentUser.equippedPet}` : '';
 
         document.getElementById('stat-stars').innerText = currentUser.stars;
-        document.getElementById('stat-level').innerText = 'Nivel ' + currentUser.level;
-        document.getElementById('stat-completed').innerText = currentUser.completedGames;
-        document.getElementById('stat-medals').innerText = `${currentUser.unlockedTrophies.length} / ${TROPHIES.length}`;
-
-        const ranks = ['Explorador', 'Aventurero', 'Súper Lector', 'Maestro Estelar', 'Leyenda MimiKids'];
-        document.getElementById('stat-rank').innerText = ranks[Math.min(currentUser.level - 1, ranks.length - 1)];
+        document.getElementById('stat-level').innerText = currentUser.level;
 
         const currentLevelXP = currentUser.xp % 100;
-        document.getElementById('progress-text').innerText = `${currentLevelXP} / 100 XP`;
         document.getElementById('progress-bar').style.width = `${currentLevelXP}%`;
 
         Object.keys(currentUser.modules).forEach(mod => {
             const badge = document.getElementById('badge-' + mod);
-            if (badge) badge.innerText = 'Nv. ' + currentUser.modules[mod];
+            if (badge) badge.innerText = currentUser.modules[mod];
         });
 
         renderAwards();
@@ -2014,41 +2065,179 @@
     }
 
     // =========================================================
-    // 8. MINI-JUEGOS INTERACTIVOS (MEMORIA, DIBUJO Y PIANO)
+    // 7. MOTOR DE PREGUNTAS 100% VISUAL Y HABLADO (1 A 4 AÑOS)
     // =========================================================
-    function switchArcade(mode, btn) {
+    function startGame(category) {
         playSound('tap');
+        currentCategory = category;
+        const pool = [...visualQuestionsDB[category]];
+        roundQueue = pool.sort(() => Math.random() - 0.5).slice(0, 3);
+        currentRoundIndex = 0;
+
+        document.getElementById('game-modal').style.display = 'flex';
+        showCurrentQuestion();
+    }
+
+    function showCurrentQuestion() {
+        const currentQ = roundQueue[currentRoundIndex];
+        document.getElementById('round-text').innerText = `⭐ ${currentRoundIndex + 1} / ${roundQueue.length}`;
+        document.getElementById('stage-visual-content').innerHTML = currentQ.stageHTML;
+
+        speakCurrentQuestion();
+
+        const optionsBox = document.getElementById('options-container');
+        optionsBox.innerHTML = '';
+
+        // Mezclar orden de los 4 dibujos para que no siempre esté en el mismo sitio
+        const shuffledOptions = [...currentQ.options].sort(() => Math.random() - 0.5);
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'toddler-opt-btn';
+            btn.innerHTML = opt.html;
+            btn.onclick = () => checkVisualAnswer(opt, btn);
+            optionsBox.appendChild(btn);
+        });
+    }
+
+    function speakCurrentQuestion() {
+        const currentQ = roundQueue[currentRoundIndex];
+        if (!currentQ) return;
+        speakText(currentQ.voice);
+    }
+
+    function checkVisualAnswer(opt, btnElement) {
+        if (opt.ok) {
+            playSound('correct');
+            btnElement.classList.add('correct-flash');
+            speakText(opt.speak || '¡Muy bien!');
+            currentUser.moduleStats[currentCategory].hits += 1;
+            currentRoundIndex++;
+
+            setTimeout(() => {
+                if (currentRoundIndex < roundQueue.length) {
+                    showCurrentQuestion();
+                } else {
+                    currentUser.completedGames += 1;
+                    currentUser.modules[currentCategory] += 1;
+                    closeGame();
+                    awardStarsAndXP(15, 40, '🌟 ¡Bravo! Ganaste +15 Estrellas');
+                    speakText(`¡Bravo ${currentUser.username}! Ganaste quince estrellas`);
+                }
+            }, 950);
+        } else {
+            playSound('wrong');
+            currentUser.moduleStats[currentCategory].misses += 1;
+            saveCurrentUser();
+            speakText(opt.speak || 'Intenta con otro dibujo');
+        }
+    }
+
+    function closeGame() {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        document.getElementById('game-modal').style.display = 'none';
+    }
+
+    // =========================================================
+    // 8. MINI-JUEGOS SENSORIALES (BURBUJAS, PINTAR, PIANO, PAREJAS)
+    // =========================================================
+    function switchArcade(mode, btn, voiceText) {
+        playSound('tap');
+        stopBubbleSpawner();
+        if (voiceText) speakText(voiceText);
+
         document.querySelectorAll('.arcade-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         document.querySelectorAll('.arcade-panel').forEach(p => p.classList.remove('active'));
         document.getElementById('arcade-' + mode).classList.add('active');
+
+        if (mode === 'bubbles') startBubbleSpawner();
     }
 
-    // JUEGO DE MEMORIA
+    // JUEGO DE EXPLOTAR BURBUJAS (ESPECIAL 1-2 AÑOS)
+    function startBubbleSpawner() {
+        stopBubbleSpawner();
+        bubblesPopped = 0;
+        document.getElementById('bubble-score').innerText = '0';
+        const stage = document.getElementById('bubble-stage');
+        stage.innerHTML = '';
+
+        spawnSingleBubble();
+        bubbleInterval = setInterval(spawnSingleBubble, 900);
+    }
+
+    function stopBubbleSpawner() {
+        if (bubbleInterval) {
+            clearInterval(bubbleInterval);
+            bubbleInterval = null;
+        }
+    }
+
+    function spawnSingleBubble() {
+        const stage = document.getElementById('bubble-stage');
+        if (!stage) return;
+        const icons = ['🎈', '🫧', '⭐', '🦋', '🍓', '🐳', '🌞'];
+        const colors = ['#ff7675', '#74b9ff', '#55efc4', '#ffeaa7', '#a29bfe', '#fd79a8'];
+
+        const b = document.createElement('div');
+        b.className = 'floating-bubble';
+        b.innerText = icons[Math.floor(Math.random() * icons.length)];
+        b.style.background = colors[Math.floor(Math.random() * colors.length)];
+        b.style.left = Math.floor(Math.random() * 78 + 5) + '%';
+        b.style.bottom = '-80px';
+
+        b.onpointerdown = () => {
+            playSound('pop');
+            b.style.transform = 'scale(1.5)';
+            b.style.opacity = '0';
+            setTimeout(() => b.remove(), 120);
+            bubblesPopped++;
+            document.getElementById('bubble-score').innerText = bubblesPopped;
+
+            if (bubblesPopped >= 8) {
+                bubblesPopped = 0;
+                document.getElementById('bubble-score').innerText = '0';
+                awardStarsAndXP(10, 25, '🫧 ¡Burbujas explotadas! +10 Estrellas');
+                speakText('¡Muy bien! Ganaste diez estrellas');
+            }
+        };
+
+        stage.appendChild(b);
+
+        let pos = -80;
+        const moveTimer = setInterval(() => {
+            if (!document.body.contains(b)) {
+                clearInterval(moveTimer);
+                return;
+            }
+            pos += 2.2;
+            b.style.bottom = pos + 'px';
+            if (pos > 320) {
+                b.remove();
+                clearInterval(moveTimer);
+            }
+        }, 30);
+    }
+
+    // MEMORIA ADAPTADA (6 CARTAS GRANDES = 3 PARES PARA 1-4 AÑOS)
     let memoryCards = [];
     let flippedIndices = [];
     let matchedCount = 0;
     let lockBoard = false;
 
     function initMemoryGame() {
-        const emojis = ['🦁', '🦄', '🐼', '🐸', '🦖', '🚀'];
+        const emojis = ['🐶', '🐸', '🌞'];
         memoryCards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
         flippedIndices = [];
         matchedCount = 0;
         lockBoard = false;
-        renderMemoryBoard();
-    }
-
-    function renderMemoryBoard() {
         const board = document.getElementById('memory-board');
         board.innerHTML = '';
         memoryCards.forEach((icon, idx) => {
             const card = document.createElement('div');
-            const isFlipped = flippedIndices.includes(idx);
-            const isMatched = card.dataset.matched === 'true';
             card.className = 'mem-card';
             card.id = 'mem-card-' + idx;
-            card.innerText = '?';
+            card.innerText = '🌟';
             card.onclick = () => flipMemoryCard(idx);
             board.appendChild(card);
         });
@@ -2076,24 +2265,24 @@
                 lockBoard = false;
 
                 if (matchedCount === memoryCards.length) {
-                    currentUser.completedGames += 1;
-                    awardStarsAndXP(20, 45, '🃏 ¡Memoria Completada! Ganaste +20 Estrellas');
-                    setTimeout(initMemoryGame, 1600);
+                    awardStarsAndXP(15, 35, '🃏 ¡Encontraste las parejas! +15 Estrellas');
+                    speakText('¡Lo lograste! Encontraste todas las parejas');
+                    setTimeout(initMemoryGame, 1500);
                 }
             } else {
                 setTimeout(() => {
                     const c1 = document.getElementById('mem-card-' + firstIdx);
                     const c2 = document.getElementById('mem-card-' + secondIdx);
-                    if (c1) { c1.classList.remove('flipped'); c1.innerText = '?'; }
-                    if (c2) { c2.classList.remove('flipped'); c2.innerText = '?'; }
+                    if (c1) { c1.classList.remove('flipped'); c1.innerText = '🌟'; }
+                    if (c2) { c2.classList.remove('flipped'); c2.innerText = '🌟'; }
                     flippedIndices = [];
                     lockBoard = false;
-                }, 750);
+                }, 800);
             }
         }
     }
 
-    // PIZARRA DE DIBUJO TÁCTIL
+    // PIZARRA DE TRAZO GRUESO + SELLOS
     let isDrawing = false;
     let drawColor = '#FF6B6B';
     let strokeCount = 0;
@@ -2103,15 +2292,13 @@
         const ctx = canvas.getContext('2d');
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.lineWidth = 6;
+        ctx.lineWidth = 14; // Trazo grueso especial para deditos de 1-4 años
 
         function getPos(e) {
             const rect = canvas.getBoundingClientRect();
-            const scaleX = canvas.width / rect.width;
-            const scaleY = canvas.height / rect.height;
             return {
-                x: (e.clientX - rect.left) * scaleX,
-                y: (e.clientY - rect.top) * scaleY
+                x: (e.clientX - rect.left) * (canvas.width / rect.width),
+                y: (e.clientY - rect.top) * (canvas.height / rect.height)
             };
         }
 
@@ -2121,6 +2308,9 @@
             const pos = getPos(e);
             ctx.beginPath();
             ctx.moveTo(pos.x, pos.y);
+            ctx.strokeStyle = drawColor;
+            ctx.lineTo(pos.x + 0.5, pos.y + 0.5);
+            ctx.stroke();
         });
 
         canvas.addEventListener('pointermove', e => {
@@ -2134,50 +2324,57 @@
         window.addEventListener('pointerup', () => { isDrawing = false; });
     }
 
-    function setDrawColor(color, el) {
+    function setDrawColor(color, el, colorName) {
         playSound('tap');
         drawColor = color;
+        speakText(colorName);
         document.querySelectorAll('.swatch-btn').forEach(b => b.classList.remove('active'));
         el.classList.add('active');
     }
 
-    function clearCanvas() {
+    function stampCanvasEmoji() {
+        playSound('pop');
+        strokeCount++;
         const canvas = document.getElementById('draw-canvas');
         const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const stamps = ['⭐', '❤️', '🦋', '🌞', '🦖', '🦄'];
+        ctx.font = '48px serif';
+        ctx.fillText(
+            stamps[Math.floor(Math.random() * stamps.length)],
+            Math.random() * (canvas.width - 70) + 20,
+            Math.random() * (canvas.height - 60) + 50
+        );
+    }
+
+    function clearCanvas() {
+        const canvas = document.getElementById('draw-canvas');
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
         strokeCount = 0;
     }
 
     function completeDrawingReward() {
-        if (strokeCount < 2) {
-            showToast('🖌️ ¡Haz un dibujo primero en la pizarra!');
+        if (strokeCount < 1) {
+            speakText('Pinta con tu dedito primero');
             return;
         }
-        const prompts = [
-            '🎨 Reto Creativo: ¡Dibuja una casa o un árbol!',
-            '🎨 Reto Creativo: ¡Escribe tu nombre con colores!',
-            '🎨 Reto Creativo: ¡Dibuja un sol sonriente!'
-        ];
-        document.getElementById('draw-prompt').innerText = prompts[Math.floor(Math.random() * prompts.length)];
         clearCanvas();
-        awardStarsAndXP(10, 25, '🎨 ¡Obra de arte terminada! +10 Estrellas');
+        awardStarsAndXP(10, 25, '🎨 ¡Qué dibujo tan lindo! +10 Estrellas');
+        speakText('¡Qué dibujo tan bonito! Ganaste diez estrellas');
     }
 
-    // MINI PIANO MUSICAL
-    let pianoNotesPlayed = 0;
-    function playPianoNote(freq, noteName) {
+    // PIANO DE ANIMALES
+    let pianoTouches = 0;
+    function playPianoNote(freq, voiceSound) {
         playSound('note', freq);
-        pianoNotesPlayed++;
-        document.getElementById('piano-progress').innerText = `Notas tocadas: ${pianoNotesPlayed} / 8 (${noteName})`;
-        if (pianoNotesPlayed >= 8) {
-            pianoNotesPlayed = 0;
-            document.getElementById('piano-progress').innerText = `Notas tocadas: 0 / 8`;
-            awardStarsAndXP(10, 25, '🎹 ¡Concierto musical completado! +10 Estrellas');
+        speakText(voiceSound);
+        if (++pianoTouches >= 6) {
+            pianoTouches = 0;
+            awardStarsAndXP(10, 20, '🎹 ¡Qué linda música! +10 Estrellas');
         }
     }
 
     // =========================================================
-    // 9. TROFEOS, MASCOTAS Y PREMIOS FAMILIARES
+    // 9. TROFEOS, MASCOTAS Y CONTROL PARENTAL
     // =========================================================
     function renderAwards() {
         const container = document.getElementById('awards-container');
@@ -2186,13 +2383,10 @@
             const isUnlocked = currentUser.unlockedTrophies.includes(t.id);
             const card = document.createElement('div');
             card.className = 'award-card ' + (isUnlocked ? 'unlocked' : '');
+            card.onclick = () => speakText(t.title);
             card.innerHTML = `
-                <div style="font-size:42px; margin-bottom:6px;">${t.icon}</div>
+                <div style="font-size:56px;">${t.icon}</div>
                 <h4>${t.title}</h4>
-                <p style="font-size:12px; color:#555; margin-top:4px;">${t.desc}</p>
-                <span style="display:inline-block; margin-top:8px; font-size:11px; font-weight:800; color:${isUnlocked ? '#e67e22' : '#999'}">
-                    ${isUnlocked ? '¡DESBLOQUEADO!' : '🔒 Bloqueado'}
-                </span>
             `;
             container.appendChild(card);
         });
@@ -2207,15 +2401,38 @@
             const card = document.createElement('div');
             card.className = 'shop-card';
             card.innerHTML = `
-                <div style="font-size:42px;">${pet.icon}</div>
+                <div style="font-size:58px;">${pet.icon}</div>
                 <h4>${pet.name}</h4>
-                <p style="font-size:13px; font-weight:bold; color:#f39c12;">⭐ ${pet.cost} Estrellas</p>
-                <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handlePetAction('${pet.id}', '${pet.icon}', ${pet.cost})">
-                    ${isEquipped ? '✅ Equipada' : isOwned ? 'Equipar' : 'Canjear'}
+                <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handlePetAction('${pet.id}', '${pet.icon}', ${pet.cost}, '${pet.name}')">
+                    ${isEquipped ? '✅' : isOwned ? 'Poner' : `⭐ ${pet.cost}`}
                 </button>
             `;
             container.appendChild(card);
         });
+    }
+
+    function handlePetAction(petId, petIcon, cost, petName) {
+        if (currentUser.ownedPets.includes(petId)) {
+            currentUser.equippedPet = petIcon;
+            saveCurrentUser();
+            updateDashboardUI();
+            speakText(`Elegiste a ${petName}`);
+            return;
+        }
+        if (currentUser.stars < cost) {
+            playSound('wrong');
+            speakText(`Juega más para ganar estrellas`);
+            return;
+        }
+        currentUser.stars -= cost;
+        currentUser.ownedPets.push(petId);
+        currentUser.equippedPet = petIcon;
+        playSound('win');
+        launchConfetti();
+        checkAndUnlockTrophies(true);
+        saveCurrentUser();
+        updateDashboardUI();
+        speakText(`¡Ganaste a ${petName}!`);
     }
 
     function renderRealRewards() {
@@ -2225,11 +2442,10 @@
             const card = document.createElement('div');
             card.className = 'shop-card';
             card.innerHTML = `
-                <div style="font-size:36px;">🎟️</div>
+                <div style="font-size:46px;">🎁</div>
                 <h4>${rew.title}</h4>
-                <p style="font-size:13px; font-weight:bold; color:#6C5CE7;">⭐ ${rew.cost} Estrellas</p>
                 <button class="btn-buy" style="background:var(--purple);" onclick="redeemRealReward(${idx})">
-                    Canjear Vale
+                    ⭐ ${rew.cost}
                 </button>
             `;
             container.appendChild(card);
@@ -2241,7 +2457,7 @@
         if (!rew) return;
         if (currentUser.stars < rew.cost) {
             playSound('wrong');
-            showToast(`Necesitas ${rew.cost} ⭐ para canjear "${rew.title}".`);
+            speakText('Te faltan estrellitas para este premio');
             return;
         }
         currentUser.stars -= rew.cost;
@@ -2249,50 +2465,24 @@
         launchConfetti();
         saveCurrentUser();
         updateDashboardUI();
-        alert(`🎉 ¡VALE CANJEADO CON ÉXITO!\n\nMuéstrale esta pantalla a Papá o Mamá:\nPremio ganado: ${rew.title}`);
-    }
-
-    function handlePetAction(petId, petIcon, cost) {
-        if (currentUser.ownedPets.includes(petId)) {
-            currentUser.equippedPet = petIcon;
-            saveCurrentUser();
-            updateDashboardUI();
-            showToast(`${petIcon} ¡Mascota equipada!`);
-            return;
-        }
-        if (currentUser.stars < cost) {
-            playSound('wrong');
-            showToast(`Necesitas ${cost} ⭐ para este premio.`);
-            return;
-        }
-        currentUser.stars -= cost;
-        currentUser.ownedPets.push(petId);
-        currentUser.equippedPet = petIcon;
-        playSound('win');
-        launchConfetti();
-        checkAndUnlockTrophies(true);
-        saveCurrentUser();
-        updateDashboardUI();
-        showToast(`🎉 ¡Adoptaste a ${petIcon}!`);
+        speakText(`¡Ganaste el premio ${rew.title}! Muéstrale a mamá o papá`);
+        alert(`🎉 ¡PREMIO CANJEADO!\n\n${rew.title}`);
     }
 
     function checkAndUnlockTrophies(notify = true) {
         TROPHIES.forEach(t => {
             if (!currentUser.unlockedTrophies.includes(t.id) && t.check(currentUser)) {
                 currentUser.unlockedTrophies.push(t.id);
-                if (notify) showToast(`🏆 ¡Trofeo Desbloqueado: ${t.title}!`);
+                if (notify) showToast(`🏆 ¡Trofeo: ${t.title}!`);
             }
         });
     }
 
-    // =========================================================
-    // 10. ZONA DE PADRES Y ESTADÍSTICAS
-    // =========================================================
     function prepareParentGate() {
         document.getElementById('parent-lock-view').style.display = 'block';
         document.getElementById('parent-unlocked-view').style.display = 'none';
         document.getElementById('parent-math-input').value = '';
-        const a = Math.floor(Math.random() * 4) + 6; // 6..9
+        const a = Math.floor(Math.random() * 4) + 6;
         const b = Math.floor(Math.random() * 4) + 6;
         parentExpectedAnswer = a * b;
         document.getElementById('parent-math-q').innerText = `¿Cuánto es ${a} × ${b}?`;
@@ -2307,7 +2497,7 @@
             renderParentReport();
         } else {
             playSound('wrong');
-            showToast('Respuesta incorrecta. Acceso solo para adultos.');
+            showToast('Respuesta incorrecta.');
         }
     }
 
@@ -2316,113 +2506,33 @@
         document.getElementById('parent-child-name').innerText = currentUser.username;
         const tbody = document.getElementById('parent-report-body');
         tbody.innerHTML = '';
-
         Object.keys(MODULE_NAMES).forEach(key => {
             const st = currentUser.moduleStats[key] || { hits: 0, misses: 0 };
-            const total = st.hits + st.misses;
-            const acc = total > 0 ? Math.round((st.hits / total) * 100) + '%' : 'Sin datos';
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><b>${MODULE_NAMES[key]}</b></td>
                 <td>Nv. ${currentUser.modules[key]}</td>
                 <td style="color:#00b894; font-weight:800;">${st.hits}</td>
                 <td style="color:#d63031; font-weight:800;">${st.misses}</td>
-                <td><b>${acc}</b></td>
             `;
             tbody.appendChild(tr);
         });
     }
 
     function giveBonusStars() {
-        awardStarsAndXP(20, 10, '🌟 ¡Papá/Mamá te regaló +20 Estrellas!');
+        awardStarsAndXP(20, 15, '🌟 ¡+20 Estrellas de regalo!');
     }
 
     function addCustomParentReward() {
         const title = document.getElementById('new-reward-title').value.trim();
         const cost = parseInt(document.getElementById('new-reward-cost').value, 10);
-        if (!title || isNaN(cost) || cost < 5) {
-            showToast('Escribe un nombre y un costo válido en estrellas.');
-            return;
-        }
+        if (!title || isNaN(cost) || cost < 5) return;
         currentUser.customRewards.push({ id: 'rew_' + Date.now(), title, cost });
         document.getElementById('new-reward-title').value = '';
         document.getElementById('new-reward-cost').value = '';
         saveCurrentUser();
         updateDashboardUI();
-        showToast('🎁 Premio añadido a la tienda del niño');
-    }
-
-    // =========================================================
-    // 11. MOTOR DE MISIONES CON LECTURA DE VOZ
-    // =========================================================
-    function startGame(category) {
-        playSound('tap');
-        currentCategory = category;
-        const pool = [...questionsDB[category]];
-        roundQueue = pool.sort(() => Math.random() - 0.5).slice(0, 3);
-        currentRoundIndex = 0;
-
-        document.getElementById('modal-title').innerText = MODULE_NAMES[category];
-        document.getElementById('game-modal').style.display = 'flex';
-        showCurrentQuestion();
-    }
-
-    function showCurrentQuestion() {
-        const currentQ = roundQueue[currentRoundIndex];
-        document.getElementById('round-text').innerText = `Pregunta ${currentRoundIndex + 1} de ${roundQueue.length}`;
-        document.getElementById('question-text').innerText = currentQ.q;
-
-        speakCurrentQuestion();
-
-        const optionsBox = document.getElementById('options-container');
-        optionsBox.innerHTML = '';
-
-        currentQ.options.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerText = opt;
-            btn.onclick = () => checkAnswer(opt, currentQ.a);
-            optionsBox.appendChild(btn);
-        });
-    }
-
-    function speakCurrentQuestion() {
-        const currentQ = roundQueue[currentRoundIndex];
-        if (!currentQ) return;
-        speakText(currentQ.voice || currentQ.q, 'es-ES');
-    }
-
-    function checkAnswer(selected, correct) {
-        // Si es el módulo de inglés, pronunciar la palabra seleccionada en inglés
-        if (currentCategory === 'colors') {
-            speakText(selected, 'en-US');
-        }
-
-        if (selected === correct) {
-            playSound('correct');
-            currentUser.moduleStats[currentCategory].hits += 1;
-            currentRoundIndex++;
-
-            if (currentRoundIndex < roundQueue.length) {
-                showToast('✅ ¡Correcto! Siguiente pregunta...');
-                setTimeout(showCurrentQuestion, currentCategory === 'colors' ? 650 : 250);
-            } else {
-                currentUser.completedGames += 1;
-                currentUser.modules[currentCategory] += 1;
-                closeGame();
-                awardStarsAndXP(15, 40, `🌟 ¡Misión Superada! +15 Estrellas y +40 XP`);
-            }
-        } else {
-            playSound('wrong');
-            currentUser.moduleStats[currentCategory].misses += 1;
-            saveCurrentUser();
-            showToast('💪 ¡Casi! Inténtalo otra vez');
-        }
-    }
-
-    function closeGame() {
-        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-        document.getElementById('game-modal').style.display = 'none';
+        showToast('🎁 Premio guardado');
     }
 
     function showToast(msg) {
@@ -2431,7 +2541,7 @@
         toast.className = 'toast';
         toast.innerText = msg;
         box.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+        setTimeout(() => toast.remove(), 2800);
     }
 </script>
 
