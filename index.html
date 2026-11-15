@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MimiKids 5.0 - Especial 1 a 4 Años (100% Visual y Con Voz)</title>
+    <title>MimiKids 6.0 - Juegos Visuales y TV Kids Segura (1-4 Años)</title>
     <style>
         :root {
             --primary: #FF6B6B;
@@ -38,8 +38,8 @@
         .app-container {
             background: white;
             width: 100%;
-            max-width: 1060px;
-            min-height: 700px;
+            max-width: 1080px;
+            min-height: 720px;
             border-radius: 34px;
             box-shadow: 0 22px 55px rgba(0,0,0,0.2);
             overflow: hidden;
@@ -56,7 +56,7 @@
             z-index: 999;
         }
 
-        /* BARRA SUPERIOR MUY VISUAL */
+        /* BARRA SUPERIOR */
         header {
             background: linear-gradient(90deg, var(--primary), var(--orange));
             color: white;
@@ -70,7 +70,7 @@
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 25px;
             font-weight: 900;
             display: flex;
             align-items: center;
@@ -82,7 +82,7 @@
         .user-bar {
             display: none;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
@@ -94,26 +94,27 @@
             align-items: center;
             gap: 8px;
             font-weight: 900;
-            font-size: 17px;
+            font-size: 16px;
+            cursor: pointer;
         }
 
         .user-pill svg {
-            width: 34px;
-            height: 34px;
+            width: 32px;
+            height: 32px;
         }
 
         .btn-icon-top {
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.92);
             color: var(--dark);
             border: none;
-            padding: 8px 14px;
+            padding: 8px 13px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 900;
-            font-size: 18px;
+            font-size: 17px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             box-shadow: 0 4px 0 rgba(0,0,0,0.15);
             transition: transform 0.15s;
         }
@@ -133,7 +134,7 @@
         }
 
         /* =========================================================
-           PANTALLA DE PERFILES Y LLAVE DE DIBUJITOS
+           PANTALLA DE PERFILES Y LLAVE VISUAL
            ========================================================= */
         #auth-screen {
             flex: 1;
@@ -187,8 +188,8 @@
         }
 
         .profile-avatar-circle {
-            width: 96px;
-            height: 96px;
+            width: 92px;
+            height: 92px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -232,7 +233,6 @@
             cursor: pointer;
         }
 
-        /* LLAVE SECRETA VISUAL (2 DIBUJITOS EN VEZ DE NÚMEROS) */
         .visual-pin-card {
             background: white;
             padding: 28px;
@@ -246,10 +246,21 @@
             align-items: center;
         }
 
+        .pinpad-avatar-holder {
+            width: 76px;
+            height: 76px;
+            margin-bottom: 8px;
+        }
+
+        .pinpad-avatar-holder svg {
+            width: 100%;
+            height: 100%;
+        }
+
         .key-slots {
             display: flex;
             gap: 18px;
-            margin: 16px 0;
+            margin: 14px 0;
         }
 
         .key-slot {
@@ -288,7 +299,6 @@
             font-size: 42px;
             cursor: pointer;
             box-shadow: 0 6px 0 #f59f00;
-            transition: transform 0.1s;
         }
 
         .pic-key-btn:active {
@@ -320,8 +330,8 @@
         }
 
         .preview-avatar-box {
-            width: 72px;
-            height: 72px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             padding: 8px;
             background: #FF6B6B22;
@@ -358,8 +368,8 @@
         }
 
         .char-card svg {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
         }
 
         .char-card span {
@@ -381,8 +391,8 @@
         }
 
         .color-option {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             cursor: pointer;
             border: 3px solid white;
@@ -403,7 +413,7 @@
 
         .key-pick-item {
             flex: 1;
-            font-size: 30px;
+            font-size: 28px;
             padding: 8px 0;
             text-align: center;
             background: #f8fafc;
@@ -432,17 +442,16 @@
         }
 
         /* =========================================================
-           PANEL DEL NIÑO (ICONOS GIGANTES, CERO TEXTO COMPLEJO)
+           PANEL DEL NIÑO (5 BOTONES GIGANTES INCLUYENDO TV KIDS)
            ========================================================= */
         #dashboard-screen {
             display: none;
             flex: 1;
-            padding: 18px;
+            padding: 16px;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
-        /* BARRA DE ESTRELLAS Y NIVEL MUY VISUAL */
         .kid-status-bar {
             display: flex;
             justify-content: space-between;
@@ -450,13 +459,14 @@
             background: #fff9db;
             border: 4px solid #fcc419;
             border-radius: 26px;
-            padding: 12px 20px;
+            padding: 10px 18px;
             flex-wrap: wrap;
             gap: 12px;
+            cursor: pointer;
         }
 
         .star-counter-big {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             color: #d9480f;
             display: flex;
@@ -466,8 +476,8 @@
 
         .xp-stars-track {
             flex: 1;
-            min-width: 180px;
-            height: 24px;
+            min-width: 160px;
+            height: 22px;
             background: #fff;
             border-radius: 50px;
             border: 3px solid #fcc419;
@@ -481,29 +491,28 @@
             transition: width 0.5s ease;
         }
 
-        /* BOTONES DE NAVEGACIÓN GIGANTES CON ICONO Y VOZ */
         .big-nav-tabs {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
         }
 
         .big-tab-btn {
             background: #f1f5f9;
             border: 4px solid #e2e8f0;
-            padding: 12px 8px;
-            border-radius: 24px;
+            padding: 10px 4px;
+            border-radius: 22px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
-            font-size: 32px;
+            gap: 3px;
+            font-size: 30px;
             transition: 0.2s;
         }
 
         .big-tab-btn span {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 900;
             color: var(--dark);
         }
@@ -512,13 +521,13 @@
             background: #fff0f6;
             border-color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 6px 0 rgba(255,107,107,0.25);
+            box-shadow: 0 5px 0 rgba(255,107,107,0.25);
         }
 
         .tab-view {
             display: none;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
             flex: 1;
         }
 
@@ -526,16 +535,16 @@
             display: flex;
         }
 
-        /* TARJETAS DE JUEGO GIGANTES Y COLORIDAS PARA 1-4 AÑOS */
+        /* TARJETAS DE JUEGOS Y DE VIDEOS */
         .toddler-games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+            gap: 14px;
         }
 
         .toddler-game-card {
             border-radius: 28px;
-            padding: 24px 16px;
+            padding: 22px 14px;
             text-align: center;
             cursor: pointer;
             position: relative;
@@ -554,13 +563,13 @@
         }
 
         .toddler-game-icon {
-            font-size: 68px;
+            font-size: 62px;
             line-height: 1;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
         }
 
         .toddler-game-title {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 900;
             color: white;
             text-shadow: 0 2px 4px rgba(0,0,0,0.25);
@@ -568,18 +577,143 @@
 
         .toddler-stars-tag {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 10px;
+            right: 10px;
             background: rgba(255,255,255,0.92);
             padding: 4px 10px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 900;
             color: var(--dark);
         }
 
         /* =========================================================
-           MODAL VISUAL DE JUEGO (SIN TEXTO QUE LEER, SOLO DIBUJOS)
+           NUEVO: REPRODUCTOR DE VIDEOS Y CUENTOS CON ESCUDO BEBÉ
+           ========================================================= */
+        #video-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.82);
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            z-index: 150;
+        }
+
+        .video-modal-card {
+            background: #1e272e;
+            border: 6px solid var(--accent);
+            border-radius: 34px;
+            width: 100%;
+            max-width: 720px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+        }
+
+        .video-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-baby-shield {
+            background: var(--green);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 900;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #008f72;
+        }
+
+        .btn-baby-shield.off {
+            background: #636e72;
+            box-shadow: 0 4px 0 #2d3436;
+        }
+
+        .video-stage-wrapper {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            border-radius: 26px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #74b9ff 0%, #a29bfe 100%);
+            border: 4px solid rgba(255,255,255,0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Escenario de Cuentos Animados Integrados */
+        .story-animated-character {
+            font-size: 115px;
+            animation: floatStory 1.4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+
+        @keyframes floatStory {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-14px) scale(1.08); }
+        }
+
+        .story-caption-pill {
+            margin-top: 18px;
+            background: rgba(0,0,0,0.45);
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-size: 22px;
+            font-weight: 900;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        /* Escudo transparente para que el bebé toque sin salir del video */
+        #baby-touch-shield {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            cursor: pointer;
+        }
+
+        .touch-sparkle {
+            position: absolute;
+            font-size: 38px;
+            pointer-events: none;
+            animation: popSparkle 0.7s ease forwards;
+        }
+
+        @keyframes popSparkle {
+            0% { transform: scale(0.4); opacity: 1; }
+            100% { transform: translateY(-45px) scale(1.5); opacity: 0; }
+        }
+
+        .video-progress-bar {
+            width: 100%;
+            height: 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .video-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+
+        /* =========================================================
+           MODAL DE JUEGOS VISUALES Y RESTO DE COMPONENTES
            ========================================================= */
         #game-modal {
             display: none;
@@ -607,19 +741,18 @@
             background: #f8fafc;
             border: 4px dashed #cbd5e1;
             border-radius: 28px;
-            padding: 20px;
-            margin: 14px 0 20px 0;
-            min-height: 150px;
+            padding: 18px;
+            margin: 12px 0 18px 0;
+            min-height: 145px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            position: relative;
         }
 
         .stage-big-visual {
-            font-size: 78px;
+            font-size: 76px;
             line-height: 1.1;
             display: flex;
             gap: 12px;
@@ -628,14 +761,13 @@
             flex-wrap: wrap;
         }
 
-        /* Sombra negra para el juego de adivinar siluetas */
         .silhouette-shadow {
             filter: brightness(0) drop-shadow(0 4px 6px rgba(0,0,0,0.2));
         }
 
         .color-splat-circle {
-            width: 110px;
-            height: 110px;
+            width: 105px;
+            height: 105px;
             border-radius: 50%;
             border: 6px solid white;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -647,7 +779,7 @@
             border: none;
             padding: 10px 22px;
             border-radius: 50px;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 900;
             cursor: pointer;
             display: inline-flex;
@@ -656,33 +788,25 @@
             box-shadow: 0 5px 0 #38ada9;
         }
 
-        .btn-speak-giant:active {
-            transform: translateY(3px);
-            box-shadow: 0 2px 0 #38ada9;
-        }
-
-        /* BOTONES DE RESPUESTA GIGANTES (PARA DEDOS PEQUEÑOS) */
         .toddler-options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 14px;
         }
 
         .toddler-opt-btn {
             background: #ffffff;
             border: 5px solid #e2e8f0;
             border-radius: 28px;
-            padding: 18px 10px;
-            min-height: 125px;
+            padding: 16px 10px;
+            min-height: 120px;
             cursor: pointer;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            font-size: 58px;
+            font-size: 56px;
             box-shadow: 0 8px 0 #cbd5e1;
-            transition: transform 0.12s, border-color 0.2s;
+            transition: transform 0.12s;
         }
 
         .toddler-opt-btn:active {
@@ -700,18 +824,16 @@
             position: absolute;
             top: 14px;
             right: 16px;
-            font-size: 28px;
+            font-size: 26px;
             cursor: pointer;
             background: #f1f5f9;
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             border: none;
         }
 
-        /* =========================================================
-           ZONA SENSORIAL: EXPLOTA BURBUJAS, PIZARRA, MEMORIA Y PIANO
-           ========================================================= */
+        /* ZONA CREATIVA */
         .arcade-subnav {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -721,24 +843,18 @@
         .arcade-btn {
             background: white;
             border: 4px solid #e2e8f0;
-            padding: 10px 6px;
+            padding: 8px 6px;
             border-radius: 20px;
             font-weight: 900;
             cursor: pointer;
-            font-size: 26px;
+            font-size: 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .arcade-btn span {
-            font-size: 12px;
-        }
-
-        .arcade-btn.active {
-            border-color: var(--purple);
-            background: #f3f0ff;
-        }
+        .arcade-btn span { font-size: 12px; }
+        .arcade-btn.active { border-color: var(--purple); background: #f3f0ff; }
 
         .arcade-panel {
             display: none;
@@ -751,14 +867,11 @@
             gap: 12px;
         }
 
-        .arcade-panel.active {
-            display: flex;
-        }
+        .arcade-panel.active { display: flex; }
 
-        /* JUEGO DE EXPLOTAR BURBUJAS Y GLOBOS (1 A 2 AÑOS) */
         #bubble-stage {
             width: 100%;
-            height: 290px;
+            height: 270px;
             background: linear-gradient(180deg, #dff9fb 0%, #c7ecee 100%);
             border-radius: 24px;
             border: 4px solid #7ed6df;
@@ -769,30 +882,24 @@
 
         .floating-bubble {
             position: absolute;
-            width: 78px;
-            height: 78px;
+            width: 76px;
+            height: 76px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 46px;
+            font-size: 44px;
             cursor: pointer;
             box-shadow: inset -6px -6px 14px rgba(0,0,0,0.12), 0 6px 14px rgba(0,0,0,0.1);
             border: 3px solid rgba(255,255,255,0.8);
-            transition: transform 0.1s;
         }
 
-        .floating-bubble:active {
-            transform: scale(1.3);
-        }
-
-        /* MEMORIA 6 CARTAS GRANDES (3 PARES PARA 1-4 AÑOS) */
         .memory-board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 14px;
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
         }
 
         .mem-card {
@@ -802,7 +909,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 54px;
+            font-size: 52px;
             cursor: pointer;
             color: white;
             box-shadow: 0 7px 0 #4834d4;
@@ -814,23 +921,17 @@
             box-shadow: 0 5px 0 #cbd5e1;
         }
 
-        .mem-card.matched {
-            border-color: var(--green);
-            background: #e6fffa;
-        }
-
-        /* PIZARRA Y SELLOS MÁGICOS */
         .canvas-toolbar {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .swatch-btn {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             border: 4px solid white;
             box-shadow: 0 0 0 2px #cbd5e1;
@@ -838,7 +939,7 @@
         }
 
         .swatch-btn.active {
-            transform: scale(1.22);
+            transform: scale(1.2);
             box-shadow: 0 0 0 4px var(--dark);
         }
 
@@ -851,19 +952,18 @@
             max-width: 100%;
         }
 
-        /* PIANO DE ANIMALES Y COLORES */
         .piano-keys {
             display: flex;
             gap: 8px;
             justify-content: center;
             width: 100%;
-            max-width: 620px;
+            max-width: 600px;
         }
 
         .piano-key {
             flex: 1;
-            min-width: 58px;
-            height: 165px;
+            min-width: 55px;
+            height: 160px;
             border: none;
             border-radius: 0 0 22px 22px;
             color: white;
@@ -883,7 +983,6 @@
             box-shadow: 0 2px 0 rgba(0,0,0,0.2);
         }
 
-        /* TIENDA Y PADRES */
         .shop-grid, .awards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
@@ -894,7 +993,7 @@
             background: white;
             border: 4px solid #f1f2f6;
             border-radius: 24px;
-            padding: 18px;
+            padding: 16px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -902,17 +1001,8 @@
             gap: 8px;
         }
 
-        .award-card {
-            opacity: 0.45;
-            filter: grayscale(100%);
-        }
-
-        .award-card.unlocked {
-            background: #fff9db;
-            border-color: #fcc419;
-            opacity: 1;
-            filter: grayscale(0%);
-        }
+        .award-card { opacity: 0.45; filter: grayscale(100%); }
+        .award-card.unlocked { background: #fff9db; border-color: #fcc419; opacity: 1; filter: grayscale(0%); }
 
         .btn-buy {
             background: var(--orange);
@@ -926,28 +1016,26 @@
             width: 100%;
         }
 
-        .btn-buy.owned {
-            background: var(--green);
-        }
+        .btn-buy.owned { background: var(--green); }
 
         .parent-box {
             background: #f8fafc;
             border: 3px solid #cbd5e1;
             border-radius: 22px;
-            padding: 20px;
+            padding: 18px;
         }
 
         .report-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 8px;
             background: white;
             border-radius: 14px;
             overflow: hidden;
         }
 
         .report-table th, .report-table td {
-            padding: 10px;
+            padding: 9px 10px;
             text-align: left;
             border-bottom: 1px solid #f1f5f9;
             font-size: 13px;
@@ -969,7 +1057,7 @@
             padding: 14px 22px;
             border-radius: 20px;
             font-weight: 900;
-            font-size: 16px;
+            font-size: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
         }
     </style>
@@ -981,7 +1069,7 @@
 <div class="app-container">
     <!-- BARRA SUPERIOR -->
     <header id="main-header">
-        <div class="logo" onclick="speakText('Mimi Kids, aprende jugando')">🌟 MimiKids</div>
+        <div class="logo" onclick="speakText('Mimi Kids')">🌟 MimiKids</div>
         <div class="user-bar" id="header-user-bar">
             <button class="btn-icon-top btn-daily" id="btn-daily-gift" onclick="claimDailyChest()" style="display:none;">🎁</button>
             <button class="btn-icon-top" id="btn-voice-toggle" onclick="toggleVoice()">🔊</button>
@@ -996,26 +1084,25 @@
     </header>
 
     <!-- =========================================================
-         PANTALLA DE PERFILES (ENTRADA CON DIBUJITOS PARA 1-4 AÑOS)
+         PANTALLA DE PERFILES (ENTRADA CON DIBUJITOS)
          ========================================================= -->
     <div id="auth-screen">
 
-        <!-- VISTA 1: TARJETAS DE PERFILES GIGANTES -->
         <div id="view-profiles" class="auth-view active">
-            <h1 style="font-size:28px; font-weight:900;">👋 ¡Toca tu dibujo para jugar!</h1>
+            <h1 style="font-size:27px; font-weight:900;">👋 ¡Toca tu dibujo para jugar!</h1>
             <div class="profiles-grid" id="profiles-grid-container"></div>
 
-            <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
                 <button class="btn-icon-top" style="font-size:13px;" onclick="exportAccounts()">💾 Guardar Copia</button>
                 <button class="btn-icon-top" style="font-size:13px;" onclick="document.getElementById('import-file').click()">📂 Cargar Copia</button>
                 <input type="file" id="import-file" style="display:none" accept=".json" onchange="importAccounts(event)">
             </div>
         </div>
 
-        <!-- VISTA 2: CREAR PERSONAJE -->
+        <!-- CREAR PERSONAJE -->
         <div id="view-register" class="auth-view">
             <div class="register-card">
-                <h2 style="color: var(--purple); margin-bottom: 12px; text-align:center;">✨ Nuevo Personaje</h2>
+                <h2 style="color: var(--purple); margin-bottom: 10px; text-align:center;">✨ Nuevo Personaje</h2>
 
                 <div class="live-preview-banner">
                     <div class="preview-avatar-box" id="live-preview-circle"></div>
@@ -1025,9 +1112,9 @@
                     </div>
                 </div>
 
-                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:14px; margin-bottom:10px; text-align:center;"></div>
+                <div id="reg-error" style="color:#ff4757; font-weight:800; font-size:14px; margin-bottom:8px; text-align:center;"></div>
 
-                <label style="font-weight:800; font-size:14px;">1. Elige el personaje del niño/a:</label>
+                <label style="font-weight:800; font-size:14px;">1. Elige el personaje:</label>
                 <div class="character-grid" id="character-selector-grid"></div>
 
                 <label style="font-weight:800; font-size:14px;">2. Elige su color favorito:</label>
@@ -1041,9 +1128,9 @@
                 </div>
 
                 <label style="font-weight:800; font-size:14px;">3. Nombre del niño/a:</label>
-                <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Mateo o Sofía" oninput="updateLivePreviewText()" style="width:100%; padding:12px; border-radius:14px; border:3px solid #cbd5e1; font-size:16px; font-weight:800; margin:6px 0 14px 0;">
+                <input type="text" id="reg-username" maxlength="15" placeholder="Ej: Mateo o Sofía" oninput="updateLivePreviewText()" style="width:100%; padding:11px; border-radius:14px; border:3px solid #cbd5e1; font-size:16px; font-weight:800; margin:6px 0 12px 0;">
 
-                <label style="font-weight:800; font-size:14px;">4. Elige su dibujo secreto para entrar (Opcional, fácil para bebés):</label>
+                <label style="font-weight:800; font-size:14px;">4. Elige su dibujo mágico para entrar:</label>
                 <div class="key-picker-row" id="reg-key-picker">
                     <div class="key-pick-item selected" onclick="selectVisualKey(this, '🌞')">🌞</div>
                     <div class="key-pick-item" onclick="selectVisualKey(this, '🍎')">🍎</div>
@@ -1054,11 +1141,11 @@
                 </div>
 
                 <button class="btn-main" onclick="registerNewAccount()">🚀 ¡Empezar a Jugar!</button>
-                <button style="background:none; border:none; width:100%; margin-top:12px; font-weight:800; color:#64748b; cursor:pointer;" id="btn-cancel-reg" onclick="showAuthView('view-profiles')">← Volver</button>
+                <button style="background:none; border:none; width:100%; margin-top:10px; font-weight:800; color:#64748b; cursor:pointer;" id="btn-cancel-reg" onclick="showAuthView('view-profiles')">← Volver</button>
             </div>
         </div>
 
-        <!-- VISTA 3: ENTRADA CON DIBUJO SECRETO (1 SOLO TOQUE PARA NIÑOS DE 1-4 AÑOS) -->
+        <!-- ENTRADA CON DIBUJO MÁGICO -->
         <div id="view-pinpad" class="auth-view">
             <div class="visual-pin-card">
                 <div class="pinpad-avatar-holder" id="pinpad-avatar"></div>
@@ -1085,22 +1172,24 @@
     </div>
 
     <!-- =========================================================
-         PANEL DE JUEGOS VISUALES (1-4 AÑOS)
+         PANEL DEL NIÑO (CON NUEVA PESTAÑA TV KIDS)
          ========================================================= -->
     <div id="dashboard-screen">
-        <!-- Contador gigante de estrellas -->
         <div class="kid-status-bar" onclick="speakText('Tienes ' + currentUser.stars + ' estrellas')">
             <div class="star-counter-big">⭐ <span id="stat-stars">0</span></div>
             <div class="xp-stars-track">
                 <div class="xp-stars-fill" id="progress-bar"></div>
             </div>
-            <div style="font-size:22px; font-weight:900;">🏆 Nv. <span id="stat-level">1</span></div>
+            <div style="font-size:21px; font-weight:900;">🏆 Nv. <span id="stat-level">1</span></div>
         </div>
 
-        <!-- 4 Botones Gigantes con Dibujo -->
+        <!-- 5 BOTONES GIGANTES -->
         <div class="big-nav-tabs">
             <button class="big-tab-btn active" onclick="switchTab('games', this, 'Juegos de aprender')">
                 🎈<span>Jugar</span>
+            </button>
+            <button class="big-tab-btn" onclick="switchTab('videos', this, 'Videos y cuentos animados')">
+                📺<span>Videos</span>
             </button>
             <button class="big-tab-btn" onclick="switchTab('arcade', this, 'Burbujas, pintar y piano')">
                 🎨<span>Crear</span>
@@ -1113,7 +1202,7 @@
             </button>
         </div>
 
-        <!-- PESTAÑA 1: 6 JUEGOS 100% VISUALES Y CON VOZ -->
+        <!-- PESTAÑA 1: 6 JUEGOS VISUALES -->
         <div id="tab-games" class="tab-view active">
             <div class="toddler-games-grid">
                 <div class="toddler-game-card" style="background: linear-gradient(135deg, #FF6B6B, #ff8e8e);" onclick="startGame('colors')">
@@ -1121,31 +1210,26 @@
                     <div class="toddler-game-icon">🎨</div>
                     <div class="toddler-game-title">Colores</div>
                 </div>
-
                 <div class="toddler-game-card" style="background: linear-gradient(135deg, #4ECDC4, #2bcbba);" onclick="startGame('animals')">
                     <span class="toddler-stars-tag">⭐ <span id="badge-animals">1</span></span>
                     <div class="toddler-game-icon">🐮</div>
                     <div class="toddler-game-title">Animales</div>
                 </div>
-
                 <div class="toddler-game-card" style="background: linear-gradient(135deg, #FD9644, #f7b731);" onclick="startGame('counting')">
                     <span class="toddler-stars-tag">⭐ <span id="badge-counting">1</span></span>
                     <div class="toddler-game-icon">🍎</div>
                     <div class="toddler-game-title">1, 2 y 3</div>
                 </div>
-
                 <div class="toddler-game-card" style="background: linear-gradient(135deg, #6C5CE7, #a29bfe);" onclick="startGame('shadows')">
                     <span class="toddler-stars-tag">⭐ <span id="badge-shadows">1</span></span>
                     <div class="toddler-game-icon">🕵️</div>
                     <div class="toddler-game-title">Sombras</div>
                 </div>
-
                 <div class="toddler-game-card" style="background: linear-gradient(135deg, #00B894, #55efc4);" onclick="startGame('sizes')">
                     <span class="toddler-stars-tag">⭐ <span id="badge-sizes">1</span></span>
                     <div class="toddler-game-icon">🐘</div>
                     <div class="toddler-game-title">Tamaños</div>
                 </div>
-
                 <div class="toddler-game-card" style="background: linear-gradient(135deg, #e84393, #fd79a8);" onclick="startGame('emotions')">
                     <span class="toddler-stars-tag">⭐ <span id="badge-emotions">1</span></span>
                     <div class="toddler-game-icon">😄</div>
@@ -1154,7 +1238,16 @@
             </div>
         </div>
 
-        <!-- PESTAÑA 2: JUEGOS SENSORIALES (BURBUJAS, MEMORIA, PINTAR, PIANO) -->
+        <!-- PESTAÑA 2 (NUEVA): TV KIDS - CUENTOS ANIMADOS Y VIDEOS DE PAPÁ/MAMÁ -->
+        <div id="tab-videos" class="tab-view">
+            <h3 style="font-size:17px; color:var(--purple);">🎬 Cuentos Musicales Animados (+15 ⭐ al verlos)</h3>
+            <div class="toddler-games-grid" id="builtin-stories-grid"></div>
+
+            <h3 style="font-size:17px; color:var(--primary); margin-top:6px;">📺 Videos Favoritos de Papá y Mamá</h3>
+            <div class="toddler-games-grid" id="custom-videos-grid"></div>
+        </div>
+
+        <!-- PESTAÑA 3: JUEGOS SENSORIALES -->
         <div id="tab-arcade" class="tab-view">
             <div class="arcade-subnav">
                 <button class="arcade-btn active" onclick="switchArcade('bubbles', this, 'Explota las burbujas')">🫧<span>Burbujas</span></button>
@@ -1163,7 +1256,6 @@
                 <button class="arcade-btn" onclick="switchArcade('memory', this, 'Busca las parejas')">🃏<span>Parejas</span></button>
             </div>
 
-            <!-- SUB-JUEGO 1: EXPLOTA BURBUJAS Y GLOBOS (IDEAL 1-3 AÑOS) -->
             <div id="arcade-bubbles" class="arcade-panel active">
                 <div style="font-weight:900; font-size:17px; color:var(--purple);">
                     🫧 ¡Toca las burbujas con tu dedo! (<span id="bubble-score">0</span> / 8)
@@ -1171,7 +1263,6 @@
                 <div id="bubble-stage"></div>
             </div>
 
-            <!-- SUB-JUEGO 2: PIZARRA DE DEDOS GRUESOS -->
             <div id="arcade-draw" class="arcade-panel">
                 <div class="canvas-toolbar">
                     <div class="swatch-btn active" style="background:#FF6B6B" onclick="setDrawColor('#FF6B6B', this, 'Rojo')"></div>
@@ -1183,10 +1274,9 @@
                     <button class="btn-icon-top" onclick="clearCanvas()">🧽 Borrar</button>
                     <button class="btn-icon-top" style="background:var(--green); color:white;" onclick="completeDrawingReward()">✅ ¡Listo! (+10 ⭐)</button>
                 </div>
-                <canvas id="draw-canvas" width="520" height="260"></canvas>
+                <canvas id="draw-canvas" width="520" height="250"></canvas>
             </div>
 
-            <!-- SUB-JUEGO 3: PIANO DE ANIMALES Y NOTAS -->
             <div id="arcade-piano" class="arcade-panel">
                 <div class="piano-keys">
                     <button class="piano-key" style="background:#FF6B6B" onclick="playPianoNote(261.63, '🐶 Guau')">🐶</button>
@@ -1198,25 +1288,24 @@
                 </div>
             </div>
 
-            <!-- SUB-JUEGO 4: MEMORIA FÁCIL (6 CARTAS GRANDES) -->
             <div id="arcade-memory" class="arcade-panel">
                 <div class="memory-board" id="memory-board"></div>
             </div>
         </div>
 
-        <!-- PESTAÑA 3: TROFEOS VISUALES -->
+        <!-- PESTAÑA 4: TROFEOS -->
         <div id="tab-awards" class="tab-view">
             <div class="awards-grid" id="awards-container"></div>
         </div>
 
-        <!-- PESTAÑA 4: MASCOTAS Y PREMIOS -->
+        <!-- PESTAÑA 5: TIENDA DE MASCOTAS Y PREMIOS -->
         <div id="tab-shop" class="tab-view">
             <div class="shop-grid" id="shop-container"></div>
             <h3 style="font-size:17px; margin-top:8px;">🎁 Premios de Mamá y Papá</h3>
             <div class="shop-grid" id="real-rewards-container"></div>
         </div>
 
-        <!-- PESTAÑA 5: ZONA DE PADRES PROTEGIDA -->
+        <!-- PESTAÑA 6: ZONA DE PADRES (REPORTES, PREMIOS Y GESTOR DE VIDEOS) -->
         <div id="tab-parents" class="tab-view">
             <div id="parent-lock-view" class="parent-box" style="text-align:center;">
                 <h3>🔒 Solo para Papá y Mamá</h3>
@@ -1229,9 +1318,9 @@
             </div>
 
             <div id="parent-unlocked-view" class="parent-box" style="display:none;">
-                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
                     <h3>📊 Progreso de <span id="parent-child-name"></span></h3>
-                    <button class="btn-icon-top" style="background:var(--accent);" onclick="giveBonusStars()">🌟 Regalar +20 Estrellas</button>
+                    <button class="btn-icon-top" style="background:var(--accent); font-size:14px;" onclick="giveBonusStars()">🌟 Regalar +20 Estrellas</button>
                 </div>
 
                 <table class="report-table">
@@ -1246,11 +1335,27 @@
                     <tbody id="parent-report-body"></tbody>
                 </table>
 
-                <h4 style="margin: 18px 0 8px;">🎁 Añadir Premio Real (Ej: Helado, Parque, Cuento)</h4>
-                <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <input type="text" id="new-reward-title" placeholder="Ej: 🍦 Ir por un helado" style="flex:1; min-width:180px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
-                    <input type="number" id="new-reward-cost" placeholder="Estrellas (ej: 50)" style="width:140px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
-                    <button class="btn-buy" style="width:auto; background:var(--purple);" onclick="addCustomParentReward()">➕ Guardar</button>
+                <!-- GESTOR PARA AGREGAR VIDEOS EDUCATIVOS DE YOUTUBE O MP4 -->
+                <h4 style="margin: 16px 0 8px;">📺 Añadir Video Educativo (YouTube o MP4) a la TV del Niño</h4>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+                    <input type="text" id="new-video-title" placeholder="Nombre (ej: Canción de la Vaca Lola)" style="flex:1; min-width:170px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <input type="text" id="new-video-url" placeholder="Pega enlace de YouTube o .mp4" style="flex:1; min-width:190px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <select id="new-video-icon" style="padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-size:18px;">
+                        <option value="🐮">🐮</option>
+                        <option value="🎵">🎵</option>
+                        <option value="🚂">🚂</option>
+                        <option value="🦖">🦖</option>
+                        <option value="🦄">🦄</option>
+                        <option value="🚀">🚀</option>
+                    </select>
+                    <button class="btn-buy" style="width:auto; background:var(--green);" onclick="addCustomParentVideo()">➕ Añadir Video</button>
+                </div>
+
+                <h4 style="margin: 14px 0 8px;">🎁 Añadir Premio Real (Ej: Helado, Parque, Cuento)</h4>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <input type="text" id="new-reward-title" placeholder="Ej: 🍦 Ir por un helado" style="flex:1; min-width:170px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <input type="number" id="new-reward-cost" placeholder="Estrellas (ej: 50)" style="width:135px; padding:10px; border-radius:12px; border:2px solid #cbd5e1; font-weight:700;">
+                    <button class="btn-buy" style="width:auto; background:var(--purple);" onclick="addCustomParentReward()">➕ Guardar Premio</button>
                 </div>
             </div>
         </div>
@@ -1258,20 +1363,42 @@
 </div>
 
 <!-- =========================================================
-     MODAL DE JUEGO 100% VISUAL Y HABLADO
+     MODAL DE REPRODUCTOR TV KIDS CON ESCUDO PARA BEBÉS
      ========================================================= -->
+<div id="video-modal">
+    <div class="video-modal-card">
+        <div class="video-top-bar">
+            <h3 id="video-modal-title" style="font-size:20px;">🎬 Cuento Animado</h3>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <button class="btn-baby-shield" id="btn-shield-toggle" onclick="toggleBabyShield()">🛡️ Escudo Bebé: ON</button>
+                <button class="btn-icon-top" style="background:#ff7675; color:white;" onclick="closeVideoPlayer()">✖ Salir</button>
+            </div>
+        </div>
+
+        <div class="video-stage-wrapper" id="video-stage-wrapper">
+            <!-- Contenido dinámico del Cuento Animado o Iframe de Video -->
+            <div id="video-inner-content" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;"></div>
+            <!-- Escudo transparente anti-toques accidentales -->
+            <div id="baby-touch-shield" onpointerdown="handleBabyShieldTouch(event)"></div>
+        </div>
+
+        <div class="video-progress-bar">
+            <div class="video-progress-fill" id="video-progress-fill"></div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE JUEGOS VISUALES -->
 <div id="game-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeGame()">✖</button>
         <div class="round-indicator" id="round-text" style="font-size:18px;">⭐ 1 / 3</div>
 
-        <!-- ESCENARIO VISUAL GIGANTE -->
         <div class="visual-stage">
             <div class="stage-big-visual" id="stage-visual-content"></div>
             <button class="btn-speak-giant" onclick="speakCurrentQuestion()">🔊 Escuchar otra vez</button>
         </div>
 
-        <!-- 4 BOTONES GIGANTES SOLO CON DIBUJOS -->
         <div class="toddler-options-grid" id="options-container"></div>
     </div>
 </div>
@@ -1314,7 +1441,7 @@
     }
 
     // =========================================================
-    // 2. SONIDOS Y VOZ MATERNAL PARA NIÑOS DE 1 A 4 AÑOS
+    // 2. AUDIO Y VOZ
     // =========================================================
     let audioCtx = null;
     let voiceEnabled = true;
@@ -1340,7 +1467,7 @@
             } else if (type === 'note') {
                 osc.type = 'triangle';
                 osc.frequency.setValueAtTime(customFreq, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.22, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.45);
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.45);
@@ -1420,7 +1547,61 @@
     }
 
     // =========================================================
-    // 3. BANCO DE JUEGOS 100% VISUALES (CERO LECTURA REQUERIDA)
+    // 3. EPISODIOS ANIMADOS INTEGRADOS (TV KIDS SIN INTERNET)
+    // =========================================================
+    const BUILTIN_STORIES = [
+        {
+            id: 'story_vowels',
+            title: 'Las Vocales',
+            icon: '🔤🐝',
+            gradient: 'linear-gradient(135deg, #FF6B6B, #FD9644)',
+            scenes: [
+                { bg: '#ff7675', visual: '🅰️ 🐝', label: 'A de Abeja', voice: '¡La letra A! A de Abeja, bzzzz', note: 261.63 },
+                { bg: '#74b9ff', visual: '🅴 🐘', label: 'E de Elefante', voice: '¡La letra E! E de Elefante gigante', note: 293.66 },
+                { bg: '#55efc4', visual: '🅸 🏝️', label: 'I de Isla', voice: '¡La letra I! I de Isla bonita', note: 329.63 },
+                { bg: '#ffeaa7', visual: '🅾️ 🐻', label: 'O de Oso', voice: '¡La letra O! O de Osito cariñoso', note: 392.00 },
+                { bg: '#a29bfe', visual: '🆄 🍇', label: 'U de Uva', voice: '¡Y la letra U! U de Uvas deliciosas. ¡Muy bien!', note: 523.25 }
+            ]
+        },
+        {
+            id: 'story_farm',
+            title: 'La Granja',
+            icon: '🐮🚜',
+            gradient: 'linear-gradient(135deg, #00B894, #55efc4)',
+            scenes: [
+                { bg: '#55efc4', visual: '🐮 🥛', label: 'La Vaca dice Muuu', voice: 'En la granja está la vaca, y dice Muuuuuu', note: 261.63 },
+                { bg: '#ffeaa7', visual: '🐤 🌾', label: 'El Pollito dice Pío', voice: 'El pollito pequeñito dice Pío, pío, pío', note: 349.23 },
+                { bg: '#fab1a0', visual: '🐷  mud', label: 'El Cerdito dice Oink', voice: 'El cerdito gordito salta y dice Oink, oink', note: 329.63 },
+                { bg: '#74b9ff', visual: '🦆 💧', label: 'El Patito dice Cuac', voice: 'Y el patito nada en el agua diciendo Cuac, cuac', note: 523.25 }
+            ]
+        },
+        {
+            id: 'story_colors',
+            title: 'Los Colores',
+            icon: '🚂🌈',
+            gradient: 'linear-gradient(135deg, #6C5CE7, #a29bfe)',
+            scenes: [
+                { bg: '#ff4757', visual: '🍎 🍓 🚒', label: 'Rojo Brillante', voice: '¡Chuuu chuuu! Llegó el color Rojo, como la manzana y la fresa', note: 261.63 },
+                { bg: '#f1c40f', visual: '🌞 🍌 ⭐', label: 'Amarillo Sol', voice: '¡Mira cómo brilla el Amarillo! Como el sol y el guineo', note: 329.63 },
+                { bg: '#0984e3', visual: '🐳 🚙 💧', label: 'Azul como el Mar', voice: 'Aquí está el color Azul, como la ballena en el mar', note: 392.00 },
+                { bg: '#00b894', visual: '🐸 🐢 🌳', label: 'Verde Naturaleza', voice: '¡Y el color Verde! Como la ranita saltarina', note: 523.25 }
+            ]
+        },
+        {
+            id: 'story_teeth',
+            title: 'Mis Dientes',
+            icon: '🪥😁',
+            gradient: 'linear-gradient(135deg, #4ECDC4, #0984e3)',
+            scenes: [
+                { bg: '#74b9ff', visual: '🍎 🍽️ 😋', label: 'Después de comer...', voice: 'Después de comer nuestra comida rica...', note: 261.63 },
+                { bg: '#00cec9', visual: '🪥 🫧 🦷', label: 'Chiki Chiki Chiki', voice: 'Tomamos el cepillo y hacemos chiki, chiki, chiki arriba y abajo', note: 329.63 },
+                { bg: '#55efc4', visual: '😁 ✨ 🌟', label: '¡Dientes Limpios!', voice: '¡Mira qué sonrisa tan limpia y brillante! ¡Bravo!', note: 523.25 }
+            ]
+        }
+    ];
+
+    // =========================================================
+    // 4. JUEGOS VISUALES (1 A 4 AÑOS)
     // =========================================================
     const MODULE_NAMES = {
         colors: '🎨 Colores',
@@ -1676,8 +1857,12 @@
     let bubbleInterval = null;
     let bubblesPopped = 0;
 
+    // VARIABLES DEL REPRODUCTOR TV KIDS
+    let storyTimer = null;
+    let babyShieldActive = true;
+
     // =========================================================
-    // 4. ARRANQUE Y COMPATIBILIDAD AUTOMÁTICA
+    // 5. INICIALIZACIÓN Y ESQUEMA DE USUARIO
     // =========================================================
     document.addEventListener('DOMContentLoaded', () => {
         buildCharacterSelectorGrid();
@@ -1726,6 +1911,9 @@
                 { id: 'rew_2', title: '🛝 Ir al parque', cost: 70 }
             ];
         }
+        if (!Array.isArray(user.customVideos)) {
+            user.customVideos = [];
+        }
         if (!user.equippedPet) user.equippedPet = '';
         if (!user.themeColor) user.themeColor = '#FF6B6B';
         if (!user.lastDailyClaim) user.lastDailyClaim = '';
@@ -1733,7 +1921,7 @@
     }
 
     // =========================================================
-    // 5. PERFILES Y LLAVE DE DIBUJITO (ESPECIAL 1 A 4 AÑOS)
+    // 6. GESTIÓN DE PERFILES Y LLAVE DE DIBUJO
     // =========================================================
     function buildCharacterSelectorGrid() {
         const grid = document.getElementById('character-selector-grid');
@@ -1898,7 +2086,6 @@
         slot.innerText = icon;
         slot.classList.add('filled');
 
-        // Acepta su dibujo secreto (o si venía de versión anterior sin dibujo, cualquiera lo deja entrar y lo guarda)
         if (!user.visualKey || icon === user.visualKey) {
             playSound('win');
             setTimeout(() => loginUser(user), 220);
@@ -1949,7 +2136,7 @@
     }
 
     // =========================================================
-    // 6. PANEL PRINCIPAL Y JUEGOS VISUALES
+    // 7. PANEL DEL NIÑO Y PESTAÑA DE VIDEOS EDUCATIVOS
     // =========================================================
     function loginUser(userObj) {
         currentUser = ensureUserSchema(userObj);
@@ -2007,6 +2194,7 @@
     function logout() {
         playSound('tap');
         stopBubbleSpawner();
+        closeVideoPlayer();
         if ('speechSynthesis' in window) window.speechSynthesis.cancel();
         currentUser = null;
         localStorage.removeItem('mimikids_active_user');
@@ -2058,6 +2246,7 @@
             if (badge) badge.innerText = currentUser.modules[mod];
         });
 
+        renderVideosTab();
         renderAwards();
         renderShop();
         renderRealRewards();
@@ -2065,7 +2254,176 @@
     }
 
     // =========================================================
-    // 7. MOTOR DE PREGUNTAS 100% VISUAL Y HABLADO (1 A 4 AÑOS)
+    // 8. MOTOR DE TV KIDS (CUENTOS ANIMADOS + YOUTUBE/MP4 CON ESCUDO)
+    // =========================================================
+    function renderVideosTab() {
+        const storiesGrid = document.getElementById('builtin-stories-grid');
+        storiesGrid.innerHTML = '';
+
+        BUILTIN_STORIES.forEach(st => {
+            const card = document.createElement('div');
+            card.className = 'toddler-game-card';
+            card.style.background = st.gradient;
+            card.onclick = () => playBuiltinStory(st);
+            card.innerHTML = `
+                <span class="toddler-stars-tag">▶️ +15 ⭐</span>
+                <div class="toddler-game-icon">${st.icon}</div>
+                <div class="toddler-game-title">${st.title}</div>
+            `;
+            storiesGrid.appendChild(card);
+        });
+
+        const customGrid = document.getElementById('custom-videos-grid');
+        customGrid.innerHTML = '';
+
+        if (!currentUser.customVideos || currentUser.customVideos.length === 0) {
+            customGrid.innerHTML = `
+                <div style="grid-column: 1/-1; background:#f8fafc; border:3px dashed #cbd5e1; border-radius:22px; padding:16px; text-align:center; color:#64748b; font-weight:800; font-size:14px;">
+                    👨‍👩‍👧 Papá o Mamá pueden añadir videos educativos desde el botón 🔒👨‍👩‍👧 arriba a la derecha.
+                </div>
+            `;
+            return;
+        }
+
+        currentUser.customVideos.forEach((vid, idx) => {
+            const card = document.createElement('div');
+            card.className = 'toddler-game-card';
+            card.style.background = 'linear-gradient(135deg, #0984e3, #74b9ff)';
+            card.onclick = () => playCustomVideo(vid);
+            card.innerHTML = `
+                <span class="toddler-stars-tag">📺 Ver</span>
+                <div class="toddler-game-icon">${vid.icon || '🎬'}</div>
+                <div class="toddler-game-title">${vid.title}</div>
+            `;
+            customGrid.appendChild(card);
+        });
+    }
+
+    function playBuiltinStory(story) {
+        closeVideoPlayer();
+        babyShieldActive = true;
+        updateShieldButtonUI();
+
+        document.getElementById('video-modal-title').innerText = `🎬 ${story.title}`;
+        document.getElementById('video-modal').style.display = 'flex';
+
+        let sceneIdx = 0;
+        const stageWrapper = document.getElementById('video-stage-wrapper');
+        const inner = document.getElementById('video-inner-content');
+        const progFill = document.getElementById('video-progress-fill');
+
+        function showScene() {
+            if (sceneIdx >= story.scenes.length) {
+                closeVideoPlayer();
+                awardStarsAndXP(15, 35, `🎬 ¡Viste el cuento ${story.title}! +15 Estrellas`);
+                speakText('¡Qué lindo cuento! Ganaste quince estrellas');
+                return;
+            }
+            const sc = story.scenes[sceneIdx];
+            stageWrapper.style.background = sc.bg;
+            inner.innerHTML = `
+                <div class="story-animated-character">${sc.visual}</div>
+                <div class="story-caption-pill">${sc.label}</div>
+            `;
+            progFill.style.width = `${Math.round(((sceneIdx + 1) / story.scenes.length) * 100)}%`;
+            playSound('note', sc.note);
+            speakText(sc.voice);
+            sceneIdx++;
+            storyTimer = setTimeout(showScene, 4200);
+        }
+
+        showScene();
+    }
+
+    function extractYouTubeID(url) {
+        const reg = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+        const match = url.match(reg);
+        return match ? match[1] : null;
+    }
+
+    function playCustomVideo(vid) {
+        closeVideoPlayer();
+        babyShieldActive = true;
+        updateShieldButtonUI();
+
+        document.getElementById('video-modal-title').innerText = `📺 ${vid.title}`;
+        document.getElementById('video-modal').style.display = 'flex';
+        document.getElementById('video-progress-fill').style.width = '100%';
+
+        const inner = document.getElementById('video-inner-content');
+        const ytId = extractYouTubeID(vid.url);
+
+        if (ytId) {
+            inner.innerHTML = `
+                <iframe width="100%" height="100%" 
+                    src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            `;
+        } else {
+            inner.innerHTML = `
+                <video width="100%" height="100%" src="${vid.url}" autoplay controls style="object-fit:cover;"></video>
+            `;
+        }
+    }
+
+    function toggleBabyShield() {
+        babyShieldActive = !babyShieldActive;
+        updateShieldButtonUI();
+    }
+
+    function updateShieldButtonUI() {
+        const shieldLayer = document.getElementById('baby-touch-shield');
+        const btn = document.getElementById('btn-shield-toggle');
+        shieldLayer.style.display = babyShieldActive ? 'block' : 'none';
+        btn.className = 'btn-baby-shield' + (babyShieldActive ? '' : ' off');
+        btn.innerText = babyShieldActive ? '🛡️ Escudo Bebé: ON' : '🔓 Escudo: OFF';
+    }
+
+    // Cuando el bebé toca el video con el Escudo activo, salen estrellitas sin pausar ni salir
+    function handleBabyShieldTouch(e) {
+        playSound('pop');
+        const wrapper = document.getElementById('video-stage-wrapper');
+        const rect = wrapper.getBoundingClientRect();
+        const sp = document.createElement('div');
+        sp.className = 'touch-sparkle';
+        sp.innerText = ['⭐', '✨', '🫧', '💛', '🎈'][Math.floor(Math.random() * 5)];
+        sp.style.left = (e.clientX - rect.left - 18) + 'px';
+        sp.style.top = (e.clientY - rect.top - 18) + 'px';
+        wrapper.appendChild(sp);
+        setTimeout(() => sp.remove(), 700);
+    }
+
+    function closeVideoPlayer() {
+        if (storyTimer) {
+            clearTimeout(storyTimer);
+            storyTimer = null;
+        }
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        document.getElementById('video-inner-content').innerHTML = '';
+        document.getElementById('video-modal').style.display = 'none';
+    }
+
+    function addCustomParentVideo() {
+        const title = document.getElementById('new-video-title').value.trim();
+        const url = document.getElementById('new-video-url').value.trim();
+        const icon = document.getElementById('new-video-icon').value;
+
+        if (!title || !url) {
+            showToast('Escribe el título y pega el enlace del video.');
+            return;
+        }
+
+        currentUser.customVideos.push({ id: 'vid_' + Date.now(), title, url, icon });
+        document.getElementById('new-video-title').value = '';
+        document.getElementById('new-video-url').value = '';
+        saveCurrentUser();
+        updateDashboardUI();
+        showToast('📺 Video añadido a la pestaña Videos del niño');
+    }
+
+    // =========================================================
+    // 9. MOTOR DE PREGUNTAS VISUALES
     // =========================================================
     function startGame(category) {
         playSound('tap');
@@ -2088,7 +2446,6 @@
         const optionsBox = document.getElementById('options-container');
         optionsBox.innerHTML = '';
 
-        // Mezclar orden de los 4 dibujos para que no siempre esté en el mismo sitio
         const shuffledOptions = [...currentQ.options].sort(() => Math.random() - 0.5);
 
         shuffledOptions.forEach(opt => {
@@ -2139,7 +2496,7 @@
     }
 
     // =========================================================
-    // 8. MINI-JUEGOS SENSORIALES (BURBUJAS, PINTAR, PIANO, PAREJAS)
+    // 10. JUEGOS SENSORIALES (BURBUJAS, PINTAR, PIANO, PAREJAS)
     // =========================================================
     function switchArcade(mode, btn, voiceText) {
         playSound('tap');
@@ -2154,7 +2511,6 @@
         if (mode === 'bubbles') startBubbleSpawner();
     }
 
-    // JUEGO DE EXPLOTAR BURBUJAS (ESPECIAL 1-2 AÑOS)
     function startBubbleSpawner() {
         stopBubbleSpawner();
         bubblesPopped = 0;
@@ -2212,14 +2568,13 @@
             }
             pos += 2.2;
             b.style.bottom = pos + 'px';
-            if (pos > 320) {
+            if (pos > 310) {
                 b.remove();
                 clearInterval(moveTimer);
             }
         }, 30);
     }
 
-    // MEMORIA ADAPTADA (6 CARTAS GRANDES = 3 PARES PARA 1-4 AÑOS)
     let memoryCards = [];
     let flippedIndices = [];
     let matchedCount = 0;
@@ -2282,7 +2637,6 @@
         }
     }
 
-    // PIZARRA DE TRAZO GRUESO + SELLOS
     let isDrawing = false;
     let drawColor = '#FF6B6B';
     let strokeCount = 0;
@@ -2292,7 +2646,7 @@
         const ctx = canvas.getContext('2d');
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.lineWidth = 14; // Trazo grueso especial para deditos de 1-4 años
+        ctx.lineWidth = 14;
 
         function getPos(e) {
             const rect = canvas.getBoundingClientRect();
@@ -2362,7 +2716,6 @@
         speakText('¡Qué dibujo tan bonito! Ganaste diez estrellas');
     }
 
-    // PIANO DE ANIMALES
     let pianoTouches = 0;
     function playPianoNote(freq, voiceSound) {
         playSound('note', freq);
@@ -2374,7 +2727,7 @@
     }
 
     // =========================================================
-    // 9. TROFEOS, MASCOTAS Y CONTROL PARENTAL
+    // 11. TROFEOS, TIENDA Y PANEL DE PADRES
     // =========================================================
     function renderAwards() {
         const container = document.getElementById('awards-container');
@@ -2385,7 +2738,7 @@
             card.className = 'award-card ' + (isUnlocked ? 'unlocked' : '');
             card.onclick = () => speakText(t.title);
             card.innerHTML = `
-                <div style="font-size:56px;">${t.icon}</div>
+                <div style="font-size:54px;">${t.icon}</div>
                 <h4>${t.title}</h4>
             `;
             container.appendChild(card);
@@ -2401,7 +2754,7 @@
             const card = document.createElement('div');
             card.className = 'shop-card';
             card.innerHTML = `
-                <div style="font-size:58px;">${pet.icon}</div>
+                <div style="font-size:56px;">${pet.icon}</div>
                 <h4>${pet.name}</h4>
                 <button class="btn-buy ${isOwned ? 'owned' : ''}" onclick="handlePetAction('${pet.id}', '${pet.icon}', ${pet.cost}, '${pet.name}')">
                     ${isEquipped ? '✅' : isOwned ? 'Poner' : `⭐ ${pet.cost}`}
@@ -2442,7 +2795,7 @@
             const card = document.createElement('div');
             card.className = 'shop-card';
             card.innerHTML = `
-                <div style="font-size:46px;">🎁</div>
+                <div style="font-size:44px;">🎁</div>
                 <h4>${rew.title}</h4>
                 <button class="btn-buy" style="background:var(--purple);" onclick="redeemRealReward(${idx})">
                     ⭐ ${rew.cost}
