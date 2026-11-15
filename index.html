@@ -2370,4 +2370,70 @@
     function showCurrentQuestion() {
         const currentQ = roundQueue[currentRoundIndex];
         document.getElementById('round-text').innerText = `Pregunta ${currentRoundIndex + 1} de ${roundQueue.length}`;
-        document.getElementById('question-
+        document.getElementById('question-text').innerText = currentQ.q;
+
+        speakCurrentQuestion();
+
+        const optionsBox = document.getElementById('options-container');
+        optionsBox.innerHTML = '';
+
+        currentQ.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, currentQ.a);
+            optionsBox.appendChild(btn);
+        });
+    }
+
+    function speakCurrentQuestion() {
+        const currentQ = roundQueue[currentRoundIndex];
+        if (!currentQ) return;
+        speakText(currentQ.voice || currentQ.q, 'es-ES');
+    }
+
+    function checkAnswer(selected, correct) {
+        // Si es el módulo de inglés, pronunciar la palabra seleccionada en inglés
+        if (currentCategory === 'colors') {
+            speakText(selected, 'en-US');
+        }
+
+        if (selected === correct) {
+            playSound('correct');
+            currentUser.moduleStats[currentCategory].hits += 1;
+            currentRoundIndex++;
+
+            if (currentRoundIndex < roundQueue.length) {
+                showToast('✅ ¡Correcto! Siguiente pregunta...');
+                setTimeout(showCurrentQuestion, currentCategory === 'colors' ? 650 : 250);
+            } else {
+                currentUser.completedGames += 1;
+                currentUser.modules[currentCategory] += 1;
+                closeGame();
+                awardStarsAndXP(15, 40, `🌟 ¡Misión Superada! +15 Estrellas y +40 XP`);
+            }
+        } else {
+            playSound('wrong');
+            currentUser.moduleStats[currentCategory].misses += 1;
+            saveCurrentUser();
+            showToast('💪 ¡Casi! Inténtalo otra vez');
+        }
+    }
+
+    function closeGame() {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        document.getElementById('game-modal').style.display = 'none';
+    }
+
+    function showToast(msg) {
+        const box = document.getElementById('toast-box');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerText = msg;
+        box.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+</script>
+
+</body>
+</html>
